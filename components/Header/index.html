@@ -1,0 +1,134 @@
+<!-- <script type="module" src="../../components/Debug/script.js"></script> -->
+
+<div class="header header__box headerTopPosition" id="menuHeader">
+  <div class="header__group">
+    <div class="header__flexRow">
+      <div class="cell">
+        <img src="../../assets/menu.svg" alt="alt text" class="header__image2" id="menu_nav_button"
+          onclick="toggleNav()" />
+      </div>
+      <div class="spacer"></div>
+      <div class="cell1">
+        <img src="../../assets/icon.png" alt="強生寓所" class="header__image"/>
+      </div>
+      <div class="spacer1"></div>
+      <div class="cell2">
+        <div class="header__flexRow1">
+          <div class="cell tabbar_item">
+            <h5 class="header__highlights">最新消息</h5>
+          </div>
+          <div class="spacer"></div>
+          <div class="cell tabbar_item">
+            <h5 class="header__highlights1">公司簡介</h5>
+          </div>
+          <div class="spacer1"></div>
+          <div class="cell tabbar_item">
+            <h5 class="header__highlights2">介紹教練</h5>
+          </div>
+          <div class="spacer1"></div>
+          <div class="cell tabbar_item">
+            <h5 class="header__highlights3">服務據點</h5>
+          </div>
+          <div class="spacer1"></div>
+          <div class="cell tabbar_item">
+            <h5 class="header__highlights4">租購輔具</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="cell3" style="position: absolute; right: 30px;">
+        <div class="header__flexRow2">
+          <div class="cell1">
+            <img src="../../assets/profile.png" alt="alt text" id="controlShowPanel" class="header__image1" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="profile_div"></div>
+  
+</div>
+
+
+
+<div id="mySidenav" class="mySidenav partial-code mySidenavRoot">
+  <div class="mySidenavFlexCol">
+    <div class="mySidenavContent_box" onclick="location.href='../HomePage/index.html'">
+      <div class="mySidenavText">最新消息</div>
+    </div>
+    <div class="mySidenavContent_box" onclick="location.href='../HomePage/index.html'">
+      <div class="mySidenavText">公司簡介</div>
+    </div>
+    <div class="mySidenavContent_box" onclick="location.href='../HomePage/index.html'">
+      <div class="mySidenavText">介紹教練</div>
+    </div>
+    <div class="mySidenavContent_box" onclick="location.href='../HomePage/index.html'">
+      <div class="mySidenavText">服務據點</div>
+    </div>
+    <div class="mySidenavContent_box" onclick="location.href='../HomePage/index.html'">
+      <div class="mySidenavText">租購輔具</div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<!-- for尚未登入 -->
+<div class="rightPanelRoot" id="noneLoginPopup">
+  <p class="specialParagraph">您的課程即將到期，請聯繫業務人員討論課程，此為測試文字顯示效果，之後可自行修改成任意文字。</p><!-- 這行可依據實際情況拿掉或放上，如果有文字需求則可使用 -->
+
+  <div class="rightPanelPointer">
+    <hr size="1" class="line" /><!-- 這條線可依據情況拿掉或放上，如果上方有文字則可使用 -->
+
+    <div class="rightPanelText" id="login-btn" onclick="location.href='../LoginPage/index.html'">登入</div>
+    <hr size="1" class="line" />
+    <div class="rightPanelText" id="signup-btn" onclick="location.href='../SignupPage/index.html'">註冊</div>
+    <hr size="1" class="line" />
+    <div class="rightPanelText" id="forget-btn" onclick="location.href='../ForgetPage/index.html'">忘記密碼</div>
+    <hr size="1" class="line" />
+    <div class="rightPanelText" id="logout-btn" onclick="logout()">登出</div>
+  </div>
+</div>
+
+<!-- for登入後個案 -->
+<div class="rightPanelRoot" id="userPopup">
+  <p class="specialParagraph">您的課程即將到期，請聯繫業務人員討論課程。</p>
+  <div class="rightPanelPointer">
+    <hr size="1" class="line" />
+    <div class="rightPanel1">
+      <div class="rightPanelText Pointer" onclick="location.href='../EditUserInfoPage/index.html'">基本資料</div>
+      <hr size="1" class="line" />
+      <div class="rightPanelText Pointer" onclick="location.href='../QuotationPage/index.html'">報價單</div>
+      <hr size="1" class="line" />
+      <div class="rightPanelText Pointer" onclick="location.href='../OrderListPage/index.html'">訂單</div>
+      <hr size="1" class="line" />
+      <div class="rightPanelText Pointer" onclick="location.href='../TrainListPage/index.html'">我的訓練</div>
+      <hr size="1" class="line" />
+      <div class="rightPanelText dontclick text-secondary" onclick="location.href='../HomePage/index.html'">服務評分表</div>
+      <hr size="1" class="line" />
+      <div class="rightPanelText Pointer" id="logout-btn" onclick="logout()">登出</div>
+    </div>
+  </div>
+</div>
+
+<!-- for登入後教練 -->
+<div class="rightPanelRoot" id="couchPopup">
+  <div class="rightPanelPointer">
+    <div class="rightPanelText Pointer" onclick="location.href='../EditUserInfoPage/index.html'">基本資料</div>
+    <hr size="1" class="line" />
+    <div class="rightPanelText dontclick text-secondary">開立訂單</div>
+    <hr size="1" class="line" />
+    <div class="rightPanelText Pointer" onclick="location.href='../WorkOrderListPage/index.html'">教練工單</div>
+    <hr size="1" class="line" />
+    <div class="rightPanelText dontclick text-secondary">訓練建議</div>
+    <hr size="1" class="line" />
+    <div class="rightPanelText dontclick text-secondary">聯絡簿</div>
+    <hr size="1" class="line" />
+    <div class="rightPanelText Pointer" id="logout-btn" onclick="logout()">登出</div>
+  </div>
+</div>

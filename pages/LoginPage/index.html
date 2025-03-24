@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<!--  This source code is exported from pxCode, you can get more document from https://www.pxcode.io  -->
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <link rel="stylesheet" href="../../css/bootstrap-5.3.3.css">
+  <script src="../../js/bootstrap-5.3.3.js"></script>
+  <script src="../../js/jquery-3.6.0.min.js"></script>
+
+
+  <!-- Font Awesome圖示庫 -->
+  <link rel="stylesheet" href="../../css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+  <!-- Please DO NOT remove this line, all link and script tags will be merged to here -->
+  <link rel="stylesheet" href="../../css/font-awesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../components/Header/style.css" />
+  <link rel="stylesheet" type="text/css" href="../../components/Footer/style.css" />
+  <link rel="stylesheet" type="text/css" href="../../components/CustomAlert/style.css" />
+
+  <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/fonts.css" />
+  <link rel="stylesheet" type="text/css" href="./style.css" />
+
+  <script>
+    // 確保載入時，使用時間戳。
+    let version = Date.now();
+    document.write('<script type="text/javascript" src="../../js/jquery.md5.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script type="text/javascript" src="../../js/jquery.cookie.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script type="text/javascript" src="../../components/Header/script.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script type="text/javascript" src="../../components/CustomAlert/script.js?ver=' + version + '"></scr' + 'ipt>'); 
+  </script>
+
+  <script>
+    $(function () {
+      // 為確保Header/index.html始終在Header/script.js之前載入，並禁用快取。每次都載新的js，避免偶爾的順序出錯
+      // 此外因為需要監聽，所以把主要監聽功能寫在這，確保在Header.html載入之後才執行。避免引入外部js檔案時，偶爾造成的載入順序錯誤問題。
+      $.get("../../components/Header/index.html", function (data) {
+        $('#header').html(data);
+      }).fail(function () {
+      });
+
+      $.get("../../components/Footer/index.html", function (data) {
+        $('#footer').html(data);
+      }).fail(function () {
+      });
+
+    });
+  </script>
+</head>
+
+<body>
+  <div>
+    <div style="
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          height: 100%;
+          background-color: #f3f3f3;
+        ">
+      <div class="cell">
+        <!-- ======= section1 ======= -->
+        <section class="section1__section1">
+          <div class="section1__box">
+            <!-- prettier-ignore -->
+            <div id="header"></div>
+          </div>
+        </section>
+        <!-- ======= End section1 ======= -->
+      </div>
+
+      <div class="box1">
+        <div class="flexCol">
+          <div class="flexRow">
+            <div class="cell">
+              <img src="../../assets/arrowOrangeRight.svg" alt="alt text" class="image3" />
+            </div>
+
+            <div class="cell1">
+              <h2 class="medium_title">會員登入</h2>
+            </div>
+          </div>
+
+          <div class="flexCol1">
+            <div class="text">帳號 (身分證字號)</div>
+            <input class="custom_input" type="text" id="idNumber" />
+          </div>
+
+          <div class="flexCol2">
+            <div class="text1">密碼</div>
+            <input class="custom_input eye_padding" type="password" id="password" />
+            <i id="togglePassword" class="fas fa-eye togglePassword"></i>
+          </div>
+
+          <div class="flexRow1">
+            <input type="checkbox" class="form-check-input" id="login-remember">
+            <label for="login-remember" class="cell1">
+              <h5 class="highlights">記住我</h5>
+            </label>
+          </div>          
+
+          <div class="content_box" id="login-btn">
+            <h5 class="highlights2">登入</h5>
+          </div>
+
+          <div class="content_box1" id="signup-btn" onclick="location.href='../SignupPage/index.html'">
+            <div class="highlights3 decoration-none">
+              強生寓所新朋友註冊
+            </div>
+          </div>
+
+          <a class="highlights4 decoration-none" href="../ForgetPage/index.html">忘記密碼</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="box2">
+      <!-- prettier-ignore -->
+    </div>
+    <div id="footer"></div>
+  </div>
+
+  <!-- <div class="box3">
+      <div class="flexCol3">
+        <div class="cell">
+          <img src="../../assets/arrowUp.svg" alt="alt text" class="image4" />
+        </div>
+        <h5 class="highlights5">TOP</h5>
+      </div>
+    </div> -->
+  </div>
+
+
+</body>
+
+<script type="text/javascript" src="../../js/webConfig.js"></script>
+<script type="text/javascript" src="./script.js?1130"></script>
+
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<!--  This source code is exported from pxCode, you can get more document from https://www.pxcode.io  -->
+
+<head>
+
+  <meta charset="utf-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <link href="../../css/RobotoFont.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/bootstrap-5.3.3.css">
+  <link rel="stylesheet" href="../../../components/CustomAlert/style.css">
+
+  <script src="../../../js/bootstrap-5.3.3.js"></script>
+  <script src="../../../js/jquery-3.6.0.min.js"></script>
+
+
+  <!-- Font Awesome圖示庫 -->
+
+  <link rel="stylesheet" href="../../css/all.min.css">
+
+
+
+  <!-- Please DO NOT remove this line, all link and script tags will be merged to here -->
+
+  <link rel="stylesheet" type="text/css" href="../../components/Header/style.css" />
+
+  <link rel="stylesheet" type="text/css" href="../../components/Footer/style.css" />
+
+  <link rel="stylesheet" type="text/css" href="../../components/CustomAlert/style.css" />
+
+  <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+
+  <link rel="stylesheet" type="text/css" href="../../css/fonts.css" />
+
+  <script src="../../js/moment.min.js"></script>
+
+  <link rel="stylesheet" href="../../css/fullcalendar.min.css" />
+
+  <link rel="stylesheet" type="text/css" href="./detail.css?01" />
+
+  <script>
+
+    // 確保載入時，使用時間戳。
+
+    let version = Date.now();
+
+    document.write('<script type="text/javascript" src="../../js/jquery.md5.js?ver=' + version + '"></scr' + 'ipt>');
+
+    document.write('<script type="text/javascript" src="../../js/jquery.cookie.js?ver=' + version + '"></scr' + 'ipt>');
+
+    document.write('<script type="text/javascript" src="../../components/Header/script.js?ver=' + version + '"></scr' + 'ipt>');
+
+    document.write('<script type="text/javascript" src="../../components/CustomAlert/script.js?ver=' + version + '"></scr' + 'ipt>');
+
+    document.write('<script type="text/javascript" src="../../js/fullcalendar.min.js?ver=' + version + '"></scr' + 'ipt>');
+
+
+
+  </script>
+
+
+
+  <script>
+
+    $(function () {
+
+      // 為確保Header/index.html始終在Header/script.js之前載入，並禁用快取。每次都載新的js，避免偶爾的順序出錯
+
+      // 此外因為需要監聽，所以把主要監聽功能寫在這，確保在Header.html載入之後才執行。避免引入外部js檔案時，偶爾造成的載入順序錯誤問題。
+
+      $.get("../../components/Header/index.html", function (data) {
+
+        $('#header').html(data);
+
+      }).fail(function () {
+
+      });
+
+
+
+      $.get("../../components/Footer/index.html", function (data) {
+
+        $('#footer').html(data);
+
+      }).fail(function () {
+
+      });
+
+
+
+    });
+
+  </script>
+
+</head>
+
+
+
+<body style="background: #F3F3F3;">
+
+  <div id="header"></div>
+
+  <div class="main-box">
+
+    <!-- <div class="title-box">
+
+      <span class="title">開案評估</span>
+
+      <span class="text">2021051212000001</span>
+
+    </div>
+
+    <div class="box01">
+
+      <span class="type">未安排</span>
+
+      <div class="detail">
+
+        <span class="name">個案名稱：劉曉玫</span>
+
+        <div class="button-box">
+
+          <span>個案資料</span>
+
+          <span>聯絡簿</span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="box02">
+
+      <div class="serve-box">
+
+        <span class="date">預約時間：2021/07/24 15:00</span>
+
+        <span class="add">服務地點：台北區王治療所</span>
+
+      </div>
+
+      <div class="coach-box">
+
+        <span>
+
+          <div class="img"></div>
+
+          <span>
+
+            專業評估教練：王大明
+
+          </span>
+
+        </span>
+
+        <span>
+
+          <div class="img"></div>
+
+          <span>
+
+            自主應用教練：林瑪莉
+
+          </span>
+
+        </span>
+
+      </div>
+
+      <div class="singin">
+
+        <span class="title">簽到完成：否</span>
+
+        <div class="reason-box">
+
+          <span>原因：</span>
+
+          <input class="reason" type="text" disabled>
+
+          <span class="save-button edit">
+
+            <svg style="margin-top: -3px;" width="16" height="16" viewBox="0 0 16 16"
+
+              xmlns="http://www.w3.org/2000/svg">
+
+              <path
+
+                d="M15.665 2.513 13.488.337A1.14 1.14 0 0 0 12.677 0h-.001a1.14 1.14 0 0 0-.811.336L1.056 11.145c-.119.1-.21.237-.246.401L.018 15.1a.739.739 0 0 0 .882.882l3.554-.792a.733.733 0 0 0 .403-.248L15.665 4.135a1.148 1.148 0 0 0 0-1.622zm-5.153 1.266 1.709 1.71-6.656 6.655-1.709-1.709 6.656-6.656zm-8.308 8.308.607-.607 1.709 1.71-.607.606-2.2.49.491-2.2zm11.062-7.644-1.71-1.709 1.12-1.12 1.71 1.71-1.12 1.12z"
+
+                fill="#1654B9" fill-rule="nonzero" />
+
+            </svg>
+
+            編輯
+
+          </span>
+
+          <span class="save-button save" style="display:none">
+
+            <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+
+              <path
+
+                d="M13.547 3.028a.563.563 0 0 0-.808 0L5.893 10.02 3.26 7.332a.563.563 0 0 0-.808 0 .592.592 0 0 0 0 .826l3.036 3.1a.563.563 0 0 0 .808 0l7.25-7.405a.592.592 0 0 0 0-.825z"
+
+                fill="#1654B9" fill-rule="evenodd" />
+
+            </svg>
+
+            儲存
+
+          </span>
+
+        </div>
+
+      </div>
+
+      <div class="record-box">
+
+        <span class="title">記錄完成：否</span>
+
+        <div class="type-box">
+
+          <span>照片簽到</span>
+
+          <span class="active">評估量表</span>
+
+          <span>評估建議</span>
+
+          <span>訓練建議</span>
+
+        </div>
+
+      </div>
+
+    </div> -->
+  </div>
+
+  <div id="footer"></div>
+
+</body>
+
+<script type="text/javascript" src="../../js/webConfig.js"></script>
+
+<script type="text/javascript" src="./detail.js?01"></script>
+
+
+
+</html>

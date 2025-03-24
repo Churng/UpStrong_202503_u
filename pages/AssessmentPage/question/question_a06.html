@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>輔具建議</title>
+    <link rel="stylesheet" href="./css/question_a06.css">
+    <link rel="stylesheet" href="../../../components/CustomAlert/style.css">
+    <link rel="stylesheet" href="../../../js/bootstrap-5.3.3.js">
+
+
+    <script src="../../../js/bootstrap-5.3.3.js"></script>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script src="../../../components/CustomAlert/script.js"></script>
+    <script>
+        // 確保載入時，使用時間戳。
+        let version = Date.now();
+        document.write('<script type="text/javascript" src="../../../js/jquery.md5.js?ver=' + version + '"></scr' + 'ipt>');
+        document.write('<script type="text/javascript" src="../../../js/jquery.cookie.js?ver=' + version + '"></scr' + 'ipt>');
+    </script>
+</head>
+
+<body>
+    <div class="header-box">
+        <div class="prev">
+            <img src="../images/question/prev-arrow.png">
+        </div>
+        <span class="title">輔具建議 <span><span>01</span>/02</span></span>
+        <div class="home-box">
+            <img src="../images/question/home-icon.png">
+            <span>主選單</span>
+        </div>
+    </div>
+    <div class="content-box">
+        <!-- step01 -->
+        <div class="step01">
+            <div class="detail-box">
+                <div>
+                    <div class="title-box">
+                        <span class="title">個案基本資料</span>
+                    </div>
+                    <div class="user-detail">
+                        <div><span>姓名</span><span class="name"></span></div>
+                        <div><span>身分證</span><span class="id"></span></div>
+                    </div>
+                    <div class="title-box">
+                        <span class="title">能力分級</span>
+                    </div>
+                    <div class="bottom-box">
+                        <div class="radio-box">
+                            <div>
+                                <input type="radio" id="lv0" name="lv" value="0">
+                                <label for="lv0">分級一
+                                    <span>可以跑跳，上下樓梯不需扶欄杆</span>
+                                </label>
+                            </div>
+                            <img src="../images/question/lv1_img.png">
+                        </div>
+                        <div class="radio-box">
+                            <div>
+                                <input type="radio" id="lv1" name="lv" value="1">
+                                <label for="lv1">分級二
+                                    <span>能放手行走，或拿1支單點柺杖行走</span>
+                                </label>
+                                <div class="radio-box">
+                                    <div>
+                                        <input type="radio" name="lv-sub" class="lv1-sub-list-content" id="lv1_1"
+                                            value="1">
+                                        <label for="lv1_1" class="lv-sub-list-content">可獨立行走</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" name="lv-sub" class="lv1-sub-list-content" id="lv1_2"
+                                            value="2">
+                                        <label for="lv1_2" class="lv-sub-list-content">非獨立行走</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="../images/question/lv2_img.png">
+                        </div>
+                        <div class="radio-box">
+                            <div>
+                                <input type="radio" id="lv2" name="lv" value="2">
+                                <label for="lv2">分級三
+                                    <span>扶持助行器才能行走</span><span>(必須用 大底面四腳柺 或 雙側枴杖才能走亦屬之)</span>
+                                </label>
+                                <div class="radio-box">
+                                    <div>
+                                        <input type="radio" name="lv-sub" class="lv2-sub-list-content" id="lv2_1"
+                                            value="1">
+                                        <label for="lv2_1" class="lv-sub-list-content">可獨立行走</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" name="lv-sub" class="lv2-sub-list-content" id="lv2_2"
+                                            value="2">
+                                        <label for="lv2_2" class="lv-sub-list-content">非獨立行走</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="../images/question/lv3_img.png">
+                        </div>
+                        <div class="radio-box">
+                            <div>
+                                <input type="radio" id="lv3" name="lv" value="3">
+                                <label for="lv3">分級四
+                                    <span>無法行走，但在一般輪椅上可坐穩</span>
+                                </label>
+                                <img src="../images/question/lv4_img.png">
+                                <div class="radio-box">
+                                    <div>
+                                        <input type="radio" name="lv-sub" class="lv3-sub-list-content" id="lv3_1"
+                                            value="1">
+                                        <label for="lv3_1" class="lv-sub-list-content">扶持可站立</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" name="lv-sub" class="lv3-sub-list-content" id="lv3_2"
+                                            value="2">
+                                        <label for="lv3_2" class="lv-sub-list-content">扶持無法站</label>
+                                    </div>
+                                </div>
+                                <div class="radio-box">
+                                    <div class="checkbox-box">
+                                        <div class="checkbox-item-with-img">
+                                            <input type="checkbox" class="lv3-sub-list-content" id="lv3_3" name="lv-sub"
+                                                value="3">
+                                            <label for="lv3_3" class="lv-sub-list-content">能在床邊坐穩</label>
+                                            <div class="img-box">
+                                                <img src="../images/question/lv4_img01.png">
+                                            </div>
+                                        </div>
+                                        <div class="checkbox-item-with-img">
+                                            <input type="checkbox" class="lv3-sub-list-content" id="lv3_4" name="lv-sub"
+                                                value="4">
+                                            <label for="lv3_4" class="lv-sub-list-content">下肢無明顯攣縮</label>
+                                            <div class="img-box">
+                                                <img src="../images/question/lv4_img02.png">
+                                                <img src="../images/question/lv4_img03.png">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="radio-box">
+                            <div>
+                                <input type="radio" id="lv4" name="lv" value="4">
+                                <label for="lv4">分級五
+                                    <span>一般輪椅上無法坐穩，須高背輪椅</span>
+                                </label>
+                            </div>
+                            <img src="../images/question/lv5_img.png">
+                        </div>
+                    </div>
+                    <div class="title-box">
+                        <span class="title">其他</span>
+                    </div>
+                    <div class="other-box">
+                        <div><span class="title">鼻胃管</span><span class="text"></span></div>
+                        <div><span class="title">壓瘡</span><span class="text"></span></div>
+                        <div><span class="title">翻身</span><span class="text"></span></div>
+                        <div><span class="title">床上坐起</span><span class="text"></span></div>
+                        <div><span class="title">上肢動作能力</span><span class="text"></span></div>
+                        <div>
+                            <span class="title">認知</span>
+                            <div class="radio-box">
+                                <div>
+                                    <input type="radio" id="cognition1" name="cognition" value="1">
+                                    <label for="cognition1" class="sub-list-content">能操作電動輪椅/代步車</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="cognition2" name="cognition" value="2">
+                                    <label for="cognition2" class="sub-list-content">不能操作電動椅/代步車</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="title">視覺</span>
+                            <div class="radio-box">
+                                <div>
+                                    <input type="radio" id="vision1" name="vision" value="1">
+                                    <label for="vision1" class="sub-list-content">能操作電動輪椅/代步車</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="vision2" name="vision" value="2">
+                                    <label for="vision2" class="sub-list-content">不能操作電動椅/代步車</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="step02">
+            <div class="detail-box">
+                <div class="title-box">
+                    <span class="title">請標示以下列 <span>使用中</span>/<span>建議添增</span> 的輔具</span>
+                </div>
+                <div class="list-box">
+                    <div class="list">
+                        <div class="top-box">
+                            <div class="left-box">
+                                <span>協助步行</span>
+                                <span>推薦</span>
+                            </div>
+                            <div class="right-box">
+                                <span>1</span>
+                                <span>1</span>
+                                <svg class="arrow" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 18L15 12L9 6" stroke="#999999" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="btm-box">
+                            <div>
+                                <div class="left-box">
+                                    <span>進食</span>
+                                    <span class="type01">推薦</span>
+                                </div>
+                                <div class="right-box">
+                                    <select>
+                                        <option value="">請選擇</option>
+                                        <option value="">123</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list">
+                        <div class="top-box">
+                            <div class="left-box">
+                                <span>協助步行</span>
+                                <span>推薦</span>
+                            </div>
+                            <div class="right-box">
+                                <span>1</span>
+                                <span>1</span>
+                                <svg class="arrow" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 18L15 12L9 6" stroke="#999999" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="btm-box">
+                            <div>
+                                <div class="left-box">
+                                    <span>進食</span>
+                                    <span class="type01">推薦</span>
+                                </div>
+                                <div class="right-box">
+                                    <select>
+                                        <option value="">請選擇</option>
+                                        <option value="">123</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="next-button">
+            <span class="next">下一步</span>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../../js/webConfig.js"></script>
+    <script src="../../../components/PublicAPIAlert/responseHandler.js"></script>
+    <script type="text/javascript" src="./js/question06.js"></script>
+</body>
+
+</html>

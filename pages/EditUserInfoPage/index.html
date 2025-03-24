@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html>
+<!--  This source code is exported from pxCode, you can get more document from https://www.pxcode.io  -->
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <link rel="stylesheet" href="../../css/font-awesome.min.css" />
+  <link rel="stylesheet" href="../../js/bootstrap-5.3.3.js">
+
+  <!-- jQuery -->
+  <script src="../../js/jquery-3.6.0.min.js"></script>
+  <script src="../../js/jquery-ui-1.13.2.js"></script>
+
+  <!-- Bootstrap 5.1.3 CSS/JS -->
+  <link href="../../css/bootstrap.min.css" rel="stylesheet">
+  <script src="../../js/bootstrap.bundle.min.js"></script>
+
+  <!-- Bootstrap-Select CSS/JS -->
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
+
+
+  <script src="../../js/v1.01.0.js"></script>
+
+  <!-- Font Awesome圖示庫 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link rel="stylesheet" href="../../css/all.min.css">
+
+
+  <!-- Please DO NOT remove this line, all link and script tags will be merged to here -->
+  <link rel="stylesheet" type="text/css" href="../../components/Header/style.css" />
+  <link rel="stylesheet" type="text/css" href="../../components/Footer/style.css" />
+  <link rel="stylesheet" type="text/css" href="../../components/CustomAlert/style.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/fonts.css" />
+  <link rel="stylesheet" type="text/css" href="./style.css" />
+
+
+  <link rel="stylesheet" href="../../css/air-datepicker.css">
+  <script src="../../js/air-datepicker.js"></script>
+
+  <script>
+    // 確保載入時，使用時間戳。
+    let version = Date.now();
+    document.write('<script type="text/javascript" src="../../js/jquery.md5.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script type="text/javascript" src="../../components/CustomAlert/script.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script type="text/javascript" src="../../components/Header/script.js?ver=' + version + '"></scr' + 'ipt>');
+  </script>
+  <script>
+    $(function () {
+      // 為確保Header/index.html始終在Header/script.js之前載入，並禁用快取。每次都載新的js，避免偶爾的順序出錯
+      // 此外因為需要監聽，所以把主要監聽功能寫在這，確保在Header.html載入之後才執行。避免引入外部js檔案時，偶爾造成的載入順序錯誤問題。
+      $.get("../../components/Header/index.html", function (data) {
+        $('#header').html(data);
+
+      }).fail(function () {
+      });
+
+      $.get("../../components/Footer/index.html", function (data) {
+        $('#footer').html(data);
+      }).fail(function () {
+      });
+
+    });
+  </script>
+
+  <!-- AirDatepicker -->
+  <script>
+    const zh = {
+      days: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+      daysShort: ['週日', '週一', '週二', '週三', '週四', '週五', '週六'],
+      daysMin: ['日', '一', '二', '三', '四', '五', '六'],
+      months: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+      monthsShort: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+      today: '今天',
+      clear: '清空'
+    }
+
+    $(function () {
+      new AirDatepicker('#birthDate', {
+        locale: zh, // 上方定義中文化，在此引用才能成功，跟以前用法不同，依據新API文件教學
+        dateFormat: 'yyyy/MM/dd',
+        firstDay: 1,
+        isMobile: false,
+        weekends: [6, 0],
+        toggleSelected: true,
+        keyboardNav: true
+      });
+    }); // end ready
+  </script>
+
+  <!-- twzipcode -->
+  <script src="../../js/jquery.twzipcode.min.js"></script>
+
+</head>
+
+<body class="flex-column">
+  <main class="user-detail main">
+
+    <div class="cell">
+      <!-- ======= section1 ======= -->
+      <section class="section1__section1">
+        <!-- prettier-ignore -->
+        <div id="header"></div>
+      </section>
+      <!-- ======= End section1 ======= -->
+    </div>
+
+    <div class="cell">
+      <!-- ======= section2 ======= -->
+      <section class="section2__section2">
+        <form class="section2__flexCol" id="form">
+          <div class="section2__flexRow">
+            <div class="cell">
+              <img src="../../assets/arrowOrangeRight.svg" alt="alt text" class="section2__image4" />
+            </div>
+            <h2 class="section2__medium_title">會員基本資料</h2>
+          </div>
+          <div class="section2__box1">
+            <div class="section2__flexCol1">
+              <div class="section2__flexRow1">
+                <div class="section2__flexRow2">
+                  <div class="cell">
+                    <input type="radio" id="personal" name="type" value="personal" checked />
+                  </div>
+                  <div class="cell1">
+                    <h5 class="section2__highlights">我是個案用戶</h5>
+                  </div>
+                </div>
+                <div class="spacer"></div>
+                <div class="section2__flexRow2">
+                  <div class="cell2">
+                    <input type="radio" id="coach" name="type" value="coach" />
+                  </div>
+                  <div class="cell3">
+                    <h5 class="section2__highlights">我要申請教練</h5>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 個案申請 -->
+              <div id="user-detail">
+                <!-- 個案基本資料 -->
+                <div class="section2__flexCol2">
+                  <div class="cell">
+                    <px-grid track-style="flex-grow: 1;" x="0px 932fr 0fr" y="0px 40fr 0px">
+                      <div class="section2__content_box">
+                        <px-grid track-style="flex-grow: 1;" x="38fr 96px 798fr" y="9px 21fr 10px">
+                          <div class="section2__group">
+                            <h5 class="section2__highlights2">個案基本資料</h5>
+                            <h5 class="section2__highlights6">*</h5>
+                          </div>
+                        </px-grid>
+                      </div>
+                    </px-grid>
+                  </div>
+                  <div class="section2__flexRow3">
+                    <div class="cell">
+                      <div class="section2__flexCol3">
+                        <h5 class="section2__highlights3">個案名稱</h5>
+                        <div class="section2__content_box1">
+                          <!-- <input class="section2_input " type="text" name="userName" id="userName"/> -->
+                          <!-- <input class="section2_input" type="text" name="showUserName" id="showUserName" /> -->
+                          <input class="section2_input" type="text" name="userName" id="userName">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="spacer"></div>
+                    <div class="cell">
+                      <div class="section2__flexCol3">
+                        <h5 class="section2__highlights3">個案喜歡的稱呼</h5>
+                        <div class="section2__content_box1">
+                          <input class="section2_input" type="text" name="userNickName" id="userNickName" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="section2__flexRow3">
+                    <div class="cell1">
+                      <div class="section2__flexCol3">
+                        <h5 class="section2__highlights3">帳號 (身分證字號)</h5>
+                        <div class="section2__content_box11">
+                          <input class="section2_input" type="text" name="showUserIdNumber" id="showUserIdNumber"
+                            disabled />
+                          <input class="section2_input" type="hidden" name="userIdNumber" id="userIdNumber">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="spacer1"></div>
+                    <div class="cell1">
+                      <div class="section2__flexCol3">
+                        <h5 class="section2__highlights3">密碼</h5>
+                        <div class="section2__content_box11">
+                          <input class="section2_input eye_padding " type="password" name="userPassword"
+                            id="userPassword" />
+                          <i id="user_togglePassword" class="fa fa-eye togglePassword"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="section2__flexRow3">
+                    <div class="cell2">
+                      <div class="section2__flexCol3">
+                        <h5 class="section2__highlights3">個案性別</h5>
+                        <div class="section2__content_box11">
+                          <select class="section2_input section2_select" name="sex" id="sex">
+                            <option value="1">男</option>
+                            <option value="2">女</option>
+                            <option value="3">不詳</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="spacer2"></div>
+                    <div class="cell2">
+                      <div class="section2__flexCol3">
+                        <h5 class="section2__highlights3">出生日期</h5>
+                        <div class="section2__content_box11">
+                          <!-- Air datepicker Html element -->
+                          <!-- <input class="section2_input " type="text" name="birthDate" id="birthDate"> -->
+                          <!-- <input class="section2_input " type="text" name="showBirthDate" id="showBirthDate" disabled> -->
+                          <input class="section2_input" type="text" name="birthDate" id="birthDate" min="1911-01-01">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="section2__flexRow3">
+                    <div class="cell3">
+                      <div class="section2__flexCol3">
+                        <h5 class="section2__highlights3">身高 (cm)</h5>
+                        <div class="section2__content_box11">
+                          <input class="section2_input" type="number" step="any" name="height" id="height" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="spacer3"></div>
+                    <div class="cell3">
+                      <div class="section2__flexCol3">
+                        <h5 class="section2__highlights3">體重 (kg)</h5>
+                        <div class="section2__content_box11">
+                          <input class="section2_input" type="number" step="any" name="weight" id="weight" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 居住環境(單選) -->
+                  <px-grid x="38px 300fr 594fr" y="24px 67fr 0px" md-x="25px 300fr 594fr" md-y="24px 67fr 0px"
+                    sm-x="25px 300fr 16fr" sm-y="24px 67fr 0px" xs-x="20px 300fr 13fr" xs-y="24px 67fr 0px"
+                    xxs-x="0px 300fr 0fr" xxs-y="24px 67fr 0px">
+                    <div class="section2__flexCol4">
+                      <h5 class="section2__highlights3">居住環境</h5>
+                      <div class="section2__content_box13">
+                        <select class="section2_input section2_select" name="livingEnvironmentChoice"
+                          id="livingEnvironmentChoice">
+                          <option value="1">透天</option>
+                          <option value="2">公寓(無電梯)</option>
+                          <option value="3">公寓(一樓)</option>
+                          <option value="4">電梯大樓</option>
+                          <option value="99">其他<div class="long-underline"></div>
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                  </px-grid>
+
+                  <!-- 其他居住環境 補充說明... -->
+                  <px-grid x="38px 633fr 261fr" y="0px 67fr 0px" md-x="25px 633fr 25fr" md-y="0px 67fr 0px"
+                    sm-x="25px 300fr 16fr" sm-y="0px 67fr 0px" xs-x="20px 300fr 16fr" xs-y="0px 67fr 0px"
+                    xxs-x="0px 300fr 0fr" xxs-y="0px 67fr 0px">
+                    <div id="livingEnvironmentDescriptionContainer_1" class="middle_top_for_space hidden_input">
+                      <input class="section2_input" type="text" maxLength="200" name="livingEnvironmentDescription"
+                        id="livingEnvironmentDescription" placeholder="其他居住環境之補充說明..." />
+                    </div>
+                  </px-grid>
+
+                  <!-- 居住縣市 -->
+                  <px-grid x="38px 300fr 594fr" y="24px 67fr 0px" md-x="25px 300fr 594fr" md-y="24px 67fr 0px"
+                    sm-x="25px 300fr 16fr" sm-y="24px 67fr 0px" xs-x="20px 300fr 16fr" xs-y="24px 67fr 0px"
+                    xxs-x="0px 300fr 0fr" xxs-y="24px 67fr 0px">
+                    <div class="section2__flexCol4">
+                      <h5 class="section2__highlights3">居住縣市</h5>
+                      <div class="section2__content_box11">
+                        <div id="twzipcode" class="twzipcode">
+                          <input type="hidden" data-role="zipcode" />
+                        </div>
+                      </div>
+                    </div>
+                  </px-grid>
+
+                  <!-- 地址 -->
+                  <px-grid x="38px 639fr 255fr" y="24px 67fr 0px" md-x="25px 639fr 25fr" md-y="24px 67fr 0px"
+                    sm-x="25px 300fr 16fr" sm-y="24px 67fr 0px" xs-x="20px 300fr 16fr" xs-y="24px 67fr 0px"
+                    xxs-x="0px 300fr 0fr" xxs-y="24px 67fr 0px">
+                    <div class="section2__flexCol4">
+                      <h5 class="section2__highlights3">地址</h5>
+                      <div class="section2__content_box10">
+                        <input class="section2_input" type="text" name="userAddress" id="userAddress" />
+                      </div>
+                    </div>
+                  </px-grid>
+
+                  <!-- 個案目前的同住者(複選) -->
+                  <div class="section2__flexRow3">
+                    <div class="section2__flexCol4">
+                      <div class="">
+                        <h5 class="section2__highlights3">個案目前的同住者(複選)：</h5>
+                        <div class="middle_top_for_space"></div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="residentChoice" id="no_cohabitants" value="1">
+                          <label class="form-check-label" for="no_cohabitants">無</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="residentChoice" id="foreign_caregiver" value="2">
+                          <label class="form-check-label" for="foreign_caregiver">外籍看護</label>
+                        </div>
+                        <div id="residentDescriptionContainer_0" class="form-check middle_top_for_space hidden_input">
+                          <input class="section2_input " type="text" maxLength="200" name="residentDescription"
+                            id="residentDescription_2" placeholder="外籍看護" />
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="residentChoice" id="family_member" value="3">
+                          <label class="form-check-label" for="family_member">家人，同住者關係為 </label>
+                        </div>
+                        <div id="residentDescriptionContainer_1" class="form-check middle_top_for_space hidden_input">
+                          <input class="section2_input " type="text" maxLength="200" name="residentDescription"
+                            id="residentDescription_3" placeholder="如：父母、兄弟、姊妹...等" />
+                          <p class="middle_top_for_space">備註：若同住者為家人，請說明關係 (若非家人可忽略此題)</p>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="residentChoice" id="livingChoice_other" value="99">
+                          <label class="form-check-label" for="livingChoice_other">其他</label>
+                        </div>
+                        <div id="residentDescriptionContainer_2" class="form-check middle_top_for_space hidden_input">
+                          <input class="section2_input " type="text" maxLength="200" name="residentDescription"
+                            id="residentDescription_99" placeholder="如：親戚、朋友...等" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 主要照顧者姓名 -->
+                  <div class="section2__flexRow3">
+                    <div class="cell3">
+                      <div class="section2__flexCol3">
+                        <h5 class="section2__highlights3">主要照顧者姓名</h5>
+                        <div class="section2__content_box11">
+                          <input class="section2_input " type="text" maxLength="200" name="mainCaregiverName"
+                            id="mainCaregiverName" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="spacer3"></div>
+                  </div>
+
+                  <!-- 主要照顧者與個案關係(單選) -->
+                  <px-grid x="38px 300fr 594fr" y="24px 67fr 0px" md-x="25px 300fr 594fr" md-y="24px 67fr 0px"
+                    sm-x="25px 300fr 16fr" sm-y="24px 67fr 0px" xs-x="20px 300fr 13fr" xs-y="24px 67fr 0px"
+                    xxs-x="0px 300fr 0fr" xxs-y="24px 67fr 0px">
+                    <div class="section2__flexCol4">
+                      <h5 class="section2__highlights3">主要照顧者與個案關係</h5>
+                      <div class="section2__content_box13">
+                        <select class="section2_input section2_select " name="mainCaregiverRelationChoice"
+                          id="mainCaregiverRelationChoice">
+                          <option value="1">夫妻</option>
+                          <option value="2">父子</option>
+                          <option value="3">父女</option>
+                          <option value="4">母子</option>
+                          <option value="5">母女</option>
+                          <option value="99">其他<div class="long-underline"></div>
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                  </px-grid>
+
+                  <!-- 其他與個案關係補充說明... -->
+                  <px-grid x="38px 633fr 261fr" y="0px 67fr 0px" md-x="25px 633fr 25fr" md-y="0px 67fr 0px"
+                    sm-x="25px 300fr 16fr" sm-y="0px 67fr 0px" xs-x="20px 300fr 16fr" xs-y="0px 67fr 0px"
+                    xxs-x="0px 300fr 0fr" xxs-y="0px 67fr 0px">
+                    <div id="mainCaregiverRelationDescriptionContainer_1"
+                      class="form-check middle_top_for_space hidden_input">
+                      <input class="section2_input " type="text" maxLength="200" name="mainCaregiverRelationDescription"
+                        id="mainCaregiverRelationDescription" placeholder="其他與個案關係補充說明..." />
+                    </div>
+                  </px-grid>
+
+                  <div class="section2__flexRow3">
+                    <div class="cell3">
+                      <div class="section2__flexCol3">
+                        <h5 class="section2__highlights3">主要照顧者手機</h5>
+                        <div class="section2__content_box11">
+                          <input class="section2_input " maxLength="12" type="number" name="mainCaregiverPhone"
+                            id="mainCaregiverPhone" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <!-- 個案狀況與喜好 title-->
+                <div class="section2__flexCol5">
+                  <div class="cell">
+                    <div class="section2__content_box2">
+                      <px-grid track-style="flex-grow: 1;" x="38fr 112px 782fr" y="9px 21fr 10px">
+                        <div class="section2__group">
+                          <h5 class="section2__highlights21">個案狀況與喜好</h5>
+                          <h5 class="section2__highlights61">*</h5>
+                        </div>
+                      </px-grid>
+                    </div>
+                  </div>
+
+                  <!-- 慣用語(單選) -->
+                  <px-grid x="38px 300fr 594fr" y="24px 67fr 0px" md-x="25px 300fr 594fr" md-y="24px 67fr 0px"
+                    sm-x="25px 300fr 16fr" sm-y="24px 67fr 0px" xs-x="20px 300fr 13fr" xs-y="24px 67fr 0px"
+                    xxs-x="0px 300fr 0fr" xxs-y="24px 67fr 0px">
+                    <div class="section2__flexCol4">
+                      <h5 class="section2__highlights3">慣用語</h5>
+                      <div class="section2__content_box13">
+                        <select class="section2_input section2_select " name="phraseChoice" id="phraseChoice">
+                          <option value="1">國語</option>
+                          <option value="2">台語</option>
+                          <option value="3">英語</option>
+                          <option value="4">客語</option>
+                          <option value="5">國台語</option>
+                          <option value="99">其他<div class="long-underline"></div>
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                  </px-grid>
+
+                  <!-- 慣用語之補充說明... -->
+                  <px-grid x="38px 633fr 261fr" y="0px 67fr 0px" md-x="25px 633fr 25fr" md-y="0px 67fr 0px"
+                    sm-x="25px 300fr 16fr" sm-y="0px 67fr 0px" xs-x="20px 300fr 16fr" xs-y="0px 67fr 0px"
+                    xxs-x="0px 300fr 0fr" xxs-y="0px 67fr 0px">
+                    <div id="phraseDescriptionContainer_1" class="middle_top_for_space hidden_input">
+                      <input class="section2_input " type="text" maxLength="200" name="phraseDescription"
+                        id="phraseDescription" placeholder="其他慣用語之補充說明..." />
+                    </div>
+                  </px-grid>
+
+                  <!-- 過往職業背景 (限200字) -->
+                  <px-grid x="38px 633fr 261fr" y="24px 67fr 0px" md-x="25px 633fr 25fr" md-y="24px 67fr 0px"
+                    sm-x="25px 300fr 16fr" sm-y="24px 67fr 0px" xs-x="20px 300fr 16fr" xs-y="24px 67fr 0px"
+                    xxs-x="0px 300fr 0fr" xxs-y="24px 67fr 0px">
+                    <div class="section2__flexCol4">
+                      <h5 class="section2__highlights3">過往職業背景 (限200字)</h5>
+                      <div class="section2__content_box13">
+                        <input class="section2_input " type="text" maxLength="200" name="careerBackground"
+                          id="careerBackground" placeholder="如：機車維修" />
+                      </div>
+                    </div>
+                  </px-grid>
+
+                  <!-- 特別喜歡、重視的事物、音樂 (限200字) -->
+                  <px-grid x="38px 633fr 261fr" y="24px 67fr 0px" md-x="25px 633fr 25fr" md-y="24px 67fr 0px"
+                    sm-x="25px 300fr 16fr" sm-y="24px 67fr 0px" xs-x="20px 300fr 16fr" xs-y="24px 67fr 0px"
+                    xxs-x="0px 300fr 0fr" xxs-y="24px 67fr 0px">
+                    <div class="section2__flexCol4">
+                      <h5 class="section2__highlights3">特別喜歡、重視的事物、音樂 (限200字)</h5>
+                      <div class="section2__content_box13">
+                        <input class="section2_input " type="text" maxLength="200" name="hobby" id="hobby"
+                          placeholder="如：喜歡吃冰淇淋、特愛台語歌家後、特別重視周末兒子回來" />
+                      </div>
+                    </div>
+                  </px-grid>
+
+                  <!-- 個案症狀 -->
+                  <px-grid x="38px 633fr 261fr" y="24px 67fr 0px" md-x="25px 633fr 25fr" md-y="24px 67fr 0px"
+                    sm-x="25px 300fr 16fr" sm-y="24px 67fr 0px" xs-x="20px 300fr 16fr" xs-y="24px 67fr 0px"
+                    xxs-x="0px 300fr 0fr" xxs-y="24px 67fr 0px">
+                    <div class="section2__flexCol4">
+                      <h5 class="section2__highlights3">個案症狀</h5>
+                      <div class="section2__content_box12">
+                        <input class="section2_input " type="text" name="symptom" id="symptom"
+                          placeholder="例如：骨質疏鬆、姿勢型低血壓" />
+                      </div>
+                    </div>
+                  </px-grid>
+
+                  <!-- 醫療診斷(複選) -->
+                  <div class="section2__flexRow3">
+                    <div class="section2__flexCol4">
+                      <div class="">
+                        <h5 class="section2__highlights3">醫療診斷(複選)：</h5>
+                        <div class="middle_top_for_space"></div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="medicalSiagnosisChoice" id="medicalSiagnosisChoice1"
+                            value="1">
+                          <label class="form-check-label" for="medicalSiagnosisChoice1">無</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="medicalSiagnosisChoice" id="medicalSiagnosisChoice2"
+                            value="2">
+                          <label class="form-check-label" for="medicalSiagnosisChoice2">中風</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="medicalSiagnosisChoice" id="medicalSiagnosisChoice3"
+                            value="3">
+                          <label class="form-check-label" for="medicalSiagnosisChoice3">帕金森</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="medicalSiagnosisChoice" id="medicalSiagnosisChoice4"
+                            value="4">
+                          <label class="form-check-label" for="medicalSiagnosisChoice4">骨折</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="medicalSiagnosisChoice" id="medicalSiagnosisChoice5"
+                            value="5">
+                          <label class="form-check-label" for="medicalSiagnosisChoice5">人工關節置換術</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="medicalSiagnosisChoice" id="medicalSiagnosisChoice6"
+                            value="6">
+                          <label class="form-check-label" for="medicalSiagnosisChoice6">腦傷</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="medicalSiagnosisChoice" id="medicalSiagnosisChoice7"
+                            value="7">
+                          <label class="form-check-label" for="medicalSiagnosisChoice7">腦性麻痺</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="medicalSiagnosisChoice" id="medicalSiagnosisChoice8"
+                            value="8">
+                          <label class="form-check-label" for="medicalSiagnosisChoice8">脊髓損傷</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="medicalSiagnosisChoice" id="medicalSiagnosisChoice9"
+                            value="9">
+                          <label class="form-check-label" for="medicalSiagnosisChoice9">失智症</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="medicalSiagnosisChoice" id="medicalSiagnosisChoice10"
+                            value="10">
+                          <label class="form-check-label" for="medicalSiagnosisChoice10">癌症</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="medicalSiagnosisChoice" id="other_medicalSiagnosis"
+                            value="99">
+                          <label class="form-check-label" for="other_medicalSiagnosis">其他</label>
+                        </div>
+                        <div id="medicalSiagnosisDescriptionContainer_1"
+                          class="form-check middle_top_for_space hidden_input">
+                          <input class="section2_input" type="text" maxLength="200" name="medicalSiagnosisDescription"
+                            id="medicalSiagnosisDescription_99" placeholder="請填寫說明" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 身心障礙障別 -->
+                  <div class="section2__flexRow3">
+                    <div class="section2__flexCol4">
+                      <div class="">
+                        <h5 class="section2__highlights3">身心障礙障別：</h5>
+                        <div class="middle_top_for_space"></div>
+                        <div class="radio-box" style="margin-left: 24px;">
+                          <div>
+                            <input type="radio" id="disability1" name="disabilityLevel" value="1">
+                            <label for="disability1">無</label>
+                          </div>
+                          <div>
+                            <input type="radio" id="disability2" name="disabilityLevel" value="2">
+                            <label for="disability2">有</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 長照CMS等級 -->
+                  <div class="section2__flexRow3">
+                    <div class="section2__flexCol4">
+                      <div class="">
+                        <h5 class="section2__highlights3">長照CMS等級：</h5>
+                        <div class="middle_top_for_space"></div>
+                        <div class="radio-box" style="margin-left: 24px;">
+                          <div>
+                            <input type="radio" id="cms1" name="cms" value="1">
+                            <label for="cms1">無</label>
+                          </div>
+                          <div>
+                            <input type="radio" id="cms2" name="cms" value="2">
+                            <label for="cms2">1</label>
+                          </div>
+                          <div>
+                            <input type="radio" id="cms3" name="cms" value="3">
+                            <label for="cms3">2</label>
+                          </div>
+                          <div>
+                            <input type="radio" id="cms4" name="cms" value="4">
+                            <label for="cms4">3</label>
+                          </div>
+                          <div>
+                            <input type="radio" id="cms5" name="cms" value="5">
+                            <label for="cms5">4</label>
+                          </div>
+                          <div>
+                            <input type="radio" id="cms6" name="cms" value="6">
+                            <label for="cms6">5</label>
+                          </div>
+                          <div>
+                            <input type="radio" id="cms7" name="cms" value="7">
+                            <label for="cms7">6</label>
+                          </div>
+                          <div>
+                            <input type="radio" id="cms8" name="cms" value="8">
+                            <label for="cms8">7</label>
+                          </div>
+                          <div>
+                            <input type="radio" id="cms9" name="cms" value="9">
+                            <label for="cms9">8</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 醫病史(複選) -->
+                  <div class="section2__flexRow3">
+                    <div class="section2__flexCol4">
+                      <div class="">
+                        <h5 class="section2__highlights3">醫病史(複選)：</h5>
+                        <div class="middle_top_for_space"></div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" id="medicalCaseHistory1" name="medicalCaseHistory" value="1">
+                          <label class="form-check-label" for="medicalCaseHistory1">高血壓</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" id="medicalCaseHistory2" name="medicalCaseHistory" value="2">
+                          <label class="form-check-label" for="medicalCaseHistory2">糖尿病</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" id="medicalCaseHistory3" name="medicalCaseHistory" value="3">
+                          <label class="form-check-label" for="medicalCaseHistory3">高血脂</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" id="medicalCaseHistory4" name="medicalCaseHistory" value="4">
+                          <label class="form-check-label" for="medicalCaseHistory4">心臟病</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" id="medicalCaseHistory5" name="medicalCaseHistory" value="5">
+                          <label class="form-check-label" for="medicalCaseHistory5">骨質疏鬆症</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" id="medicalCaseHistory6" name="medicalCaseHistory" value="6">
+                          <label class="form-check-label" for="medicalCaseHistory6">憂鬱症</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" id="medicalCaseHistory7" name="medicalCaseHistory" value="7">
+                          <label class="form-check-label" for="medicalCaseHistory7">無</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 功能分級 -->
+                  <px-grid x="38px 633fr 261fr" y="24px 67fr 0px" md-x="25px 633fr 25fr" md-y="24px 67fr 0px"
+                    sm-x="25px 300fr 16fr" sm-y="24px 67fr 0px" xs-x="20px 300fr 13fr" xs-y="24px 67fr 0px"
+                    xxs-x="0px 300fr 0fr" xxs-y="24px 67fr 0px">
+                    <div class="section2__flexCol4">
+                      <h5 class="section2__highlights3">功能分級 根據下面的「身體功能狀態表」選擇</h5>
+                      <div class="section2__content_box13">
+                        <select class="section2_input section2_select " name="classificationChoice"
+                          id="classificationChoice">
+                          <option value="1">等級 I 可以在平坦地上跑跳</option>
+                          <option value="2">等級 II 在不平坦地面行走相當吃力</option>
+                          <option value="3">等級 III 自己行走需扶持穩定物</option>
+                          <option value="4">等級 IV 無法跨步行走，坐在椅子上大略維持坐姿</option>
+                          <option value="5">等級 V 坐在靠背高度有扶手椅子上，無法維持坐姿</option>
+                        </select>
+                      </div>
+                    </div>
+                  </px-grid>
+                  <div class="section2__flexCol4">
+                    <img src="../../assets/autonomous_training_pic.png" alt="功能分級圖片" class="img_classificationChoice">
+                  </div>
+
+                  <!-- 身體行動能力 (限200字) -->
+                  <px-grid x="38px 633fr 261fr" y="24px 67fr 0px" md-x="25px 633fr 25fr" md-y="24px 67fr 0px"
+                    sm-x="25px 300fr 16fr" sm-y="24px 67fr 0px" xs-x="20px 300fr 16fr" xs-y="24px 67fr 0px"
+                    xxs-x="0px 300fr 0fr" xxs-y="24px 67fr 0px">
+                    <div class="section2__flexCol4">
+                      <h5 class="section2__highlights31">身體行動能力 (限200字)</h5>
+                      <div class="section2__content_box13">
+                        <input class="section2_input " type="text" name="physicalMobility" maxLength="200"
+                          id="physicalMobility" placeholder="如：爸爸無法自行行走，長期躺在床上" />
+                      </div>
+                    </div>
+                  </px-grid>
+
+                  <!-- 目前正在使用的輔具複選(複選) -->
+                  <div class="section2__flexRow3">
+                    <div class="section2__flexCol4">
+                      <div class="">
+                        <h5 class="section2__highlights3">目前正在使用的輔具(複選)：</h5>
+                        <div class="middle_top_for_space"></div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="assistiveDevicesChoice" id="home_care_bed" value="1">
+                          <label class="form-check-label" for="home_care_bed">居家照顧床</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="assistiveDevicesChoice" id="lift" value="2">
+                          <label class="form-check-label" for="lift">移位機</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="assistiveDevicesChoice" id="pressure_relief_mattresses"
+                            value="3">
+                          <label class="form-check-label" for="pressure_relief_mattresses">減壓床墊(脂肪墊、氣墊床)</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="assistiveDevicesChoice" id="potty_chair" value="4">
+                          <label class="form-check-label" for="potty_chair">便盆椅</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="assistiveDevicesChoice" id="walker_crutches" value="5">
+                          <label class="form-check-label" for="walker_crutches">助行器、單拐</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="assistiveDevicesChoice" id="general_wheelchair"
+                            value="6">
+                          <label class="form-check-label" for="general_wheelchair">一般輪椅</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="assistiveDevicesChoice" id="special_wheelchair"
+                            value="7">
+                          <label class="form-check-label" for="special_wheelchair">高背輪椅/特製輪椅</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="assistiveDevicesChoice" id="air_liquid_solid_seat"
+                            value="8">
+                          <label class="form-check-label" for="air_liquid_solid_seat">減壓床墊(氣墊座、液態凝膠、固態凝膠等)</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="assistiveDevicesChoice" id="lifting_aids" value="9">
+                          <label class="form-check-label" for="lifting_aids">移位輔具(移位腰帶、移位板等等)</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="assistiveDevicesChoice" id="other_assistiveDevices"
+                            value="99">
+                          <label class="form-check-label" for="other_assistiveDevices">其他
+                          </label>
+                        </div>
+                        <div id="assistiveDevicesDescriptionContainer_1"
+                          class="form-check middle_top_for_space hidden_input">
+                          <input class="section2_input" type="text" maxLength="200" name="assistiveDevicesDescription"
+                            id="assistiveDevicesDescription_99" placeholder="其他輔具補充(限200字)" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 個案目前是否有接受復能訓練 -->
+                  <px-grid x="38px 300fr 594fr" y="24px 67fr 0px" md-x="25px 300fr 594fr" md-y="24px 67fr 0px"
+                    sm-x="25px 300fr 16fr" sm-y="24px 67fr 0px" xs-x="20px 300fr 13fr" xs-y="24px 67fr 0px"
+                    xxs-x="0px 300fr 0fr" xxs-y="24px 67fr 0px">
+                    <div class="section2__flexCol4">
+                      <h5 class="section2__highlights3">個案目前是否有接受復能訓練</h5>
+                      <div class="section2__content_box13">
+                        <select class="section2_input section2_select " name="isReceivedTrainChoice"
+                          id="isReceivedTrainChoice">
+                          <option value="1">否</option>
+                          <option value="2">是，訓練內容大致為<div class="long-underline"></div>
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                  </px-grid>
+
+                  <!-- 個案目前是否有接受復能訓練之補充說明... -->
+                  <px-grid x="38px 633fr 261fr" y="0px 67fr 0px" md-x="25px 633fr 25fr" md-y="0px 67fr 0px"
+                    sm-x="25px 300fr 16fr" sm-y="0px 67fr 0px" xs-x="20px 300fr 16fr" xs-y="0px 67fr 0px"
+                    xxs-x="0px 300fr 0fr" xxs-y="0px 67fr 0px">
+                    <div id="isReceivedTrainDescriptionContainer_1" class="middle_top_for_space hidden_input">
+                      <input class="section2_input " type="text" maxLength="200" name="isReceivedTrainDescription"
+                        id="isReceivedTrainDescription" placeholder="請說明個案目前接受的訓練內容大致為甚麼?(限200字)">
+                    </div>
+                  </px-grid>
+
+                  <!-- 生活上面臨哪些困難(複選) -->
+                  <div class="section2__flexRow3">
+                    <div class="section2__flexCol4">
+                      <div class="">
+                        <h5 class="section2__highlights3">生活上面臨哪些困難(複選)：</h5>
+                        <div class="middle_top_for_space"></div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="facingDifficultyChoice" id="001" value="1">
+                          <label class="form-check-label" for="001">活動量不足</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="facingDifficultyChoice" id="002" value="2">
+                          <label class="form-check-label" for="002">跌倒風險高</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="facingDifficultyChoice" id="003" value="3">
+                          <label class="form-check-label" for="003">關節疼痛</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="facingDifficultyChoice" id="004" value="4">
+                          <label class="form-check-label" for="004">無法自行如廁</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="facingDifficultyChoice" id="005" value="5">
+                          <label class="form-check-label" for="005">無法自行沐浴</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="facingDifficultyChoice" id="006" value="6">
+                          <label class="form-check-label" for="006">無法自行更衣</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="facingDifficultyChoice" id="007" value="7">
+                          <label class="form-check-label" for="007">失眠</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="" type="checkbox" name="facingDifficultyChoice"
+                            id="other_facingDifficultyChoice" value="99">
+                          <label class="form-check-label " for="other_facingDifficultyChoice">其他</label>
+                        </div>
+                        <div id="facingDifficultyDescriptionContainer" class="form-check hidden_input">
+                          <input class="section2_input" type="text" maxLength="200" name="facingDifficultyDescription"
+                            id="facingDifficultyDescription_99" placeholder="曾面臨哪些困難之補充說明(限200字)" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 以上狀態發生至今維持多久 -->
+                  <px-grid x="38px 633fr 261fr" y="24px 67fr 0px" md-x="25px 633fr 25fr" md-y="24px 67fr 0px"
+                    sm-x="25px 300fr 16fr" sm-y="24px 67fr 0px" xs-x="20px 300fr 16fr" xs-y="24px 67fr 0px"
+                    xxs-x="0px 300fr 0fr" xxs-y="24px 67fr 0px">
+                    <div class="section2__flexCol4">
+                      <h5 class="section2__highlights3">以上狀態發生至今維持多久?</h5>
+                      <div class="section2__content_box11">
+                        <input class="section2_input " type="text" maxLength="200" name="aboveStatusTime"
+                          id="aboveStatusTime" placeholder="如：三個月、半年" />
+                      </div>
+                    </div>
+                  </px-grid>
+
+                  <!-- 對目前生活的滿意度 -->
+                  <px-grid x="38px 300fr 594fr" y="24px 67fr 0px" md-x="25px 300fr 594fr" md-y="24px 67fr 0px"
+                    sm-x="25px 300fr 16fr" sm-y="24px 67fr 0px" xs-x="20px 300fr 13fr" xs-y="24px 67fr 0px"
+                    xxs-x="0px 300fr 0fr" xxs-y="24px 67fr 0px">
+                    <div class="section2__flexCol4">
+                      <h5 class="section2__highlights3">對目前生活的滿意度</h5>
+                      <div class="section2__content_box13">
+                        <select class="section2_input section2_select " name="lifeSatisfaction" id="lifeSatisfaction">
+                          <option value="1">非常滿意</option>
+                          <option value="2">滿意</option>
+                          <option value="3">普通</option>
+                          <option value="4">不滿意</option>
+                          <option value="5">非常不滿意</option>
+                        </select>
+                      </div>
+                    </div>
+                  </px-grid>
+
+                  <!-- 家庭支持度 -->
+                  <px-grid x="38px 300fr 594fr" y="24px 67fr 0px" md-x="25px 300fr 594fr" md-y="24px 67fr 0px"
+                    sm-x="25px 300fr 16fr" sm-y="24px 67fr 0px" xs-x="20px 300fr 13fr" xs-y="24px 67fr 0px"
+                    xxs-x="0px 300fr 0fr" xxs-y="24px 67fr 0px">
+                    <div class="section2__flexCol4">
+                      <h5 class="section2__highlights3">家庭支持度</h5>
+                      <div class="section2__content_box13">
+                        <select class="section2_input section2_select " name="familySupportChoice"
+                          id="familySupportChoice">
+                          <option value="1">非常支持</option>
+                          <option value="2">良好</option>
+                          <option value="3">普通</option>
+                          <option value="4">差</option>
+                          <option value="5">非常差</option>
+                        </select>
+                      </div>
+                    </div>
+                  </px-grid>
+
+                  <!-- 個案參與復能訓練的企圖心 -->
+                  <px-grid x="38px 300fr 594fr" y="24px 67fr 0px" md-x="25px 300fr 594fr" md-y="24px 67fr 0px"
+                    sm-x="25px 300fr 16fr" sm-y="24px 67fr 0px" xs-x="20px 300fr 13fr" xs-y="24px 67fr 0px"
+                    xxs-x="0px 300fr 0fr" xxs-y="24px 67fr 0px">
+                    <div class="section2__flexCol4">
+                      <h5 class="section2__highlights3">個案參與復能訓練的企圖心</h5>
+                      <div class="section2__content_box13">
+                        <select class="section2_input section2_select " name="trainAmbitionChoice"
+                          id="trainAmbitionChoice">
+                          <option value="1">高</option>
+                          <option value="2">中高</option>
+                          <option value="3">中</option>
+                          <option value="4">中低</option>
+                          <option value="5">低</option>
+                        </select>
+                      </div>
+                    </div>
+                  </px-grid>
+
+                  <!-- 請個案描述未來三個月想達成的目標 -->
+                  <px-grid x="38px 633fr 261fr" y="24px 67fr 0px" md-x="25px 633fr 25fr" md-y="24px 67fr 0px"
+                    sm-x="25px 300fr 16fr" sm-y="24px 67fr 0px" xs-x="20px 300fr 16fr" xs-y="24px 67fr 0px"
+                    xxs-x="0px 300fr 0fr" xxs-y="24px 67fr 0px">
+                    <div class="section2__flexCol4">
+                      <h5 class="section2__highlights3">請個案描述未來三個月想達成的目標</h5>
+                      <div class="section2__content_box11">
+                        <input class="section2_input " type="text" maxLength="200" name="threeMonthGoal"
+                          id="threeMonthGoal" placeholder="如：恢復自理、健康" />
+                      </div>
+                    </div>
+                  </px-grid>
+
+                  <!-- 個案恢復生活自理後，最想做的事是什麼 -->
+                  <px-grid x="38px 633fr 261fr" y="24px 67fr 0px" md-x="25px 633fr 25fr" md-y="24px 67fr 0px"
+                    sm-x="25px 300fr 16fr" sm-y="24px 67fr 0px" xs-x="20px 300fr 16fr" xs-y="24px 67fr 0px"
+                    xxs-x="0px 300fr 0fr" xxs-y="24px 67fr 0px">
+                    <div class="section2__flexCol4">
+                      <h5 class="section2__highlights3">個案恢復生活自理後，最想做的事是什麼?</h5>
+                      <div class="section2__content_box11">
+                        <input class="section2_input " type="text" maxLength="200" name="mostWantToDo" id="mostWantToDo"
+                          placeholder="如：想要可以走路、爬山、健行" />
+                      </div>
+                    </div>
+                  </px-grid>
+
+                  <div class="form-check">
+                    <p class="middle_top_for_space">&nbsp;</p>
+                    <p class="middle_top_for_space">請拍攝一段影片供我們評估，以下是拍攝範例：<a
+                        href="https://youtu.be/3ST5Gzc6GWg">示範影片連結</a></p>
+                    <p class="">若已完成資料填寫，請掃描以下QR code或點擊網址加入我們的Line官方平台，</p>
+                    <p class="">並告知我們「您的姓名」，以便與您聯絡！</p>
+                    <img src="../../assets/strong_qr_code.png" alt="QR code" class="img_qrCode">
+                    <a href="https://lin.ee/xRZyE80"><img src="../../assets/line_office.png" alt="QR code"
+                        class="img_line_office"></a>
+                  </div>
+                </div>
+                <!-- 聯絡人資料 -->
+                <div class="section2__flexCol5">
+                  <div class="cell1">
+                    <div class="section2__content_box2">
+                      <px-grid track-style="flex-grow: 1;" x="38fr 80px 814fr" y="9px 21fr 10px">
+                        <div class="section2__group">
+                          <h5 class="section2__highlights22">聯絡人資料</h5>
+                          <h5 class="section2__highlights62">*</h5>
+                        </div>
+                      </px-grid>
+                    </div>
+                  </div>
+                  <div class="section2__flexRow3">
+                    <div class="cell4">
+                      <div class="section2__flexCol3 section2__flexRow3-no-align">
+                        <h5 class="section2__highlights3">聯絡人名稱</h5>
+                        <div class="section2__content_box1">
+                          <input class="section2_input " type="text" name="contactName" id="contactName" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="spacer4"></div>
+
+                    <div class="cell4">
+                      <div class="section2__flexCol3">
+                        <h5 class="section2__highlights3">與個案關係</h5>
+                        <div class="section2__content_box11">
+                          <select class="section2_input section2_select " name="relationship" id="relationship">
+                            <option value="1">子女</option>
+                            <option value="2">配偶</option>
+                            <option value="3">親戚</option>
+                            <option value="4">朋友</option>
+                            <option value="5">看護</option>
+                            <option value="6">本人</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="section2__flexRow3">
+                    <div class="cell5">
+                      <div class="section2__flexCol3">
+                        <h5 class="section2__highlights3">聯絡人手機</h5>
+                        <div class="section2__content_box13">
+                          <input class="section2_input " type="text" name="contactPhoneNumber"
+                            id="contactPhoneNumber" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="spacer5"></div>
+                    <div class="cell6">
+                      <div class="section2__flexCol3">
+                        <h5 class="section2__highlights3">Email</h5>
+                        <div class="section2__content_box14">
+                          <input class="section2_input " type="text" name="contactEmail" id="contactEmail" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="section2__flexRow3">
+                    <div class="cell7">
+                      <div class="section2__flexCol3">
+                        <h5 class="section2__highlights3">LINE ID</h5>
+                        <div class="section2__content_box13">
+                          <input class="section2_input " type="text" name="contactLineId" id="contactLineId" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="spacer6"></div>
+                    <div class="cell7">
+                      <div class="section2__flexCol3">
+                        <h5 class="section2__highlights3">適合聯絡您的時間</h5>
+                        <div class="section2__content_box23">
+                          <input class="section2_input " type="text" name="suitContactTime" id="suitContactTime"
+                            placeholder="如：上班日白天都適合" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <px-grid x="38px 633fr 261fr" y="24px 67fr 0px" md-x="25px 633fr 25fr" md-y="24px 67fr 0px"
+                    sm-x="25px 300fr 16fr" sm-y="24px 67fr 0px" xs-x="20px 300fr 16fr" xs-y="24px 67fr 0px"
+                    xxs-x="0px 300fr 0fr" xxs-y="24px 67fr 0px">
+                    <div class="section2__flexCol4">
+                      <h5 class="section2__highlights31">請留下三個方便評估個案的時段</h5>
+                      <div class="section2__content_box13">
+                        <input class="section2_input " type="text" name="suitEvaluateTime" maxLength="200"
+                          id="suitEvaluateTime" placeholder="EX：5/21 11:00~12:00、5/22 11:00~12:00、5/23 19:00~20:00" />
+                      </div>
+                    </div>
+                  </px-grid>
+                </div>
+
+                <!-- 檔案資料 -->
+                <div class="section2__flexCol5">
+                  <div class="cell2">
+                    <div class="section2__content_box2">
+                      <px-grid track-style="flex-grow: 1;" x="38fr 64px 830fr" y="9px 21fr 10px">
+                        <h5 class="section2__highlights23">檔案資料</h5>
+                      </px-grid>
+                    </div>
+                  </div>
+                  <px-grid x="38px 633fr 261fr" y="24px 67fr 0px" md-x="25px 633fr 25fr" md-y="24px 67fr 0px"
+                    sm-x="25px 300fr 16fr" sm-y="24px 67fr 0px" xs-x="20px 300fr 16fr" xs-y="24px 67fr 0px"
+                    xxs-x="0px 300fr 0fr" xxs-y="24px 67fr 0px">
+                    <div class="section2__flexCol4">
+                      <h5 class="section2__highlights31">上傳檔案(限制13秒或者5MB以內)</h5>
+
+                      <div class="section2__flexRow4">
+                        <h5 class="section2__highlights5" style="align-items: normal; justify-content: unset;"
+                          id="file-upload-filename">
+                      </div>
+
+                      <div class="cell3">
+                        <input class="" type="file" id="file-upload" hidden multiple />
+                        <label for="file-upload" class="">
+                          <div class="section2__btn ">
+                            <span class="section2__btn__text">選擇</span>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  </px-grid>
+
+                  <!-- <h5 class="section2__highlights24">上傳檔案(限制單檔5MB，最多選五個，需求文件)</h5> -->
+
+
+                </div>
+
+                <!-- 發票 -->
+                <div class="section2__flexCol5">
+                  <div class="cell4">
+                    <div class="section2__content_box2">
+                      <px-grid track-style="flex-grow: 1;" x="38fr 32px 862fr" y="9px 21fr 10px">
+                        <h5 class="section2__highlights23">發票</h5>
+                      </px-grid>
+                    </div>
+                  </div>
+                  <px-grid x="38px 300fr 594fr" y="24px 69fr 0px" md-x="25px 300fr 594fr" md-y="24px 69fr 0px"
+                    sm-x="25px 300fr 16fr" sm-y="24px 69fr 0px" xs-x="20px 300fr 13fr" xs-y="24px 69fr 0px"
+                    xxs-x="0px 300fr 0fr" xxs-y="24px 69fr 0px">
+                    <div class="section2__flexCol4">
+                      <h5 class="section2__highlights3">發票種類</h5>
+                      <div class="section2__content_box1">
+                        <select class="section2_input section2_select " id="invoiceType" name="invoiceType">
+                          <option value="2">二聯式</option>
+                          <option value="3">三聯式</option>
+                        </select>
+                      </div>
+                    </div>
+                  </px-grid>
+
+                  <!-- 二聯式 -->
+                  <div id="invoiceType_two">
+                    <div class="section2__flexRow5">
+                      <input class="" type="radio" id="sendToEmail" name="deliveryOption" value="email" checked>
+                      <label for="sendToEmail" class="cell1">
+                        <h5 class="section2__highlights1">寄送到Email</h5>
+                      </label>
+                    </div>
+                    <div class="section2__flexRow5">
+                      <input class="" type="radio" id="useElectronicCarrier" name="deliveryOption" value="carrier">
+                      <label for="useElectronicCarrier" class="cell3">
+                        <h5 class="section2__highlights">使用電子載具</h5>
+                      </label>
+                    </div>
+                    <px-grid x="38px 300fr 594fr" y="12px 69fr 0px" md-x="25px 300fr 594fr" md-y="12px 69fr 0px"
+                      sm-x="25px 300fr 16fr" sm-y="12px 69fr 0px" xs-x="20px 300fr 13fr" xs-y="12px 69fr 0px"
+                      xxs-x="0px 300fr 0fr" xxs-y="12px 69fr 0px">
+                      <div class="section2__flexCol4">
+                        <h5 class="section2__highlights3" id="invoiceContent" name="invoiceContent">手機載具號碼</h5>
+                        <div class="section2__content_box1">
+                          <input class="section2_input " type="text" name="phoneCarrierNumber"
+                            id="phoneCarrierNumber" />
+                        </div>
+                      </div>
+                    </px-grid>
+                  </div>
+
+                  <!-- 三聯式 -->
+                  <div id="invoiceType_three" style="display:none;">
+                    <px-grid x="38px 300fr 594fr" y="12px 67fr 0px" md-x="25px 300fr 594fr" md-y="12px 67fr 0px"
+                      sm-x="25px 300fr 16fr" sm-y="12px 67fr 0px" xs-x="20px 300fr 13fr" xs-y="12px 67fr 0px"
+                      xxs-x="0px 300fr 0fr" xxs-y="12px 67fr 0px">
+                      <div class="section2__flexCol4">
+                        <h5 class="section2__highlights3">受買人抬頭</h5>
+                        <div class="section2__content_box13">
+                          <input class="section2_input " type="text" name="invoiceTitle" id="invoiceTitle" />
+                        </div>
+                      </div>
+                    </px-grid><px-grid x="38px 300fr 594fr" y="10px 67fr 0px" md-x="25px 300fr 594fr"
+                      md-y="10px 67fr 0px" sm-x="25px 300fr 16fr" sm-y="10px 67fr 0px" xs-x="20px 300fr 13fr"
+                      xs-y="10px 67fr 0px" xxs-x="0px 300fr 0fr" xxs-y="10px 67fr 0px">
+                      <div class="section2__flexCol4">
+                        <h5 class="section2__highlights3">受買人統編</h5>
+                        <div class="section2__content_box13">
+                          <input class="section2_input " type="text" name="taxID" id="taxID" />
+                        </div>
+                      </div>
+                    </px-grid>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 教練申請 -->
+              <div id="coach-detail" style="display: none;">
+                <!-- 教練基本資料 -->
+                <div class="section2__flexCol2">
+                  <div class="cell">
+                    <px-grid track-style="flex-grow: 1;" x="0px 932fr 0fr" y="0px 40fr 0px">
+                      <div class="section2__content_box">
+                        <px-grid track-style="flex-grow: 1;" x="38fr 96px 798fr" y="9px 21fr 10px">
+                          <div class="section2__group">
+                            <h5 class="section2__highlights2">教練基本資料</h5>
+                            <h5 class="section2__highlights6">*</h5>
+                          </div>
+                        </px-grid>
+                      </div>
+                    </px-grid>
+                  </div>
+                  <div class="section2__flexRow3">
+                    <div class="cell2">
+                      <div class="section2__flexCol3">
+                        <h5 class="section2__highlights3">教練類型</h5>
+                        <div class="section2__content_box11">
+                          <select class="section2_input section2_select " name="coachType" id="coachType">
+                            <option value="1">專業評估教練</option>
+                            <option value="2">自主應用教練</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="section2__flexRow3">
+                    <div class="cell2">
+                      <div class="section2__flexCol3">
+                        <h5 id="serviceName" class="section2__highlights3">服務區域</h5>
+                        <div class="cell3">
+                          <div id="serviceArea">
+                            <select class="selectpicker area-select " title="選擇服務區域" data-style="multiselect__btn"
+                              multiple id="selectServiceArea" name="selectServiceArea">
+                              <!-- <optgroup label="台北市">
+                                <option value="0">大安區</option>
+                                <option value="1">北投區</option>
+                              </optgroup>
+                              <optgroup label="嘉義市">
+                                <option value="0">東區</option>
+                              </optgroup> -->
+                            </select>
+                          </div>
+
+                          <div id="serviceBase" style="display: none;">
+                            <select class="selectpicker base-select " title="選擇所屬據點" data-style="multiselect__btn"
+                              multiple id="selectServiceBase" name="selectServiceBase">
+                              <!-- <option>大安店</option>
+                              <option>北投店</option> -->
+                            </select>
+                          </div>
+
+                          <div id="serviceAreaText" class="">
+                            <div id="serviceShowServiceArea">
+                            </div>
+                          </div>
+
+                          <div id="serviceBaseText" style="display: none;">
+                            <div id="serviceShowServiceBase">
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="section2__flexRow3">
+                    <div class="cell">
+                      <div class="section2__flexCol3">
+                        <h5 class="section2__highlights3">教練名稱</h5>
+                        <div class="section2__content_box1">
+                          <input class="section2_input " type="text" name="coachName" id="coachName" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="spacer"></div>
+                    <div class="cell">
+                      <div class="section2__flexCol3">
+                        <h5 class="section2__highlights3">教練手機</h5>
+                        <div class="section2__content_box1">
+                          <input class="section2_input " type="text" name="phoneNumber" id="phoneNumber" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="section2__flexRow3">
+                    <div class="cell1">
+                      <div class="section2__flexCol3">
+                        <h5 class="section2__highlights3">帳號 (身分證字號)</h5>
+                        <div class="section2__content_box11">
+                          <input class="section2_input" type="text" name="showCoachIdNumber" id="showCoachIdNumber"
+                            disabled />
+                          <input class="section2_input" type="hidden" name="coachIdNumber" id="coachIdNumber" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="spacer1"></div>
+                    <div class="cell1">
+                      <div class="section2__flexCol3">
+                        <h5 class="section2__highlights3">密碼</h5>
+                        <div class="section2__content_box11">
+                          <input class="section2_input eye_padding " type="password" name="coachPassword"
+                            id="coachPassword" />
+                          <i id="coach_togglePassword" class="fa fa-eye togglePassword"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <px-grid x="38px 633fr 261fr" y="24px 67fr 0px" md-x="25px 633fr 25fr" md-y="24px 67fr 0px"
+                    sm-x="25px 300fr 16fr" sm-y="24px 67fr 0px" xs-x="20px 300fr 16fr" xs-y="24px 67fr 0px"
+                    xxs-x="0px 300fr 0fr" xxs-y="24px 67fr 0px">
+                    <div class="section2__flexCol4">
+                      <h5 class="section2__highlights3">LINE ID</h5>
+                      <div class="section2__content_box12">
+                        <input class="section2_input " type="text" name="lineId" id="lineId" />
+                      </div>
+                    </div>
+                  </px-grid>
+                  <px-grid x="38px 633fr 261fr" y="24px 67fr 0px" md-x="25px 633fr 25fr" md-y="24px 67fr 0px"
+                    sm-x="25px 300fr 16fr" sm-y="24px 67fr 0px" xs-x="20px 300fr 16fr" xs-y="24px 67fr 0px"
+                    xxs-x="0px 300fr 0fr" xxs-y="24px 67fr 0px">
+                    <div class="section2__flexCol4">
+                      <h5 class="section2__highlights3">Email</h5>
+                      <div class="section2__content_box12">
+                        <input class="section2_input " type="text" name="email" id="email" />
+                      </div>
+                    </div>
+                  </px-grid>
+                  <px-grid x="38px 633fr 261fr" y="24px 67fr 0px" md-x="25px 633fr 25fr" md-y="24px 67fr 0px"
+                    sm-x="25px 300fr 16fr" sm-y="24px 67fr 0px" xs-x="20px 300fr 16fr" xs-y="24px 67fr 0px"
+                    xxs-x="0px 300fr 0fr" xxs-y="24px 67fr 0px">
+                    <div class="section2__flexCol4">
+                      <h5 class="section2__highlights3">戶籍地址</h5>
+                      <div class="section2__content_box12">
+                        <input class="section2_input " type="text" name="residenceAddress" id="residenceAddress" />
+                      </div>
+                    </div>
+                  </px-grid>
+                  <px-grid x="38px 633fr 261fr" y="24px 67fr 0px" md-x="25px 633fr 25fr" md-y="24px 67fr 0px"
+                    sm-x="25px 300fr 16fr" sm-y="24px 67fr 0px" xs-x="20px 300fr 16fr" xs-y="24px 67fr 0px"
+                    xxs-x="0px 300fr 0fr" xxs-y="24px 67fr 0px">
+                    <div class="section2__flexCol4">
+                      <h5 class="section2__highlights3">通訊地址</h5>
+                      <div class="section2__content_box12">
+                        <input class="section2_input " type="text" name="mailingAddress" id="mailingAddress" />
+                      </div>
+                    </div>
+                  </px-grid>
+
+                </div>
+                <!-- 服務資訊 -->
+                <div class="section2__flexCol2">
+                  <div class="cell">
+                    <px-grid track-style="flex-grow: 1;" x="0px 932fr 0fr" y="0px 40fr 0px">
+                      <div class="section2__content_box">
+                        <px-grid track-style="flex-grow: 1;" x="38fr 96px 798fr" y="9px 21fr 10px">
+                          <div class="section2__group">
+                            <h5 class="section2__highlights2">服務資訊</h5>
+                            <h5 class="section2__highlights6" style="right: 15px;">*</h5>
+                          </div>
+                        </px-grid>
+                      </div>
+                    </px-grid>
+                  </div>
+                  <div class="section2__flexRow3">
+                    <div class="cell2">
+                      <div class="section2__flexCol3">
+                        <h5 class="section2__highlights3">專長簡歷</h5>
+
+                        <div style="margin-top: 8px;">
+                          <div class="col">
+                            <div id="newinput"></div>
+                          </div>
+                        </div>
+
+                        <!-- <img src="../../assets/plus.svg" alt="alt text" id="service_add"
+                          style="width: 20px; height: 20px;" /> -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="section2__flexRow3">
+                    <div class="cell2">
+                      <div class="section2__flexCol3">
+                        <h5 class="section2__highlights3">形象照片</h5>
+                        <div class="section4__box" style="width: 120px; height: 160px; ">
+                          <input class="" type="file" id="upload_avatar" accept="image/jpeg, image/png, image/jpg"
+                            hidden />
+                          <label for="upload_avatar">
+                            <img id="upload_avatar_img" src="#" alt="" style="display: none;" />
+                            <div class="col1" id="upload_avatar_placeholder">
+                              <div class="cell"><img src="../../assets/avatar_plus.svg" alt="alt text"
+                                  class="section4__icon" /></div>
+                              <h5 class="section4__highlights1">直式照片<br />420X560</h5>
+                            </div>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="section2__flexRow3">
+                    <div class="cell2">
+                      <div class="section2__flexCol3 circle">
+                        <h5 class="section2__highlights3">頭像小照片</h5>
+                        <div class="section4__circle" style="width: 120px; height: 120px; overflow: hidden;">
+                          <input class="" type="file" id="upload_thumbnail" accept="image/jpeg, image/png, image/jpg"
+                            hidden />
+                          <label for="upload_thumbnail">
+                            <img id="upload_thumbnail_img" src="#" alt="" style="display: none;" />
+                            <div class="cell" id="upload_thumbnail_placeholder">
+                              <img src="../../assets/avatar_plus.svg" alt="alt text" class="section4__icon" />
+                              <h5 class="section4__highlights1">直式照片<br />160X160</h5>
+                            </div>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- 後台備註資料 -->
+                <div class="section2__flexCol5">
+                  <div class="cell">
+                    <px-grid track-style="flex-grow: 1;" x="0px 932fr 0fr" y="0px 40fr 0px">
+                      <div class="section2__content_box">
+                        <px-grid track-style="flex-grow: 1;" x="38fr 96px 798fr" y="9px 21fr 10px">
+                          <div class="section2__group">
+                            <h5 class="section2__highlights2">後台備註資料</h5>
+                            <h5 class="section2__highlights6">*</h5>
+                          </div>
+                        </px-grid>
+                      </div>
+                    </px-grid>
+                  </div>
+                  <px-grid x="38px 633fr 261fr" y="24px 67fr 0px" md-x="25px 633fr 25fr" md-y="24px 67fr 0px"
+                    sm-x="25px 300fr 16fr" sm-y="24px 67fr 0px" xs-x="20px 300fr 16fr" xs-y="24px 67fr 0px"
+                    xxs-x="0px 300fr 0fr" xxs-y="24px 67fr 0px">
+                    <div class="section2__flexCol4">
+                      <h5 class="section2__highlights3">自我介紹 (限200字)</h5>
+                      <div class="section2__content_box12">
+                        <input class="section2_input " type="text" name="selfIntroduction" maxLength="200"
+                          id="selfIntroduction" placeholder="如：您好，我是王小明，來自台北..." />
+                      </div>
+                    </div>
+                  </px-grid>
+                  <px-grid x="38px 633fr 261fr" y="24px 67fr 0px" md-x="25px 633fr 25fr" md-y="24px 67fr 0px"
+                    sm-x="25px 300fr 16fr" sm-y="24px 67fr 0px" xs-x="20px 300fr 16fr" xs-y="24px 67fr 0px"
+                    xxs-x="0px 300fr 0fr" xxs-y="24px 67fr 0px">
+                    <div class="section2__flexCol4">
+                      <h5 class="section2__highlights3">特殊備註 (限200字)</h5>
+                      <div class="section2__content_box12">
+                        <input class="section2_input " type="text" name="remarks" maxLength="200" id="remarks"
+                          placeholder="如：我只想接貢寮的案子" />
+                      </div>
+                    </div>
+                  </px-grid>
+
+                  <div class="section2__flexRow3">
+                    <div class="cell2">
+                      <div class="section2__flexCol3">
+                        <h5 class="section2__highlights3">上傳證照(僅內部資格審核使用，上限五筆)</h5>
+                        <div id="new_certs"></div>
+                        <div id="certs_add" style="
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            margin-top: 25px;
+                            max-width: 200px; 
+                          ">
+                          <img src="../../assets/plus.svg" alt="alt text" />
+                          <span class="section2__btn__text" for="upload"
+                            style="font-size: 16px; margin: 8px; ">新增</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="cell">
+                <button class="section2__btn1" id="submit-button">
+                  <span class="section2__btn__text1 for_edit_button" id="summitName">更新資料</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+      </section>
+      <!-- ======= End section2 ======= -->
+    </div>
+
+    <!-- <div class="cell" id="foot-container"> -->
+    <div class="cell">
+      <!-- ======= section3 ======= -->
+      <section class="section3__section3">
+        <div class="section3__box2">
+          <!-- prettier-ignore -->
+          <div id="footer"></div>
+        </div>
+      </section>
+      <!-- ======= End section3 ======= -->
+    </div>
+
+    <div class="box3 top-btn">
+      <div class="flexCol3">
+        <div class="cell">
+          <img src="../../assets/arrowUp.svg" alt="alt text" class="image4" />
+        </div>
+        <h5 class="highlights5">TOP</h5>
+      </div>
+    </div>
+
+  </main>
+</body>
+<script type="text/javascript" src="../../js/webConfig.js"></script>
+<script type="text/javascript" src="./script.js?1130"></script>
+<script type="text/javascript" src="./userDetailApi.js?1211"></script>
+
+</html>

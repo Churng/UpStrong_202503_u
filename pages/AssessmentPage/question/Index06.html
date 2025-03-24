@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>輔具建議</title>
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="../../../components/CustomAlert/style.css">
+  <link rel="stylesheet" href="../../../js/bootstrap-5.3.3.js">
+
+
+  <script src="../../../js/bootstrap-5.3.3.js"></script>
+  <script src="../../../js/jquery-3.6.0.min.js"></script>
+  <script src="../../../components/CustomAlert/script.js"></script>
+</head>
+
+<body>
+  <div class="header-box">
+    <div class="prev">
+      <img src="../images/question/prev-arrow.png">
+    </div>
+    <span class="title">輔具建議</span>
+    <div class="home-box">
+      <img src="../images/question/home-icon.png">
+      <span>主選單</span>
+    </div>
+  </div>
+  <div class="content-box">
+    <div class="icon-box">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M11 14.0726V16.9522C10.304 17.3555 9.71 17.9133 9.26388 18.5827C8.81776 19.252 8.53145 20.015 8.42708 20.8126C8.3227 21.6101 8.40305 22.4211 8.66191 23.1827C8.92077 23.9443 9.35122 24.6362 9.92001 25.205C10.4888 25.7738 11.1807 26.2042 11.9423 26.4631C12.7039 26.722 13.5149 26.8023 14.3124 26.6979C15.11 26.5935 15.873 26.3072 16.5423 25.8611C17.2117 25.415 17.7695 24.821 18.1728 24.125H21.0511C20.4299 25.8744 19.2109 27.3482 17.609 28.2865C16.0071 29.2247 14.1253 29.5671 12.2956 29.2532C10.4659 28.9393 8.80586 27.9893 7.60829 26.5708C6.41072 25.1523 5.75259 23.3564 5.75 21.5C5.74999 19.8711 6.25482 18.2823 7.195 16.9522C8.13518 15.6221 9.4645 14.6161 11 14.0726V14.0726ZM16.25 22.8125C15.2057 22.8125 14.2042 22.3977 13.4658 21.6592C12.7273 20.9208 12.3125 19.9193 12.3125 18.875V13.625C12.3125 12.5807 12.7273 11.5792 13.4658 10.8408C14.2042 10.1023 15.2057 9.6875 16.25 9.6875C17.2943 9.6875 18.2958 10.1023 19.0342 10.8408C19.7727 11.5792 20.1875 12.5807 20.1875 13.625V20.1875H22.0696C22.487 20.1876 22.8983 20.2872 23.2694 20.478C23.6406 20.6688 23.9609 20.9454 24.2037 21.2848L24.3206 21.4619L27.8748 27.3879L25.6252 28.7371L22.0683 22.8125H16.25ZM16.25 3.125C17.1202 3.125 17.9548 3.4707 18.5702 4.08606C19.1855 4.70141 19.5312 5.53601 19.5312 6.40625C19.5312 7.27649 19.1855 8.11109 18.5702 8.72644C17.9548 9.3418 17.1202 9.6875 16.25 9.6875C15.3798 9.6875 14.5452 9.3418 13.9298 8.72644C13.3145 8.11109 12.9687 7.27649 12.9687 6.40625C12.9687 5.53601 13.3145 4.70141 13.9298 4.08606C14.5452 3.4707 15.3798 3.125 16.25 3.125V3.125Z"
+          fill="white" />
+      </svg>
+    </div>
+    <span class="title">輔具建議</span>
+    <span class="button">開始</span>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      const urlSearchParams = new URLSearchParams(window.location.search);
+      const params = Object.fromEntries(urlSearchParams.entries());
+      let data = { workOrderId: params.workOrderID };
+
+      $(".home-box").click(() => {
+        window.location.href = `../../AssessmentPage/index.html?workOrderID=${params.workOrderID}`;
+      })
+      $(".button").click(() => {
+        window.location.href = `../../AssessmentPage/question/question_a06.html?workOrderID=${params.workOrderID}&step=1&bigstep=5`;
+      })
+
+      $(".prev").click(() => {
+        window.location.href = `../../AssessmentPage/question/question_a05.html?workOrderID=${params.workOrderID}&step=2&bigstep=4`;
+      })
+    })
+
+  </script>
+</body>
+
+</html>

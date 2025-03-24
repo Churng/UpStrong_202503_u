@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<!--  This source code is exported from pxCode, you can get more document from https://www.pxcode.io  -->
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+
+  <link href="../../css/RobotoFont.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/bootstrap-5.3.3.css">
+  <script src="../../js/bootstrap-5.3.3.js"></script>
+  <script src="../../js/jquery-3.6.0.min.js"></script>
+
+  <!-- Font Awesome圖示庫 -->
+  <link rel="stylesheet" href="../../css/all.min.css">
+
+  <!-- Please DO NOT remove this line, all link and script tags will be merged to here -->
+  <link rel="stylesheet" type="text/css" href="../../components/Header/style.css" />
+  <link rel="stylesheet" type="text/css" href="../../components/Footer/style.css" />
+  <link rel="stylesheet" type="text/css" href="../../components/CustomAlert/style.css" />
+
+  <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/fonts.css" />
+  <link rel="stylesheet" type="text/css" href="./style.css?02" />
+  <script>
+    // 確保載入時，使用時間戳。
+    let version = Date.now();
+    document.write('<script type="text/javascript" src="../../js/jquery.md5.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script type="text/javascript" src="../../js/jquery.cookie.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script type="text/javascript" src="../../components/Header/script.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script type="text/javascript" src="../../components/CustomAlert/script.js?ver=' + version + '"></scr' + 'ipt>');
+  </script>
+
+  <script>
+    $(function () {
+      // 為確保Header/index.html始終在Header/script.js之前載入，並禁用快取。每次都載新的js，避免偶爾的順序出錯
+      // 此外因為需要監聽，所以把主要監聽功能寫在這，確保在Header.html載入之後才執行。避免引入外部js檔案時，偶爾造成的載入順序錯誤問題。
+      $.get("../../components/Header/index.html", function (data) {
+        $('#header').html(data);
+      }).fail(function () {
+      });
+
+      $.get("../../components/Footer/index.html", function (data) {
+        $('#footer').html(data);
+      }).fail(function () {
+      });
+
+    });
+  </script>
+</head>
+
+<body style="background: #F3F3F3;">
+  <div id="header"></div>
+  <div class="content-box">
+    <h2>
+      <svg width="6" height="14" viewBox="0 0 6 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 7L3.82708e-07 13.0622L9.12681e-07 0.937822L6 7Z" fill="#EB5C20" />
+      </svg>
+      訂單
+    </h2>
+    <div class="table-box mb_none">
+      <table class="table">
+        <thead>
+          <tr>
+            <th><span>訂單編號</span></th>
+            <th><span>開單人員</span></th>
+            <th><span>個案名稱</span></th>
+            <th><span>負責據點</span></th>
+            <th><span>服務地點</span></th>
+            <th><span>付款金額</span></th>
+            <th><span>有效使用期間</span></th>
+            <th><span>狀態</span></th>
+            <th><span>付款時間</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- <tr>
+            <td><span>2021051212000001</span></td>
+            <td><span>謝員工</span></td>
+            <td><span>張個案</span></td>
+            <td><span>開案</span></td>
+            <td><span>台北區王治療所</span></td>
+            <td><span>台北區王治療所</span></td>
+            <td><span>60000</span></td>
+            <td><span>2021/10/28~<br />2021/11/30</span></span></td>
+            <td><span>未受理</span></td>
+            <td><span>2021/05/12<br />12:10</span></td>
+          </tr>
+          <tr>
+            <td><span>2021051212000001</span></td>
+            <td><span>謝員工</span></td>
+            <td><span>張個案</span></td>
+            <td><span>台北區王治療所</span></td>
+            <td><span>台北區王治療所</span></td>
+            <td><span>60000</span></td>
+            <td><span>2021/10/28~<br />2021/11/30</span></span></td>
+            <td><span>未受理</span></td>
+            <td><span>2021/05/12<br />12:10</span></td>
+          </tr> -->
+        </tbody>
+      </table>
+      <div class="page-box">
+        <span class="prev">＜</span>
+        <div>
+          <span class="active">1</span>
+          <span>2</span>
+          <span>3</span>
+          <span>4</span>
+          <span>5</span>
+        </div>
+        <span class="next">＞</span>
+      </div>
+    </div>
+    <div class="table-box pc_none">
+      <span class="total-text">共 2964 筆</span>
+      <div class="content"></div>
+      <div class="page-content">
+        <span class="prev"><svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M11.041 12.481a.75.75 0 0 1-1 1.112l-.082-.074-5-5.217a.75.75 0 0 1-.052-.978l.075-.083 5-4.783a.75.75 0 0 1 1.11 1.001l-.074.083-4.457 4.264 4.48 4.675z"
+              fill="#A9A9A9" fill-rule="nonzero" />
+          </svg>
+          上一頁</span>
+        <span class="page">1/5</span>
+        <span class="next">下一頁<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M4.959 12.481a.75.75 0 0 0 1 1.112l.082-.074 5-5.217a.75.75 0 0 0 .052-.978l-.075-.083-5-4.783a.75.75 0 0 0-1.11 1.001l.074.083 4.457 4.264-4.48 4.675z"
+              fill="#A9A9A9" fill-rule="nonzero" />
+          </svg>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div id="footer"></div>
+</body>
+
+<script type="text/javascript" src="../../js/webConfig.js"></script>
+<script type="text/javascript" src="./script.js?1220"></script>
+
+</html>

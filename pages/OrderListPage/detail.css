@@ -1,0 +1,409 @@
+* {
+    font-family: "Open Sans", sans-serif;
+}
+
+.content-box {
+    max-width: 980px;
+    min-width: 980px;
+    min-height: calc(100vh - 90px);
+    background: #fff;
+    margin: 0 auto;
+    padding: 40px 210px 0;
+}
+
+h2 {
+    width: 100%;
+    text-align: center;
+    color: #292929;
+    font-size: 24px;
+    margin-bottom: 24px;
+}
+
+.type-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 38px;
+    background-color: #ffeedf;
+}
+
+.type-title span {
+    position: relative;
+    display: block;
+    color: #292929;
+    font-size: 16px;
+    font-weight: bolder;
+    padding-left: 20px;
+}
+
+.type-title span::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ffbe00;
+}
+
+.detail-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 0;
+    padding: 16px 16px 26px;
+    border-bottom: solid 1px #ddd;
+}
+
+.detail-box .text-box {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 50%;
+}
+
+.detail-box .text-box .title {
+    font-size: 16px;
+    color: #292929;
+    font-weight: bolder;
+}
+
+.detail-box .text-box .text {
+    font-size: 16px;
+    color: #292929;
+}
+
+.add-box {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 18px 16px 40px;
+    border-bottom: solid 1px #ddd;
+}
+
+.add-box .text-box {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+}
+
+.add-box .text-box .title {
+    font-size: 16px;
+    color: #292929;
+    font-weight: bolder;
+}
+
+.add-box .text-box .text {
+    font-size: 16px;
+    color: #292929;
+}
+
+h3 {
+    width: 100%;
+    text-align: center;
+    color: #292929;
+    font-size: 24px;
+    padding: 24px 0 30px;
+}
+
+.acc-title {
+    display: flex;
+    align-items: center;
+    height: 38px;
+    background-color: #ffeedf;
+    padding: 0 16px;
+}
+
+.acc-title span {
+    display: block;
+    color: #292929;
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.acc-detail-box {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.acc-detail-box .text-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    height: 70px;
+    border-bottom: solid 1px #ddd;
+    padding: 0 16px;
+}
+
+.acc-detail-box .text-box:last-child {
+    border: none;
+}
+
+.acc-detail-box .text-box span {
+    font-size: 16px;
+    color: #292929;
+    font-weight: bolder;
+}
+
+.total-box {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    height: 72px;
+    background-color: #ffeedf;
+    padding: 0 16px;
+}
+
+.total-box .title {
+    width: 100%;
+    font-size: 16px;
+    color: #292929;
+    font-weight: bolder;
+    text-align: right;
+}
+
+.total-box .text {
+    width: 100%;
+    font-size: 16px;
+    color: #292929;
+    text-align: right;
+}
+
+.bill-box {
+    padding: 24px 0 12px;
+}
+
+.bill-box>.title {
+    display: block;
+    font-size: 16px;
+    font-weight: bolder;
+    color: #292929;
+    margin-bottom: 8px;
+    padding: 0 12px;
+}
+
+.bill-box .text-box {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    border-bottom: solid 1px #ddd;
+    padding: 0 12px 12px;
+}
+
+.bill-box .text-box div {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.bill-box .text-box .title {
+    font-size: 16px;
+    color: #292929;
+    width: 80px;
+    text-align: right;
+}
+
+.bill-box .text-box .text {
+    font-size: 16px;
+    padding: 0 12px;
+    color: #292929;
+}
+
+.bill-box>.title:nth-child(3) {
+    padding-top: 24px;
+}
+
+.bill-box .text-box:nth-child(4) {
+    padding: 0 0 19px;
+}
+
+.bill-box>.title:nth-child(5) {
+    padding-top: 24px;
+}
+
+.bill-box .text-box:nth-child(6) {
+    padding: 0 0 30px;
+}
+
+.bill-box .input-box {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 12px 0;
+}
+
+.bill-box .input-box input {
+    width: 75%;
+    height: 40px;
+    padding: 8px 255px 7px 16px;
+    border-radius: 4px;
+    border: solid 1px #ddd;
+    background-color: #fff;
+}
+
+.bill-box .input-box button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 102px;
+    height: 38px;
+    border-radius: 4px;
+    border: solid 1px #1654b9;
+    background-color: #fff;
+    color: #1654b9;
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.check-button {
+    display: flex;
+    justify-content: center;
+    padding: 43px 0;
+}
+
+.check-button button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 38px;
+    border-radius: 4px;
+    background-color: #1654b9;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.send-button {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 43px 0;
+}
+
+.send-button button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 38px;
+    border-radius: 4px;
+    background-color: #eb5c20;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.send-button .check-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.send-button .check-box div {
+    width: 240px;
+    margin-bottom: 20px;
+}
+
+.send-button .check-box div input {
+    display: none;
+}
+
+.send-button .check-box div label {
+    position: relative;
+    padding-left: 30px;
+    font-weight: bolder;
+    font-size: 16px;
+}
+
+.send-button .check-box div label span {
+    color: #1654b9;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.send-button .check-box div label::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 1px;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    border: 1px solid #eb5c20;
+}
+
+.send-button .check-box div input:checked~label::after {
+    background: url('./images/btn-checkbox-enabled-unselected.png');
+    border: none;
+}
+
+.pc_none {
+    display: none;
+}
+
+@media (max-width: 500px) {
+    .mb_none {
+        display: none !important;
+    }
+
+    .pc_none {
+        display: block;
+    }
+
+    .content-box {
+        min-width: initial;
+        max-width: 500px;
+        padding: 40px 0;
+    }
+
+    .detail-box .text-box {
+        width: 100%;
+    }
+
+    .add-box .text-box .title {
+        min-width: 65px;
+    }
+
+    h3 {
+        padding: 40px 0 45px;
+    }
+
+    .acc-detail-box .text-box {
+        flex-wrap: wrap;
+        align-content: center;
+        gap: 0;
+    }
+
+    .acc-detail-box .text-box span {
+        width: 100%;
+    }
+
+    .bill-box .input-box {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .bill-box .input-box input {
+        width: 100%;
+    }
+
+    .check-button {
+        padding: 24px 0;
+    }
+
+    .check-button button,
+    .send-button button {
+        margin: 0 22px;
+        width: 100%;
+    }
+}

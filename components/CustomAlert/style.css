@@ -1,0 +1,7 @@
+.custom-alert {
+	transform: translateX(-50%);
+	position: fixed !important;
+	left: 50%;
+	top: 10px;
+	z-index: 9999;
+}

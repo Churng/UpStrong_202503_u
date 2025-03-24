@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<!--  This source code is exported from pxCode, you can get more document from https://www.pxcode.io  -->
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  
+  <link rel="stylesheet" href="../../css/bootstrap-5.3.3.css">
+  <script src="../../js/bootstrap-5.3.3.js"></script>
+  <script src="../../js/jquery-3.6.0.min.js"></script>
+  <!-- Please DO NOT remove this line, all link and script tags will be merged to here -->
+
+  <link rel="stylesheet" type="text/css" href="../../components/Header/style.css" />
+  <link rel="stylesheet" type="text/css" href="../../components/Header/sidenav.css" />
+  <link rel="stylesheet" type="text/css" href="../../components/Footer/style.css" />
+  <link rel="stylesheet" type="text/css" href="../../components/CustomAlert/style.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/fonts.css" />
+  <link rel="stylesheet" type="text/css" href="./style.css" />
+
+  <script>
+    // 確保載入時，使用時間戳。
+    let version = Date.now();
+    document.write('<script type="text/javascript" src="../../js/jquery.md5.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script type="text/javascript" src="../../components/CustomAlert/script.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script type="text/javascript" src="../../components/Header/script.js?ver=' + version + '"></scr' + 'ipt>');
+  </script>
+
+
+  <script>
+    $(function () {
+      // 為確保Header/index.html始終在Header/script.js之前載入，並禁用快取。每次都載新的js，避免偶爾的順序出錯
+      // 此外因為需要監聽，所以把主要監聽功能寫在這，確保在Header.html載入之後才執行。避免引入外部js檔案時，偶爾造成的載入順序錯誤問題。
+      $.get("../../components/Header/index.html", function (data) {
+        $('#header').html(data);
+      }).fail(function () {
+      });
+
+      $.get("../../components/Footer/index.html", function (data) {
+        $('#footer').html(data);
+      }).fail(function () {
+      });
+
+    });
+  </script>
+</head>
+
+<body class="flex-column">
+  <main class="user-detail main">
+
+
+    <div class="forget-password group">
+      <div class="group1 group1backgroundcolor">
+        <div>
+
+          <!-- <div class="box">
+          <div id="header"></div>
+        </div> -->
+          <div class="cell">
+            <!-- ======= section1 ======= -->
+            <section class="section1__section1">
+              <div class="section1__box">
+                <!-- prettier-ignore -->
+                <div id="header"></div>
+              </div>
+            </section>
+            <!-- ======= End section1 ======= -->
+          </div>
+
+          <div class="box1">
+            <div class="flexCol">
+              <div class="flexRow">
+                <div class="cell">
+                  <img src="../../assets/arrowOrangeRight.svg" alt="right pointing triangle" class="image3" />
+                </div>
+                <div class="cell1">
+                  <h2 class="medium_title">忘記密碼</h2>
+                </div>
+              </div>
+              <div class="flexCol1">
+                <div class="text">帳號 (身分證字號)</div>
+                <input class="custom_input" type="text" id="idNumber" />
+              </div>
+              <div class="flexCol2">
+                <div class="cell">
+                  <div class="text1">Email</div>
+                </div>
+                <input class="custom_input" type="text" id="email" />
+              </div>
+              <h5 class="highlights">新密碼將重新寄至您的註冊信箱</h5>
+              <div class="content_box" id="forget-btn">
+                <h5 class="highlights2">送出</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box2">
+          <!-- prettier-ignore -->
+          <div id="footer"></div>
+        </div>
+      </div>
+      <!-- <div class="box3">
+      <div class="flexCol3">
+        <div class="cell">
+          <img src="../../assets/arrowUp.svg" alt="alt text" class="image4" />
+        </div>
+        <h5 class="highlights5">TOP</h5>
+      </div>
+    </div> -->
+    </div>
+  </main>
+</body>
+
+<script type="text/javascript" src="../../js/webConfig.js"></script>
+<script type="text/javascript" src="./script.js?1130"></script>
+
+</html>

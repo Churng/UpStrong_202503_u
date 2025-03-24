@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<!--  This source code is exported from pxCode, you can get more document from https://www.pxcode.io  -->
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <link href="../../css/RobotoFont.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/bootstrap-5.3.3.css">
+  <script src="../../js/bootstrap-5.3.3.js"></script>
+  <script src="../../js/jquery-3.6.0.min.js"></script>
+
+
+  <!-- Font Awesome圖示庫 -->
+  <link rel="stylesheet" href="../../../css/all.min.css">
+
+  <!-- Please DO NOT remove this line, all link and script tags will be merged to here -->
+  <link rel="stylesheet" type="text/css" href="../../../components/Header/style.css" />
+  <link rel="stylesheet" type="text/css" href="../../../components/Footer/style.css" />
+  <link rel="stylesheet" type="text/css" href="../../../components/CustomAlert/style.css" />
+
+  <link rel="stylesheet" type="text/css" href="../../../css/common.css" />
+  <link rel="stylesheet" type="text/css" href="../../../css/fonts.css" />
+  <link rel="stylesheet" type="text/css" href="./detail.css?02" />
+  <script>
+    // 確保載入時，使用時間戳。
+    let version = Date.now();
+    document.write('<script type="text/javascript" src="../../../js/jquery.md5.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script type="text/javascript" src="../../../js/jquery.cookie.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script type="text/javascript" src="../../../components/Header/script.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script type="text/javascript" src="../../../components/CustomAlert/script.js?ver=' + version + '"></scr' + 'ipt>');
+  </script>
+
+  <script>
+    $(function () {
+      // 為確保Header/index.html始終在Header/script.js之前載入，並禁用快取。每次都載新的js，避免偶爾的順序出錯
+      // 此外因為需要監聽，所以把主要監聽功能寫在這，確保在Header.html載入之後才執行。避免引入外部js檔案時，偶爾造成的載入順序錯誤問題。
+      $.get("../../../components/Header/index.html", function (data) {
+        $('#header').html(data);
+      }).fail(function () {
+      });
+
+      $.get("../../../components/Footer/index.html", function (data) {
+        $('#footer').html(data);
+      }).fail(function () {
+      });
+
+    });
+  </script>
+</head>
+
+<body style="background: #F3F3F3;">
+  <div id="header"></div>
+  <div class="content-box">
+    <h2>
+      開立訂單
+    </h2>
+    <div class="type-title">
+      <span>已付款</span>
+    </div>
+    <div class="detail-box">
+      <div class="text-box">
+        <span class="title">案件編號</span>
+        <span class="text">2021051212000001</span>
+      </div>
+      <div class="text-box">
+        <span class="title">訂單編號</span>
+        <span class="text">2021051212000001</span>
+      </div>
+      <div class="text-box">
+        <span class="title">付款時間</span>
+        <span class="text">2021/05/12 12:10</span>
+      </div>
+      <div class="text-box">
+        <span class="title">開單人員</span>
+        <span class="text">謝員工</span>
+      </div>
+      <div class="text-box">
+        <span class="title">個案名稱</span>
+        <span class="text">張個案</span>
+      </div>
+    </div>
+    <div class="add-box">
+      <div class="text-box">
+        <span class="title">負責據點</span>
+        <span class="text">台北區王治療所台北區王治療所台北區王治療所台北區王治療所</span>
+      </div>
+      <div class="text-box">
+        <span class="title">服務地點</span>
+        <span class="text">中正路1號中正路1號中正路1號中正路1號</span>
+      </div>
+    </div>
+    <h3>付款資訊</h3>
+    <div class="acc-title">
+      <span>匯款帳戶：1234561234567890</span>
+    </div>
+    <div class="acc-detail-box">
+      <div class="text-box">
+        <span class="title">專業評估教練評估費用</span>
+        <span class="text">5次 x 4000元 = 20000元</span>
+      </div>
+      <div class="text-box">
+        <span class="title">自主應用教練訓練費用</span>
+        <span class="text">20次 x 2000元 = 40000元</span>
+      </div>
+    </div>
+    <div class="total-box">
+      <span class="title">付款金額: 60000</span>
+      <span class="text">使用有效期間: 2021/10/28~2021/11/30</span>
+    </div>
+    <div class="bill-box">
+      <span class="title">發票開立方式</span>
+      <div class="text-box">
+        <div>
+          <span class="title">發票種類：</span>
+          <span class="text">三聯式</span>
+        </div>
+        <div>
+          <span class="title">抬頭：</span>
+          <span class="text">五五科技股份有限公司</span>
+        </div>
+        <div>
+          <span class="title">統編：</span>
+          <span class="text">12345678</span>
+        </div>
+      </div>
+      <span class="title">個案時間地點偏好</span>
+      <div class="text-box">
+        <div>
+          <span class="text">平日上午時間，希望可以在居家進行</span>
+        </div>
+      </div>
+      <span class="title">訂單備註</span>
+      <div class="text-box">
+        <div>
+          <span class="text">下次續約通知紀錄</span>
+        </div>
+        <div class="input-box">
+          <input type="text">
+          <button>完成通知</button>
+        </div>
+      </div>
+    </div>
+    <div class="check-button">
+      <button>查看服務契約書</button>
+    </div>
+    <div class="send-button">
+      <div class="check-box">
+        <div>
+          <input type="checkbox" name="11" id="0">
+          <label for="0">查看<span>服務契約書</span></label>
+        </div>
+      </div>
+      <div class="check-box">
+        <div>
+          <input type="checkbox" name="11" id="1">
+          <label for="1">我已閱讀並同意服務契約書</label>
+        </div>
+      </div>
+      <button>確認付款</button>
+    </div>
+  </div>
+  <div id="footer"></div>
+</body>
+
+<script type="text/javascript" src="../../../js/webConfig.js"></script>
+<script type="text/javascript" src="./script.js?1208"></script>
+
+</html>

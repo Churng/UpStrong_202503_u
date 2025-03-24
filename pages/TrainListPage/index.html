@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<!--  This source code is exported from pxCode, you can get more document from https://www.pxcode.io  -->
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link href="../../css/RobotoFont.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/bootstrap-5.3.3.css">
+  <script src="../../js/bootstrap-5.3.3.js"></script>
+  <script src="../../js/jquery-3.6.0.min.js"></script>
+
+  <!-- Font Awesome圖示庫 -->
+  <link rel="stylesheet" href="../../css/all.min.css">
+
+  <!-- Please DO NOT remove this line, all link and script tags will be merged to here -->
+  <link rel="stylesheet" type="text/css" href="../../components/Header/style.css" />
+  <link rel="stylesheet" type="text/css" href="../../components/Footer/style.css" />
+  <link rel="stylesheet" type="text/css" href="../../components/CustomAlert/style.css" />
+
+  <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/fonts.css" />
+  <script src="../../js/fullcalendar.min.js"></script>
+  <script src="../../js/moment.min.js"></script>
+  <link rel="stylesheet" href="../../css/fullcalendar.min.css" />
+  <link rel="stylesheet" href="../../css/air-datepicker.css">
+  <script src="../../js/air-datepicker.js"></script>
+  <link rel="stylesheet" type="text/css" href="./style.css?02" />
+  <script>
+    // 確保載入時，使用時間戳。
+    let version = Date.now();
+    document.write('<script type="text/javascript" src="../../js/jquery.md5.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script type="text/javascript" src="../../js/jquery.cookie.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script type="text/javascript" src="../../components/Header/script.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script type="text/javascript" src="../../components/CustomAlert/script.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script type="text/javascript" src="../../js/fullcalendar.min.js?ver=' + version + '"></scr' + 'ipt>');
+
+  </script>
+
+  <script>
+    $(function () {
+      // 為確保Header/index.html始終在Header/script.js之前載入，並禁用快取。每次都載新的js，避免偶爾的順序出錯
+      // 此外因為需要監聽，所以把主要監聽功能寫在這，確保在Header.html載入之後才執行。避免引入外部js檔案時，偶爾造成的載入順序錯誤問題。
+      $.get("../../components/Header/index.html", function (data) {
+        $('#header').html(data);
+      }).fail(function () {
+      });
+
+      $.get("../../components/Footer/index.html", function (data) {
+        $('#footer').html(data);
+      }).fail(function () {
+      });
+
+    });
+  </script>
+</head>
+
+<!-- 列表 -->
+<body style="background: #F3F3F3;">
+  <div id="header"></div>
+  <div class="main-box model01">
+    <h2>
+      <svg width="6" height="14" viewBox="0 0 6 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 7L3.82708e-07 13.0622L9.12681e-07 0.937822L6 7Z" fill="#EB5C20" />
+      </svg>
+      我的訓練
+    </h2>
+    <div>
+      <div class="search-box">
+        <div>
+          <select class="select">
+            <option value="0">全部</option>
+          </select>
+          <input class="date-box" type="text" name="birthDate" id="birthDate">
+          <input type="text" class="search" placeholder="搜尋">
+          <button class="btn-main m-auto" id="MyTrainingSearch">查詢</button>
+        </div>
+        <div>
+          <div class="type-box">
+            <span class="model_to_01 active">列表</span>
+            <span class="model_to_02">月曆</span>
+          </div>
+        </div>
+      </div>
+      <!-- 手機 -->
+      <div class="table-box mb_none">
+        <table class="table">
+          <thead>
+            <tr>
+              <th width="5%"><span>＃</span></th>
+              <th width="10%"><span>個案名稱</span></th>
+              <th width="10%"><span>專業評估教練</span></th>
+              <th width="10%"><span>自主應用教練</span></th>
+              <th width="20%"><span>服務日期</span></th>
+              <!-- <th>
+                <div class="date-box"><span style="padding-left: 35px;">服務日期</span>
+                  <svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.981 8.75h6.125l-3.062 4.375L3.98 8.75zm0-3.5L7.044.875l3.062 4.375H3.981z"
+                      fill="#A9A9A9" fill-rule="evenodd" />
+                  </svg>
+                </div>
+              </th> -->
+              <th width="15%"><span>服務地點</span></th>
+              <th width="15%"><span>狀態</span></th>
+              <th width="15%"><span>服務類型</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <tr>
+              <td><span>1</span></td>
+              <td><span>張育銘</span></td>
+              <td>
+                <div class="coach"><span class="active-coach">楊教練</span></div>
+              </td>
+              <td><span>王教練</span></td>
+              <td><span>2021/07/24 15:00</span></td>
+              <td><span>台北區王治療所台北區</span></td>
+              <td><span class="text type type01">即將服務</span></td>
+              <td><span>開案評估</span></td>
+            </tr> -->
+          </tbody>
+        </table>
+        <div class="page-box">
+          <span class="prev">＜</span>
+          <div>
+            <!-- <span class="active">1</span> -->
+            <!-- <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span> -->
+          </div>
+          <span class="next">＞</span>
+        </div>
+      </div>
+      <!-- 桌機 -->
+      <div class="table-box pc_none">
+        <div class="content">
+          <!-- <div class="box"> -->
+            <!-- <div class="text-box">
+              <span class="title">個案名稱</span>
+              <span class="text">張育銘</span>
+            </div>
+            <div class="text-box">
+              <span class="title">專業評估教練</span>
+              <span class="text">
+                <div class="coach"><span class="active-coach">楊教練</span></div>
+              </span>
+            </div>
+            <div class="text-box">
+              <span class="title">自主應用教練</span>
+              <span class="text">王教練</span>
+            </div>
+            <div class="text-box">
+              <span class="title">服務日期</span>
+              <span class="text">台北區王治療所</span>
+            </div>
+            <div class="text-box">
+              <span class="title">狀態</span>
+              <span class="text type type01">即將服務</span>
+            </div>
+            <div class="text-box">
+              <span class="title">服務類型</span>
+              <span class="text">開案評估</span>
+            </div> -->
+          <!-- </div> -->
+        </div>
+        <div class="page-content">
+          <span class="prev"><svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M11.041 12.481a.75.75 0 0 1-1 1.112l-.082-.074-5-5.217a.75.75 0 0 1-.052-.978l.075-.083 5-4.783a.75.75 0 0 1 1.11 1.001l-.074.083-4.457 4.264 4.48 4.675z"
+                fill="#A9A9A9" fill-rule="nonzero" />
+            </svg>
+            上一頁</span>
+          <span class="page"></span>
+          <span class="next">下一頁<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M4.959 12.481a.75.75 0 0 0 1 1.112l.082-.074 5-5.217a.75.75 0 0 0 .052-.978l-.075-.083-5-4.783a.75.75 0 0 0-1.11 1.001l.074.083 4.457 4.264-4.48 4.675z"
+                fill="#A9A9A9" fill-rule="nonzero" />
+            </svg>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 日曆 -->
+  <div class="model02" style="display:none">
+    <h2>
+      <svg width="6" height="14" viewBox="0 0 6 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 7L3.82708e-07 13.0622L9.12681e-07 0.937822L6 7Z" fill="#EB5C20" />
+      </svg>
+      我的訓練
+    </h2>
+    <div>
+      <div class="search-box">
+        <div>
+          <div class="type-box">
+            <span class="model_to_01">列表</span>
+            <span class="model_to_02 active">月曆</span>
+          </div>
+        </div>
+      </div>
+      <div class="content-box">
+        <div>
+          <div class="fullcalender-box">
+            <div id="calendar">
+            </div>
+            <div class="hidden-btn">
+              <img src="./images/arr.png" alt="">
+            </div>
+            <div class="right-box">
+              <div class="date-bar">
+              </div>
+              <div class="detail">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div id="footer"></div>
+</body>
+
+<script type="text/javascript" src="../../js/webConfig.js"></script>
+<script type="text/javascript" src="./script.js?1220"></script>
+
+</html>

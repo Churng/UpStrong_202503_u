@@ -1,0 +1,179 @@
+@use "../../css/utils.scss" as *;
+
+$color_type_0: rgb(255, 255, 255);
+$color_type_1: rgb(41, 41, 41);
+
+$font_type_0: 400 12px/1.33 "Noto Sans TC", Helvetica, Arial, serif;
+$font_type_1: 12px/1.33 "Noto Sans TC", Helvetica, Arial, serif;
+
+.footer {
+  &__box2 {
+    @include flex-column;
+    background-color: $color_type_1;
+    /*position: fixed;*/ /* 更改成下拉到最底才顯示，問題1.手機版底層FOOT應該不會一直存在，依設計稿應該往下拉才會出現 */
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+  }
+  &__group {
+    @include mq-between(xl, xxl);
+    @include flex-column;
+    width: 99.04%;
+    position: relative;
+    flex-grow: 1;
+    max-width: 1240px;
+    margin: 8px auto;
+  }
+  &__flexRow {
+    @include lg {
+      justify-content: flex-start;
+      align-items: center;
+      column-gap: 0px;
+      margin: 0px 12px;
+    }
+    @include md {
+      flex-wrap: wrap;
+      align-content: flex-start;
+      row-gap: 12px;
+      align-items: stretch;
+    }
+    @include tn {
+      margin: 0px;
+    }
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex-grow: 1;
+  }
+  &__flexRow > .cell {
+    @include lg {
+      flex: 0 0 auto;
+      min-width: unset;
+    }
+    @include md {
+      flex: 0 0 calc(1 / 1 * 100% - 0px / 1);
+    }
+    @include flex-column;
+    position: relative;
+    flex: 0 1 599px;
+  }
+  &__flexRow1 {
+    @include md {
+      justify-content: center;
+      align-items: center;
+      column-gap: 3px;
+      width: 99.67%;
+      margin: 0px auto;
+    }
+    @include sm {
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-content: center;
+      row-gap: 12px;
+      column-gap: 16px;
+    }
+    @include tn {
+      width: 99.7%;
+    }
+    display: flex;
+    align-items: center;
+    column-gap: 3px;
+    width: 100%;
+    position: relative;
+    flex-grow: 1;
+    margin: 0px 0px;
+  }
+  &__flexRow1 > .cell {
+    @include sm {
+      flex: 0 0 calc(1 / 1 * 100% - 16px / 1);
+      min-width: unset;
+    }
+    @include flex-column;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  &__info {
+    @include v-center-content;
+    justify-content: center;
+    font: $font_type_0;
+    color: $color_type_0;
+    text-align: center;
+    letter-spacing: 0px;
+    width: 100%;
+    position: relative;
+    flex-grow: 1;
+    margin: 0px 0px;
+  }
+  &__flexRow1 > .cell1 {
+    @include sm {
+      display: none;
+      flex: 0 0 calc(1 / 1 * 100% - 16px / 1);
+      min-width: unset;
+    }
+    @include flex-column;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  &__info1 {
+    @include v-center-content;
+    justify-content: center;
+    font: $font_type_1;
+    color: $color_type_0;
+    text-align: center;
+    letter-spacing: 0px;
+    position: relative;
+    flex-grow: 1;
+  }
+  &__flexRow1 > .cell2 {
+    @include md {
+      min-width: unset;
+    }
+    @include sm {
+      flex: 0 0 calc(1 / 1 * 100% - 64px / 1);
+    }
+    @include flex-column;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  &__info2 {
+    @include v-center-content;
+    justify-content: center;
+    font: $font_type_1;
+    color: $color_type_0;
+    text-align: center;
+    letter-spacing: 0px;
+    width: 100%;
+    position: relative;
+    flex-grow: 1;
+    margin: 0px 0px;
+  }
+  &__flexRow > .spacer {
+    @include md {
+      display: none;
+    }
+    flex: 0 1 338px;
+  }
+  &__flexRow > .cell1 {
+    @include lg {
+      flex: 0 0 auto;
+      min-width: unset;
+    }
+    @include md {
+      flex: 0 0 calc(1 / 1 * 100% - 0px / 1);
+    }
+    @include flex-column;
+    position: relative;
+    flex: 0 0 303px;
+    min-width: 303px;
+  }
+  &__info3 {
+    @include v-center-content;
+    justify-content: center;
+    font: $font_type_0;
+    color: $color_type_0;
+    text-align: center;
+    letter-spacing: 0px;
+    position: relative;
+    flex-grow: 1;
+  }
+}

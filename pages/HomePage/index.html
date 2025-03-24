@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<!--  This source code is exported from pxCode, you can get more document from https://www.pxcode.io  -->
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="stylesheet" href="../../css/bootstrap-5.3.3.css">
+  <script src="../../js/bootstrap-5.3.3.js"></script>
+  <script src="../../js/jquery-3.6.0.min.js"></script>
+  <!-- Please DO NOT remove this line, all link and script tags will be merged to here -->
+
+  <link rel="stylesheet" type="text/css" href="../../components/Header/style.css" />
+  <link rel="stylesheet" type="text/css" href="../../components/Footer/style.css" />
+  <link rel="stylesheet" type="text/css" href="../../components/CustomAlert/style.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/fonts.css" />
+  <link rel="stylesheet" type="text/css" href="./style.css" />
+
+  <script>
+    // 確保載入時，使用時間戳。
+    let version = Date.now();
+    document.write('<script type="text/javascript" src="../../js/jquery.md5.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script type="text/javascript" src="../../components/CustomAlert/script.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script type="text/javascript" src="../../components/Header/script.js?ver=' + version + '"></scr' + 'ipt>');
+  </script>
+
+  <script>
+    $(function () {
+      // 為確保Header/index.html始終在Header/script.js之前載入，並禁用快取。每次都載新的js，避免偶爾的順序出錯
+      // 此外因為需要監聽，所以把主要監聽功能寫在這，確保在Header.html載入之後才執行。避免引入外部js檔案時，偶爾造成的載入順序錯誤問題。
+      $.get("../../components/Header/index.html", function (data) {
+        $('#header').html(data);
+
+        // const userType = sessionStorage.getItem('userType'); // 依據使用者身分(如果有的話，從sessionStorage取得，並依據身分判斷要開啟哪一個彈跳視窗。
+        // if (userType === '1') { // 個案
+        //   $('#controlShowPanel').on('click', function() {
+        //     openControler('userPopup');
+        //   });
+        // } else if (userType === '2') { // 教練
+        //   $('#controlShowPanel').on('click', function() {
+        //     openControler('couchPopup');
+        //   });
+        // } else {
+        //   $('#controlShowPanel').on('click', function() {
+        //     openControler('noneLoginPopup'); // 原本的寫法 
+        //   });
+        // }  
+      }).fail(function () {
+      });
+
+      $.get("../../components/Footer/index.html", function (data) {
+        $('#footer').html(data);
+      }).fail(function () {
+      });
+
+    });
+  </script>
+</head>
+
+<body class="flex-column">
+  <div class="group">
+    <div class="group1">
+      <div class="cell">
+        <!-- ======= section1 ======= -->
+        <section class="section1__section1">
+          <div class="section1__box">
+            <!-- prettier-ignore -->
+            <div id="header"></div>
+          </div>
+        </section>
+        <!-- ======= End section1 ======= -->
+      </div>
+
+
+
+      <div class="box2">
+        <!-- prettier-ignore -->
+        <div id="footer"></div>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="../../js/webConfig.js"></script>
+<script type="text/javascript" src="./script.js?1130"></script>
+
+</html>

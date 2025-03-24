@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+
+<html lang="zh-tw">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>基本資料</title>
+
+    <link rel="stylesheet" href="./css/question.css">
+    <link rel="stylesheet" href="../../../components/CustomAlert/style.css">
+    <link rel="stylesheet" href="../../../js/bootstrap-5.3.3.js">
+
+
+    <script src="../../../js/bootstrap-5.3.3.js"></script>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script src="../../../components/CustomAlert/script.js"></script>
+
+    <script>
+
+        // 確保載入時，使用時間戳。
+
+        let version = Date.now();
+
+        document.write('<script type="text/javascript" src="../../../js/jquery.md5.js?ver=' + version + '"></scr' + 'ipt>');
+
+        document.write('<script type="text/javascript" src="../../../js/jquery.cookie.js?ver=' + version + '"></scr' + 'ipt>');
+
+    </script>
+
+</head>
+
+<body>
+
+    <div class="header-box">
+
+        <div class="prev">
+
+            <img src="../images/question/prev-arrow.png">
+
+        </div>
+
+        <span class="title">基本資料 <span><span>01</span>/07</span></span>
+
+        <div class="home-box">
+
+            <img src="../images/question/home-icon.png">
+
+            <span>主選單</span>
+
+        </div>
+
+    </div>
+
+    <div class="content-box">
+
+        <!-- step01 -->
+
+        <div class="step01">
+
+            <h3>請填寫以下資料</h3>
+
+            <div class="detail-box">
+
+                <div class="coach-box">
+
+                    <div class="title-box">
+
+                        <span class="title">教練資料</span>
+
+                        <span class="date">評估日期 2021.12.14</span>
+
+                    </div>
+
+                    <div class="bottom-box">
+
+                        <input id="coachA" type="text" placeholder="姓名 (A教練)">
+
+                        <input id="coachB" type="text" placeholder="姓名 (B教練)">
+
+                    </div>
+
+                </div>
+
+                <div class="user-box">
+
+                    <div class="title-box">
+
+                        <span class="title nametitle"></span>
+
+                    </div>
+
+                    <div class="bottom-box">
+
+                        <div class="radio-box">
+
+                            <div>
+
+                                <input type="radio" id="sex1" name="sex" value="1">
+
+                                <label for="sex1">男性</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="radio" id="sex2" name="sex" value="2">
+
+                                <label for="sex2">女性</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="radio" id="sex3" name="sex" value="3">
+
+                                <label for="sex3">其他</label>
+
+                            </div>
+
+                        </div>
+
+                        <input type="text" class="name" placeholder="姓名">
+
+                        <input type="text" class="name02" placeholder="暱稱">
+
+                        <input type="text" class="birthday" placeholder="出生日期">
+
+                        <div class="add-box">
+
+                            <input type="text" class="city" placeholder="住址-市區">
+
+                            <input type="text" class="county" placeholder="住址-縣市">
+
+                            <input typze="text" class="add" placeholder="住址-道路街道路">
+
+                        </div>
+
+                        <input type="text" class="family" placeholder="同住成員">
+
+                        <input type="text" class="caregiver" placeholder="主要照顧者">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- step02 -->
+
+        <div class="step02">
+
+            <div class="detail-box">
+
+                <div>
+
+                    <div class="title-box">
+
+                        <span class="title">居住地是否有電梯</span>
+
+                    </div>
+
+                    <div class="bottom-box">
+
+                        <div class="radio-box">
+
+                            <div>
+
+                                <input type="radio" id="elevator1" name="elevator" value="1">
+
+                                <label for="elevator1">無</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="radio" id="elevator2" name="elevator" value="2">
+
+                                <label for="elevator2">有</label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div>
+
+                    <div class="title-box">
+
+                        <span class="title">身心障礙障別</span>
+
+                    </div>
+
+                    <div class="bottom-box">
+
+                        <div class="radio-box">
+
+                            <div>
+
+                                <input type="radio" id="disability1" name="disability" value="1">
+
+                                <label for="disability1">無</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="radio" id="disability2" name="disability" value="2">
+
+                                <label for="disability2">有</label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div>
+
+                    <div class="title-box">
+
+                        <span class="title">長照CMS</span>
+
+                    </div>
+
+                    <div class="bottom-box">
+
+                        <div class="radio-box">
+
+                            <div>
+
+                                <input type="radio" id="cms1" name="cms" value="1">
+
+                                <label for="cms1">無</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="radio" id="cms2" name="cms" value="2">
+
+                                <label for="cms2">1</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="radio" id="cms3" name="cms" value="3">
+
+                                <label for="cms3">2</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="radio" id="cms4" name="cms" value="4">
+
+                                <label for="cms4">3</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="radio" id="cms5" name="cms" value="5">
+
+                                <label for="cms5">4</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="radio" id="cms6" name="cms" value="6">
+
+                                <label for="cms6">5</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="radio" id="cms7" name="cms" value="7">
+
+                                <label for="cms7">6</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="radio" id="cms8" name="cms" value="8">
+
+                                <label for="cms8">7</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="radio" id="cms9" name="cms" value="9">
+
+                                <label for="cms9">8</label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- step03 -->
+
+        <div class="step03">
+
+            <div class="detail-box">
+
+                <div>
+
+                    <div class="title-box">
+
+                        <span class="title">請選擇障礙類別</span>
+
+                    </div>
+
+                    <div class="bottom-box">
+
+                        <div class="checkbox-box">
+
+                            <div>
+
+                                <input type="checkbox" id="obstacle1" name="obstacle" value="1">
+
+                                <label for="obstacle1">神經系統構造及精神、心智功能</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="checkbox" id="obstacle2" name="obstacle" value="2">
+
+                                <label for="obstacle2">眼、耳及相關構造與感官功能及疼痛</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="checkbox" id="obstacle3" name="obstacle" value="3">
+
+                                <label for="obstacle3">涉及聲音語言與構造及其功能</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="checkbox" id="obstacle4" name="obstacle" value="4">
+
+                                <label for="obstacle4">循環、造血、免疫與呼吸系統構造及其功能</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="checkbox" id="obstacle5" name="obstacle" value="5">
+
+                                <label for="obstacle5">消化、新陳代謝與內分泌系統相關構造及功能</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="checkbox" id="obstacle6" name="obstacle" value="6">
+
+                                <label for="obstacle6">泌尿與生殖系統相關構造及其功能</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="checkbox" id="obstacle7" name="obstacle" value="7">
+
+                                <label for="obstacle7">神經、肌肉、骨骼之移動相關構造及其功能</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="checkbox" id="obstacle8" name="obstacle" value="8">
+
+                                <label for="obstacle8">皮膚與相關構造及其功能</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="checkbox" id="obstacle9" name="obstacle" value="9">
+
+                                <label for="obstacle9">罕見疾病</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="checkbox" id="obstacle10" name="obstacle" value="10">
+
+                                <label for="obstacle10">其他類</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="checkbox" id="obstacle11" name="obstacle" value="11">
+
+                                <label for="obstacle11">發展遲緩類</label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="title-box">
+
+                        <span class="title">請選擇障礙類別</span>
+
+                    </div>
+
+                    <div class="bottom-box">
+
+                        <div class="emoji-radio-box">
+
+                            <div>
+
+                                <input type="radio" id="emoji1" name="emoji" value="1">
+
+                                <label for="emoji1">
+
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+
+                                        <path
+                                            d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                                            stroke="#654F00" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+
+                                        <path
+                                            d="M9.59961 14.4004C9.59961 14.4004 9.79963 14.4004 12.2996 14.4004L14.6997 14.4008"
+                                            stroke="#654F00" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+
+                                        <path d="M9 9H9.0097" stroke="#654F00" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+
+                                        <path d="M15 9H15.0097" stroke="#654F00" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+
+                                    </svg>
+
+                                    <span>輕度</span>
+
+                                </label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="radio" id="emoji2" name="emoji" value="2">
+
+                                <label for="emoji2"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+
+                                        <path
+                                            d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                                            stroke="#654F00" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+
+                                        <path d="M9 15C9 15 10.125 14.4 12 14.4C13.875 14.4 15 15 15 15"
+                                            stroke="#654F00" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+
+                                        <path d="M9 9H9.0097" stroke="#654F00" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+
+                                        <path d="M15 9H15.0097" stroke="#654F00" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+
+                                    </svg>
+
+                                    <span>中度</span>
+
+                                </label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="radio" id="emoji3" name="emoji" value="3">
+
+                                <label for="emoji3"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+
+                                        <path
+                                            d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                                            stroke="#654F00" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+
+                                        <path
+                                            d="M16.2002 16.1992C16.2002 16.1992 14.9169 13.1992 12.0003 13.1992C9.08359 13.1992 7.8002 16.1992 7.8002 16.1992"
+                                            stroke="#654F00" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+
+                                        <path d="M9 9H9.0101" stroke="#654F00" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+
+                                        <path d="M15 9H15.0101" stroke="#654F00" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+
+                                    </svg>
+
+                                    <span>重度</span>
+
+                                </label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="radio" id="emoji4" name="emoji" value="4">
+
+                                <label for="emoji4"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+
+                                        <path
+                                            d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                                            stroke="#654F00" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+
+                                        <path
+                                            d="M16.2002 16.1992C16.2002 16.1992 14.9169 13.1992 12.0003 13.1992C9.08359 13.1992 7.8002 16.1992 7.8002 16.1992"
+                                            stroke="#654F00" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+
+                                        <path d="M9 9H9.0101" stroke="#654F00" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+
+                                        <path d="M15 9H15.0101" stroke="#654F00" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+
+                                        <path d="M18 12L19 13.5" stroke="#654F00" stroke-width="2"
+                                            stroke-linecap="round" />
+
+                                        <path d="M6 12L5 13.5" stroke="#654F00" stroke-width="2"
+                                            stroke-linecap="round" />
+
+                                    </svg>
+
+                                    <span>極重度</span>
+
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- step04 -->
+
+        <div class="step04">
+
+            <div class="detail-box">
+
+                <div>
+
+                    <div class="title-box">
+
+                        <span class="title">個案復能動機</span>
+
+                    </div>
+
+                    <div class="bottom-box">
+
+                        <div class="radio-box">
+
+                            <div>
+
+                                <input type="radio" id="motives1" name="motives" value="1">
+
+                                <label for="motives1">低</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="radio" id="motives2" name="motives" value="2">
+
+                                <label for="motives2">中</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="radio" id="motives3" name="motives" value="3">
+
+                                <label for="motives3">高</label>
+
+                            </div>
+
+                        </div>
+
+                        <div class="text-box">
+
+                            <textarea id="motivesText" name="" id="" placeholder="請輸入"></textarea>
+
+                        </div>
+
+                    </div>
+
+                    <div class="title-box">
+
+                        <span class="title">家庭支持度</span>
+
+                    </div>
+
+                    <div class="bottom-box">
+
+                        <div class="radio-box">
+
+                            <div>
+
+                                <input type="radio" id="family1" name="family" value="1">
+
+                                <label for="family1">低</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="radio" id="family2" name="family" value="2">
+
+                                <label for="family2">中</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="radio" id="family3" name="family" value="3">
+
+                                <label for="family3">高</label>
+
+                            </div>
+
+                        </div>
+
+                        <div class="text-box">
+
+                            <textarea id="familyText" name="" id="" placeholder="請輸入"></textarea>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- step05 -->
+
+        <div class="step05">
+
+            <div class="detail-box">
+
+                <div style="width:100%">
+
+                    <div class="title-box">
+
+                        <span class="title">主要診斷</span>
+
+                    </div>
+
+                    <div class="bottom-box">
+
+                        <div class="checkbox-box">
+
+                            <div>
+
+                                <input type="checkbox" id="diagnosis1" name="diagnosis" value="1">
+
+                                <label for="diagnosis1">無</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="checkbox" id="diagnosis2" name="diagnosis" value="2">
+
+                                <label for="diagnosis2">中風</label>
+
+                                <div class="radio-box">
+
+                                    <div>
+
+                                        <input type="radio" name="sub_diagnosis2" id="sub_diagnosis2_1" value="1">
+
+                                        <label for="sub_diagnosis2_1">左側偏癱</label>
+
+                                    </div>
+
+                                    <div>
+
+                                        <input type="radio" name="sub_diagnosis2" id="sub_diagnosis2_2" value="2">
+
+                                        <label for="sub_diagnosis2_2">右側偏癱</label>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div>
+
+                                <input type="checkbox" id="diagnosis3" name="diagnosis" value="3">
+                                <label for="diagnosis3">骨折</label>
+                                <input type="text" class="radio-box" id="sub_diagnosis3" name="sub_diagnosis3"
+                                    placeholder="請填寫說明">
+                            </div>
+
+                            <div>
+                                <input type="checkbox" id="diagnosis4" name="diagnosis" value="4">
+                                <label for="diagnosis4">人工關節置換</label>
+                                <input type="text" class="radio-box" id="sub_diagnosis4" name="sub_diagnosis4"
+                                    placeholder="請填寫說明">
+                            </div>
+
+                            <div>
+                                <input type="checkbox" id="diagnosis5" name="diagnosis" value="5">
+                                <label for="diagnosis5">腦傷</label>
+                            </div>
+
+                            <div>
+                                <input type="checkbox" id="diagnosis6" name="diagnosis" value="6">
+                                <label for="diagnosis6">腦性麻痺 GMFCS</label>
+                                <div class="radio-box">
+                                    <div>
+                                        <input type="radio" name="sub_diagnosis6" id="sub_diagnosis6_1" value="1">
+                                        <label for="sub_diagnosis6_1">1</label>
+                                    </div>
+
+                                    <div>
+                                        <input type="radio" name="sub_diagnosis6" id="sub_diagnosis6_2" value="2">
+                                        <label for="sub_diagnosis6_2">2</label>
+                                    </div>
+
+                                    <div>
+                                        <input type="radio" name="sub_diagnosis6" id="sub_diagnosis6_3" value="3">
+                                        <label for="sub_diagnosis6_3">3</label>
+                                    </div>
+
+                                    <div>
+                                        <input type="radio" name="sub_diagnosis6" id="sub_diagnosis6_4" value="4">
+                                        <label for="sub_diagnosis6_4">4</label>
+                                    </div>
+
+                                    <div>
+                                        <input type="radio" name="sub_diagnosis6" id="sub_diagnosis6_5" value="5">
+                                        <label for="sub_diagnosis6_5">5</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <input type="checkbox" id="diagnosis7" name="diagnosis" value="7">
+                                <label for="diagnosis7">脊髓損傷</label>
+                                <input class="radio-box" type="text" id="sub_diagnosis7" name="sub_diagnosis7"
+                                    placeholder="請填寫說明">
+                            </div>
+
+                            <div>
+                                <input type="checkbox" id="diagnosis8" name="diagnosis" value="8">
+                                <label for="diagnosis8">失智症</label>
+                            </div>
+
+                            <div>
+                                <input type="checkbox" id="diagnosis9" name="diagnosis" value="9">
+                                <label for="diagnosis9">癌症</label>
+                                <input type="text" class="radio-box" id="sub_diagnosis9" name="sub_diagnosis"
+                                    placeholder="請填寫說明">
+                            </div>
+
+                            <div>
+                                <input type="checkbox" id="diagnosis10" name="diagnosis" value="10">
+                                <label for="diagnosis10">其他</label>
+                                <input type="text" class="radio-box" id="sub_diagnosis10" name="sub_diagnosis10"
+                                    placeholder="請填寫說明">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- step06 -->
+
+        <div class="step06">
+
+            <div class="detail-box">
+
+                <div>
+
+                    <div class="title-box">
+
+                        <span class="title">重大事件&事發日期</span>
+
+                    </div>
+
+                    <div class="bottom-box">
+
+                        <div class="text-box" style="margin-top:0;">
+
+                            <textarea id="step06text01" name="" placeholder="請輸入"></textarea>
+
+                        </div>
+
+                    </div>
+
+                    <div class="title-box">
+
+                        <span class="title">醫病史</span>
+
+                    </div>
+
+                    <div class="bottom-box">
+
+                        <div class="checkbox-box">
+
+                            <div>
+
+                                <input type="checkbox" id="history1" name="history" value="1">
+
+                                <label for="history1">無</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="checkbox" id="history2" name="history" value="2">
+
+                                <label for="history2">高血壓</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="checkbox" id="history3" name="history" value="3">
+
+                                <label for="history3">糖尿病</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="checkbox" id="history4" name="history" value="4">
+
+                                <label for="history4">高血脂</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="checkbox" id="history5" name="history" value="5">
+
+                                <label for="history5">心臟病</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="checkbox" id="history6" name="history" value="6">
+
+                                <label for="history6">骨質疏鬆症</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="checkbox" id="history7" name="history" value="7">
+
+                                <label for="history7">憂鬱症</label>
+
+                            </div>
+
+                            <div>
+
+                                <input type="checkbox" id="history8" name="history" value="8">
+
+                                <label for="history8">其他</label>
+                                <input type="text" class="radio-box" id='sub_history8' name='sub_history8'
+                                    placeholder="請填寫說明">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="title-box">
+
+                        <span class="title">用藥</span>
+
+                    </div>
+
+                    <div class="bottom-box">
+
+                        <div class="text-box" style="margin-top:0;">
+
+                            <textarea name="" id="step06text02" placeholder="請輸入"></textarea>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- step07 -->
+
+        <div class="step07">
+
+            <div class="detail-box">
+
+                <div>
+
+                    <div class="title-box">
+
+                        <span class="title">過往職業背景</span>
+
+                    </div>
+
+                    <div class="bottom-box">
+
+                        <div class="text-box" style="margin-top:0;">
+
+                            <textarea name="" id="step07text01" placeholder="請輸入"></textarea>
+
+                        </div>
+
+                    </div>
+
+                    <div class="title-box">
+
+                        <span class="title">特別喜歡、重視的人/偶像</span>
+
+                    </div>
+
+                    <div class="bottom-box">
+
+                        <div class="text-box" style="margin-top:0;">
+
+                            <textarea name="" id="step07text02" placeholder="請輸入"></textarea>
+
+                        </div>
+
+                    </div>
+
+                    <div class="title-box">
+
+                        <span class="title">特別喜歡、重視的事物、音樂</span>
+
+                    </div>
+
+                    <div class="bottom-box">
+
+                        <div class="text-box" style="margin-top:0;">
+
+                            <textarea name="" id="step07text03" placeholder="請輸入"></textarea>
+
+                        </div>
+
+                    </div>
+
+                    <div class="title-box">
+
+                        <span class="title">對目前生活的滿意度</span>
+
+                    </div>
+
+                    <div class="emoji-radio-box">
+
+                        <div>
+
+                            <input type="radio" id="emoji2-1" name="emoji2" value="1">
+
+                            <label for="emoji2-1">
+
+                                <svg width="40" height="41" viewBox="0 0 40 41" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+
+                                    <path
+                                        d="M19.9999 37.3333C29.2047 37.3333 36.6666 29.8714 36.6666 20.6667C36.6666 11.4619 29.2047 4 19.9999 4C10.7952 4 3.33325 11.4619 3.33325 20.6667C3.33325 29.8714 10.7952 37.3333 19.9999 37.3333Z"
+                                        stroke="#654F00" stroke-width="3.33333" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+
+                                    <path
+                                        d="M27 22.666C27 22.666 24.8612 27.666 20.0001 27.666C15.139 27.666 13 22.666 13 22.666"
+                                        stroke="#654F00" stroke-width="3.33333" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+
+                                    <path d="M15 15.666H15.0162" stroke="#654F00" stroke-width="3.33333"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+
+                                    <path d="M25 15.666H25.0162" stroke="#654F00" stroke-width="3.33333"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+
+                                </svg>
+
+
+
+                                <span>非常滿意</span>
+
+                            </label>
+
+                        </div>
+
+                        <div>
+
+                            <input type="radio" id="emoji2-2" name="emoji2" value="2">
+
+                            <label for="emoji2-2">
+
+                                <svg width="41" height="41" viewBox="0 0 41 41" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+
+                                    <path
+                                        d="M20.3998 37.3333C29.6046 37.3333 37.0665 29.8714 37.0665 20.6667C37.0665 11.4619 29.6046 4 20.3998 4C11.1951 4 3.73315 11.4619 3.73315 20.6667C3.73315 29.8714 11.1951 37.3333 20.3998 37.3333Z"
+                                        stroke="#654F00" stroke-width="3.33333" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+
+                                    <path
+                                        d="M27.3999 22.666C27.3999 22.666 25.2611 27.666 20.4 27.666C15.5389 27.666 13.3999 22.666 13.3999 22.666"
+                                        stroke="#654F00" stroke-width="3.33333" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+
+                                    <path d="M15.3999 15.666H15.4161" stroke="#654F00" stroke-width="3.33333"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+
+                                    <path d="M25.3999 15.666H25.4161" stroke="#654F00" stroke-width="3.33333"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+
+                                </svg>
+
+
+
+                                <span>滿意</span>
+
+                            </label>
+
+                        </div>
+
+                        <div>
+
+                            <input type="radio" id="emoji2-3" name="emoji2" value="3">
+
+                            <label for="emoji2-3">
+
+                                <svg width="41" height="41" viewBox="0 0 41 41" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+
+                                    <path
+                                        d="M20.8 37.3333C30.0047 37.3333 37.4666 29.8714 37.4666 20.6667C37.4666 11.4619 30.0047 4 20.8 4C11.5952 4 4.1333 11.4619 4.1333 20.6667C4.1333 29.8714 11.5952 37.3333 20.8 37.3333Z"
+                                        stroke="#654F00" stroke-width="3.33333" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+
+                                    <path
+                                        d="M27.8 22.666C27.8 22.666 25.6613 27.666 20.8001 27.666C15.939 27.666 13.8 22.666 13.8 22.666"
+                                        stroke="#654F00" stroke-width="3.33333" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+
+                                    <path d="M15.8 15.666H15.8162" stroke="#654F00" stroke-width="3.33333"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+
+                                    <path d="M25.8 15.666H25.8162" stroke="#654F00" stroke-width="3.33333"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+
+                                </svg>
+
+
+
+                                <span>普通</span>
+
+                            </label>
+
+                        </div>
+
+                        <div>
+
+                            <input type="radio" id="emoji2-4" name="emoji2" value="4">
+
+                            <label for="emoji2-4">
+
+                                <svg width="41" height="41" viewBox="0 0 41 41" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+
+                                    <path
+                                        d="M20.1999 37.3333C29.4046 37.3333 36.8665 29.8714 36.8665 20.6667C36.8665 11.4619 29.4046 4 20.1999 4C10.9951 4 3.5332 11.4619 3.5332 20.6667C3.5332 29.8714 10.9951 37.3333 20.1999 37.3333Z"
+                                        stroke="#654F00" stroke-width="3.33333" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+
+                                    <path
+                                        d="M27.2 22.666C27.2 22.666 25.0612 27.666 20.2 27.666C15.3389 27.666 13.2 22.666 13.2 22.666"
+                                        stroke="#654F00" stroke-width="3.33333" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+
+                                    <path d="M15.2 15.666H15.2161" stroke="#654F00" stroke-width="3.33333"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+
+                                    <path d="M25.2 15.666H25.2161" stroke="#654F00" stroke-width="3.33333"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+
+                                </svg>
+
+
+
+                                <span>不滿意</span>
+
+                            </label>
+
+                        </div>
+
+                        <div>
+
+                            <input type="radio" id="emoji2-5" name="emoji2" value="5">
+
+                            <label for="emoji2-5">
+
+                                <svg width="41" height="41" viewBox="0 0 41 41" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+
+                                    <path
+                                        d="M20.6 37.3333C29.8048 37.3333 37.2667 29.8714 37.2667 20.6667C37.2667 11.4619 29.8048 4 20.6 4C11.3953 4 3.93335 11.4619 3.93335 20.6667C3.93335 29.8714 11.3953 37.3333 20.6 37.3333Z"
+                                        stroke="#654F00" stroke-width="3.33333" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+
+                                    <path
+                                        d="M27.6001 22.666C27.6001 22.666 25.4613 27.666 20.6002 27.666C15.7391 27.666 13.6001 22.666 13.6001 22.666"
+                                        stroke="#654F00" stroke-width="3.33333" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+
+                                    <path d="M15.6001 15.666H15.6163" stroke="#654F00" stroke-width="3.33333"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+
+                                    <path d="M25.6001 15.666H25.6163" stroke="#654F00" stroke-width="3.33333"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+
+                                </svg>
+
+
+
+                                <span>非常不滿意</span>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="next-button">
+
+            <span class="next">下一步</span>
+
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="../../../js/webConfig.js"></script>
+
+    <script type="text/javascript" src="./js/question.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            // 選擇所有的 SVG PATH 元素
+
+            $('svg g').click(function () {
+
+                // 點擊事件處理程序
+
+                var pathClass = $(this).attr('id');
+
+                console.log(pathClass);
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+
+
+</html>

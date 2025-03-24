@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<!--  This source code is exported from pxCode, you can get more document from https://www.pxcode.io  -->
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <link href="../../css/RobotoFont.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/bootstrap-5.3.3.css">
+  <script src="../../js/bootstrap-5.3.3.js"></script>
+  <script src="../../js/jquery-3.6.0.min.js"></script>
+
+
+  <!-- Font Awesome圖示庫 -->
+  <link rel="stylesheet" href="../../css/all.min.css">
+
+  <!-- Please DO NOT remove this line, all link and script tags will be merged to here -->
+  <link rel="stylesheet" type="text/css" href="../../components/Header/style.css" />
+  <link rel="stylesheet" type="text/css" href="../../components/Footer/style.css" />
+  <link rel="stylesheet" type="text/css" href="../../components/CustomAlert/style.css" />
+
+  <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/fonts.css" />
+  <link rel="stylesheet" type="text/css" href="./style.css?03" />
+  <script src="../../js/fullcalendar.min.js"></script>
+  <!-- <script src="../../js/locale/zh-tw.min.js"></script> -->
+  <script src="../../js/moment.min.js"></script>
+  <link rel="stylesheet" href="../../css/fullcalendar.min.css" />
+  <link rel="stylesheet" href="../../css/air-datepicker.css">
+  <script src="../../js/air-datepicker.js"></script>
+  <script>
+    // 確保載入時，使用時間戳。
+    let version = Date.now();
+    document.write('<script type="text/javascript" src="../../js/jquery.md5.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script type="text/javascript" src="../../js/jquery.cookie.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script type="text/javascript" src="../../components/Header/script.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script type="text/javascript" src="../../components/CustomAlert/script.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script type="text/javascript" src="../../js/fullcalendar.min.js?ver=' + version + '"></scr' + 'ipt>'); 
+  </script>
+
+  <script>
+    $(function () {
+      // 為確保Header/index.html始終在Header/script.js之前載入，並禁用快取。每次都載新的js，避免偶爾的順序出錯
+      // 此外因為需要監聽，所以把主要監聽功能寫在這，確保在Header.html載入之後才執行。避免引入外部js檔案時，偶爾造成的載入順序錯誤問題。
+      $.get("../../components/Header/index.html", function (data) {
+        $('#header').html(data);
+      }).fail(function () {
+      });
+
+      $.get("../../components/Footer/index.html", function (data) {
+        $('#footer').html(data);
+      }).fail(function () {
+      });
+
+    });
+  </script>
+</head>
+
+<body style="background: #F3F3F3;">
+  <div id="header"></div>
+
+ 
+    <article class="main-content">
+        <section class="containerArea">
+            <div class="container">
+                <div class="row d-flex justify-content-center section2__flexCol">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+                      <h2>
+                        <svg width="6" height="14" viewBox="0 0 6 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M6 7L3.82708e-07 13.0622L9.12681e-07 0.937822L6 7Z" fill="#EB5C20" />
+                        </svg>
+                        報價單
+                      </h2>
+                        <div class="row card">
+                             
+                              <div class="">
+                                
+                                <div>
+                                  <div class="nav-box">
+                                    <span class="acc">個案帳號<span></span></span>
+                                    <span class="name">個案名稱<span></span></span>
+                                  </div>
+                                  <div class="hr-box">
+                                    <span>排程課表</span>
+                                  </div>
+                                  <div class="fullcalender-box">
+                                    <div id="calendar">
+                                    </div>
+                                    <div class="right-box">
+                                      <div class="date-bar">
+                                        <!-- <span class="date">2022/4/6 星期六</span>
+                                        <span class="date-tag">兒童節 / 清明節</span> -->
+                                      </div>
+                                      <div class="detail">
+                                        <!-- <div class="detail-box evaluate">
+                                        <span class="tag">評估</span>
+                                        <span class="title">課程A-評估及擬定指引</span>
+                                        <span class="date">課程時間：</span>
+                                        <span class="date">2023/07/24 15:00 ～</span>
+                                        <span class="date">2023/07/24 17:00</span>
+                                      </div>
+                                      <div class="detail-box vacation">
+                                        <span class="tag">休假</span>
+                                        <span class="title">休假</span>
+                                        <span class="date">課程時間：</span>
+                                        <span class="date">2023/07/24 15:00 ～</span>
+                                        <span class="date">2023/07/24 17:00</span>
+                                      </div>
+                                      <div class="detail-box training">
+                                        <span class="tag">評估</span>
+                                        <span class="title">課程A-評估及擬定指引</span>
+                                        <span class="date">課程時間：</span>
+                                        <span class="date">2023/07/24 15:00 ～</span>
+                                        <span class="date">2023/07/24 17:00</span>
+                                      </div> -->
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="hr-box">
+                                    <span>課程一覽</span>
+                                  </div>
+                                  <div class="course-list">
+                                    <ul class="mb_none">
+                                      <!-- <li class="header">
+                                        <span class="title">摘要</span>
+                                        <span class="price">單價</span>
+                                        <span class="quantity">數量</span>
+                                        <span class="unit">單位</span>
+                                        <span class="total" style="text-align: center;padding:0;">總計</span>
+                                      </li> -->
+                                      <!-- <li class="content">
+                                        <span class="title">課程A [評估及擬辦指引]</span>
+                                        <span class="price">3,860</span>
+                                        <span class="quantity">0</span>
+                                        <span class="unit">2小時/堂</span>
+                                        <span class="total">0</span>
+                                      </li>
+                                      <li class="content">
+                                        <span class="title">課程A [評估及擬辦指引]</span>
+                                        <span class="price">3,860</span>
+                                        <span class="quantity">0</span>
+                                        <span class="unit">2小時/堂</span>
+                                        <span class="total">3,8160</span>
+                                      </li>
+                                      <li class="content">
+                                        <span class="title">課程A [評估及擬辦指引]</span>
+                                        <span class="price">3,860</span>
+                                        <span class="quantity">0</span>
+                                        <span class="unit">2小時/堂</span>
+                                        <span class="total">0</span>
+                                      </li>
+                                      <li class="content">
+                                        <span class="title">課程A [評估及擬辦指引]</span>
+                                        <span class="price">3,860</span>
+                                        <span class="quantity">0</span>
+                                        <span class="unit">2小時/堂</span>
+                                        <span class="total">0</span>
+                                      </li>
+                                      <li class="total-box">
+                                        <span class="title">合計</span>
+                                        <span class="total">13,860</span>
+                                      </li> -->
+                                    </ul>
+                            
+                                    <ul class="pc_none">
+                                      <!-- <li>
+                                        <span>摘要<span>課程B [半日課程] 1對2服務 1575</span></span>
+                                        <span>單價<span>1,575</span></span>
+                                        <span>數量<span>15</span></span>
+                                        <span>單位<span>3小時/堂</span></span>
+                                        <span>總計<span>23,625</span></span>
+                                      </li>
+                                      <li>
+                                        <span>摘要<span>課程B [半日課程] 1對2服務 1575</span></span>
+                                        <span>單價<span>1,575</span></span>
+                                        <span>數量<span>15</span></span>
+                                        <span>單位<span>3小時/堂</span></span>
+                                        <span>總計<span>23,625</span></span>
+                                      </li> -->
+                                      <!-- <li class="total-box">
+                                        <span class="title">合計</span>
+                                        <span class="total">13,860</span>
+                                      </li> -->
+                                    </ul>
+                                  </div>
+                                  <div class="hr-box">
+                                    <span>注意事項</span>
+                                  </div>
+                                  <div class="tips-box">
+                                    <!-- <div><span>1. </span><span>確認服務後買方應於三日內完成匯款。</span></div>
+                                    <div><span>2. </span><span>課程以月爲單位，跨月不補課、不退費。</span></div>
+                                    <div><span>3. </span><span>買方完成匯款後，即表充分審閱理解並同意上述規定，賣方履行給予相當審閱服務期。</span></div>
+                                    <div><span>4. </span><span>Lorem</span></div> -->
+                                  </div>
+                                  <div class="hr-box">
+                                    <span>匯款帳戶</span>
+                                  </div>
+                                  <div class="remittance-box">
+                                    <div class="detail">
+                                      <!-- <span>銀行：合作金庫 (006) 內湖分行</span>
+                                      <span>戶名：強生不倒翁社會企業股份有限公司</span>
+                                      <span>帳戶：1564 717 121818</span>
+                                      <span>電話：0933-733-368</span> -->
+                                    </div>
+                                    <div class="qrcode-box">
+                                      <img src="../../assets/strong_qr_code.png" alt="">
+                                      <img src="../../assets/strong_qr_code.png" alt="">
+                                    </div>
+                                  </div>
+                                  <div class="hr-box" style="display:none">
+                                    <span>匯款資訊</span>
+                                  </div>
+                                  <div class="remittance-input-box" style="display:none">
+                                    <div class="input-box">
+                                      <label for="">匯款帳號後五碼：</label>
+                                      <input type="text">
+                                    </div>
+                                    <div class="input-box">
+                                      <label for="">匯款日期：</label>
+                                      <input class="section2_input" type="text" name="birthDate" id="birthDate">
+                                    </div>
+                                    <div class="date-box">
+                                      <span>繳款日：</span>
+                                      <span>12/08</span>
+                                    </div>
+                                  </div>
+                                  <div class="button-box">
+                                    <button class="send" disabled>送出</button>
+                                    <button>取消</button>
+                                  </div>
+                                </div>
+                              </div>
+                             
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div id="footer"></div>
+  </div>
+
+</body>
+
+<script type="text/javascript" src="../../js/webConfig.js"></script>
+<script type="text/javascript" src="./script.js?1208"></script>
+
+</html>

@@ -1,0 +1,357 @@
+.group {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  min-height: 0px;
+  left: 0px;
+  right: 0px;
+}
+
+.group1 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex-grow: 1;
+}
+
+.group1backgroundcolor {
+  background-color: #f3f3f3;
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(243, 243, 243);
+  position: relative;
+  overflow: hidden;
+}
+
+.box {
+  box-shadow: 0px 4px 2px 0px rgba(0, 0, 0, 0.129);
+  position: relative;
+}
+
+.box1 {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  border-radius: 12px 12px 12px 12px;
+  outline: 1px solid rgb(221, 221, 221);
+  outline-offset: -1px;
+  width: 35.16%;
+  position: relative;
+  overflow: hidden;
+  min-width: 450px;
+  max-width: 450px;
+  margin: 110px auto 100px;
+}
+@media (max-width: 1199px) {
+  .box1 {
+    margin: 90px auto;
+  }
+}
+@media (max-width: 991px) {
+  .box1 {
+    margin: 72px auto 80px;
+  }
+}
+@media (max-width: 767px) {
+  .box1 {
+    width: 87.55%;
+    min-width: 0px;
+    max-width: 999px;
+    margin: 52px auto 68px;
+  }
+}
+@media (max-width: 575px) {
+  .box1 {
+    width: 90.36%;
+    max-width: 9999px;
+    margin: 36px auto 48px;
+  }
+}
+@media (max-width: 479px) {
+  .box1 {
+    width: 93.36%;
+    margin: 24px auto 30px;
+  }
+}
+
+.flexCol {
+  display: flex;
+  flex-direction: column;
+  width: 78.44%;
+  position: relative;
+  flex-grow: 1;
+  margin: 24px auto 30px;
+}
+@media (max-width: 991px) {
+  .flexCol {
+    width: 83.06%;
+  }
+}
+@media (max-width: 479px) {
+  .flexCol {
+    width: 91.69%;
+  }
+}
+
+.flexRow {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 19px;
+       column-gap: 19px;
+  position: relative;
+}
+@media (max-width: 1199px) {
+  .flexRow {
+    justify-content: flex-start;
+    align-items: center;
+    -moz-column-gap: 14px;
+         column-gap: 14px;
+  }
+}
+@media (max-width: 575px) {
+  .flexRow {
+    -moz-column-gap: 12px;
+         column-gap: 12px;
+  }
+}
+
+.flexRow > .cell {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex: 0 1 8px;
+}
+
+.image3 {
+  width: 8px;
+  height: auto;
+  aspect-ratio: 0.57;
+  vertical-align: top;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center center;
+     object-position: center center;
+  position: relative;
+  min-width: 8px;
+  margin: 12px 0px 6px;
+}
+
+.flexRow > .cell1 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex: 0 0 96px;
+  min-width: 96px;
+}
+
+.medium_title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 24px/1.33 "Noto Sans TC", Helvetica, Arial, serif;
+  color: rgb(41, 41, 41);
+  text-align: center;
+  letter-spacing: 0px;
+  width: -moz-fit-content;
+  width: fit-content;
+  position: relative;
+  flex-grow: 1;
+  min-width: 0px;
+}
+@media (max-width: 991px) {
+  .medium_title {
+    font-size: 20px;
+    text-align: left;
+    justify-content: flex-start;
+  }
+}
+
+.flexCol1 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 46px 0px 0px 3px;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 400 14px/1.35 "Noto Sans TC", Helvetica, Arial, serif;
+  color: rgb(41, 41, 41);
+  text-align: center;
+  letter-spacing: 0px;
+  width: 31.71%;
+  position: relative;
+  margin: 0px 68.29% 0px 0%;
+}
+@media (max-width: 575px) {
+  .text {
+    text-align: left;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 0px 0px;
+  }
+}
+
+.rect {
+  background-color: rgb(243, 243, 243);
+  border-radius: 4px 4px 4px 4px;
+  outline: 1px solid rgb(221, 221, 221);
+  outline-offset: -1px;
+  position: relative;
+  min-height: 38px;
+  margin: 8px 0px 0px;
+}
+
+.flexCol2 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 16px 0px 0px 3px;
+}
+
+.flexCol2 > .cell {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.text1 {
+  display: flex;
+  align-items: center;
+  font: 14px/1.35 "Noto Sans TC", Helvetica, Arial, serif;
+  color: rgb(41, 41, 41);
+  letter-spacing: 0px;
+  width: -moz-fit-content;
+  width: fit-content;
+  position: relative;
+  flex-grow: 1;
+  min-width: 0px;
+  margin: 0px auto 0px 0px;
+}
+@media (max-width: 575px) {
+  .text1 {
+    text-align: left;
+  }
+}
+
+.highlights {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 16px/1.31 "Noto Sans TC", Helvetica, Arial, serif;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  letter-spacing: 0px;
+  width: 96%;
+  position: relative;
+  margin: 90px auto 2px;
+}
+
+.content_box {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(235, 92, 32);
+  border-radius: 4px 4px 4px 4px;
+  cursor: pointer;
+  position: relative;
+  margin: 11px 0px 0px 3px;
+}
+
+.highlights2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 600 16px/1.31 "Noto Sans TC", Helvetica, Arial, serif;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  letter-spacing: 0px;
+  width: 32px;
+  position: relative;
+  flex-grow: 1;
+  min-width: 32px;
+  margin: 8px auto 9px;
+}
+
+.box2 {
+  height: auto;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+}
+
+.box3 {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  outline: 1px solid rgb(221, 221, 221);
+  outline-offset: -1px;
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  overflow: hidden;
+  bottom: 63px;
+  right: 24px;
+  cursor: pointer;
+}
+@media (max-width: 991px) {
+  .box3 {
+    bottom: 90px;
+  }
+}
+@media (max-width: 767px) {
+  .box3 {
+    display: none;
+  }
+}
+
+.flexCol3 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex-grow: 1;
+  margin: 14px 14px 13px;
+}
+
+.flexCol3 > .cell {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.image4 {
+  width: 14px;
+  height: auto;
+  aspect-ratio: 1.75;
+  vertical-align: top;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center center;
+     object-position: center center;
+  position: relative;
+  min-width: 14px;
+  margin: 0px 9px;
+}
+
+.highlights5 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 400 16px/1.31 "Noto Sans TC", Helvetica, Arial, serif;
+  color: rgb(126, 126, 126);
+  text-align: center;
+  letter-spacing: 0px;
+  position: relative;
+  margin: 4px 0px 0px;
+}
+
+input:focus {
+  border-color: solid 1px #eb5c20;
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,1654 @@
+* {
+
+    font-family: "Open Sans", sans-serif;
+
+}
+
+
+
+.content-box {
+
+    max-width: 1280px;
+
+    min-width: 1280px;
+
+    min-height: 100vh;
+
+    padding: 40px 150px 54px;
+
+    background: #F3F3F3;
+
+    margin: 0 auto;
+
+}
+
+
+
+.content-box>div {
+
+    min-width: 720px;
+
+    border-radius: 4px;
+
+    border: 1px solid #DDD;
+
+    background: #FFF;
+
+}
+
+
+
+h2 {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    font-size: 24px;
+
+    color: #292929;
+
+    padding: 0 0 8px;
+
+    background: #F3F3F3;
+
+}
+
+
+
+h2 svg {
+
+    margin-top: 2px;
+
+}
+
+
+
+.nav-box {
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 39px 26px 21px;
+
+}
+
+
+
+.nav-box .acc,
+
+.nav-box .name {
+
+    display: flex;
+
+    gap: 13px;
+
+    font-weight: bolder;
+
+}
+
+
+
+.nav-box .acc span,
+
+.nav-box .name span {
+
+    font-weight: normal;
+
+}
+
+
+
+.nav-box .acc {
+
+    margin-right: 285px;
+
+}
+
+
+
+.hr-box {
+
+    padding: 10px 25px;
+
+    background: #F3F3F3;
+
+    font-weight: bolder;
+
+}
+
+
+
+.fullcalender-box {
+
+    display: flex;
+
+    padding: 0 24px 33px;
+
+}
+
+
+
+.fullcalender-box .right-box {
+
+    display: none;
+
+    margin-top: 54px;
+
+    max-width: 211px;
+
+    width: 100%;
+
+    border: 1px solid #ddd;
+
+    box-shadow: 1px 0px 6px 0px #00000033;
+
+
+
+}
+
+
+
+.fullcalender-box .right-box .date-bar {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-content: space-between;
+
+    height: 59px;
+
+    padding: 9px 0 9px 3px;
+
+    margin-left: 12px;
+
+    border-bottom: 1px solid #ddd
+
+}
+
+
+
+.fullcalender-box .right-box .date-bar span {
+
+    display: block;
+
+    width: 100%;
+
+    font-weight: bolder;
+
+    line-height: 18px;
+
+}
+
+
+
+.fullcalender-box .right-box .date-bar .date-tag {
+
+    font-size: 14px;
+
+    font-weight: 400;
+
+    color: #7E7E7E;
+
+}
+
+
+
+.fullcalender-box .right-box .detail {
+
+    margin-left: 12px;
+
+    min-height: 60px;
+
+}
+
+
+
+.fullcalender-box .right-box .detail-box {
+
+    padding: 13px 3px 16px 3px;
+
+    border-bottom: 1px solid #ddd
+
+}
+
+
+
+
+
+.fullcalender-box .right-box .detail-box span {
+
+    display: block;
+
+    color: #292929;
+
+    line-height: 18px;
+
+}
+
+
+
+.fullcalender-box .right-box .detail-box .tag {
+
+    position: relative;
+
+    font-size: 14px;
+
+    line-height: 21px;
+
+    padding-left: 16px;
+
+}
+
+
+
+.fullcalender-box .right-box .detail-box .tag::after {
+
+    content: '';
+
+    position: absolute;
+
+    left: 2.5px;
+
+    top: 6px;
+
+    display: block;
+
+    width: 10px;
+
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: #70BE20;
+
+}
+
+
+
+.fullcalender-box .right-box .detail-box.training .tag::after {
+
+    background: #4E91FF;
+
+}
+
+
+
+.fullcalender-box .right-box .detail-box.vacation .tag::after {
+
+    background: #EA475B;
+
+}
+
+
+
+.fullcalender-box .right-box .detail-box .title {
+
+    font-weight: bolder;
+
+    margin: 8px 0;
+
+}
+
+
+
+.fullcalender-box .right-box .detail-box .coach {
+
+    font-weight: bolder;
+
+    margin: 8px 0;
+
+}
+
+
+
+.course-list {
+
+    padding: 30px 22px;
+
+
+
+}
+
+
+
+.course-list ul {
+
+    box-shadow: 0px 0px 6px 0px #00000033;
+
+}
+
+
+
+.course-list .header {
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 16px;
+
+    height: 30px;
+
+    font-size: 12px;
+
+    font-weight: bolder;
+
+    background: #EBEBEB;
+
+}
+
+
+
+.course-list .content {
+
+    display: flex;
+
+    align-items: center;
+
+    height: 50px;
+
+    font-size: 14px;
+
+    padding: 0 16px;
+
+    border-bottom: 1px solid #DDD;
+
+}
+
+
+
+.course-list .title {
+
+    width: 300px;
+
+}
+
+
+
+.course-list .price {
+
+    width: 60px;
+
+    margin-right: 60px;
+
+    text-align: center;
+
+}
+
+
+
+.course-list .quantity {
+
+    width: 50px;
+
+    margin-right: 50px;
+
+    text-align: center;
+
+}
+
+
+
+.course-list .unit {
+
+    width: 100px;
+
+    margin-right: 47px;
+
+    text-align: center;
+
+}
+
+
+
+.course-list .total {
+
+    width: 120px;
+
+    text-align: right;
+
+    padding-right: 40px;
+
+}
+
+
+
+.course-list .total-box {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    height: 60px;
+
+    padding-left: 110px;
+
+    background: #FFEDEF;
+
+}
+
+
+
+.course-list .total-box .title {
+
+    font-size: 16px;
+
+    font-weight: bolder;
+
+}
+
+
+
+.course-list .total-box .total {
+
+    font-size: 16px;
+
+    font-weight: bolder;
+
+    margin-left: 275px
+
+}
+
+
+
+.tips-box,
+
+.remittance-box,
+
+.remittance-input-box {
+
+    padding: 23px 43px;
+
+}
+
+
+
+.tips-box div {
+
+    display: flex;
+
+    gap: 5px;
+
+}
+
+
+
+.tips-box span,
+
+.remittance-box span {
+
+    display: block;
+
+    line-height: 24px;
+
+}
+
+
+
+
+
+.remittance-box {
+
+    display: flex;
+
+    font-weight: bolder;
+
+    border-bottom: 1px solid #DDD;
+
+    gap: 50px;
+
+}
+
+
+
+.remittance-input-box {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    border-bottom: 1px solid #DDD;
+
+}
+
+
+
+.remittance-input-box .input-box {
+
+    width: 100%;
+
+    margin-bottom: 20px;
+
+}
+
+
+
+.remittance-input-box .input-box input {
+
+    padding: 8px 16px;
+
+    min-height: 40px;
+
+    border-radius: 4px;
+
+    font-size: 18px;
+
+    line-height: 24px;
+
+    border: 1px solid #DDDDDD;
+
+}
+
+
+
+.remittance-input-box .input-box label,
+
+.remittance-input-box .date-box span {
+
+    display: inline-block;
+
+    width: 15%;
+
+    font-weight: bolder;
+
+}
+
+
+
+.remittance-input-box .date-box {
+
+    width: 100%
+
+}
+
+
+
+.button-box {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 40px;
+
+    padding: 24px 0;
+
+}
+
+
+
+.button-box button {
+
+    width: 120px;
+
+    height: 38px;
+
+    border-radius: 4px;
+
+    background: #EB5C20;
+
+    color: #fff;
+
+    font-weight: 500;
+
+}
+
+
+
+.button-box button:disabled {
+
+    background: #ffb494;
+
+    cursor: no-drop;
+
+}
+
+
+
+.button-box button+button {
+
+    background: #fff;
+
+    color: #EB5C20;
+
+    border: 1px solid #EB5C20;
+
+}
+
+
+
+.qrcode-box img {
+
+    width: 95px;
+
+    margin-right: 20px;
+
+}
+
+
+
+.pc_none {
+
+    display: none;
+
+}
+
+
+
+/* 行事曆 */
+
+#calendar {
+
+    width: 100%;
+
+}
+
+
+
+.fc-view {
+
+    box-shadow: -1px 0px 6px 0px #00000033;
+
+}
+
+
+
+.fc .fc-toolbar.fc-header-toolbar {
+
+    position: relative;
+
+    margin: 17px 0 8px;
+
+}
+
+
+
+.fc h2 {
+
+    margin: 0;
+
+    padding: 0;
+
+    background: none;
+
+    font-weight: bolder;
+
+    font-family: "Open Sans", sans-serif;
+
+    font-size: 24px;
+
+}
+
+
+
+.fc .fc-button-group {
+
+    position: absolute;
+
+    top: -2px;
+
+    left: 185px;
+
+    display: flex;
+
+    gap: 8px;
+
+    margin: 0 !important;
+
+}
+
+
+
+.fc .fc-button-group>.fc-button {
+
+    padding: 0;
+
+    width: 32px;
+
+    height: 32px;
+
+    border-radius: 4px;
+
+    border: 1px solid #DDD;
+
+    background: #FFF;
+
+}
+
+
+
+.fc .fc-button .fc-icon {
+
+    font-size: 16px;
+
+    top: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin: 0;
+
+    padding: 0;
+
+
+
+}
+
+
+
+.fc-icon-left-single-arrow:after {
+
+    top: 0;
+
+    content: url('./images/icon-arrow-left.png');
+
+    font-weight: normal;
+
+}
+
+
+
+.fc-icon-right-single-arrow:after {
+
+    top: 0;
+
+    content: url('./images/icon-arrow-right.png');
+
+    font-weight: normal;
+
+}
+
+
+
+.fc-icon {
+
+    color: #EB5C20;
+
+}
+
+
+
+.fc .fc-today-button {
+
+    position: absolute;
+
+    top: -2px;
+
+    left: 273px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    width: 80px;
+
+    height: 32px;
+
+    border-radius: 4px;
+
+    border: 1px solid #DDD;
+
+    background: #FFF;
+
+    color: #000;
+
+    font-weight: bolder;
+
+}
+
+
+
+.fc .fc-button-primary:hover,
+
+.fc .fc-button-primary:disabled {
+
+    border: 1px solid #DDD;
+
+    background: #FFF;
+
+    color: #000;
+
+
+
+}
+
+
+
+.fc-unthemed th {
+
+    height: 30px;
+
+    line-height: 30px;
+
+    border: 0;
+
+}
+
+
+
+.fc table .fc-head tr {
+
+    border-bottom: 2px solid #ddd;
+
+}
+
+
+
+.fc-ltr .fc-basic-view .fc-day-top .fc-day-number {
+
+    float: left;
+
+    width: 22px;
+
+    height: 22px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin-top: 8px;
+
+    margin-left: 5px;
+
+    font-size: 14px;
+
+}
+
+
+
+.fc-ltr .fc-basic-view .fc-day-top.today .fc-day-number {
+
+    color: #fff;
+
+    width: 22px;
+
+    height: 22px;
+
+    background: #EB5C20;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin-top: 8px;
+
+    margin-left: 5px;
+
+}
+
+
+
+.fc-unthemed td {
+
+    width: 102px;
+
+}
+
+
+
+
+
+.fc-unthemed td.fc-today {
+
+    background: #FFEEDF;
+
+}
+
+
+
+.fullcalender-box .even-box {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-content: start;
+
+    width: 100%;
+
+    height: 100%;
+
+    padding: 35px 4px 0;
+
+    overflow: hidden;
+
+}
+
+
+
+
+
+.fullcalender-box .fc-event {
+
+    position: relative;
+
+    border-radius: 0;
+
+    border: none;
+
+    color: #292929;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: -0.24px;
+
+    padding: 2px 3px 2px 5px;
+
+    margin: 0 0 5px 0 !important;
+
+    width: calc(100% - 14px);
+
+    pointer-events: none;
+
+}
+
+
+
+.fullcalender-box .fc-event.dnone {
+
+    opacity: 0;
+
+}
+
+
+
+.fullcalender-box .fc-event.evaluate {
+
+    background: #E9F6DC;
+
+}
+
+
+
+.fullcalender-box .fc-event::after {
+
+    content: '';
+
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+    display: block;
+
+    width: 2px;
+
+    height: 100%;
+
+    background: #70BE20;
+
+}
+
+
+
+.fullcalender-box .fc-event.vacation {
+
+    background: #FFC9D0;
+
+}
+
+
+
+.fullcalender-box .fc-event.vacation::after {
+
+    background: #EA475B;
+
+}
+
+
+
+.fullcalender-box .fc-event.training {
+
+    background: #DBE8FF;
+
+}
+
+
+
+.fullcalender-box .fc-event.training::after {
+
+    background: #4E91FF;
+
+}
+
+
+
+.fc-view-container * {
+
+    box-sizing: border-box;
+
+}
+
+
+
+/* 
+
+.fc-row.fc-widget-header {
+
+    margin: 0 !important;
+
+} */
+
+
+
+/* .fc .fc-row {
+
+    margin: 0 !important
+
+} */
+
+
+
+.fc-scroller {
+
+    overflow: hidden !important;
+
+}
+
+.section2__flexCol {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    flex-grow: 1;
+    margin: 40px 150px 54px;
+  }
+  @media (max-width: 1199px) {
+    .section2__flexCol {
+      margin: 30px 90px 20px;
+    }
+  }
+  @media (max-width: 991px) {
+    .section2__flexCol {
+      margin: 30px 40px 20px;
+    }
+  }
+  @media (max-width: 767px) {
+    .section2__flexCol {
+      margin: 30px 0px 20px;
+    }
+  }
+
+@media (max-width: 767px) {
+
+    .mb_none {
+
+        display: none !important;
+
+    }
+
+
+
+    .pc_none {
+
+        display: block;
+
+    }
+
+
+
+    .content-box {
+
+        min-width: auto;
+
+    }
+
+
+
+    .content-box>div {
+
+        min-width: 100%;
+
+        border: none;
+
+    }
+
+
+
+    .content-box {
+
+        padding: 18px 0;
+
+    }
+
+
+
+    h2 {
+
+        padding: 0 18px 15px;
+
+    }
+
+
+
+    h2 svg {
+
+        margin-top: 0;
+
+    }
+
+
+
+    .nav-box {
+
+        display: flex;
+
+        flex-wrap: wrap;
+
+        padding: 20px;
+
+    }
+
+
+
+    .nav-box .acc,
+
+    .nav-box .name {
+
+        display: flex;
+
+        width: 100%;
+
+        margin: 0;
+
+        gap: 15px;
+
+    }
+
+
+
+    .course-list {
+
+        padding: 20px 0 0;
+
+        border-bottom: 2px solid #ddd;
+
+    }
+
+
+
+    .course-list ul {
+
+        box-shadow: none;
+
+        display: flex;
+
+        flex-wrap: wrap;
+
+        gap: 8px;
+
+    }
+
+
+
+    .course-list li {
+
+        width: 100%;
+
+        padding: 19px 16px;
+
+        border-radius: 4px;
+
+        border: 1px solid #DDD;
+
+        background: #FFF;
+
+        margin: 0 18px;
+
+    }
+
+
+
+    .course-list li span {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 16px;
+
+        font-size: 12px;
+
+        font-weight: bolder;
+
+        margin-bottom: 14px;
+
+    }
+
+
+
+    .course-list li span:last-child {
+
+        margin: 0;
+
+    }
+
+
+
+    .course-list li span span {
+
+        font-size: 14px;
+
+        font-weight: 400;
+
+        margin: 0;
+
+    }
+
+
+
+    .course-list .total-box {
+
+        justify-content: space-between;
+
+        padding: 22px 50px;
+
+        height: auto;
+
+        margin: 0;
+
+        border: none;
+
+        border-radius: 0;
+
+    }
+
+
+
+    .course-list .total-box .title {
+
+        margin: 0;
+
+    }
+
+
+
+    .course-list .total-box .total {
+
+        margin: 0;
+
+        padding: 0;
+
+        width: auto;
+
+    }
+
+
+
+    .tips-box {
+
+        padding: 20px 18px;
+
+    }
+
+
+
+    .remittance-box,
+
+    .remittance-input-box {
+
+        padding: 0 0 22px;
+
+        margin: 20px 22px;
+
+    }
+
+
+
+    .button-box {
+
+        padding: 0 0 21px;
+
+    }
+
+
+
+    .hr-box {
+
+        padding: 10px 16px;
+
+    }
+
+
+
+    .remittance-input-box .input-box label,
+
+    .remittance-input-box .date-box span {
+
+        width: 40%;
+
+    }
+
+
+
+    .remittance-box {
+
+        display: block;
+
+    }
+
+
+
+    .remittance-box .qrcode-box {
+
+        margin-top: 20px;
+
+    }
+
+
+
+
+
+    .remittance-box .qrcode-box img {
+
+        margin: 20px auto 0;
+
+        /* display: block; */
+
+    }
+
+
+
+
+
+    .fullcalender-box .right-box {
+
+        margin: 0;
+
+        max-width: initial;
+
+        width: 100%;
+
+        border: none;
+
+    }
+
+
+
+    .fullcalender-box .right-box .detail-box:last-child {
+
+        border: none;
+
+    }
+
+
+
+    /*行事曆*/
+
+    #calendar {
+
+        min-width: min-content;
+
+        width: 100%;
+
+    }
+
+
+
+    .fullcalender-box {
+
+        flex-wrap: wrap;
+
+        padding: 0;
+
+    }
+
+
+
+    .fc-scroller {
+
+        overflow: hidden !important;
+
+        min-height: 358px;
+
+        height: 100% !important;
+
+    }
+
+
+
+    .fc .fc-toolbar.fc-header-toolbar {
+
+        padding: 0 12px;
+
+    }
+
+
+
+    .fc .fc-today-button {
+
+        right: 12px;
+
+        left: auto;
+
+    }
+
+
+
+    .fc .fc-button-group {
+
+        left: 50%;
+
+    }
+
+
+
+    .fc-basic-view .fc-body .fc-row {
+
+        min-height: auto;
+
+        height: 59px;
+
+    }
+
+
+
+    .fc-unthemed td {
+
+        width: auto;
+
+    }
+
+
+
+    .fc-row table,
+
+    .fc-day {
+
+        border: 0 hidden !important
+
+    }
+
+
+
+    .fc table .fc-head tr {
+
+        border-bottom: 1px solid #ddd;
+
+    }
+
+
+
+    .fc-view {
+
+        box-shadow: none;
+
+    }
+
+
+
+    .fc-view>table {
+
+        border-left: 0 hidden;
+
+        border-right: 0 hidden;
+
+        box-shadow: 0px 0px 6px 0px #00000033;
+
+    }
+
+
+
+    .fullcalender-box .even-box {
+
+        justify-content: center;
+
+        padding: 43px 4px 0;
+
+        gap: 3px;
+
+    }
+
+
+
+    .fullcalender-box .fc-event {
+
+        width: 6px;
+
+        height: 6px;
+
+        border-radius: 50%;
+
+        padding: 0;
+
+        font-size: 0%;
+
+    }
+
+
+
+    .fullcalender-box .fc-event::after {
+
+        content: none;
+
+    }
+
+
+
+    .fullcalender-box .fc-event.training {
+
+        background: #4E91FF;
+
+        color: #4E91FF
+
+    }
+
+
+
+    .fullcalender-box .fc-event.evaluate {
+
+        background: #70BE20;
+
+        color: #70BE20
+
+    }
+
+
+
+    .fullcalender-box .fc-event.vacation {
+
+        background: #EA475B;
+
+        color: #EA475B
+
+    }
+
+
+
+    .fc-event-container {
+
+        position: relative;
+
+    }
+
+
+
+    .fc-ltr .fc-basic-view .fc-day-top .fc-day-number {
+
+        float: none;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        width: 30px;
+
+        height: 30px;
+
+        border-radius: 50%;
+
+        font-size: 18px;
+
+        padding: 0;
+
+        margin: 9px auto 0;
+
+    }
+
+
+
+    .fc-ltr .fc-basic-view .fc-day-top.today .fc-day-number {
+
+        width: 30px;
+
+        height: 30px;
+
+        margin: 9px auto 0;
+
+
+
+    }
+
+
+
+    .fc-body .fc-content-skeleton td {
+
+        text-align: center;
+
+    }
+
+
+
+    .fc-unthemed td.fc-today {
+
+        background: none;
+
+    }
+
+
+
+    .fc-unthemed td.fc-today .fc-day-number {
+
+        background: #FFEEDF;
+
+    }
+
+}

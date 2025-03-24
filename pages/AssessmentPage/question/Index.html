@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>基本資料</title>
+
+
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="../../components/CustomAlert/style.css">
+  <link rel="stylesheet" href="../../../js/bootstrap-5.3.3.js">
+
+
+  <script src="../../../js/bootstrap-5.3.3.js"></script>
+  <script src="../../../js/jquery-3.6.0.min.js"></script>
+  <script src="../../../components/CustomAlert/script.js"></script>
+</head>
+
+<body>
+  <div class="header-box">
+    <div class="prev">
+      <img src="../images/question/prev-arrow.png">
+    </div>
+    <span class="title">基本資料</span>
+    <div class="home-box">
+      <img src="../images/question/home-icon.png">
+      <span>主選單</span>
+    </div>
+  </div>
+  <div class="content-box">
+    <div class="icon-box">
+      <svg width="22" height="32" viewBox="0 0 22 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M15.2603 2.52324H13.0756C13.0756 1.2833 12.0719 0.25 10.8024 0.25C9.56249 0.25 8.52915 1.25377 8.52915 2.52324H6.34452C5.72455 2.52324 5.22266 3.02513 5.22266 3.6451V6.06592C5.22266 6.68589 5.72455 7.18778 6.34452 7.18778H15.2603C15.8803 7.18778 16.3821 6.68589 16.3821 6.06592V3.6451C16.3821 3.02513 15.8803 2.52324 15.2603 2.52324Z"
+          fill="white" />
+        <path
+          d="M18.7743 4.70898H18.0658V6.06699C18.0658 7.63168 16.7963 8.90116 15.2316 8.90116H6.31583C4.75114 8.90116 3.4817 7.63168 3.4817 6.06699V4.70898H2.77319C1.53325 4.70898 0.5 5.71271 0.5 6.98218V29.4783C0.5 30.7182 1.50373 31.7515 2.77319 31.7515H18.7743C20.0142 31.7515 21.0476 30.7477 21.0476 29.4783V6.98218C21.0476 5.71271 20.0437 4.70898 18.7743 4.70898ZM5.13495 24.6956C4.57402 24.6956 4.1312 24.2528 4.1312 23.6919C4.1312 23.1309 4.57402 22.6881 5.13495 22.6881C5.69587 22.6881 6.1387 23.1309 6.1387 23.6919C6.10918 24.2528 5.66635 24.6956 5.13495 24.6956ZM5.13495 20.9168C4.57402 20.9168 4.1312 20.4739 4.1312 19.913C4.1312 19.3521 4.57402 18.9093 5.13495 18.9093C5.69587 18.9093 6.1387 19.3521 6.1387 19.913C6.10918 20.4739 5.66635 20.9168 5.13495 20.9168ZM5.13495 17.1084C4.57402 17.1084 4.1312 16.6656 4.1312 16.1046C4.1312 15.5437 4.57402 15.1008 5.13495 15.1008C5.69587 15.1008 6.1387 15.5437 6.1387 16.1046C6.10918 16.6656 5.66635 17.1084 5.13495 17.1084ZM16.4421 24.6956H9.32717C8.76624 24.6956 8.32342 24.2528 8.32342 23.6919C8.32342 23.1309 8.76624 22.6881 9.32717 22.6881H16.4421C17.003 22.6881 17.4458 23.1309 17.4458 23.6919C17.4458 24.2528 17.003 24.6956 16.4421 24.6956ZM16.4421 20.9168H9.32717C8.76624 20.9168 8.32342 20.4739 8.32342 19.913C8.32342 19.3521 8.76624 18.9093 9.32717 18.9093H16.4421C17.003 18.9093 17.4458 19.3521 17.4458 19.913C17.4458 20.4739 17.003 20.9168 16.4421 20.9168ZM17.4458 16.1341C17.4458 16.6951 17.003 17.1379 16.4421 17.1379H9.32717C8.76624 17.1379 8.32342 16.6951 8.32342 16.1341C8.32342 15.5732 8.76624 15.1304 9.32717 15.1304H16.4421C17.003 15.1304 17.4458 15.5732 17.4458 16.1341Z"
+          fill="white" />
+      </svg>
+    </div>
+    <span class="title">基本資料</span>
+    <span class="button">開始</span>
+  </div>
+
+  <script>
+
+    $(document).ready(function () {
+      const urlSearchParams = new URLSearchParams(window.location.search);
+      const params = Object.fromEntries(urlSearchParams.entries());
+      let data = { workOrderId: params.workOrderID };
+
+      $(".home-box").click(() => {
+        window.location.href = `../../AssessmentPage/index.html?workOrderID=${params.workOrderID}`;
+      })
+      $(".button").click(() => {
+        window.location.href = `../../AssessmentPage/question/question_a01.html?workOrderID=${params.workOrderID}&step=1&bigstep=0`;
+      })
+      $(".prev").click(() => {
+        window.location.href = `../../AssessmentPage/index.html?workOrderID=${params.workOrderID}`;
+      })
+    })
+
+  </script>
+</body>
+
+</html>

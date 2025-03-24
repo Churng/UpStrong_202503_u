@@ -1,0 +1,1114 @@
+@use "../../css/utils.scss" as *;
+
+$color_type_0: rgb(126, 126, 126);
+$color_type_1: rgb(169, 169, 169);
+$color_type_2: rgb(209, 0, 0);
+$color_type_3: rgb(22, 84, 185);
+$color_type_4: rgb(235, 92, 32);
+$color_type_5: rgb(243, 243, 243);
+$color_type_6: rgb(255, 255, 255);
+$color_type_7: rgb(34, 34, 34);
+$color_type_8: rgb(41, 41, 41);
+$color_type_9: rgb(89, 89, 89);
+
+$padding_type_0: undefinedpx undefinedpx undefinedpx undefinedpx;
+
+$border_radius_type_0: 12px 12px 0px 0px;
+$border_radius_type_1: 4px 4px 4px 4px;
+
+$font_type_0: 400 24px/1.33 "Noto Sans TC", Helvetica, Arial, serif;
+$font_type_1: 400 18px/1.33 "Noto Sans TC", Helvetica, Arial, serif;
+$font_type_2: 400 16px/1.31 "Noto Sans TC", Helvetica, Arial, serif;
+$font_type_3: 700 16px/1.31 "Noto Sans TC", Helvetica, Arial, serif;
+$font_type_4: 400 14px/1.35 "Noto Sans TC", Helvetica, Arial, serif;
+
+.main {
+  @include flex-column;
+  background-color: $color_type_5;
+  padding: $padding_type_0;
+  position: relative;
+  overflow: hidden;
+}
+.main > .cell {
+  @include flex-column;
+  position: relative;
+}
+.section1__section1 {
+  @include flex-column;
+  position: relative;
+  flex-grow: 1;
+  min-height: 60px;
+}
+.section1__box {
+  box-shadow: 0px 4px 2px 0px rgba(0, 0, 0, 0.129);
+  position: relative;
+  flex-grow: 1;
+}
+.section2__section2 {
+  @include flex-column;
+  width: 99.84%;
+  position: relative;
+  flex-grow: 1;
+  max-width: 1280px;
+  margin: 0px auto;
+}
+.section2__flexCol {
+  @include lg {
+    margin: 30px 90px 0px;
+  }
+  @include md {
+    margin: 30px 40px 0px;
+  }
+  @include sm {
+    margin: 30px 0px 0px;
+  }
+  @include flex-column;
+  position: relative;
+  flex-grow: 1;
+  margin: 30px 147px 0px;
+}
+.section2__flexRow {
+  @include sm {
+    margin: 0px 20px;
+  }
+  display: flex;
+  align-items: center;
+  column-gap: 13px;
+  position: relative;
+}
+.section2__flexRow > .cell {
+  @include flex-column;
+  position: relative;
+  flex: 0 1 8px;
+}
+.section2__image4 {
+  width: 8px;
+  height: auto;
+  aspect-ratio: 0.57;
+  vertical-align: top;
+  object-fit: cover;
+  object-position: center center;
+  position: relative;
+  min-width: 8px;
+  margin: 12px 0px 6px;
+}
+.section2__medium_title {
+  @include v-center-content;
+  justify-content: center;
+  font: $font_type_0;
+  color: $color_type_8;
+  text-align: center;
+  letter-spacing: 0px;
+  position: relative;
+  flex: 0 0 auto;
+  min-width: 96px;
+}
+.section2__box1 {
+  @include flex-column;
+  background-color: $color_type_6;
+  border-radius: $border_radius_type_0;
+  outline: 1px solid rgb(221, 221, 221);
+  outline-offset: -1px;
+  position: relative;
+  overflow: hidden;
+  margin: 24px 0px 100px 3px;
+
+}
+.section2__flexCol1 {
+  @include md {
+    margin: 30px 20px 40px;
+  }
+  @include xxs {
+    margin: 30px 18px 40px;
+  }
+  @include tn {
+    margin: 30px 12px 40px;
+  }
+  @include flex-column;
+  position: relative;
+  flex-grow: 1;
+  margin: 30px 24px 40px;
+}
+.section2__flexRow1 {
+  @include v-center-content;
+  position: relative;
+}
+.section2__flexRow2 {
+  @include v-center-content;
+  position: relative;
+  flex: 0 1 126px;
+}
+.section2__flexRow2 > .cell {
+  @include flex-column;
+  position: relative;
+  flex: 0 1 24px;
+}
+.section2__icon {
+  width: 24px;
+  height: auto;
+  aspect-ratio: 1;
+  vertical-align: top;
+  object-fit: cover;
+  object-position: center center;
+  position: relative;
+  min-width: 24px;
+}
+.section2__flexRow2 > .cell1 {
+  @include flex-column;
+  position: relative;
+  flex: 0 0 102px;
+  min-width: 102px;
+}
+.section2__highlights {
+  @include v-center-content;
+  justify-content: center;
+  font: $font_type_2;
+  color: $color_type_8;
+  text-align: center;
+  letter-spacing: 0px;
+  position: relative;
+  flex-grow: 1;
+  margin: 1px 0px 2px 6px;
+}
+.section2__flexRow1 > .spacer {
+  flex: 0 1 24px;
+}
+.section2__flexRow2 > .cell2 {
+  @include flex-column;
+  position: relative;
+  flex: 0 1 24px;
+}
+.section2__flexRow2 > .cell3 {
+  @include flex-column;
+  position: relative;
+  flex: 0 0 102px;
+  min-width: 102px;
+}
+.section2__flexCol2 {
+  @include flex-column;
+  position: relative;
+  margin: 24px 0px 0px;
+}
+.section2__flexCol2 > .cell {
+  @include flex-column;
+  position: relative;
+}
+.section2__content_box {
+  @include flex-column;
+  background-color: $color_type_5;
+  width: 100%;
+  height: 100%;
+}
+.section2__group {
+  @include flex-column;
+  width: 100%;
+  height: 100%;
+}
+.section2__highlights2 {
+  @include v-center-content;
+  @include font-face($font_type_3, $color_type_7, 0px);
+  width: fit-content;
+  position: relative;
+  flex-grow: 1;
+  min-width: 0px;
+  margin: 0px 0px;
+}
+.section2__highlights6 {
+  @include v-center-content;
+  justify-content: center;
+  font: $font_type_3;
+  color: $color_type_2;
+  text-align: center;
+  letter-spacing: 0px;
+  width: 9px;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  right: -22.5px;
+}
+
+.section2__flexRow3 {
+  @include md {
+    margin: 24px 25px 0px;
+  }
+  @include sm {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    row-gap: 16px;
+  }
+  @include xs {
+    margin: 24px 20px 0px;
+  }
+  @include xxs {
+    margin: 24px 0px 0px;
+  }
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 24px 38px 0px;
+}
+
+// .section2__flexRow3-no-align {
+//   align-items: center; /* 使用在當前面有項目時，使雙方的highline標題一致高度 */
+// }
+
+.section2__flexRow3 > .cell {
+  @include sm {
+    flex: 0 0 calc(1 / 1 * 100% - 0px / 1);
+    min-width: unset;
+  }
+  @include flex-column;
+  position: relative;
+  flex: 0 1 300px;
+}
+.section2__flexCol3 {
+  @include flex-column;
+  position: relative;
+  flex-grow: 1;
+}
+.section2__highlights3 {
+  @include v-center-content;
+  @include font-face($font_type_2, $color_type_9, 0px);
+  width: 100%;
+  position: relative;
+  margin: 0px 0px;
+}
+.section2__content_box1 {
+  @include flex-column;
+  background-color: $color_type_6;
+  border-radius: $border_radius_type_1;
+  outline: 1px solid rgb(221, 221, 221);
+  outline-offset: -1px;
+  position: relative;
+  margin: 8px 0px 0px;
+}
+.section2__highlights4 {
+  @include v-center-content;
+  @include font-face($font_type_1, $color_type_7, 0px);
+  position: relative;
+  flex-grow: 1;
+  margin: 8px 16px;
+}
+.section2__flexRow3 > .spacer {
+  @include sm {
+    display: none;
+  }
+  flex: 0 1 36px;
+}
+.section2__flexRow3 > .cell1 {
+  @include sm {
+    flex: 0 0 calc(1 / 1 * 100% - 0px / 1);
+    min-width: unset;
+  }
+  @include flex-column;
+  position: relative;
+  flex: 0 1 300px;
+}
+.section2__content_box11 {
+  @include flex-column;
+  background-color: $color_type_6;
+  border-radius: $border_radius_type_1;
+  outline: 1px solid rgb(221, 221, 221);
+  outline-offset: -1px;
+  position: relative;
+  margin: 6px 0px 0px;
+}
+.section2__flexRow3 > .spacer1 {
+  @include sm {
+    display: none;
+  }
+  flex: 0 1 36px;
+}
+.section2__flexRow3 > .cell2 {
+  @include sm {
+    flex: 0 0 calc(1 / 1 * 100% - 0px / 1);
+    min-width: unset;
+  }
+  @include flex-column;
+  position: relative;
+  flex: 0 1 300px;
+}
+.section2__highlights41 {
+  @include v-center-content;
+  @include font-face($font_type_1, $color_type_7, 0px);
+  width: 79.33%;
+  position: relative;
+  flex-grow: 1;
+  margin: 8px 15.33% 8px 5.33%;
+}
+.section2__image3 {
+  width: 14px;
+  height: auto;
+  aspect-ratio: 1.75;
+  vertical-align: top;
+  object-fit: cover;
+  object-position: center center;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+.section2__flexRow3 > .spacer2 {
+  @include sm {
+    display: none;
+  }
+  flex: 0 1 36px;
+}
+.section2__flexRow3 > .cell3 {
+  @include sm {
+    flex: 0 0 calc(1 / 1 * 100% - 0px / 1);
+    min-width: unset;
+  }
+  @include flex-column;
+  position: relative;
+  flex: 0 1 300px;
+}
+.section2__flexRow3 > .spacer3 {
+  @include sm {
+    display: none;
+  }
+  flex: 0 1 36px;
+}
+.section2__flexCol4 {
+  @include flex-column;
+  width: 100%;
+  height: 100%;
+}
+.section2__content_box10 {
+  @include flex-column;
+  background-color: $color_type_6;
+  border-radius: $border_radius_type_1;
+  outline: 1px solid rgb(221, 221, 221);
+  outline-offset: -1px;
+  position: relative;
+  margin: 6px 0px 0px;
+}
+.section2__flexCol5 {
+  @include flex-column;
+  position: relative;
+  margin: 40px 0px 0px;
+}
+.section2__flexCol5 > .cell {
+  @include flex-column;
+  position: relative;
+}
+.section2__content_box2 {
+  @include flex-column;
+  background-color: $color_type_5;
+  position: relative;
+  flex-grow: 1;
+}
+.section2__highlights21 {
+  @include v-center-content;
+  @include font-face($font_type_3, $color_type_7, 0px);
+  width: fit-content;
+  position: relative;
+  flex-grow: 1;
+  min-width: 0px;
+}
+.section2__highlights61 {
+  @include v-center-content;
+  justify-content: center;
+  font: $font_type_3;
+  color: $color_type_2;
+  text-align: center;
+  letter-spacing: 0px;
+  width: 9px;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  right: -18.5px;
+}
+.section2__content_box12 {
+  @include flex-column;
+  background-color: $color_type_6;
+  border-radius: $border_radius_type_1;
+  outline: 1px solid rgb(221, 221, 221);
+  outline-offset: -1px;
+  position: relative;
+  margin: 6px 0px 0px;
+}
+.section2__highlights31 {
+  @include lg;
+  display: flex;
+  align-items: center;
+  @include font-face($font_type_2, $color_type_9, 0px);
+  width: 100%;
+  position: relative;
+  margin: 0px 0px;
+}
+.section2__content_box13 {
+  @include flex-column;
+  background-color: $color_type_6;
+  border-radius: $border_radius_type_1;
+  outline: 1px solid rgb(221, 221, 221);
+  outline-offset: -1px;
+  position: relative;
+  margin: 6px 0px 0px;
+}
+.section2__highlights7 {
+  @include v-center-content;
+  @include font-face($font_type_1, $color_type_0, 0px);
+  position: relative;
+  flex-grow: 1;
+  margin: 8px 16px;
+}
+.section2__highlights42 {
+  @include sm {
+    margin: 0px 15.33% 8px 5.33%;
+  }
+  display: flex;
+  align-items: center;
+  @include font-face($font_type_1, $color_type_7, 0px);
+  width: 79.33%;
+  position: relative;
+  flex-grow: 1;
+  margin: 8px 15.33% 8px 5.33%;
+}
+.section2__flexCol5 > .cell1 {
+  @include flex-column;
+  position: relative;
+}
+.section2__highlights22 {
+  @include v-center-content;
+  justify-content: center;
+  font: $font_type_3;
+  color: $color_type_7;
+  text-align: center;
+  letter-spacing: 0px;
+  width: fit-content;
+  position: relative;
+  flex-grow: 1;
+  min-width: 0px;
+}
+.section2__highlights62 {
+  @include v-center-content;
+  justify-content: center;
+  font: $font_type_3;
+  color: $color_type_2;
+  text-align: center;
+  letter-spacing: 0px;
+  width: 9px;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  right: -16.5px;
+}
+.section2__flexRow3 > .cell4 {
+  @include sm {
+    flex: 0 0 calc(1 / 1 * 100% - 0px / 1);
+    min-width: unset;
+  }
+  @include flex-column;
+  position: relative;
+  flex: 0 1 300px;
+}
+.section2__flexRow3 > .spacer4 {
+  @include sm {
+    display: none;
+  }
+  flex: 0 1 36px;
+}
+.section2__flexRow3 > .cell5 {
+  @include sm {
+    flex: 0 0 calc(1 / 1 * 100% - 0px / 1);
+    min-width: unset;
+  }
+  @include flex-column;
+  position: relative;
+  flex: 0 1 300px;
+}
+.section2__flexRow3 > .spacer5 {
+  @include sm {
+    display: none;
+  }
+  flex: 0 1 35px;
+}
+.section2__flexRow3 > .cell6 {
+  @include sm {
+    flex: 0 0 calc(1 / 1 * 100% - 0px / 1);
+    min-width: unset;
+  }
+  @include flex-column;
+  position: relative;
+  flex: 0 1 301px;
+}
+.section2__content_box14 {
+  @include flex-column;
+  background-color: $color_type_6;
+  border-radius: $border_radius_type_1;
+  outline: 1px solid rgb(221, 221, 221);
+  outline-offset: -1px;
+  position: relative;
+  margin: 6px 0px 0px 1px;
+}
+.section2__flexRow3 > .cell7 {
+  @include sm {
+    flex: 0 0 calc(1 / 1 * 100% - 0px / 1);
+    min-width: unset;
+  }
+  @include flex-column;
+  position: relative;
+  flex: 0 1 300px;
+}
+.section2__flexRow3 > .spacer6 {
+  @include sm {
+    display: none;
+  }
+  flex: 0 1 36px;
+}
+.section2__content_box23 {
+  @include flex-column;
+  background-color: $color_type_6;
+  border-radius: $border_radius_type_1;
+  outline: 1px solid rgb(221, 221, 221);
+  outline-offset: -1px;
+  position: relative;
+  margin: 6px 0px 0px;
+}
+.section2__highlights8 {
+  @include v-center-content;
+  @include font-face($font_type_1, $color_type_1, 0px);
+  position: relative;
+  flex-grow: 1;
+  margin: 8px 16px;
+}
+.section2__flexCol5 > .cell2 {
+  @include flex-column;
+  position: relative;
+}
+.section2__highlights23 {
+  @include v-center-content;
+  justify-content: center;
+  font: $font_type_3;
+  color: $color_type_7;
+  text-align: center;
+  letter-spacing: 0px;
+  width: 100%;
+  height: 100%;
+}
+.section2__highlights24 {
+  @include md {
+    margin: 24px 0px 0px 25px;
+  }
+  @include xs {
+    margin: 24px 0px 0px 20px;
+  }
+  @include xxs {
+    margin: 24px 0px 0px;
+  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: $font_type_3;
+  color: $color_type_7;
+  text-align: center;
+  letter-spacing: 0px;
+  width: 255px;
+  position: relative;
+  min-width: 255px;
+  margin: 24px 0px 0px 38px;
+}
+.section2__flexRow4 {
+  @include md {
+    margin: 24px 38px 0px 25px;
+  }
+  @include xs {
+    margin: 24px 20px 0px;
+  }
+  @include xxs {
+    margin: 24px 0px 0px;
+  }
+  display: flex;
+  align-items: center;
+  column-gap: 18px;
+  position: relative;
+  margin: 24px 38px 0px;
+}
+.section2__highlights5 {
+  @include v-center-content;
+  justify-content: center;
+  font: $font_type_2;
+  color: $color_type_3;
+  text-align: center;
+  letter-spacing: 0px;
+  width: 360px;
+  position: relative;
+  flex: 0 0 auto;
+  min-width: 130px;
+  flex-wrap: wrap; // 20230510 修改成由上到下，垂直顯示
+}
+.section2__flexRow4 > .cell {
+  @include flex-column;
+  position: relative;
+  flex: 0 1 20px;
+}
+.section2__icon1 {
+  width: 20px;
+  height: auto;
+  aspect-ratio: 1;
+  vertical-align: top;
+  object-fit: cover;
+  object-position: center center;
+  position: relative;
+  min-width: 20px;
+  margin: 1px 0px 0px;
+}
+.section2__flexCol5 > .cell3 {
+  @include flex-column;
+  position: relative;
+  flex: 1 0 auto;
+}
+.section2__btn {
+  @include md {
+    margin: 18px 0px 0px 25px;
+  }
+  @include xs {
+    margin: 18px 0px 0px 20px;
+  }
+  @include xxs {
+    margin: 18px 0px 0px;
+  }
+  @include flex-column;
+  border-radius: $border_radius_type_1;
+  outline: 1px solid rgb(0, 75, 197);
+  outline-offset: -1px;
+  width: fit-content;
+  height: auto;
+  cursor: pointer;
+  position: relative;
+  min-width: 0px;
+  margin: 18px 0px 0px 38px;
+}
+.section2__btn__text {
+  @include v-center-content;
+  justify-content: center;
+  font: $font_type_4;
+  color: $color_type_3;
+  text-align: center;
+  letter-spacing: 0px;
+  width: fit-content;
+  height: auto;
+  position: relative;
+  min-width: 0px;
+  margin: 6.5px 36px;
+  cursor: pointer;
+
+}
+.section2__flexCol5 > .cell4 {
+  @include flex-column;
+  position: relative;
+}
+.section2__flexRow5 {
+  @include xs {
+    margin: 16px 38px 0px 25px;
+  }
+  @include xxs {
+    margin: 16px 0px 0px;
+  }
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 16px 38px 0px;
+}
+.section2__flexRow5 > .cell {
+  @include flex-column;
+  position: relative;
+  flex: 0 1 24px;
+}
+.section2__flexRow5 > .cell1 {
+  @include flex-column;
+  position: relative;
+  flex: 0 0 95px;
+  min-width: 95px;
+}
+.section2__highlights1 {
+  @include v-center-content;
+  justify-content: center;
+  font: $font_type_2;
+  color: $color_type_8;
+  text-align: center;
+  letter-spacing: -0.2px;
+  position: relative;
+  flex-grow: 1;
+  margin: 1px 0px 2px 6px;
+}
+.section2__flexRow5 > .cell2 {
+  @include flex-column;
+  position: relative;
+  flex: 0 1 24px;
+}
+.section2__flexRow5 > .cell3 {
+  @include flex-column;
+  position: relative;
+  flex: 0 0 102px;
+  min-width: 102px;
+}
+.section2__highlights43 {
+  @include v-center-content;
+  @include font-face($font_type_1, $color_type_7, 0px);
+  position: relative;
+  flex-grow: 1;
+  margin: 10px 16px 6px;
+}
+.section2__flexCol1 > .cell {
+  @include flex-column;
+  position: relative;
+  flex: 1 0 auto;
+}
+.section2__btn1 {
+  @include sm {
+    margin: 28px auto 0px;
+  }
+  @include flex-column;
+  background-color: $color_type_4;
+  border-radius: $border_radius_type_1;
+  width: fit-content;
+  height: auto;
+  cursor: pointer;
+  position: relative;
+  min-width: 0px;
+  margin: 40px auto 0px;
+}
+.section2__btn__text1 {
+  @include v-center-content;
+  justify-content: center;
+  font: $font_type_3;
+  color: $color_type_6;
+  text-align: center;
+  letter-spacing: 0px;
+  width: 32px;
+  height: auto;
+  position: relative;
+  min-width: 32px;
+  margin: 8.5px 134px;
+}
+.section2__box3 {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  bottom: 31px;
+  right: 24px;
+}
+.section3__section3 {
+  @include flex-column;
+  position: relative;
+  flex-grow: 1;
+  min-height: 32px;
+}
+.section3__box2 {
+  position: relative;
+  flex-grow: 1;
+}
+
+.section2_input {
+    border: 1px solid #DDDDDD;
+    padding: 8px 16px;
+    width: 100%;
+    min-height: 40px;
+    border-radius: 4px;
+
+    font-size: 18px;
+    line-height: 24px;
+
+}
+
+.section2_other_input {
+  border: 1px solid #DDDDDD;
+  padding: 8px 16px;
+  // width: auto;
+  max-width: 100%;
+  width: 100%;
+  // min-height: 40px;
+  border-radius: 4px;
+
+  font-size: 18px;
+  line-height: 24px;
+
+}
+
+.middle_top_for_space {
+  margin-top: 10px;
+}
+
+.section2_select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+    background-image: url('../../assets/selectArrow.svg');
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: 50%;    
+}
+
+
+
+
+$color_type_10: rgb(126, 126, 126);
+$color_type_11: rgb(241, 246, 255);
+$color_type_12: rgb(89, 89, 89);
+
+$border_radius_type_10: 4px 4px 4px 4px;
+
+$font_type_10: 400 16px/1.31 "Noto Sans TC", Helvetica, Arial, serif;
+
+.col {
+  @include flex-column;
+  width: 100%;
+  height: 100%;
+}
+.section4__highlights {
+  @include v-center-content;
+  @include font-face($font_type_10, $color_type_12, 0px);
+  width: 100%;
+  position: relative;
+  margin: 0px 0px;
+}
+.section4__box {
+  @include flex-column;
+  background-color: $color_type_11;
+  border-radius: $border_radius_type_10;
+  outline: 1px solid rgb(221, 221, 221);
+  outline-offset: -1px;
+  position: relative;
+  margin: 8px 0px 0px;
+}
+.section4__circle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $color_type_11;
+  border-radius: 120px;
+  outline: 1px solid rgb(221, 221, 221);
+  outline-offset: -1px;
+  position: relative;
+  margin: 8px 0px 0px;
+}
+
+.col1 {
+  @include flex-column;
+  position: relative;
+  flex-grow: 1;
+  margin: 48px 27px 29px;
+}
+.col1 > .cell {
+  @include flex-column;
+  position: relative;
+}
+.section4__icon {
+  width: 30px;
+  height: auto;
+  aspect-ratio: 1;
+  vertical-align: top;
+  object-fit: cover;
+  object-position: center center;
+  position: relative;
+  min-width: 30px;
+  margin: 0px 18px;
+}
+.section4__highlights1 {
+  @include v-center-content;
+  justify-content: center;
+  font: $font_type_10;
+  color: $color_type_10;
+  text-align: center;
+  letter-spacing: 0px;
+  position: relative;
+  margin: 11px 0px 0px;
+}
+
+
+.multiselect__btn {
+  border-radius: $border_radius_type_1;
+  outline: 1px solid rgb(0, 75, 197);
+  outline-offset: -1px;
+  width: fit-content;
+  height: auto;
+  min-width: 0px;
+  margin: 18px 0px 0px 0px;
+}
+
+.box3 {
+  @include sm {
+    display: none;
+  }
+  @include flex-column;
+  background-color: $color_type_6;
+  outline: 1px solid rgb(221, 221, 221);
+  outline-offset: -1px;
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  overflow: hidden;
+  bottom: 63px;
+  right: 24px;
+
+  cursor: pointer;
+}
+.flexCol3 {
+  @include flex-column;
+  position: relative;
+  flex-grow: 1;
+  margin: 14px 14px 13px;
+}
+.flexCol3 > .cell {
+  @include flex-column;
+  position: relative;
+}
+.image4 {
+  width: 14px;
+  height: auto;
+  aspect-ratio: 1.75;
+  vertical-align: top;
+  object-fit: cover;
+  object-position: center center;
+  position: relative;
+  min-width: 14px;
+  margin: 0px 9px;
+}
+.highlights5 {
+  @include v-center-content;
+  justify-content: center;
+  font: $font_type_3;
+  color: $color_type_1;
+  text-align: center;
+  letter-spacing: 0px;
+  position: relative;
+  margin: 4px 0px 0px;
+}
+
+input:focus {
+  border-color: solid 1px #eb5c20; 
+}
+
+/* 個案註冊頁 問題2.發票選擇類型一開始設定在二聯式，不應該存在三聯式的INPUT(抬頭統編等) */
+#invoiceType_three {
+  display: none;
+}
+
+.items-container {
+  margin-top: 8px;
+}
+
+.add-btn-container {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.input-group img {
+  margin-right: 6px;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.file-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.file-name {
+  width: 130px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 12px;
+}
+
+#serviceAreaText {
+  margin-top: 10px;
+}
+
+#serviceShowServiceArea {
+  max-width: 800px;
+  min-width: 400px;
+}
+@media (max-width: 768px) { /* 當螢幕寬度小於 768px */
+  #serviceShowServiceArea {
+    max-width: 600px;
+    min-width: 300px;
+  }
+}
+@media (max-width: 480px) { /* 當螢幕寬度小於 480px */
+  #serviceShowServiceArea {
+    max-width: 400px;
+    min-width: 200px;
+  }
+}
+
+#serviceBaseText {
+  margin-top: 10px;
+}
+
+#serviceShowServiceBase {
+  max-width: 800px;
+  min-width: 400px;
+}
+@media (max-width: 768px) { /* 當螢幕寬度小於 768px */
+  #serviceShowServiceBase {
+    max-width: 600px;
+    min-width: 300px;
+  }
+}
+@media (max-width: 480px) { /* 當螢幕寬度小於 480px */
+  #serviceShowServiceBase {
+    max-width: 400px;
+    min-width: 200px;
+  }
+}
+
+.img_classificationChoice {
+  margin-top: 10px;
+  max-width: 800px;
+  max-height: 800px;
+  border: 1px solid rgb(221, 221, 221);
+}
+
+.img_qrCode {
+  margin-top: 10px;
+  max-width: 200px;
+  max-height: 200px;
+  border: 1px solid rgb(221, 221, 221);
+}
+
+.img_line_office {
+  margin-top: 10px;
+  max-width: 200px;
+  max-height: 200px;
+  border: 0px solid rgb(221, 221, 221);
+}
+
+.hidden_input {
+  display: none;
+}
+
+.custom_input {
+  width: 200%; // 設定特定 input 的寬度為 100% (或您想要的具體寬度)
+}
+
+.long-underline {
+  border-bottom: 1px solid;
+  display: inline-block;
+  width: 50px; /* 調整下底線的寬度 */
+}
+
+.togglePassword {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.eye_padding {
+  padding-right: 30px; /* 預留空間給眼睛圖示 */
+}

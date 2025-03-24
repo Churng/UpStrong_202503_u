@@ -1,0 +1,611 @@
+* {
+
+    font-family: "Open Sans", sans-serif;
+
+}
+
+  
+
+.main-box {
+    max-width: 980px !important;
+    min-height: calc(100vh - 90px);
+
+    background: #fff !important;
+
+    margin: auto;
+
+}
+
+.content{
+    width: 500px;
+    margin: auto;
+}
+
+h2 {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    font-size: 24px;
+
+    color: #292929;
+
+    padding: 0 0 25px;
+
+    background: #F3F3F3;
+
+}
+
+
+
+.title-box {
+
+    text-align: center;
+
+    padding: 40px 0 24px;
+
+}
+
+
+
+.title-box .title {
+
+    display: block;
+
+    font-size: 24px;
+
+    color: #292929;
+
+}
+
+
+
+.title-box .text {
+
+    display: block;
+
+    font-size: 14px;
+
+    color: #7e7e7e;
+
+    margin-top: 8px;
+
+}
+
+
+
+.box01 .type {
+
+    display: block;
+
+    position: relative;
+
+    font-size: 14px;
+
+    color: #292929;
+
+    padding-left: 38px;
+
+    margin-bottom: 6px;
+
+}
+
+
+
+.box01 .type::after {
+
+    content: '';
+
+    position: absolute;
+
+    left: 18px;
+
+    top: 5px;
+
+    display: block;
+
+    width: 10px;
+
+    height: 10px;
+
+    border-radius: 50%;
+
+}
+
+
+
+
+
+.box01 .type.type01::after {
+
+    background-color: #ea475b;
+
+}
+
+
+
+.box01 .type.type02::after {
+
+    background-color: #7e7e7e;
+
+}
+
+
+
+.box01 .type.type03::after {
+
+    background-color: #70be20;
+
+}
+
+
+
+.box01 .type.type04::after {
+
+    background-color: #ea475b;
+
+}
+
+
+
+.box01 .type.type05::after {
+
+    background-color: #4e91ff;
+
+}
+
+
+
+.box01 .detail {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 0 18px 24px;
+
+    border-bottom: 1px solid #dddddd;
+
+}
+
+
+
+.box01 .detail .name {
+
+    display: block;
+
+    font-size: 24px;
+
+    color: #eb5c20;
+
+}
+
+
+
+.box01 .detail .button-box {
+
+    display: flex;
+
+    gap: 11px;
+
+}
+
+
+
+.box01 .detail .button-box span {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    width: 74px;
+
+    height: 32px;
+
+    color: #1654b9;
+
+    font-size: 14px;
+
+    border-radius: 4px;
+
+    border: solid 1px #1654b9;
+
+    background-color: #fff;
+
+    cursor: pointer;
+
+}
+
+
+
+.box02 {
+    padding: 24px 0 60px;
+
+}
+
+
+
+.box02 .serve-box .date,
+
+.box02 .serve-box .add {
+
+    display: block;
+
+    color: #292929;
+
+    line-height: 25px;
+
+    font-weight: bolder;
+
+}
+
+
+
+.box02 .coach-box {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 24px;
+
+    margin: 16px 0 14px;
+
+}
+
+
+
+.box02 .coach-box>span {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+}
+
+
+
+.box02 .coach-box .img {
+
+    width: 40px;
+
+    height: 40px;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+}
+
+
+
+.box02 .coach-box .img img {
+
+    width: 100%;
+
+}
+
+
+
+.box02 .coach-box>span span {
+
+    font-weight: bold;
+
+    color: #292929;
+
+}
+
+
+
+.box02 .singin {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 30px;
+
+    margin-bottom: 28px;
+
+}
+
+
+
+.box02 .singin>span {
+
+    font-weight: bold;
+
+    color: #292929;
+
+}
+
+
+
+.box02 .singin .reason-box {
+
+    display: flex;
+
+    align-items: center;
+
+    font-weight: bold;
+
+}
+
+
+
+.box02 .singin .reason-box .title {
+
+    color: #292929;
+
+}
+
+
+
+.box02 .singin .reason-box input {
+
+    width: 177px;
+
+    height: 32px;
+
+    padding: 0 11px;
+
+    border-radius: 4px;
+
+    border: solid 1px #ddd;
+
+    background-color: #fff;
+
+    margin-right: 12px;
+
+}
+
+
+
+.box02 .singin .reason-box input:disabled {
+
+    border: solid 1px #ddd;
+
+    background-color: #f3f3f3;
+
+}
+
+
+
+.box02 .singin .reason-box .save-button {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 4px;
+
+    color: #1654b9;
+
+    cursor: pointer;
+
+}
+
+
+
+.box02 .record-box .title {
+
+    display: block;
+
+    color: #292929;
+
+    font-weight: bold;
+
+    margin-bottom: 33px;
+
+}
+
+
+
+.box02 .record-box .type-box {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px
+
+}
+
+
+
+.box02 .record-box .type-box span {
+
+    position: relative;
+
+    min-width: 114px;
+
+    height: 38px;
+
+    padding: 7px 0 0 38px;
+
+    border-radius: 4px;
+
+    border: solid 1px #eb5c20;
+
+    background-color: #fff;
+
+    cursor: pointer;
+
+}
+
+
+
+
+
+.box02 .record-box .type-box span::after {
+
+    content: '';
+
+    position: absolute;
+
+    left: 4px;
+
+    top: 4px;
+
+    width: 28px;
+
+    height: 28px;
+
+    background: url(./images/icon-ok01.png);
+
+}
+
+
+
+.box02 .record-box .type-box span.active::after {
+
+    background: url(./images/icon-ok02.png);
+
+}
+
+
+
+
+
+@media (max-width: 500px) {
+
+    .mb_none {
+
+        display: none !important;
+
+    }
+
+
+
+    .pc_none {
+
+        display: block;
+
+    }
+
+
+
+    .main-box {
+
+        position: relative;
+
+        width: 100% !important;
+
+        min-width: auto !important;
+
+        padding: 0;
+
+    }
+
+
+
+    .box01 {
+
+        padding: 0 16px;
+
+    }
+
+
+
+    .box01 .type {
+
+        padding-left: 16px
+
+    }
+
+
+
+    .box01 .type::after {
+
+        left: 0;
+
+    }
+
+
+
+    .box01 .detail {
+
+        flex-wrap: wrap;
+
+        padding: 0 0 16px;
+
+    }
+
+
+
+    .box01 .detail .name {
+
+        width: 100%;
+
+    }
+
+
+
+    .box02 {
+
+        padding-bottom: 40px;
+
+    }
+
+
+
+    .box02 .coach-box {
+
+        flex-wrap: wrap;
+
+    }
+
+
+
+    .box02 .coach-box>span {
+
+        width: 100%;
+
+    }
+
+
+
+    .box02 .singin {
+
+        flex-wrap: wrap;
+
+        gap: 8px;
+
+    }
+
+
+
+    .box02 .singin .reason-box {
+
+        padding-left: 35px;
+
+    }
+
+
+
+    .box02 .record-box .title {
+
+        margin-bottom: 24px;
+
+    }
+
+
+
+    .box02 .record-box .type-box {
+
+        flex-wrap: wrap;
+
+        padding: 0px 15px;
+
+        justify-content: space-around;
+
+    }
+
+}

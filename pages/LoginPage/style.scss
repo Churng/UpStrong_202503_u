@@ -1,0 +1,356 @@
+@use "../../css/utils.scss" as *;
+
+$color_type_0: rgb(126, 126, 126);
+$color_type_1: rgb(22, 84, 185);
+$color_type_2: rgb(235, 92, 32);
+$color_type_3: rgb(243, 243, 243);
+$color_type_4: rgb(255, 255, 255);
+$color_type_5: rgb(41, 41, 41);
+
+$border_radius_type_0: 12px 12px 12px 12px;
+$border_radius_type_1: 4px 4px 4px 4px;
+
+$font_type_0: 400 24px/1.33 "Noto Sans TC", Helvetica, Arial, serif;
+$font_type_1: 400 16px/1.31 "Noto Sans TC", Helvetica, Arial, serif;
+$font_type_2: 700 16px/1.31 "Noto Sans TC", Helvetica, Arial, serif;
+$font_type_3: 400 14px/1.35 "Noto Sans TC", Helvetica, Arial, serif;
+
+.group {
+  @include flex-column;
+  position: relative;
+}
+.root {
+  @include flex-column;
+  background-color: $color_type_3;
+  position: relative;
+  overflow: hidden;
+  flex-grow: 1;
+}
+.box {
+  box-shadow: 0px 4px 2px 0px rgba(0, 0, 0, 0.129);
+  position: relative;
+}
+.box1 {
+  @include lg {
+    margin: 90px auto;
+  }
+  @include md {
+    margin: 72px auto 80px;
+  }
+  @include sm {
+    width: 87.55%;
+    min-width: 0px;
+    max-width: 999px;
+    margin: 52px auto 68px;
+  }
+  @include xs {
+    width: 90.36%;
+    max-width: 9999px;
+    margin: 36px auto 48px;
+  }
+  @include xxs {
+    width: 93.36%;
+    margin: 24px auto 30px;
+  }
+  @include flex-column;
+  background-color: $color_type_4;
+  border-radius: $border_radius_type_0;
+  outline: 1px solid rgb(221, 221, 221);
+  outline-offset: -1px;
+  width: 35.16%;
+  position: relative;
+  overflow: hidden;
+  min-width: 450px;
+  max-width: 450px;
+  margin: 110px auto 100px;
+}
+.flexCol {
+  @include md {
+    width: 83.06%;
+  }
+  @include xxs {
+    width: 91.69%;
+  }
+  @include flex-column;
+  width: 78.44%;
+  position: relative;
+  flex-grow: 1;
+  margin: 24px auto 31px;
+}
+.flexRow {
+  @include lg {
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 14px;
+  }
+  @include xs {
+    column-gap: 12px;
+  }
+  display: flex;
+  align-items: center;
+  column-gap: 19px;
+  position: relative;
+}
+.flexRow > .cell {
+  @include flex-column;
+  position: relative;
+  flex: 0 1 8px;
+}
+.image3 {
+  width: 8px;
+  height: auto;
+  aspect-ratio: 0.57;
+  vertical-align: top;
+  object-fit: cover;
+  object-position: center center;
+  position: relative;
+  min-width: 8px;
+  margin: 12px 0px 6px;
+}
+.flexRow > .cell1 {
+  @include flex-column;
+  position: relative;
+  flex: 0 0 96px;
+  min-width: 96px;
+}
+.medium_title {
+  @include md {
+    font-size: 20px;
+    text-align: left;
+    justify-content: flex-start;
+  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: $font_type_0;
+  color: $color_type_5;
+  text-align: center;
+  letter-spacing: 0px;
+  width: fit-content;
+  position: relative;
+  flex-grow: 1;
+  min-width: 0px;
+}
+.flexCol1 {
+  @include flex-column;
+  position: relative;
+  margin: 46px 0px 0px 3px;
+}
+.text {
+  @include xs {
+    text-align: left;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 0px 0px;
+  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: $font_type_3;
+  color: $color_type_5;
+  text-align: center;
+  letter-spacing: 0px;
+  width: 31.71%;
+  position: relative;
+  margin: 0px 68.29% 0px 0%;
+}
+.rect {
+  background-color: $color_type_3;
+  border-radius: $border_radius_type_1;
+  outline: 1px solid rgb(221, 221, 221);
+  outline-offset: -1px;
+  position: relative;
+  min-height: 38px;
+  margin: 8px 0px 0px;
+}
+.flexCol2 {
+  @include flex-column;
+  position: relative;
+  margin: 16px 0px 0px 3px;
+}
+.text1 {
+  @include xs {
+    text-align: left;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 0px 0px;
+  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: $font_type_3;
+  color: $color_type_5;
+  text-align: center;
+  letter-spacing: 0px;
+  width: 8%;
+  position: relative;
+  margin: 0px 92% 0px 0%;
+}
+.flexRow1 {
+  @include v-center-content;
+  position: relative;
+  margin: 8px 3px 0px;
+}
+.flexRow1 > .cell {
+  @include flex-column;
+  position: relative;
+  flex: 0 1 24px;
+}
+.icon {
+  width: 24px;
+  height: auto;
+  aspect-ratio: 0.96;
+  vertical-align: top;
+  object-fit: cover;
+  object-position: center center;
+  position: relative;
+  min-width: 24px;
+}
+.flexRow1 > .cell1 {
+  @include flex-column;
+  position: relative;
+  flex: 0 0 56px;
+  min-width: 56px;
+}
+.highlights {
+  @include v-center-content;
+  justify-content: center;
+  font: $font_type_1;
+  color: $color_type_5;
+  text-align: center;
+  letter-spacing: 0px;
+  position: relative;
+  flex-grow: 1;
+  margin: 2px 0px 2px 8px;
+}
+.content_box {
+  @include flex-column;
+  background-color: $color_type_2;
+  border-radius: $border_radius_type_1;
+  position: relative;
+  margin: 20px 0px 0px 3px;
+
+  cursor: pointer
+}
+.highlights2 {
+  @include v-center-content;
+  justify-content: center;
+  font: $font_type_2;
+  color: $color_type_4;
+  text-align: center;
+  letter-spacing: 0px;
+  width: 32px;
+  position: relative;
+  flex-grow: 1;
+  min-width: 32px;
+  margin: 8px auto 9px;
+}
+.content_box1 {
+  @include flex-column;
+  border-radius: $border_radius_type_1;
+  outline: 1px solid rgb(235, 92, 32);
+  outline-offset: -1px;
+  position: relative;
+  margin: 24px 0px 0px 3px;
+
+  cursor: pointer
+}
+.highlights3 {
+  @include v-center-content;
+  justify-content: center;
+  font: $font_type_2;
+  color: $color_type_2;
+  text-align: center;
+  letter-spacing: 0px;
+  width: 32px;
+  position: relative;
+  flex-grow: 1;
+  min-width: 32px;
+  margin: 8px auto 9px;
+}
+.highlights4 {
+  @include v-center-content;
+  justify-content: center;
+  font: $font_type_1;
+  color: $color_type_1;
+  text-align: center;
+  letter-spacing: 0px;
+  width: 64px;
+  position: relative;
+  min-width: 64px;
+  margin: 24px auto 0px;
+}
+.box2 {
+  position: relative;
+}
+.box3 {
+  @include md {
+    bottom: 90px;
+  }
+  @include sm {
+    display: none;
+  }
+  @include flex-column;
+  background-color: $color_type_4;
+  outline: 1px solid rgb(221, 221, 221);
+  outline-offset: -1px;
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  overflow: hidden;
+  bottom: 63px;
+  right: 24px;
+
+  cursor: pointer;
+}
+.flexCol3 {
+  @include flex-column;
+  position: relative;
+  flex-grow: 1;
+  margin: 14px 14px 13px;
+}
+.flexCol3 > .cell {
+  @include flex-column;
+  position: relative;
+}
+.image4 {
+  width: 14px;
+  height: auto;
+  aspect-ratio: 1.75;
+  vertical-align: top;
+  object-fit: cover;
+  object-position: center center;
+  position: relative;
+  min-width: 14px;
+  margin: 0px 9px;
+}
+.highlights5 {
+  @include v-center-content;
+  justify-content: center;
+  font: $font_type_1;
+  color: $color_type_0;
+  text-align: center;
+  letter-spacing: 0px;
+  position: relative;
+  margin: 4px 0px 0px;
+}
+
+.decoration-none {
+  text-decoration: none;
+}
+
+input:focus {
+  border-color: solid 1px #eb5c20;
+}
+
+.togglePassword {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(10%);
+}
+
+.eye_padding {
+  padding-right: 30px; /* 預留空間給眼睛圖示 */
+}

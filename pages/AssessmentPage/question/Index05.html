@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>粗大動作功能分級</title>
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="../../../components/CustomAlert/style.css">
+  <link rel="stylesheet" href="../../../js/bootstrap-5.3.3.js">
+
+
+  <script src="../../../js/bootstrap-5.3.3.js"></script>
+  <script src="../../../js/jquery-3.6.0.min.js"></script>
+  <script src="../../../components/CustomAlert/script.js"></script>
+</head>
+
+<body>
+  <div class="header-box">
+    <div class="prev">
+      <img src="../images/question/prev-arrow.png">
+    </div>
+    <span class="title">粗大動作功能分級</span>
+    <div class="home-box">
+      <img src="../images/question/home-icon.png">
+      <span>主選單</span>
+    </div>
+  </div>
+  <div class="content-box">
+    <div class="icon-box">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M17.9558 7.44141C19.3996 7.44141 20.5808 6.26016 20.5808 4.81641C20.5808 3.37266 19.3996 2.19141 17.9558 2.19141C16.5121 2.19141 15.3308 3.37266 15.3308 4.81641C15.3308 6.26016 16.5121 7.44141 17.9558 7.44141ZM13.7952 23.1914L14.5433 19.9102L17.2996 22.5352V29.0977C17.2996 29.8195 17.8902 30.4102 18.6121 30.4102C19.334 30.4102 19.9246 29.8195 19.9246 29.0977V21.6952C19.9246 20.9733 19.6358 20.2908 19.1108 19.792L17.1683 17.9414L17.9558 14.0039C19.4349 15.6948 21.4597 16.814 23.6783 17.167C24.4658 17.2852 25.1746 16.6552 25.1746 15.8545C25.1746 15.2114 24.7021 14.6733 24.059 14.5683C22.064 14.2402 20.4102 13.0589 19.5308 11.5102L18.2183 9.41016C17.6933 8.62266 16.9058 8.09766 15.9871 8.09766C15.5933 8.09766 15.3308 8.22891 14.9371 8.22891L9.71333 10.4339C9.23783 10.6372 8.83254 10.9757 8.54785 11.4074C8.26317 11.8391 8.11163 12.3449 8.11208 12.862V15.9727C8.11208 16.6945 8.70271 17.2852 9.42458 17.2852C10.1465 17.2852 10.7371 16.6945 10.7371 15.9727V12.8227L13.0996 11.9039L10.9996 22.5352L5.85458 21.4852C5.14583 21.3408 4.45021 21.8002 4.30583 22.5089V22.5614C4.16146 23.2702 4.62083 23.9658 5.32958 24.1102L10.724 25.1864C11.3949 25.3196 12.0913 25.1856 12.665 24.813C13.2386 24.4404 13.6441 23.8585 13.7952 23.1914V23.1914Z"
+          fill="white" />
+      </svg>
+    </div>
+    <span class="title">粗大動作功能分級</span>
+    <span class="button">開始</span>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      const urlSearchParams = new URLSearchParams(window.location.search);
+      const params = Object.fromEntries(urlSearchParams.entries());
+      let data = { workOrderId: params.workOrderID };
+
+      $(".home-box").click(() => {
+        window.location.href = `../../AssessmentPage/index.html?workOrderID=${params.workOrderID}`;
+      })
+      $(".button").click(() => {
+        window.location.href = `../../AssessmentPage/question/question_a05.html?workOrderID=${params.workOrderID}&step=1&bigstep=4`;
+      })
+      $(".prev").click(() => {
+        window.location.href = `../../AssessmentPage/question/question_a04.html?workOrderID=${params.workOrderID}&step=1&bigstep=3`;
+      })
+    })
+
+  </script>
+</body>
+
+</html>
