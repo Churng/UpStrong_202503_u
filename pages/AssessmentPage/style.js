@@ -51,19 +51,12 @@ $(document).ready(function () {
 
 			success: function (res) {
 				localStorage.setItem("listData", JSON.stringify(res.returnData));
-				const pageMapping = {
-					"question_a02.html?step=7&bigstep=1": "question_a03.html?l?step=1&bigstep=2",
-					"question_a02.html?step=8&bigstep=1": "question_a03.html?l?step=2&bigstep=2",
-				};
-
-				let currentUrl = window.location.pathname + window.location.search;
-				if (pageMapping[currentUrl]) {
-					window.location.href = pageMapping[currentUrl];
-				}
 
 				$(".card-box").html("");
 				if (res.returnCode) {
 					$(res.returnData.item).each(function (idx, e) {
+						console.log(e);
+
 						$(".card-box").append(`
 
                             <div class="card" data-cardidx="${idx}">
@@ -207,6 +200,8 @@ $(document).ready(function () {
 				}
 
 				$(".card .list").on("click", (e) => {
+					console.log(e);
+
 					if ($($(e)[0].target).attr("data-listidx") == 2 && $($(e)[0].target).attr("data-listurl") == 2) {
 						window.location.href = `./question/question_a0${
 							Number($($(e)[0].target).attr("data-listurl")) + 1
@@ -227,8 +222,79 @@ $(document).ready(function () {
 		});
 	};
 
+	// 加入 getNextPage 函數
+	function getNextPage(currentUrl) {
+		const urlParts = currentUrl.split("?");
+		const path = urlParts[0];
+		const params = new URLSearchParams(urlParts[1]);
+
+		const currentQuestionMatch = path.match(/question_a(\d+)\.html/);
+		if (!currentQuestionMatch) return null;
+		const currentNum = parseInt(currentQuestionMatch[1]);
+		const nextNum = currentNum + 1;
+		const nextQuestion = `question_a${nextNum.toString().padStart(2, "0")}.html`;
+		const nextPath = path.replace(/question_a\d+\.html/, nextQuestion);
+
+		params.set("step", "1");
+		const currentBigStep = parseInt(params.get("bigstep"));
+		params.set("bigstep", currentBigStep + 1);
+
+		return `${nextPath}?${params.toString()}`;
+	}
+	$(".card .list").on("click", (e) => {
+		const $target = $(e.currentTarget);
+		const listIdx = Number($target.attr("data-listidx"));
+		const listUrl = Number($target.attr("data-listurl"));
+		const urlSearchParams = new URLSearchParams(window.location.search);
+		const params = Object.fromEntries(urlSearchParams.entries());
+
+		// 調試輸出
+		console.log("target element:", $target[0]);
+		console.log("data-listidx:", $target.attr("data-listidx"), "parsed:", listIdx);
+		console.log("data-listurl:", $target.attr("data-listurl"), "parsed:", listUrl);
+
+		// 檢查是否為 NaN
+		if (isNaN(listIdx) || isNaN(listUrl)) {
+			console.error("Invalid listIdx or listUrl, cannot proceed with navigation.");
+			return;
+		}
+
+		// 特殊情況處理
+		if (listIdx === 2 && listUrl === 2) {
+			window.location.href = `./question/question_a0${listUrl + 1}.html?workOrderID=${
+				params.workOrderID
+			}&step=4&bigstep=${listUrl}`;
+		} else if (listIdx === 3 && listUrl === 2) {
+			window.location.href = `./question/question_a0${listUrl + 1}.html?workOrderID=${
+				params.workOrderID
+			}&step=4-02&bigstep=${listUrl}`;
+		} else if (listIdx === 7 && listUrl === 1) {
+			window.location.href = `./question/question_a03.html?workOrderID=${params.workOrderID}&step=1&bigstep=2`;
+		} else if (listIdx === 8 && listUrl === 1) {
+			window.location.href = `./question/question_a03.html?workOrderID=${params.workOrderID}&step=2&bigstep=2`;
+		} else if (listIdx === 1 && listUrl === 2) {
+			window.location.href = `./question/question_a03.html?workOrderID=${params.workOrderID}&step=3&bigstep=2`;
+		} else if (listIdx === 2 && listUrl === 2) {
+			window.location.href = `./question/question_a03.html?workOrderID=${params.workOrderID}&step=4&bigstep=2`;
+		} else {
+			// 使用 getNextPage 處理一般情況
+			const currentUrl = window.location.href;
+			const nextUrl = getNextPage(currentUrl);
+			if (nextUrl) {
+				window.location.href = nextUrl;
+			} else {
+				// 預設跳轉邏輯
+				window.location.href = `./question/question_a0${listUrl + 1}.html?workOrderID=${params.workOrderID}&step=${
+					listIdx + 1
+				}&bigstep=${listUrl}`;
+			}
+		}
+	});
+
 	$(".card .list").on("click", (e) => {
 		let sectionId = $($(e)[0].target).attr("data-listurl");
+		// console.log(e);
+		// console.log(sectionId);
 
 		if ($($(e)[0].target).attr("data-listidx") == 2 && $($(e)[0].target).attr("data-listurl") == 2) {
 			window.location.href = `./question/question_a0${
@@ -293,6 +359,8 @@ $(document).ready(function () {
 						$(e.item).each((idxx, ee) => {
 							if (ee.if_complete) {
 								$($(`[data-cardidx=${idx + 1}] [data-listidx=${idxx + 1}] img`)[0]).attr("src", "./images/checked.png");
+								$($(`[data-cardidx=${3}] [data-listidx=${7}] img`)[0]).attr("src", "./images/checked.png");
+								$($(`[data-cardidx=${3}] [data-listidx=${8}] img`)[0]).attr("src", "./images/checked.png");
 							}
 						});
 					});

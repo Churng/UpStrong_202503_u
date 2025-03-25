@@ -280,9 +280,9 @@ $(document).ready(function () {
 
 					let data06 = res.returnData.item[paramBigStep].item[5];
 
-					let data07 = res.returnData.item[paramBigStep].item[6];
+					// let data07 = res.returnData.item[paramBigStep].item[6];
 
-					let data08 = res.returnData.item[paramBigStep].item[7];
+					// let data08 = res.returnData.item[paramBigStep].item[7];
 
 					$.each(data01.item, (consciousness, subConsciousness) => {
 						$(`.step01 #consciousness${consciousness}`).attr("checked", "true");
@@ -291,6 +291,12 @@ $(document).ready(function () {
 							$(`.step01 #consciousness${consciousness}_${subConsciousness}`).attr("checked", "true");
 						} else if (typeof subConsciousness === "string" && subConsciousness !== "") {
 							$(`.step01 #sub_consciousness${consciousness}`).val(subConsciousness);
+						}
+
+						if ($("#consciousness1").prop("checked")) {
+							$('input[name="consciousness"]').not("#consciousness1").prop("checked", false);
+						} else if ($('input[name="consciousness"]').not("#consciousness1").is(":checked")) {
+							$("#consciousness1").prop("checked", false);
 						}
 					});
 
@@ -407,6 +413,21 @@ $(document).ready(function () {
 			},
 		});
 	};
+
+	// 問題一清醒互斥處理
+	$("#consciousness1").change(function () {
+		if ($(this).prop("checked")) {
+			$('input[name="consciousness"]').not("#consciousness1").prop("checked", false);
+		}
+	});
+
+	$('input[name="consciousness"]')
+		.not("#consciousness1")
+		.change(function () {
+			if ($(this).prop("checked")) {
+				$("#consciousness1").prop("checked", false);
+			}
+		});
 
 	getCheckListRecord();
 
