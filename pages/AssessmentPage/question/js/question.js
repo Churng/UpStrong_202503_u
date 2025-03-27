@@ -306,10 +306,13 @@ $(document).ready(function () {
 		formData.append("action", action);
 
 		formData.append("chsm", chsm);
-
-		formData.append("data", JSON.stringify(oldData));
-
-		console.log(oldData);
+		formData.append(
+			"data",
+			JSON.stringify({
+				...oldData,
+				workOrderId: testparams.workOrderID,
+			})
+		);
 
 		$.ajax({
 			url: `${window.apiUrl}${window.apicheckList}`,

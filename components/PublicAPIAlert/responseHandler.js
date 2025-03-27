@@ -15,3 +15,11 @@ function handleResponse(res) {
 		window.location.assign("../LoginPage/index.html"); // 從根目錄開始
 	}
 }
+
+//自訂套用頁面
+function successResponse(res) {
+	//儲存成功
+	if (res.returnCode === "1") {
+		new CustomAlert({ content: "儲存成功" });
+	}
+}

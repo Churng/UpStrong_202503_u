@@ -280,9 +280,9 @@ $(document).ready(function () {
 
 					let data06 = res.returnData.item[paramBigStep].item[5];
 
-					// let data07 = res.returnData.item[paramBigStep].item[6];
+					let data07 = res.returnData.item[paramBigStep].item[6];
 
-					// let data08 = res.returnData.item[paramBigStep].item[7];
+					let data08 = res.returnData.item[paramBigStep].item[7];
 
 					$.each(data01.item, (consciousness, subConsciousness) => {
 						$(`.step01 #consciousness${consciousness}`).attr("checked", "true");
@@ -451,6 +451,14 @@ $(document).ready(function () {
 		formData.append("chsm", chsm);
 
 		formData.append("data", JSON.stringify(oldData));
+
+		formData.append(
+			"data",
+			JSON.stringify({
+				...oldData,
+				workOrderId: testparams.workOrderID,
+			})
+		);
 
 		$.ajax({
 			url: `${window.apiUrl}${window.apicheckList}`,

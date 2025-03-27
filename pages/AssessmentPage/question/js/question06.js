@@ -145,6 +145,7 @@ $(document).ready(function () {
 
 	const getList = () => {
 		let formData = new FormData();
+		console.log("getList started");
 
 		let session_id = sessionStorage.getItem("sessionId");
 
@@ -152,7 +153,7 @@ $(document).ready(function () {
 
 		let chsm = "upStrongCheckListApi"; // api文件相關
 
-		let data = { data: "8" };
+		let data = { step: "8" };
 
 		chsm = $.md5(session_id + action + chsm);
 
@@ -176,13 +177,14 @@ $(document).ready(function () {
 			contentType: false,
 
 			success: function (res) {
-				console.log(res);
-
+				console.log("getList response received:", res); // 確認回應
 				let data02 = res.returnData.item[5].item[1];
 
 				$(".step02 .list-box").html("");
 
 				$(data02.item).each((idx, e) => {
+					console.log(e);
+
 					$(".step02 .list-box").append(`
     
               <div class="list">
@@ -387,7 +389,16 @@ $(document).ready(function () {
 		formData.append("chsm", chsm);
 
 		formData.append("data", JSON.stringify(oldData));
-		console.log("傳過去的資料:" + JSON.stringify(oldData));
+
+		formData.append(
+			"data",
+			JSON.stringify({
+				...oldData,
+				workOrderId: testparams.workOrderID,
+			})
+		);
+
+		// console.log("傳過去的資料:" + JSON.stringify(oldData));
 
 		$.ajax({
 			url: `${window.apiUrl}${window.apicheckList}`,

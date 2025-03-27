@@ -197,7 +197,13 @@ $(document).ready(function () {
 
 		formData.append("chsm", chsm);
 
-		formData.append("data", JSON.stringify(oldData));
+		formData.append(
+			"data",
+			JSON.stringify({
+				...oldData,
+				workOrderId: testparams.workOrderID,
+			})
+		);
 
 		$.ajax({
 			url: `${window.apiUrl}${window.apicheckList}`,

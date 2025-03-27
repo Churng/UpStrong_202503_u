@@ -230,10 +230,13 @@ $(document).ready(function () {
 		formData.append("session_id", session_id);
 		formData.append("action", action);
 		formData.append("chsm", chsm);
-
-		//不知道id的帶回方式
-		formData.append("data", JSON.stringify(oldData));
-		formData.append("workOrderId", testparams.workOrderID);
+		formData.append(
+			"data",
+			JSON.stringify({
+				...oldData,
+				workOrderId: testparams.workOrderID,
+			})
+		);
 
 		$.ajax({
 			url: `${window.apiUrl}${window.apicheckList}`,

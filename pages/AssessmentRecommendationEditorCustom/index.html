@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <title>評估建議-教練建議編輯自訂頁</title>
+
+
+  <link href="../../css/RobotoFont.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/bootstrap-5.3.3.css">
+  <link rel="stylesheet" href="../../css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="../../components/Header/style.css" />
+  <link rel="stylesheet" type="text/css" href="../../components/Footer/style.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/fonts.css" />
+  <link rel="stylesheet" type="text/css" href="./all.css" />
+  <link rel="stylesheet" href="../../../components/CustomAlert/style.css">
+
+  <script src="../../js/bootstrap-5.3.3.js"></script>
+  <script src="../../js/jquery-3.6.0.min.js"></script>
+  <!-- <script src="../../../components/CustomAlert/script.js"></script> -->
+  <script>
+    // 確保載入時，使用時間戳。
+    let version = Date.now();
+    document.write('<script type="text/javascript" src="../../js/jquery.md5.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script type="text/javascript" src="../../js/jquery.cookie.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script type="text/javascript" src="../../components/Header/script.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script type="text/javascript" src="../../components/CustomAlert/script.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script type="text/javascript" src="../../js/fullcalendar.min.js?ver=' + version + '"></scr' + 'ipt>');
+
+  </script>
+
+  <script>
+    $(function () {
+      // 為確保Header/index.html始終在Header/script.js之前載入，並禁用快取。每次都載新的js，避免偶爾的順序出錯
+      // 此外因為需要監聽，所以把主要監聽功能寫在這，確保在Header.html載入之後才執行。避免引入外部js檔案時，偶爾造成的載入順序錯誤問題。
+      $.get("../../components/Header/index.html", function (data) {
+        $('#header').html(data);
+      }).fail(function () {
+      });
+
+      $.get("../../components/Footer/index.html", function (data) {
+        $('#footer').html(data);
+      }).fail(function () {
+      });
+
+    });
+  </script>
+</head>
+
+<body style="background: #F3F3F3;">
+  <div id="header"></div>
+  <section class="containerArea my-4">
+    <div class="container">
+      <div class="row d-flex justify-content-center">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <h2 class="fs-3">
+            <svg width="6" height="14" viewBox="0 0 6 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 7L3.82708e-07 13.0622L9.12681e-07 0.937822L6 7Z" fill="#EB5C20" />
+            </svg>
+            評估建議
+          </h2>
+          <br>
+          <div class="row card">
+            <div class="justify-content-center mb-1">
+              <div class="" style="min-width:100%;">
+                <div class="col-12 p-3 ">
+                  <h2 id="title" class="fs-3 fw-bold"></h2>
+                  <div id="recommendation-container">
+
+                    <!-- 新增文字 -->
+                    <h3 class="text-1">A級教練的建議</h3>
+                    <div class="textarea-box d-flex align-items-center mb-3 template">
+                      <textarea name="" id="" class="recommendation-textarea"></textarea>
+                      <div class="d-flex align-items-center">
+                        <button class="btn-icon " type="button" title="刪除">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-trash" viewBox="0 0 16 16">
+                            <path
+                              d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                            <path
+                              d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                          </svg>
+                        </button>
+
+                        <button class="btn-icon" type="button" title="新增">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#0066cc"
+                            class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                            <path
+                              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- 新增圖片 -->
+                    <h3 class="my-2 text-2 mb-3">選擇圖片</h3>
+                    <div class="addpic-box d-flex justify-content-between mb-3">
+                      <div class="addpic-section d-flex justify-content-between">
+                        <div class="addpic-icon mr-5">
+                          <!-- 隱藏的檔案輸入元素 -->
+                          <input type="file" id="imageUpload" accept="image/*" style="display: none;" />
+                          <!-- 可點擊的 SVG 圖標 -->
+                          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#0066cc"
+                            class="bi bi-plus upload-trigger" viewBox="0 0 16 16">
+                            <path
+                              d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                          </svg>
+                        </div>
+
+                        <div class="textarea-container">
+                          <textarea name="content" id="limitedTextarea" class="addpic-textarea" maxlength="100"
+                            placeholder="請輸入內容..."></textarea>
+                          <div class="char-counter">0/100</div>
+                        </div>
+                      </div>
+
+                      <div class="d-flex align-items-center">
+                        <button class="btn-icon" type="button" title="刪除">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-trash" viewBox="0 0 16 16">
+                            <path
+                              d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                            <path
+                              d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                          </svg>
+                        </button>
+                        <button class="btn-icon" type="button" title="新增">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#0066cc"
+                            class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                            <path
+                              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                    <!-- 新增YT -->
+                    <h3 class="my-2 text-2">影片Youtube連結</h3>
+                    <div class="ytlink-container">
+                      <div class="ytlink-box d-flex">
+                        <input type="text" class="ytlink-input" placeholder="請輸入YouTube連結...">
+
+                        <div class="d-flex align-items-center">
+                          <button class="btn-icon mx-2" type="button" title="刪除">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                              class="bi bi-trash" viewBox="0 0 16 16">
+                              <path
+                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                              <path
+                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                            </svg>
+                          </button>
+                          <button class="btn-icon" type="button" title="新增">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#0066cc"
+                              class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                              <path
+                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z" />
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="next-button">
+                    <span class="next">儲存</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+
+
+  <div id="footer"></div>
+</body>
+
+<script type="text/javascript" src="../../js/webConfig.js"></script>
+<script src="../../components/PublicAPIAlert/responseHandler.js"></script>
+<script type="text/javascript" src="./script.js"></script>
+
+</html>

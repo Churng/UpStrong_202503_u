@@ -269,13 +269,13 @@ $(document).ready(function () {
 				params.workOrderID
 			}&step=4-02&bigstep=${listUrl}`;
 		} else if (listIdx === 7 && listUrl === 1) {
-			window.location.href = `./question/question_a03.html?workOrderID=${params.workOrderID}&step=1&bigstep=2`;
+			window.location.href = `/pages/AssessmentPage/question/question_a03.html?workOrderID=${params.workOrderID}&step=1&bigstep=2`;
 		} else if (listIdx === 8 && listUrl === 1) {
-			window.location.href = `./question/question_a03.html?workOrderID=${params.workOrderID}&step=2&bigstep=2`;
+			window.location.href = `/pages/AssessmentPage/question/question_a03.html?workOrderID=${params.workOrderID}&step=2&bigstep=2`;
 		} else if (listIdx === 1 && listUrl === 2) {
-			window.location.href = `./question/question_a03.html?workOrderID=${params.workOrderID}&step=3&bigstep=2`;
+			window.location.href = `/pages/AssessmentPage/question/question_a03.html?workOrderID=${params.workOrderID}&step=3&bigstep=2`;
 		} else if (listIdx === 2 && listUrl === 2) {
-			window.location.href = `./question/question_a03.html?workOrderID=${params.workOrderID}&step=4&bigstep=2`;
+			window.location.href = `/pages/AssessmentPage/question/question_a03.html?workOrderID=${params.workOrderID}&step=4&bigstep=2`;
 		} else {
 			// 使用 getNextPage 處理一般情況
 			const currentUrl = window.location.href;
@@ -284,34 +284,34 @@ $(document).ready(function () {
 				window.location.href = nextUrl;
 			} else {
 				// 預設跳轉邏輯
-				window.location.href = `./question/question_a0${listUrl + 1}.html?workOrderID=${params.workOrderID}&step=${
-					listIdx + 1
-				}&bigstep=${listUrl}`;
+				window.location.href = `./question/question_a0${listUrl + 1}.html?workOrderID=${
+					params.workOrderID
+				}&step=${listIdx}&bigstep=${listUrl}`;
 			}
 		}
 	});
 
-	$(".card .list").on("click", (e) => {
-		let sectionId = $($(e)[0].target).attr("data-listurl");
-		// console.log(e);
-		// console.log(sectionId);
+	// $(".card .list").on("click", (e) => {
+	// 	let sectionId = $($(e)[0].target).attr("data-listurl");
+	// 	// console.log(e);
+	// 	// console.log(sectionId);
 
-		if ($($(e)[0].target).attr("data-listidx") == 2 && $($(e)[0].target).attr("data-listurl") == 2) {
-			window.location.href = `./question/question_a0${
-				Number($($(e)[0].target).attr("data-listurl")) + 1
-			}.html?step=2&bigstep=${Number($($(e)[0].target).attr("data-listurl"))}`;
-		} else if ($($(e)[0].target).attr("data-listidx") == 3 && $($(e)[0].target).attr("data-listurl") == 2) {
-			window.location.href = `./question/question_a0${
-				Number($($(e)[0].target).attr("data-listurl")) + 1
-			}.html?step=2-02&bigstep=${Number($($(e)[0].target).attr("data-listurl"))}`;
-		} else {
-			window.location.href = `./question/question_a0${
-				Number($($(e)[0].target).attr("data-listurl")) + 1
-			}.html?workOrderID=${params.workOrderID}&step=${Number($($(e)[0].target).attr("data-listidx"))}&bigstep=${Number(
-				$($(e)[0].target).attr("data-listurl")
-			)}`;
-		}
-	});
+	// 	if ($($(e)[0].target).attr("data-listidx") == 2 && $($(e)[0].target).attr("data-listurl") == 2) {
+	// 		window.location.href = `./question/question_a0${
+	// 			Number($($(e)[0].target).attr("data-listurl")) + 1
+	// 		}.html?step=2&bigstep=${Number($($(e)[0].target).attr("data-listurl"))}`;
+	// 	} else if ($($(e)[0].target).attr("data-listidx") == 3 && $($(e)[0].target).attr("data-listurl") == 2) {
+	// 		window.location.href = `./question/question_a0${
+	// 			Number($($(e)[0].target).attr("data-listurl")) + 1
+	// 		}.html?step=2-02&bigstep=${Number($($(e)[0].target).attr("data-listurl"))}`;
+	// 	} else {
+	// 		window.location.href = `./question/question_a0${
+	// 			Number($($(e)[0].target).attr("data-listurl")) + 1
+	// 		}.html?workOrderID=${params.workOrderID}&step=${Number($($(e)[0].target).attr("data-listidx"))}&bigstep=${Number(
+	// 			$($(e)[0].target).attr("data-listurl")
+	// 		)}`;
+	// 	}
+	// });
 
 	const getCheckListRecord = () => {
 		let formData = new FormData();

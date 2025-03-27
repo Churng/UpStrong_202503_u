@@ -400,6 +400,15 @@ $(document).ready(function () {
 
 					let data02 = res.returnData.item[paramBigStep].item[1].item[0].value; //粗大動作功能分級 02/02
 
+					// 檢查今天是否已經有資料
+					const today = formatDate(new Date());
+					const hasTodayData = Object.values(data02).some((item) => Object.keys(item).some((key) => key === today));
+
+					// 如果今天已經有資料，設置 input 為 readonly
+					if (hasTodayData) {
+						$('input[data-list-id="0"]').prop("readonly", true);
+					}
+
 					// console.log(data02);
 
 					if (typeof data01.item[0].value[0] !== "object") {
@@ -561,7 +570,15 @@ $(document).ready(function () {
 
 		formData.append("data", JSON.stringify(oldData));
 
-		console.log("SendData:" + JSON.stringify(oldData));
+		formData.append(
+			"data",
+			JSON.stringify({
+				...oldData,
+				workOrderId: testparams.workOrderID,
+			})
+		);
+
+		// console.log("SendData:" + JSON.stringify(oldData));
 
 		$.ajax({
 			url: `${window.apiUrl}${window.apicheckList}`,
