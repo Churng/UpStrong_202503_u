@@ -86,6 +86,8 @@ $(document).ready(function () {
 		}
 	};
 
+	var oldData = null;
+
 	// Get checklist record from API
 	const getCheckListRecord = () => {
 		let formData = new FormData();
