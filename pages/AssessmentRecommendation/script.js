@@ -17,6 +17,7 @@ $(document).ready(function () {
 	} else {
 		$(".coach-edit").css("visibility", "visible");
 	}
+
 	let formData = new FormData();
 
 	let session_id = sessionStorage.getItem("sessionId");
@@ -45,17 +46,13 @@ $(document).ready(function () {
 		data: formData,
 		processData: false,
 		contentType: false,
-		success: function (res) {
-			handleResponse(res);
-			console.log(res);
-
-			if (res.returnCode == "1" && res.returnData) {
+		success: function (response) {
+			if (response.returnCode == "1" && response.returnData) {
 				let recommendationContainer = $("#recommendation-container");
 				let recommendData = response.returnData.recommendData;
 				$("#title").append(response.returnData.title); //標題
 
 				// console.log("回傳資料:"+ response) //回傳資料
-				// recommendData.sort((a, b) => a.order - b.order); //根據order排序
 				recommendData.sort((a, b) => a.order - b.order); //根據order排序
 				recommendData.forEach((item) => {
 					let contentHTML = "";
