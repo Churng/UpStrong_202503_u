@@ -20,12 +20,9 @@ $(document).ready(function () {
 	let formData = new FormData();
 
 	let session_id = sessionStorage.getItem("sessionId");
-	let action = "getRecommendMatchDataListById";
+	let action = "getRecommendByWorkOrderId";
 	let chsm = "upStrongRecommendApi";
 	chsm = $.md5(session_id + action + chsm);
-
-	console.log(session_id);
-	console.log(chsm);
 
 	const urlSearchParams = new URLSearchParams(window.location.search);
 	const params = Object.fromEntries(urlSearchParams.entries());
@@ -54,11 +51,12 @@ $(document).ready(function () {
 
 			if (res.returnCode == "1" && res.returnData) {
 				let recommendationContainer = $("#recommendation-container");
-				let recommendData = res.returnData;
-				$("#title").append(res.returnData.title); //標題
+				let recommendData = response.returnData.recommendData;
+				$("#title").append(response.returnData.title); //標題
 
 				// console.log("回傳資料:"+ response) //回傳資料
 				// recommendData.sort((a, b) => a.order - b.order); //根據order排序
+				recommendData.sort((a, b) => a.order - b.order); //根據order排序
 				recommendData.forEach((item) => {
 					let contentHTML = "";
 					if (item.type === "word") {
@@ -102,10 +100,11 @@ $(document).ready(function () {
 				});
 				//     // }
 			} else {
-				console.error("API 回應異常:", res.message);
+				console.error("API 回應異常:", response.message);
 			}
 		},
 		error: function (xhr, status, error) {
+			// 處理錯誤
 			console.error("API 呼叫失敗:", error);
 		},
 	});
