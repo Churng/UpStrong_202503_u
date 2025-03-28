@@ -1,13 +1,13 @@
-// if (window.consoleToggle) {
-// 	var console = {};
-// 	console.log = function () {};
-// } else {
-// 	var iframe = document.createElement("iframe");
-// 	iframe.style.display = "none";
-// 	document.body.appendChild(iframe);
-// 	console = iframe.contentWindow.console;
-// 	window.console = console;
-// }
+if (window.consoleToggle) {
+	var console = {};
+	console.log = function () {};
+} else {
+	var iframe = document.createElement("iframe");
+	iframe.style.display = "none";
+	document.body.appendChild(iframe);
+	console = iframe.contentWindow.console;
+	window.console = console;
+}
 
 $(document).ready(function () {
 	// Initialize variables
@@ -86,8 +86,6 @@ $(document).ready(function () {
 		}
 	};
 
-	var oldData = null;
-
 	// Get checklist record from API
 	const getCheckListRecord = () => {
 		let formData = new FormData();
@@ -110,8 +108,6 @@ $(document).ready(function () {
 				handleResponse(res);
 				if (res.returnCode) {
 					oldData = res.returnData;
-					console.log(oldData);
-
 					let data01 = res.returnData.item[paramBigStep].item[0];
 					let data02 = res.returnData.item[paramBigStep].item[1];
 					let data03 = res.returnData.item[paramBigStep].item[2];
@@ -159,6 +155,9 @@ $(document).ready(function () {
 
 					// Front data
 					let frontData = [];
+
+					console.log(frontData);
+
 					for (let i = 0; i < Object.keys(data02.item[0].value[0]).length; i++) {
 						const id = Object.keys(data02.item[0].value[0])[i];
 						const score = Object.values(data02.item[0].value[0])[i];
@@ -250,6 +249,7 @@ $(document).ready(function () {
 			contentType: false,
 			success: function (res) {
 				handleResponse(res);
+				console.log(res);
 
 				if (res.returnCode) {
 					if (type != "prev") {
@@ -455,6 +455,8 @@ $(document).ready(function () {
 			});
 
 			newData[0].value.push(payload);
+			console.log(payload);
+
 			oldData.item[paramBigStep].item[2].item = newData;
 			oldData.item[paramBigStep].item[2].if_complete = true;
 			update();
@@ -585,42 +587,121 @@ $(document).ready(function () {
 	$(".pupop-btn").on("click", function () {
 		$(selectData).css("fill", painColor[selectNum]);
 
+		// if (selectId <= 22) {
+		// 	frontTotalScore = frontTotalScore + selectNum;
+		// 	if ($(selectData).attr("class").includes("used")) {
+		// 		$(".box01").each(function () {
+		// 			if ($(this).find(".num").text() == selectId) {
+		// 				$(this).find(".point").html(selectNum);
+		// 			}
+		// 		});
+		// 	} else {
+		// 		$(".point-box.front .box").append(`
+		//             <div class="box01">
+		//                 <span class="num">${selectId}</span>
+		//                 <span class="point">${selectNum}</span>
+		//             </div>
+		//             <span class="plus">+</span>
+		//         `);
+		// 	}
+		// } else {
+		// 	backTotalScore = backTotalScore + selectNum;
+		// 	if ($(selectData).attr("class").includes("used")) {
+		// 		$(".box01").each(function () {
+		// 			if ($(this).find(".num").text() == selectId) {
+		// 				$(this).find(".point").html(selectNum);
+		// 			}
+		// 		});
+		// 	} else {
+		// 		$(".point-box.back .box").append(`
+		//             <div class="box01">
+		//                 <span class="num">${selectId}</span>
+		//                 <span class="point">${selectNum}</span>
+		//             </div>
+		//             <span class="plus">+</span>
+		//         `);
+		// 	}
+		// }
+
 		if (selectId <= 22) {
-			frontTotalScore = frontTotalScore + selectNum;
+			// 先檢查是否已有舊值
+			let oldValue = 0;
+			$(".box01").each(function () {
+				if ($(this).find(".num").text() == selectId) {
+					oldValue = parseInt($(this).find(".point").text()) || 0;
+				}
+			});
+
+			// 更新總分：扣除舊值，再加上新值（若非0）
+			frontTotalScore = frontTotalScore - oldValue;
+			if (selectNum && selectNum != 0) {
+				frontTotalScore = frontTotalScore + selectNum;
+			}
+
 			if ($(selectData).attr("class").includes("used")) {
 				$(".box01").each(function () {
 					if ($(this).find(".num").text() == selectId) {
-						$(this).find(".point").html(selectNum);
+						if (selectNum && selectNum != 0) {
+							$(this).find(".point").html(selectNum);
+						} else {
+							// 移除整個 box01 和後面的 + 號
+							$(this).next(".plus").remove();
+							$(this).remove();
+						}
 					}
 				});
 			} else {
-				$(".point-box.front .box").append(`
-                    <div class="box01">
-                        <span class="num">${selectId}</span>
-                        <span class="point">${selectNum}</span>
-                    </div>
-                    <span class="plus">+</span>
-                `);
+				// 只有當 selectNum 不是 0 或空時，才新增元素
+				if (selectNum && selectNum != 0) {
+					$(".point-box.front .box").append(`
+						<div class="box01">
+							<span class="num">${selectId}</span>
+							<span class="point">${selectNum}</span>
+						</div>
+						<span class="plus">+</span>
+					`);
+				}
 			}
 		} else {
-			backTotalScore = backTotalScore + selectNum;
+			// 先檢查是否已有舊值
+			let oldValue = 0;
+			$(".box01").each(function () {
+				if ($(this).find(".num").text() == selectId) {
+					oldValue = parseInt($(this).find(".point").text()) || 0;
+				}
+			});
+
+			// 更新總分：扣除舊值，再加上新值（若非0）
+			backTotalScore = backTotalScore - oldValue;
+			if (selectNum && selectNum != 0) {
+				backTotalScore = backTotalScore + selectNum;
+			}
+
 			if ($(selectData).attr("class").includes("used")) {
 				$(".box01").each(function () {
 					if ($(this).find(".num").text() == selectId) {
-						$(this).find(".point").html(selectNum);
+						if (selectNum && selectNum != 0) {
+							$(this).find(".point").html(selectNum);
+						} else {
+							// 移除整個 box01 和後面的 + 號
+							$(this).next(".plus").remove();
+							$(this).remove();
+						}
 					}
 				});
 			} else {
-				$(".point-box.back .box").append(`
-                    <div class="box01">
-                        <span class="num">${selectId}</span>
-                        <span class="point">${selectNum}</span>
-                    </div>
-                    <span class="plus">+</span>
-                `);
+				// 只有當 selectNum 不是 0 或空時，才新增元素
+				if (selectNum && selectNum != 0) {
+					$(".point-box.back .box").append(`
+						<div class="box01">
+							<span class="num">${selectId}</span>
+							<span class="point">${selectNum}</span>
+						</div>
+						<span class="plus">+</span>
+					`);
+				}
 			}
 		}
-
 		$(selectData).addClass("used");
 		$(selectData).attr("data-sroce", selectNum);
 		$(".right-box").css("display", "none");
