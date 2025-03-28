@@ -269,13 +269,13 @@ $(document).ready(function () {
 				params.workOrderID
 			}&step=4-02&bigstep=${listUrl}`;
 		} else if (listIdx === 7 && listUrl === 1) {
-			window.location.href = `/pages/AssessmentPage/question/question_a03.html?workOrderID=${params.workOrderID}&step=1&bigstep=2`;
+			window.location.href = `./pages/AssessmentPage/question/question_a03.html?workOrderID=${params.workOrderID}&step=1&bigstep=2`;
 		} else if (listIdx === 8 && listUrl === 1) {
-			window.location.href = `/pages/AssessmentPage/question/question_a03.html?workOrderID=${params.workOrderID}&step=2&bigstep=2`;
+			window.location.href = `./pages/AssessmentPage/question/question_a03.html?workOrderID=${params.workOrderID}&step=2&bigstep=2`;
 		} else if (listIdx === 1 && listUrl === 2) {
-			window.location.href = `/pages/AssessmentPage/question/question_a03.html?workOrderID=${params.workOrderID}&step=3&bigstep=2`;
+			window.location.href = `./pages/AssessmentPage/question/question_a03.html?workOrderID=${params.workOrderID}&step=3&bigstep=2`;
 		} else if (listIdx === 2 && listUrl === 2) {
-			window.location.href = `/pages/AssessmentPage/question/question_a03.html?workOrderID=${params.workOrderID}&step=4&bigstep=2`;
+			window.location.href = `./pages/AssessmentPage/question/question_a03.html?workOrderID=${params.workOrderID}&step=4&bigstep=2`;
 		} else {
 			// 使用 getNextPage 處理一般情況
 			const currentUrl = window.location.href;
