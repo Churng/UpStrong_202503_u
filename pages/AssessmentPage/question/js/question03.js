@@ -1,13 +1,13 @@
-if (window.consoleToggle) {
-	var console = {};
-	console.log = function () {};
-} else {
-	var iframe = document.createElement("iframe");
-	iframe.style.display = "none";
-	document.body.appendChild(iframe);
-	console = iframe.contentWindow.console;
-	window.console = console;
-}
+// if (window.consoleToggle) {
+// 	var console = {};
+// 	console.log = function () {};
+// } else {
+// 	var iframe = document.createElement("iframe");
+// 	iframe.style.display = "none";
+// 	document.body.appendChild(iframe);
+// 	console = iframe.contentWindow.console;
+// 	window.console = console;
+// }
 
 $(document).ready(function () {
 	// Initialize variables
