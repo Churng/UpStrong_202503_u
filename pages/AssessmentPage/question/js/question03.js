@@ -110,6 +110,8 @@ $(document).ready(function () {
 				handleResponse(res);
 				if (res.returnCode) {
 					oldData = res.returnData;
+					console.log(oldData);
+
 					let data01 = res.returnData.item[paramBigStep].item[0];
 					let data02 = res.returnData.item[paramBigStep].item[1];
 					let data03 = res.returnData.item[paramBigStep].item[2];
