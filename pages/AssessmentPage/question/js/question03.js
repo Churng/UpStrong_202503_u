@@ -440,7 +440,7 @@ $(document).ready(function () {
 			update();
 
 			if ($(".step03 input:checked").val() == 1) {
-				window.location.href = `./Index04.html`;
+				window.location.href = `../../AssessmentPage/question/Index04.html?workOrderID=${testparams.workOrderID}`;
 			}
 		} else if (step == "04") {
 			let newData = [{ value: [] }];
@@ -586,42 +586,6 @@ $(document).ready(function () {
 	// Confirm pain level selection
 	$(".pupop-btn").on("click", function () {
 		$(selectData).css("fill", painColor[selectNum]);
-
-		// if (selectId <= 22) {
-		// 	frontTotalScore = frontTotalScore + selectNum;
-		// 	if ($(selectData).attr("class").includes("used")) {
-		// 		$(".box01").each(function () {
-		// 			if ($(this).find(".num").text() == selectId) {
-		// 				$(this).find(".point").html(selectNum);
-		// 			}
-		// 		});
-		// 	} else {
-		// 		$(".point-box.front .box").append(`
-		//             <div class="box01">
-		//                 <span class="num">${selectId}</span>
-		//                 <span class="point">${selectNum}</span>
-		//             </div>
-		//             <span class="plus">+</span>
-		//         `);
-		// 	}
-		// } else {
-		// 	backTotalScore = backTotalScore + selectNum;
-		// 	if ($(selectData).attr("class").includes("used")) {
-		// 		$(".box01").each(function () {
-		// 			if ($(this).find(".num").text() == selectId) {
-		// 				$(this).find(".point").html(selectNum);
-		// 			}
-		// 		});
-		// 	} else {
-		// 		$(".point-box.back .box").append(`
-		//             <div class="box01">
-		//                 <span class="num">${selectId}</span>
-		//                 <span class="point">${selectNum}</span>
-		//             </div>
-		//             <span class="plus">+</span>
-		//         `);
-		// 	}
-		// }
 
 		if (selectId <= 22) {
 			// 先檢查是否已有舊值
