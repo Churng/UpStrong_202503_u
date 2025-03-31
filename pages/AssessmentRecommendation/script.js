@@ -17,7 +17,6 @@ $(document).ready(function () {
 	} else {
 		$(".coach-edit").css("visibility", "visible");
 	}
-
 	let formData = new FormData();
 
 	let session_id = sessionStorage.getItem("sessionId");

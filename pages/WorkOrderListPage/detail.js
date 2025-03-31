@@ -1,76 +1,63 @@
 if (window.consoleToggle) {
+	var console = {};
 
-  var console = {};
-
-  console.log = function () {};
-
+	console.log = function () {};
 } else {
+	var iframe = document.createElement("iframe");
 
-  var iframe = document.createElement("iframe");
+	iframe.style.display = "none";
 
-  iframe.style.display = "none";
+	document.body.appendChild(iframe);
 
-  document.body.appendChild(iframe);
+	console = iframe.contentWindow.console;
 
-  console = iframe.contentWindow.console;
-
-  window.console = console;
-
+	window.console = console;
 }
 
 $(document).ready(function () {
+	const urlSearchParams = new URLSearchParams(window.location.search);
 
-  const urlSearchParams = new URLSearchParams(window.location.search);
+	const params = Object.fromEntries(urlSearchParams.entries());
 
-  const params = Object.fromEntries(urlSearchParams.entries());
+	const getOrderData = () => {
+		let formData = new FormData();
 
+		let session_id = sessionStorage.getItem("sessionId");
 
+		let action = "getWorkOrderDetailById";
 
-  const getOrderData = () => {
+		let chsm = "upStrongWorkOrderApi"; // api文件相關
 
-    let formData = new FormData();
+		chsm = $.md5(session_id + action + chsm);
 
-    let session_id = sessionStorage.getItem("sessionId");
+		let data = { workOrderId: params.orderid };
 
-    let action = "getWorkOrderDetailById";
+		formData.append("session_id", session_id);
 
-    let chsm = "upStrongWorkOrderApi"; // api文件相關
+		formData.append("action", action);
 
-    chsm = $.md5(session_id + action + chsm);
+		formData.append("chsm", chsm);
 
+		formData.append("data", JSON.stringify(data));
 
+		$.ajax({
+			url: `${window.apiUrl}${window.apiworkOrder}`,
 
-    let data = { workOrderId: params.orderid };
+			type: "POST",
 
-    formData.append("session_id", session_id);
+			data: formData,
 
-    formData.append("action", action);
+			processData: false,
 
-    formData.append("chsm", chsm);
+			contentType: false,
 
-    formData.append("data", JSON.stringify(data));
+			success: function (res) {
+				console.log(res);
 
+				let data = res.returnData.workOrderDetailData;
+				$(".main-box").html("");
 
-  
-
-    $.ajax({
-
-      url: `${window.apiUrl}${window.apiworkOrder}`,
-
-      type: "POST",
-
-      data: formData,
-
-      processData: false,
-
-      contentType: false,
-
-      success: function (res) {
-
-        let data = res.returnData.workOrderDetailData;
-        $(".main-box").html("");
-
-        $(".main-box").append(`
+				$(".main-box").append(`
             <div class="content">
                 <div class="title-box">
 
@@ -83,30 +70,18 @@ $(document).ready(function () {
                 <div class="box01">
 
                     <span class="type ${
-
-                      data.Status == 1
-
-                        ? "type01"
-
-                        : data.Status == 2
-
-                        ? "type02"
-
-                        : data.Status == 3
-
-                        ? "type03"
-
-                        : data.Status == 4
-
-                        ? "type04"
-
-                        : data.Status == 5
-
-                        ? "type05"
-
-                        : ""
-
-                    }">${data.StatusName}</span>
+											data.Status == 1
+												? "type01"
+												: data.Status == 2
+												? "type02"
+												: data.Status == 3
+												? "type03"
+												: data.Status == 4
+												? "type04"
+												: data.Status == 5
+												? "type05"
+												: ""
+										}">${data.StatusName}</span>
 
                     <div class="detail">
 
@@ -140,11 +115,7 @@ $(document).ready(function () {
 
                         <div class="img">
 
-                            <img src="${
-
-                              data.ProfessionalAssessmentCoachPhoto
-
-                            }" />
+                            <img src="${data.ProfessionalAssessmentCoachPhoto}" />
 
                         </div>
 
@@ -160,11 +131,7 @@ $(document).ready(function () {
 
                         <div class="img">
 
-                            <img src="${
-
-                              data.AutonomousApplicationCoachPhoto
-
-                            }" />
+                            <img src="${data.AutonomousApplicationCoachPhoto}" />
 
                         </div>
 
@@ -180,21 +147,13 @@ $(document).ready(function () {
 
                     <div class="singin">
 
-                    <span class="title">簽到完成：${
-
-                      data.SignComplete == true ? "是" : "否"
-
-                    }</span>
+                    <span class="title">簽到完成：${data.SignComplete == true ? "是" : "否"}</span>
 
                     <div class="reason-box">
 
                         <span>原因：</span>
 
-                        <input class="reason" type="text" value="${
-
-                          data.SignCompleteReason
-
-                        }" disabled>
+                        <input class="reason" type="text" value="${data.SignCompleteReason}" disabled>
 
                         <span class="save-button edit">
 
@@ -236,32 +195,18 @@ $(document).ready(function () {
 
                     <div class="record-box">
 
-                    <span class="title">記錄完成：${
-
-                      data.RecordComplete == true ? "是" : "否"
-
-                    }</span>
+                    <span class="title">記錄完成：${data.RecordComplete == true ? "是" : "否"}</span>
 
                     <div class="type-box">
 
-                        <span class="${
+                        <span class="${data.PhotoSign == true ? "active" : ""}">照片簽到</span>
 
-                          data.PhotoSign == true ? "active" : ""
-
-                        }">照片簽到</span>
-
-                        <span class="link ${
-
-                          data.AssessmentScale == true ? "active" : ""
-
-                        }">評估量表</span>
+                        <span class="link ${data.AssessmentScale == true ? "active" : ""}">評估量表</span>
 
 
                         <span class="AssessmentRecommendation ${
-
-                          data.AssessmentRecommendation == true ? "active" : ""
-
-                        }">訓練指引</span>
+													data.AssessmentRecommendation == true ? "active" : ""
+												}">訓練指引</span>
                     
 
                     </div>
@@ -272,113 +217,86 @@ $(document).ready(function () {
 
                 `);
 
+				$(".edit").on("click", function () {
+					$(".edit").css("display", "none");
 
+					$(".save").css("display", "block");
 
-        $(".edit").on("click", function () {
+					$(".reason").attr("disabled", false);
+				});
 
-          $(".edit").css("display", "none");
+				$(".save").on("click", function () {
+					$(".save").css("display", "none");
 
-          $(".save").css("display", "block");
+					$(".edit").css("display", "block");
 
-          $(".reason").attr("disabled", false);
+					$(".reason").attr("disabled", true);
 
-        });
+					let formData = new FormData();
 
-        $(".save").on("click", function () {
+					let session_id = sessionStorage.getItem("sessionId");
 
-          $(".save").css("display", "none");
+					let action = "setWorkOrderSignCompleteReasonById";
 
-          $(".edit").css("display", "block");
+					let chsm = "upStrongWorkOrderApi"; // api文件相關
 
-          $(".reason").attr("disabled", true);
+					chsm = $.md5(session_id + action + chsm);
 
+					let data = {
+						workOrderId: params.orderid,
 
+						signCompleteReason: $(".reason").val(),
+					};
 
-          let formData = new FormData();
+					formData.append("session_id", session_id);
 
-          let session_id = sessionStorage.getItem("sessionId");
+					formData.append("action", action);
 
-          let action = "setWorkOrderSignCompleteReasonById";
+					formData.append("chsm", chsm);
 
-          let chsm = "upStrongWorkOrderApi"; // api文件相關
+					formData.append("data", JSON.stringify(data));
 
-          chsm = $.md5(session_id + action + chsm);
+					$.ajax({
+						url: `${window.apiUrl}${window.apiworkOrder}`,
 
+						type: "POST",
 
+						data: formData,
 
-          let data = {
+						processData: false,
 
-            workOrderId: params.orderid,
+						contentType: false,
 
-            signCompleteReason: $(".reason").val(),
+						success: function (res) {
+							$(".save").css("display", "none");
 
-          };
+							$(".edit").css("display", "block");
 
-          formData.append("session_id", session_id);
+							$(".reason").attr("disabled", true);
 
-          formData.append("action", action);
+							getOrderData();
+						},
 
-          formData.append("chsm", chsm);
+						error: function () {
+							$("#error").text("An error occurred. Please try again later.");
+						},
+					});
+				});
 
-          formData.append("data", JSON.stringify(data));
+				$(".link").click(() => {
+					console.log(params);
+					window.location.href = `../AssessmentPage/index.html?workOrderID=${params.orderid}`;
+				});
+				$(".AssessmentRecommendation").click(() => {
+					window.location.href = `../AssessmentRecommendation/index.html?workOrderID=${params.orderid}`;
+				});
+			},
 
-          $.ajax({
+			error: function () {
+				$("#error").text("An error occurred. Please try again later.");
+			},
+		});
+	};
 
-            url: `${window.apiUrl}${window.apiworkOrder}`,
-
-            type: "POST",
-
-            data: formData,
-
-            processData: false,
-
-            contentType: false,
-
-            success: function (res) {
-
-              $(".save").css("display", "none");
-
-              $(".edit").css("display", "block");
-
-              $(".reason").attr("disabled", true);
-
-              getOrderData();
-
-            },
-
-            error: function () {
-
-              $("#error").text("An error occurred. Please try again later.");
-
-            },
-
-          });
-
-        });
-
-
-
-        $(".link").click(() => {
-          console.log(params);
-          window.location.href = `../AssessmentPage/index.html?workOrderID=${params.orderid}`;
-
-        });
-        $(".AssessmentRecommendation").click(() => {
-            window.location.href = `../AssessmentRecommendation/index.html?workOrderID=${params.orderid}`;
-        });
-      },
-
-      error: function () {
-
-        $("#error").text("An error occurred. Please try again later.");
-
-      },
-
-    });
-
-  };
-
-  getOrderData();
-
+	getOrderData();
 });
-
