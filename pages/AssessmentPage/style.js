@@ -276,6 +276,7 @@ $(document).ready(function () {
 		}
 
 		// 特殊情況處理
+		// 使用github repo 路徑，289 - 293，/UpStrong_202503_u/
 		if (listIdx === 2 && listUrl === 2) {
 			window.location.href = `./question/question_a0${listUrl + 1}.html?workOrderID=${
 				params.workOrderID
