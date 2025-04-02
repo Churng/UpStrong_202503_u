@@ -119,9 +119,43 @@ $(document).ready(function () {
 						$(`.step01 #pain${item}`).attr("checked", "true");
 					});
 
+					// 當 "無" 選項被勾選或取消勾選時
+					$("#pain1").change(function () {
+						if ($(this).prop("checked")) {
+							// 當 "無" 被勾選時，取消其他選項的勾選
+							$('input[name="pain"]').not("#pain1").prop("checked", false);
+						}
+					});
+
+					// 如果其他選項被勾選時，取消 "無" 的勾選
+					$('input[name="pain"]')
+						.not("#pain1")
+						.change(function () {
+							if ($(this).prop("checked")) {
+								$("#pain1").prop("checked", false);
+							}
+						});
+
 					$(data07.item[1].value).each((index, item) => {
 						$(`.step01 #urination${item}`).attr("checked", "true");
 					});
+
+					// 當 "無" 選項被勾選或取消勾選時
+					$("#urination1").change(function () {
+						if ($(this).prop("checked")) {
+							// 當 "無" 被勾選時，取消其他選項的勾選
+							$('input[name="urination"]').not("#urination1").prop("checked", false);
+						}
+					});
+
+					// 如果其他選項被勾選時，取消 "無" 的勾選
+					$('input[name="urination"]')
+						.not("#urination1")
+						.change(function () {
+							if ($(this).prop("checked")) {
+								$("#urination1").prop("checked", false);
+							}
+						});
 
 					$.each(data07.item[2].value, (item, text) => {
 						$(`.step01 #ulcer${item}`).attr("checked", "true");
