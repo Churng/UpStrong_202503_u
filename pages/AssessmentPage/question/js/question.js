@@ -132,6 +132,9 @@ $(document).ready(function () {
 
 				if (res.returnCode) {
 					oldData = res.returnData;
+					console.log(res.assessmentDate);
+
+					$("#Assessmentdate").text(res.assessmentDate);
 
 					$("#coachA").val(`${res.returnData.item[paramBigStep].item[0].item[0].value[0]}`);
 

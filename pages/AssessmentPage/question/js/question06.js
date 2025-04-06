@@ -57,12 +57,12 @@ $(document).ready(function () {
 		} else if (step == "02") {
 			let newData = [];
 
-			for (let i = 0; i < $(`[data-sort]`).length; i++) {
+			for (let i = 0; i < $(`[data-index]`).length; i++) {
 				newData.push({ value: [] });
 			}
 
-			$(`[data-sort]`).each((idx, e) => {
-				$(`[data-sort=${idx + 1}] select`).each((idxx, ee) => {
+			$(`[data-index]`).each((idx, e) => {
+				$(`[data-index=${idx + 1}] select`).each((idxx, ee) => {
 					newData[idx].value.push(Number($(ee).val()));
 				});
 			});
@@ -107,12 +107,12 @@ $(document).ready(function () {
 		} else if (step == "02") {
 			let newData = [];
 
-			for (let i = 0; i < $(`[data-sort]`).length; i++) {
+			for (let i = 0; i < $(`[data-index]`).length; i++) {
 				newData.push({ value: [] });
 			}
 
-			$(`[data-sort]`).each((idx, e) => {
-				$(`[data-sort=${idx + 1}] select`).each((idxx, ee) => {
+			$(`[data-index]`).each((idx, e) => {
+				$(`[data-index=${idx + 1}] select`).each((idxx, ee) => {
 					newData[idx].value.push(Number($(ee).val()));
 				});
 			});
@@ -153,7 +153,7 @@ $(document).ready(function () {
 
 		let chsm = "upStrongCheckListApi"; // api文件相關
 
-		let data = { step: "8" };
+		let data = { step: "6" };
 
 		chsm = $.md5(session_id + action + chsm);
 
@@ -178,12 +178,14 @@ $(document).ready(function () {
 
 			success: function (res) {
 				console.log("getList response received:", res); // 確認回應
+
 				let data02 = res.returnData.item[5].item[1];
 
 				$(".step02 .list-box").html("");
 
 				$(data02.item).each((idx, e) => {
-					console.log(e);
+					// console.log(e);
+					// console.log(e.question);
 
 					$(".step02 .list-box").append(`
     
@@ -215,7 +217,7 @@ $(document).ready(function () {
     
                 </div>
     
-                <div class="btm-box" data-sort="${e.sort}">
+                <div class="btm-box" data-index="${idx}"">
     
                 </div>
     
@@ -224,7 +226,7 @@ $(document).ready(function () {
           `);
 
 					$(e.question).each((idxx, ee) => {
-						$(`[data-sort="${e.sort}"]`).append(`
+						$(`[data-index="${idx}"]`).append(`
     
               <div>
     
@@ -256,7 +258,7 @@ $(document).ready(function () {
 					});
 				});
 
-				getCheckListRecord();
+				// getCheckListRecord();
 
 				$(".step02 .list-box .list").on("click", function () {
 					$(this).toggleClass("active");
@@ -309,11 +311,15 @@ $(document).ready(function () {
 
 					let data01 = res.returnData.item[paramBigStep].item[0];
 					let data02 = res.returnData.item[paramBigStep].item[1];
+
+					// console.log("data01.item[2].value:", data01.item[2].value);
+					// console.log(data01.item[1].value);
+
 					$(".user-detail .name").html(data01.item[0].value[0]);
 
 					$(".user-detail .id").html(data01.item[0].value[1]);
 
-					let responseRadioIndex = Object.keys(data01.item[1].value)[0];
+					let responseRadioIndex = Object.keys(data01.item[1].value);
 
 					let radioValues = data01.item[1].value[responseRadioIndex];
 
@@ -326,6 +332,8 @@ $(document).ready(function () {
 					}
 
 					$(data01.item[2].value).each((idx, e) => {
+						console.log(e);
+
 						$(".other-box .text").each((idxx, ee) => {
 							if (idx == idxx) {
 								$(ee).text(e);
@@ -339,12 +347,12 @@ $(document).ready(function () {
 
 					$(`#vision${data01.item[2].value[6]}`).attr("checked", true);
 
-					$("[data-sort] select").each((idx, e) => {
+					$("[data-index] select").each((idx, e) => {
 						$(data02.item).each((idxx, ee) => {
 							$(ee.value).each((idxxx, eee) => {
-								if ($(`[data-sort=${idxx + 1}] select`)[idxxx]) {
+								if ($(`[data-index=${idxx + 1}] select`)[idxxx]) {
 									if (idxx == idxx) {
-										$($(`[data-sort=${idxx + 1}] select`)[idxxx]).val(eee);
+										$($(`[data-index=${idxx + 1}] select`)[idxxx]).val(eee);
 									}
 								}
 							});

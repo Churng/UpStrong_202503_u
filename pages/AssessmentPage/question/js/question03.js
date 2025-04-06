@@ -43,12 +43,12 @@ $(document).ready(function () {
 	console.log(data);
 
 	// Initialize slider
-	const initSlider = () => {
+	const silder = (initialValue = 0) => {
 		$("#slider-range-max").slider({
 			range: "max",
 			min: 0,
 			max: 10,
-			value: 0,
+			value: initialValue, // 使用傳入的初始值,
 			slide: function (event, ui) {
 				selectNum = ui.value;
 			},
@@ -197,6 +197,7 @@ $(document).ready(function () {
 						const score = Object.values(data02.item[0].value[0])[i];
 						if (score === 0) continue;
 						frontData.push({ id: id, score: score });
+						$(`#${id}`).attr("data-initial-score", score);
 					}
 
 					$(".front path").each((idx, e) => {
@@ -227,6 +228,7 @@ $(document).ready(function () {
 						const score = Object.values(data03.item[0].value[0])[i];
 						if (score === 0) continue;
 						backData.push({ id: id, score: score });
+						$(`#${id}`).attr("data-initial-score", score);
 					}
 
 					$(".back path").each((idx, e) => {
@@ -469,8 +471,8 @@ $(document).ready(function () {
 			update();
 		} else if (step == "03") {
 			let newData = [{ value: [$("input[name='express']:checked").val()] }];
-			oldData.item[paramBigStep].item[2].item = newData;
-			oldData.item[paramBigStep].item[2].if_complete = true;
+			oldData.item[paramBigStep].item[0].item = newData;
+			oldData.item[paramBigStep].item[0].if_complete = true;
 			update();
 
 			if ($(".step03 input:checked").val() == 1) {
@@ -588,23 +590,44 @@ $(document).ready(function () {
 
 	// Body part selection
 	$(".left-box path").on("click", function () {
+		// 先檢查所有SVG內的path元素，更新分數為0的部位
+		$("#SVG path").each(function () {
+			let initialScore = $(this).attr("data-sroce") || $(this).attr("data-initial-score") || 0;
+			initialScore = parseInt(initialScore);
+
+			// 當分數為0時，移除used並設為白色
+			if (initialScore === 0) {
+				$(this).removeClass("used"); // 移除 used 類別
+			}
+		});
+
 		if (step != 3) {
 			if ($(this).attr("id")) {
 				selectId = $(this).attr("id");
-				initSlider();
+
+				let initialScore = $(this).attr("data-sroce") || $(this).attr("data-initial-score") || 0;
+				initialScore = parseInt(initialScore);
+				console.log(initialScore);
+
+				silder(initialScore);
+				selectNum = initialScore;
+
 				$(".right-box .title-box .num").html($(this).attr("id"));
 
+				//沒有選過顏色
 				if (selectData && !$(selectData).attr("class").includes("used")) {
 					$(selectData).css("fill", "#fff");
 				}
 
 				if ($(this).attr("class").includes("used")) {
 					if (selectData && $(selectData).attr("class").includes("used")) {
+						//選擇其他區域恢復顏色
 						$(selectData).css("fill", oldPainColor);
 					}
-					oldPainColor = $(this).css("fill");
+					oldPainColor = $(this).css("fill"); //記錄選過的顏色
 				} else if (!$(this).attr("class").includes("used")) {
 					if (selectData && $(selectData).attr("class").includes("used")) {
+						//選擇其他區域恢復顏色
 						$(selectData).css("fill", oldPainColor);
 					}
 				}
@@ -619,38 +642,51 @@ $(document).ready(function () {
 
 	// Confirm pain level selection
 	$(".pupop-btn").on("click", function () {
-		$(selectData).css("fill", painColor[selectNum]);
-
-		if (selectId <= 22) {
-			// 先檢查是否已有舊值
-			let oldValue = 0;
-			$(".box01").each(function () {
-				if ($(this).find(".num").text() == selectId) {
-					oldValue = parseInt($(this).find(".point").text()) || 0;
-				}
-			});
-
-			// 更新總分：扣除舊值，再加上新值（若非0）
-			frontTotalScore = frontTotalScore - oldValue;
-			if (selectNum && selectNum != 0) {
-				frontTotalScore = frontTotalScore + selectNum;
+		if (step == "04" || step == "04-02") {
+			// 根據 selectNum 設置顏色並處理 used
+			if (selectNum == 0) {
+				$(selectData).css("fill", "#fff"); // score = 0 時設為白色
+				$(selectData).removeClass("used"); // 移除 used
+				$(selectData).attr("data-sroce", 0); // 更新 data-sroce 為 0
+			} else {
+				$(selectData).css("fill", painColor[selectNum]); // 有分數時設為疼痛顏色
+				$(selectData).addClass("used"); // 添加 used
+				$(selectData).attr("data-sroce", selectNum); // 更新 data-sroce
 			}
 
-			if ($(selectData).attr("class").includes("used")) {
-				$(".box01").each(function () {
+			console.log("Confirmed - selectNum:", selectNum, "selectId:", selectId);
+
+			// 如果是正面部位 (id <= 22)
+			if (selectId <= 22) {
+				let oldValue = 0;
+				// 查找現有的 box01，獲取舊值
+				$(".point-box.front .box .box01").each(function () {
 					if ($(this).find(".num").text() == selectId) {
-						if (selectNum && selectNum != 0) {
-							$(this).find(".point").html(selectNum);
-						} else {
-							// 移除整個 box01 和後面的 + 號
-							$(this).next(".plus").remove();
-							$(this).remove();
-						}
+						oldValue = parseInt($(this).find(".point").text()) || 0;
 					}
 				});
-			} else {
-				// 只有當 selectNum 不是 0 或空時，才新增元素
+
+				// 更新總分：先扣除舊值，再加上新值（若非 0）
+				frontTotalScore = frontTotalScore - oldValue;
 				if (selectNum && selectNum != 0) {
+					frontTotalScore = frontTotalScore + selectNum;
+				}
+
+				// 更新或移除 box01
+				let $existingBox = $(".point-box.front .box .box01").filter(function () {
+					return $(this).find(".num").text() == selectId;
+				});
+
+				if ($existingBox.length > 0) {
+					// 如果已有 box01，更新或移除
+					if (selectNum && selectNum != 0) {
+						$existingBox.find(".point").html(selectNum);
+					} else {
+						$existingBox.next(".plus").remove();
+						$existingBox.remove();
+					}
+				} else if (selectNum && selectNum != 0) {
+					// 如果沒有 box01 且 selectNum 非 0，新增
 					$(".point-box.front .box").append(`
 						<div class="box01">
 							<span class="num">${selectId}</span>
@@ -659,37 +695,39 @@ $(document).ready(function () {
 						<span class="plus">+</span>
 					`);
 				}
-			}
-		} else {
-			// 先檢查是否已有舊值
-			let oldValue = 0;
-			$(".box01").each(function () {
-				if ($(this).find(".num").text() == selectId) {
-					oldValue = parseInt($(this).find(".point").text()) || 0;
-				}
-			});
 
-			// 更新總分：扣除舊值，再加上新值（若非0）
-			backTotalScore = backTotalScore - oldValue;
-			if (selectNum && selectNum != 0) {
-				backTotalScore = backTotalScore + selectNum;
-			}
-
-			if ($(selectData).attr("class").includes("used")) {
-				$(".box01").each(function () {
+				$(".front .total-box .num").html(frontTotalScore);
+			} else {
+				// 如果是反面部位 (id > 22)
+				let oldValue = 0;
+				// 查找現有的 box01，獲取舊值
+				$(".point-box.back .box .box01").each(function () {
 					if ($(this).find(".num").text() == selectId) {
-						if (selectNum && selectNum != 0) {
-							$(this).find(".point").html(selectNum);
-						} else {
-							// 移除整個 box01 和後面的 + 號
-							$(this).next(".plus").remove();
-							$(this).remove();
-						}
+						oldValue = parseInt($(this).find(".point").text()) || 0;
 					}
 				});
-			} else {
-				// 只有當 selectNum 不是 0 或空時，才新增元素
+
+				// 更新總分：先扣除舊值，再加上新值（若非 0）
+				backTotalScore = backTotalScore - oldValue;
 				if (selectNum && selectNum != 0) {
+					backTotalScore = backTotalScore + selectNum;
+				}
+
+				// 更新或移除 box01
+				let $existingBox = $(".point-box.back .box .box01").filter(function () {
+					return $(this).find(".num").text() == selectId;
+				});
+
+				if ($existingBox.length > 0) {
+					// 如果已有 box01，更新或移除
+					if (selectNum && selectNum != 0) {
+						$existingBox.find(".point").html(selectNum);
+					} else {
+						$existingBox.next(".plus").remove();
+						$existingBox.remove();
+					}
+				} else if (selectNum && selectNum != 0) {
+					// 如果沒有 box01 且 selectNum 非 0，新增
 					$(".point-box.back .box").append(`
 						<div class="box01">
 							<span class="num">${selectId}</span>
@@ -698,18 +736,18 @@ $(document).ready(function () {
 						<span class="plus">+</span>
 					`);
 				}
-			}
-		}
-		$(selectData).addClass("used");
-		$(selectData).attr("data-sroce", selectNum);
-		$(".right-box").css("display", "none");
-		$(".left-box").css("width", "100%");
-		selectNum = 0;
-		$(".front .total-box .num").html(frontTotalScore);
-		$(".back .total-box .num").html(backTotalScore);
 
-		if (window.innerWidth <= 500) {
+				$(".back .total-box .num").html(backTotalScore);
+			}
+
+			// 關閉右邊區域並重置 selectNum
 			$(".right-box").css("display", "none");
+			$(".left-box").css("width", "100%");
+			selectNum = 0;
+
+			if (window.innerWidth <= 500) {
+				$(".right-box").css("display", "none");
+			}
 		}
 	});
 

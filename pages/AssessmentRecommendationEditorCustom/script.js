@@ -37,94 +37,220 @@ $(document).ready(function () {
 	});
 });
 
-// 統一的點擊事件處理器
-document.addEventListener("click", function (e) {
-	const button = e.target.closest(".btn-icon");
-	if (!button) return;
+// // 統一的點擊事件處理器
+// document.addEventListener("click", function (e) {
+// 	const button = e.target.closest(".btn-icon");
+// 	if (!button) return;
 
-	const containerClasses = [".textarea-box", ".addpic-box", ".ytlink-box"];
-	let currentSection = null;
+// 	const containerClasses = [".textarea-box", ".addpic-box", ".ytlink-box"];
+// 	let currentSection = null;
 
-	for (const className of containerClasses) {
-		currentSection = button.closest(className);
-		if (currentSection) break;
-	}
+// 	for (const className of containerClasses) {
+// 		currentSection = button.closest(className);
+// 		if (currentSection) break;
+// 	}
 
-	if (!currentSection) {
-		console.error("找不到任何匹配的容器元素");
-		return;
-	}
+// 	if (!currentSection) {
+// 		console.error("找不到任何匹配的容器元素");
+// 		return;
+// 	}
 
-	const isAddButton = button.querySelector(".bi-plus-circle-fill");
-	const isTrashButton = button.querySelector(".bi-trash");
+// 	const isAddButton = button.querySelector(".bi-plus-circle-fill");
+// 	const isTrashButton = button.querySelector(".bi-trash");
 
-	// 計算同類型的區塊數量
-	const sectionType = [...containerClasses].find((cls) => currentSection.matches(cls));
+// 	// 計算同類型的區塊數量
+// 	const sectionType = [...containerClasses].find((cls) => currentSection.matches(cls));
+// 	const allSections = document.querySelectorAll(sectionType);
+// 	const sectionCount = allSections.length;
+
+// 	// 控制垃圾桶按鈕的 pointer-events
+// 	const trashButton = currentSection.querySelector(".btn-icon .bi-trash")?.parentElement;
+// 	if (trashButton) {
+// 		trashButton.style.pointerEvents = sectionCount === 1 ? "none" : "auto";
+// 		// 可選：添加視覺提示
+// 		trashButton.style.opacity = sectionCount === 1 ? "0.5" : "1";
+// 	}
+
+// 	if (isAddButton) {
+// 		addNewSection(currentSection);
+// 		isAddButton.style.display = "none";
+// 	}
+
+// 	if (isTrashButton && sectionCount > 1) {
+// 		// 只在有多於一個區塊時執行刪除
+// 		const prevSection = currentSection.previousElementSibling;
+// 		currentSection.remove();
+// 		if (prevSection) {
+// 			const prevAddBtn = prevSection.querySelector(".bi-plus-circle-fill");
+// 			if (prevAddBtn) prevAddBtn.style.display = "block";
+// 		}
+// 	}
+// });
+
+// // 新增區塊函數
+// function addNewSection(currentSection) {
+// 	const newSection = currentSection.cloneNode(true);
+
+// 	// 重置 textarea 內容
+// 	if (newSection.classList.contains("textarea-box")) {
+// 		newSection.querySelector("textarea").value = "";
+// 	} else if (newSection.classList.contains("addpic-box")) {
+// 		newSection.querySelector("textarea").value = "";
+// 		newSection.querySelector(".char-counter").textContent = "0/100";
+
+// 		// 重置圖片預覽區域
+// 		const addpicIcon = newSection.querySelector(".addpic-icon");
+// 		const previewImage = addpicIcon.querySelector(".preview-image");
+// 		if (previewImage) {
+// 			previewImage.remove();
+// 		}
+// 		addpicIcon.querySelector(".bi-plus").style.display = "block";
+
+// 		// 重置檔案輸入
+// 		const fileInput = addpicIcon.querySelector("#imageUpload");
+// 		if (fileInput) {
+// 			fileInput.value = ""; // 清除已選檔案
+// 		}
+// 	} else if (newSection.classList.contains("ytlink-box")) {
+// 		newSection.querySelector(".ytlink-input").value = "";
+// 	}
+
+// 	const addButton = newSection.querySelector(".bi-plus-circle-fill");
+// 	addButton.style.display = "block";
+
+// 	currentSection.after(newSection);
+
+// 	const inputElement = newSection.querySelector("textarea") || newSection.querySelector(".ytlink-input");
+// 	if (inputElement) inputElement.focus();
+
+// 	// 重新綁定新區塊的圖片上傳事件
+// 	bindImageUpload(newSection, "imageUpload");
+// }
+
+// 📌 可重用的區塊類型
+const containerClasses = [".textarea-box", ".addpic-box", ".ytlink-box"];
+
+/**
+ * 🗑️ 根據區塊類型更新所有垃圾桶按鈕狀態
+ */
+function updateTrashButtons(sectionType) {
 	const allSections = document.querySelectorAll(sectionType);
-	const sectionCount = allSections.length;
+	const count = allSections.length;
 
-	// 控制垃圾桶按鈕的 pointer-events
-	const trashButton = currentSection.querySelector(".btn-icon .bi-trash")?.parentElement;
-	if (trashButton) {
-		trashButton.style.pointerEvents = sectionCount === 1 ? "none" : "auto";
-		// 可選：添加視覺提示
-		trashButton.style.opacity = sectionCount === 1 ? "0.5" : "1";
-	}
-
-	if (isAddButton) {
-		addNewSection(currentSection);
-		isAddButton.style.display = "none";
-	}
-
-	if (isTrashButton && sectionCount > 1) {
-		// 只在有多於一個區塊時執行刪除
-		const prevSection = currentSection.previousElementSibling;
-		currentSection.remove();
-		if (prevSection) {
-			const prevAddBtn = prevSection.querySelector(".bi-plus-circle-fill");
-			if (prevAddBtn) prevAddBtn.style.display = "block";
+	allSections.forEach((section) => {
+		const trashBtn = section.querySelector(".btn-icon .bi-trash")?.parentElement;
+		if (trashBtn) {
+			trashBtn.style.pointerEvents = count === 1 ? "none" : "auto";
+			trashBtn.style.opacity = count === 1 ? "0.5" : "1";
 		}
-	}
-});
-// 新增區塊函數
+	});
+}
+
+/**
+ * 🔁 新增區塊功能
+ */
 function addNewSection(currentSection) {
 	const newSection = currentSection.cloneNode(true);
 
-	// 重置 textarea 內容
+	// 清空內容依類型處理
 	if (newSection.classList.contains("textarea-box")) {
 		newSection.querySelector("textarea").value = "";
 	} else if (newSection.classList.contains("addpic-box")) {
 		newSection.querySelector("textarea").value = "";
 		newSection.querySelector(".char-counter").textContent = "0/100";
 
-		// 重置圖片預覽區域
 		const addpicIcon = newSection.querySelector(".addpic-icon");
 		const previewImage = addpicIcon.querySelector(".preview-image");
-		if (previewImage) {
-			previewImage.remove();
-		}
+		if (previewImage) previewImage.remove();
+
 		addpicIcon.querySelector(".bi-plus").style.display = "block";
 
-		// 重置檔案輸入
 		const fileInput = addpicIcon.querySelector("#imageUpload");
-		if (fileInput) {
-			fileInput.value = ""; // 清除已選檔案
-		}
+		if (fileInput) fileInput.value = "";
 	} else if (newSection.classList.contains("ytlink-box")) {
 		newSection.querySelector(".ytlink-input").value = "";
+		newSection.querySelector(".yttext-input").value = "";
 	}
 
+	// 顯示新增按鈕
 	const addButton = newSection.querySelector(".bi-plus-circle-fill");
-	addButton.style.display = "block";
+	if (addButton) addButton.style.display = "block";
 
+	// 插入新區塊
 	currentSection.after(newSection);
 
+	// 聚焦輸入欄
 	const inputElement = newSection.querySelector("textarea") || newSection.querySelector(".ytlink-input");
 	if (inputElement) inputElement.focus();
 
-	// 重新綁定新區塊的圖片上傳事件
+	// 綁定圖片上傳事件
 	bindImageUpload(newSection, "imageUpload");
+
+	// 🗑️ 更新垃圾桶狀態
+	const sectionType = containerClasses.find((cls) => newSection.matches(cls));
+	if (sectionType) updateTrashButtons(sectionType);
 }
+
+/**
+ * 👂 統一點擊事件處理
+ */
+document.addEventListener("click", function (e) {
+	const button = e.target.closest(".btn-icon");
+	if (!button) return;
+
+	// 找出所在的區塊
+	let currentSection = null;
+	for (const className of containerClasses) {
+		currentSection = button.closest(className);
+		if (currentSection) break;
+	}
+
+	if (!currentSection) {
+		console.error("❌ 找不到任何匹配的容器元素");
+		return;
+	}
+
+	const isAddButton = button.querySelector(".bi-plus-circle-fill");
+	const isTrashButton = button.querySelector(".bi-trash");
+
+	// 判斷區塊類型並取得數量
+	const sectionType = containerClasses.find((cls) => currentSection.matches(cls));
+	const allSections = document.querySelectorAll(sectionType);
+	const sectionCount = allSections.length;
+
+	if (isAddButton) {
+		addNewSection(currentSection);
+		button.style.display = "none";
+		updateAddButtons(sectionType);
+	}
+
+	function updateAddButtons(sectionType) {
+		const allSections = document.querySelectorAll(sectionType);
+		allSections.forEach((section, index) => {
+			const addIcon = section.querySelector(".bi-plus-circle-fill");
+			const addButton = addIcon?.closest("button");
+
+			if (addButton) {
+				// 只讓最後一個的新增按鈕顯示
+				addButton.style.display = index === allSections.length - 1 ? "block" : "none";
+			}
+		});
+	}
+	if (isTrashButton && sectionCount > 1) {
+		const prevSection = currentSection.previousElementSibling;
+		currentSection.remove();
+
+		// 回顯前一個區塊的新增按鈕
+		if (prevSection) {
+			const prevAddBtn = prevSection.querySelector(".bi-plus-circle-fill");
+			if (prevAddBtn) prevAddBtn.style.display = "block";
+		}
+
+		// 更新垃圾桶狀態
+		updateTrashButtons(sectionType);
+		updateAddButtons(sectionType);
+	}
+});
 
 // 字數計數功能（addpic-box）
 document.addEventListener("input", function (e) {
@@ -248,12 +374,13 @@ function collectAllData() {
 	// 收集YouTube區塊資料
 	document.querySelectorAll(".ytlink-box").forEach((box, index) => {
 		const url = box.querySelector(".ytlink-input").value;
+		const videodescription = box.querySelector(".yttext-input").value;
 		if (url) {
 			collectedData.push({
 				id: "",
 				isMatch: true,
 				content: "",
-				description: "",
+				description: videodescription,
 				url: convertToEmbed(url),
 				checkListId: "",
 				checkItemName: "",
@@ -268,7 +395,7 @@ function collectAllData() {
 
 	return collectedData;
 }
-// 單筆資料傳送函數（含圖片上傳）
+// // 單筆資料傳送函數（含圖片上傳）
 function sendSingleData(dataItem, workOrderId) {
 	let formData = new FormData();
 	let session_id = sessionStorage.getItem("sessionId");

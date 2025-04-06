@@ -53,167 +53,120 @@ $(document).ready(function () {
 
 			success: function (res) {
 				console.log(res);
-
+				handleResponse(res);
 				let data = res.returnData.workOrderDetailData;
 				$(".main-box").html("");
 
 				$(".main-box").append(`
-            <div class="content">
-                <div class="title-box">
+             <div class="banner">
+      <img src="../../assets/workOrderListPage-detail/banner_0.png" alt="">
+    </div>
+    <div class="content">
 
-                    <span class="title">開案評估</span>
+      <div class="title-box">
 
-                    <span class="text">${data.WorkOrderId}</span>
+        <span class="title text-start fw-bold">開案評估</span>
 
-                </div>
+        <div class="text-start my-3">
+          <span class=" type ${
+						data.Status == 1
+							? " type01"
+							: data.Status == 2
+							? "type02"
+							: data.Status == 3
+							? "type03"
+							: data.Status == 4
+							? "type04"
+							: data.Status == 5
+							? "type05"
+							: ""
+					}">${data.StatusName}</span>
+        </div>
 
-                <div class="box01">
+        <div class="text-start border-bottom">
+          <span class="text">${data.CaseName}</span>
+        </div>
 
-                    <span class="type ${
-											data.Status == 1
-												? "type01"
-												: data.Status == 2
-												? "type02"
-												: data.Status == 3
-												? "type03"
-												: data.Status == 4
-												? "type04"
-												: data.Status == 5
-												? "type05"
-												: ""
-										}">${data.StatusName}</span>
 
-                    <div class="detail">
+      </div>
 
-                    <span class="name">個案名稱：${data.CaseName}</span>
+      <div class="box01">
 
-                    <div class="button-box">
+        <div class="detail">
 
-                        <span>個案資料</span>
+          <!-- <span class="name">個案名稱：${data.CaseName}</span> -->
 
-                        <span>聯絡簿</span>
+          <div class="button-box">
 
-                    </div>
+            <span>個案資料</span>
 
-                    </div>
+            <span>聯絡簿</span>
 
-                </div>
+          </div>
 
-                <div class="box02">
+        </div>
 
-                    <div class="serve-box">
+      </div>
 
-                    <span class="date">預約時間：${data.ServiceDate}</span>
+      <div class="box02">
 
-                    <span class="add">服務地點：${data.ServiceArea}</span>
+        <div class="serve-box">
 
-                    </div>
+          <span class="date fw-bolder mb-2">預約時間</span>
+          <div class="border border-2 rounded text-center mb-2">${data.ServiceDate}</div>
 
-                    <div class="coach-box">
+          <span class="add fw-bolder mb-2">服務地點</span>
+          <div class="border border-2 rounded text-center mb-2">${data.ServiceArea}</div>
 
-                    <span>
+        </div>
 
-                        <div class="img">
+        <div class="coach-box">
 
-                            <img src="${data.ProfessionalAssessmentCoachPhoto}" />
 
-                        </div>
+          <span class="d-block fw-bolder mb-2">
 
-                        <span>
+            專業評估教練
 
-                        專業評估教練：${data.ProfessionalAssessmentCoach}
+          </span>
 
-                        </span>
+          <div class="border border-2 rounded text-center mb-2">${
+						data.ProfessionalAssessmentCoach ? data.ProfessionalAssessmentCoach : "尚無專業評估教練"
+					}</div>
 
-                    </span>
 
-                    <span>
+          <span class="d-block fw-bolder mb-2">
 
-                        <div class="img">
+            自主應用教練
 
-                            <img src="${data.AutonomousApplicationCoachPhoto}" />
+          </span>
+          <div class="border border-2 rounded text-center mb-2">${data.AutonomousApplicationCoach}</div>
 
-                        </div>
 
-                        <span>
+        </div>
 
-                        自主應用教練：${data.AutonomousApplicationCoach}
 
-                        </span>
+        <div class="record-box mt-5">
 
-                    </span>
+          <div class="type-box">
 
-                    </div>
+            <span class="${data.PhotoSign == true ? " active" : ""}">照片簽到</span>
 
-                    <div class="singin">
+            <span class="">服務紀錄</span>
 
-                    <span class="title">簽到完成：${data.SignComplete == true ? "是" : "否"}</span>
+            <span class="link ${data.AssessmentScale == true ? " active" : ""}">評估量表</span>
 
-                    <div class="reason-box">
 
-                        <span>原因：</span>
+            <span class="AssessmentRecommendation ${
+							data.AssessmentRecommendation == true ? " active" : ""
+						}">訓練指引</span>
 
-                        <input class="reason" type="text" value="${data.SignCompleteReason}" disabled>
 
-                        <span class="save-button edit">
+          </div>
 
-                        <svg style="margin-top: -3px;" width="16" height="16" viewBox="0 0 16 16"
+        </div>
+      </div>
+    </div>
 
-                            xmlns="http://www.w3.org/2000/svg">
-
-                            <path
-
-                            d="M15.665 2.513 13.488.337A1.14 1.14 0 0 0 12.677 0h-.001a1.14 1.14 0 0 0-.811.336L1.056 11.145c-.119.1-.21.237-.246.401L.018 15.1a.739.739 0 0 0 .882.882l3.554-.792a.733.733 0 0 0 .403-.248L15.665 4.135a1.148 1.148 0 0 0 0-1.622zm-5.153 1.266 1.709 1.71-6.656 6.655-1.709-1.709 6.656-6.656zm-8.308 8.308.607-.607 1.709 1.71-.607.606-2.2.49.491-2.2zm11.062-7.644-1.71-1.709 1.12-1.12 1.71 1.71-1.12 1.12z"
-
-                            fill="#1654B9" fill-rule="nonzero" />
-
-                        </svg>
-
-                        編輯
-
-                        </span>
-
-                        <span class="save-button save" style="display:none">
-
-                        <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-
-                            <path
-
-                            d="M13.547 3.028a.563.563 0 0 0-.808 0L5.893 10.02 3.26 7.332a.563.563 0 0 0-.808 0 .592.592 0 0 0 0 .826l3.036 3.1a.563.563 0 0 0 .808 0l7.25-7.405a.592.592 0 0 0 0-.825z"
-
-                            fill="#1654B9" fill-rule="evenodd" />
-
-                        </svg>
-
-                        儲存
-
-                        </span>
-
-                    </div>
-
-                    </div>
-
-                    <div class="record-box">
-
-                    <span class="title">記錄完成：${data.RecordComplete == true ? "是" : "否"}</span>
-
-                    <div class="type-box">
-
-                        <span class="${data.PhotoSign == true ? "active" : ""}">照片簽到</span>
-
-                        <span class="link ${data.AssessmentScale == true ? "active" : ""}">評估量表</span>
-
-
-                        <span class="AssessmentRecommendation ${
-													data.AssessmentRecommendation == true ? "active" : ""
-												}">訓練指引</span>
-                    
-
-                    </div>
-
-                    </div>
-                  </div>
-                </div>
 
                 `);
 

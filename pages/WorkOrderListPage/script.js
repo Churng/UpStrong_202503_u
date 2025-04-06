@@ -270,6 +270,8 @@ $(document).ready(function () {
 			success: function (res) {
 				workOrderData = res.returnData.workOrderData;
 				console.log(workOrderData);
+				handleResponse(res);
+
 				changePage(1);
 
 				getWorkDetail();

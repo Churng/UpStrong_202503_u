@@ -1701,7 +1701,7 @@ ul.list-info li {
 }
 .card-body img {
 	display: block;
-	margin: 0 auto; /* 單獨將圖片水平置中 */
+	/* margin: 0 auto; 單獨將圖片水平置中 */
 }
 
 .card-title .card-text {

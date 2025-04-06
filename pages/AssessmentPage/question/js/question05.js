@@ -45,98 +45,89 @@ $(document).ready(function () {
 				$("input[name='lv4']:checked").each((idx, e) => {
 					payload.push(Number($(e).val()));
 				});
-
 				newData[0].value.push({ 4: payload });
 			} else {
 				newData[0].value.push(Number($("input[name='lv']:checked").val()));
 			}
-
+			// 只更新本地 oldData，不立即提交到後端
 			oldData.item[paramBigStep].item[Number(step) - 1].item = newData;
 			oldData.item[paramBigStep].item[Number(step) - 1].if_complete = true;
-			update();
+
+			// 不調用 update()，直接切換到 step2
+			$(".title span span").html(`0${Number(step) + 1}`);
+			$(`.step0${Number(step)}`).css("display", "none");
+			$(`.step0${Number(step) + 1}`).css("display", "block");
+			step = `0${Number(step) + 1}`;
+			const url = new URL(window.location.href);
+			url.searchParams.set("step", Number(step));
+			window.history.replaceState(null, "", url);
+
+			// 在切換到 step2 後重新獲取資料
+			getCheckListRecord();
 		} else if (step == "02") {
+			// 處理 step2 的資料
 			const date = new Date();
 			const formattedDate = formatDate(date);
 
-			let oldDataItem = oldData.item[paramBigStep].item[Number(step) - 1].item[0].value;
-
 			let newData = {};
-			let result = {}; // 將 result 改為物件
+			let result = {};
 			const dateBoxValues = $(".date-box .past-box")
 				.map((_, el) => $(el).text().trim())
 				.get();
 
-			const rightLvBox = $(".right-box .lv-box");
-
-			rightLvBox.find(".past-box").each((index, element) => {
-				const date = dateBoxValues[index];
-				const value = $(element).text().trim();
-				// levelData[date] = value;
-			});
-
 			const lengthOfList = 12;
 
 			for (let i = 0; i < lengthOfList; i++) {
-				const targetValue = Number($(`.table-box[data-target=${i}] .select-box`).text().trim()); // 目標值
-				const targetValue2 = $(`input[data-list-id=0]`).val(); // 功能分級輸入值
+				const targetValue = Number($(`.table-box[data-target=${i}] .select-box`).text().trim());
+				const targetValue2 = $(`input[data-list-id=0]`).val();
 				const pastValues = $(`.table-box[data-past=${i}] .past-box`)
 					.map((_, el) => $(el).text().trim())
-					.get(); // 過去的值
-
-				console.log(pastValues);
+					.get();
 
 				const obj = {};
 
-				// 設定 target
 				if (i === 0) {
-					obj["target"] = { 0: targetValue2 }; // 目標值改為數字
+					obj["target"] = { 0: targetValue2 };
 				} else {
-					obj["target"] = { 0: targetValue || 0 }; // 目標值改為數字
+					obj["target"] = { 0: targetValue || 0 };
 				}
 
-				// 遍歷日期框的值，存入對應的過去值
 				dateBoxValues.forEach((date, idx) => {
 					if (pastValues[idx] !== 0) {
 						if (i === 0) {
-							if (!obj[date]) obj[date] = {}; // 確保日期是一個物件
+							if (!obj[date]) obj[date] = {};
 							obj[date]["0"] = pastValues[idx];
 						} else {
-							if (!obj[date]) obj[date] = {}; // 確保日期是一個物件
-							obj[date]["0"] = Number(pastValues[idx]) || 0; // 存入 "0" 位置，並轉為數字
-
-							// 僅在當天日期寫入補充說明
+							if (!obj[date]) obj[date] = {};
+							obj[date]["0"] = Number(pastValues[idx]) || 0;
 							if (date === formattedDate && savedData.hasOwnProperty(i.toString())) {
-								obj[date]["1"] = savedData[i.toString()]; // 使用 savedData 中的補充說明
+								obj[date]["1"] = savedData[i.toString()];
 							} else {
-								obj[date]["1"] = ""; // 如果沒有補充說明，則設為空字串
+								obj[date]["1"] = "";
 							}
 						}
 					}
 				});
 
-				// 設定當天日期
 				if (!obj[formattedDate]) obj[formattedDate] = {};
-				obj[formattedDate]["0"] = targetValue || 0; // 存入 "0" 位置，並轉為數字
+				obj[formattedDate]["0"] = targetValue || 0;
 
-				// 僅在當天日期寫入補充說明
 				if (savedData.hasOwnProperty(i.toString())) {
-					obj[formattedDate]["1"] = savedData[i.toString()]; // 使用 savedData 中的補充說明
+					obj[formattedDate]["1"] = savedData[i.toString()];
 				} else {
-					obj[formattedDate]["1"] = ""; // 如果沒有補充說明，則設為空字串
+					obj[formattedDate]["1"] = "";
 				}
-				console.log(savedData.hasOwnProperty(i.toString()));
 
 				if (i === 0) {
-					if (!obj[formattedDate]) obj[formattedDate] = {}; // 確保 formattedDate 是一個物件
-					obj[formattedDate]["0"] = targetValue2; // 存入目標值
+					if (!obj[formattedDate]) obj[formattedDate] = {};
+					obj[formattedDate]["0"] = targetValue2;
 				} else {
 					if (targetValue !== 0) {
-						if (!obj[formattedDate]) obj[formattedDate] = {}; // 確保 formattedDate 是一個物件
-						obj[formattedDate]["0"] = targetValue; // 存入目標值
+						if (!obj[formattedDate]) obj[formattedDate] = {};
+						obj[formattedDate]["0"] = targetValue;
 					}
 				}
 
-				// 處理 id=7 和 id=8 的特殊情況
 				if (i === 7) {
 					$(`input[data-list-id=7]`).each((inx, e) => {
 						if ($(e).is(":checked")) {
@@ -149,12 +140,10 @@ $(document).ready(function () {
 				}
 
 				newData[i] = obj;
-				result[i] = obj; // 將 obj 存入 result 物件
+				result[i] = obj;
 			}
 
-			console.log(result);
-
-			// 檢查資料結構是否存在，如果不存在則創建
+			// 更新 oldData
 			if (
 				oldData?.item?.[paramBigStep] &&
 				Array.isArray(oldData.item[paramBigStep]?.item) &&
@@ -163,15 +152,12 @@ $(document).ready(function () {
 			) {
 				oldData.item[paramBigStep].item[Number(step) - 1].item[0].value = result;
 			}
-
 			oldData.item[paramBigStep].item[Number(step) - 1].if_complete = true;
 
-			console.log(oldData);
-
+			// 調用 update() 儲存資料後再跳轉
 			update();
 		}
 	});
-
 	$(".prev").on("click", function () {
 		if (step == "01") {
 			let newData = [{ value: [] }];
@@ -443,7 +429,7 @@ $(document).ready(function () {
 					// console.log(transformedData);
 
 					$(transformedData).each((idx, e) => {
-						console.log("test:", e);
+						// console.log("test:", e);
 						// console.log(e.isSpecial);
 
 						// 單獨處理 id=7 和 id=8 的資料
@@ -508,6 +494,9 @@ $(document).ready(function () {
 							}
 						}
 					});
+
+					// 重置 targetScore 並重新計算總分
+					targetScore = 0; // 重置為 0，避免累加舊值
 
 					//總分非數字篩選掉
 
@@ -592,6 +581,8 @@ $(document).ready(function () {
 			contentType: false,
 
 			success: function (res) {
+				console.log(res, "updateCheckListRecord");
+
 				if (res.returnCode) {
 					if (type != "prev") {
 						if (step != "02") {
@@ -609,6 +600,7 @@ $(document).ready(function () {
 
 							window.history.replaceState(null, "", url);
 						} else {
+							// return;
 							window.location.href = `../../AssessmentPage/question/Index06.html?workOrderID=${testparams.workOrderID}`;
 						}
 					} else {

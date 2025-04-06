@@ -47,6 +47,7 @@ $(document).ready(function () {
 		contentType: false,
 		success: function (response) {
 			if (response.returnCode == "1" && response.returnData) {
+				handleResponse(response); //處理API回傳
 				let recommendationContainer = $("#recommendation-container");
 				let recommendData = response.returnData.recommendData;
 				$("#title").append(response.returnData.title); //標題
