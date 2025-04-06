@@ -1,6 +1,8 @@
 // 身份判斷與表單控制功能
 
 const userType = sessionStorage.getItem("userType");
+console.log("userType", userType);
+
 function restrictFormByIdentity(userType) {
 	// 定義需要禁用的元素選擇器
 	const disableSelectors = [
