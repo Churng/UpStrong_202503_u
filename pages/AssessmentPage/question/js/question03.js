@@ -111,6 +111,7 @@ $(document).ready(function () {
 					let data01 = res.returnData.item[paramBigStep].item[0];
 					let data02 = res.returnData.item[paramBigStep].item[1];
 					let data03 = res.returnData.item[paramBigStep].item[2];
+					let data04 = res.returnData.item[paramBigStep].item[3];
 					let data07 = res.returnData.item[1].item[6];
 					let data08 = res.returnData.item[1].item[7];
 
@@ -251,6 +252,9 @@ $(document).ready(function () {
 					});
 
 					$(".back .total-box .num").html(backTotalScore);
+
+					//補充說明
+					$("#step03boxText").val(data04.item[0].value[0]);
 				}
 			},
 		});
@@ -511,6 +515,11 @@ $(document).ready(function () {
 			oldData.item[paramBigStep].item[2].if_complete = true;
 			update();
 		} else if (step == "05") {
+			let textValue = document.getElementById("step03boxText").value;
+			let newData = [{ value: [textValue] }];
+
+			oldData.item[paramBigStep].item[3].item = newData;
+			oldData.item[paramBigStep].item[3].if_complete = true;
 			update();
 		}
 	});
