@@ -1,3 +1,9 @@
+// DOM 載入後執行
+document.addEventListener("DOMContentLoaded", function () {
+	const currentUserType = sessionStorage.getItem("userType");
+	restrictFormByIdentity(currentUserType);
+});
+
 // 身份判斷與表單控制功能
 function restrictFormByIdentity(userType) {
 	console.log(userType);
@@ -8,11 +14,11 @@ function restrictFormByIdentity(userType) {
 		'input[type="radio"]',
 		'input[type="checkbox"]',
 		"textarea",
-		".btm-box select", // 關鍵修改：改用 .btm-box 作為父級選擇器
+		".btm-box select",
 		".button-box",
 	];
 
-	if (userType === 1) {
+	if (userType === "1") {
 		// 新增 MutationObserver 監聽動態內容
 		const observer = new MutationObserver((mutations) => {
 			mutations.forEach(() => {
@@ -56,10 +62,3 @@ function restrictFormByIdentity(userType) {
 
 // 暴露到全域
 window.restrictFormByIdentity = restrictFormByIdentity;
-
-// DOM 載入後執行
-document.addEventListener("DOMContentLoaded", function () {
-	// 模擬使用者類型 (實際應從後端獲取)
-	const currentUserType = sessionStorage.getItem("userType");
-	restrictFormByIdentity(currentUserType);
-});

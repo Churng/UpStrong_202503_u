@@ -38,6 +38,12 @@ $(document).ready(function () {
 	}
 
 	$(".next").on("click", function () {
+		const userType = sessionStorage.getItem("userType");
+
+		if (userType === "1") {
+			window.location.href = `../../AssessmentPage/question/Index06.html?workOrderID=${testparams.workOrderID}`;
+		}
+
 		if (step == "01") {
 			let newData = [{ value: [] }];
 			if ($("input[name='lv']:checked").val() == 4) {

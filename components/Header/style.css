@@ -702,7 +702,7 @@
 	font: 400 14px/1.6 "Inter", Helvetica, Arial, serif;
 	color: rgb(41, 41, 41);
 	letter-spacing: 0px;
-	width: 56px;
+	width: 80px;
 	position: relative;
 	flex-grow: 1;
 	min-width: 56px;
@@ -716,7 +716,7 @@
 	font: 400 14px/1.6 "Inter", Helvetica, Arial, serif;
 	color: rgb(235, 92, 32);
 	letter-spacing: 0px;
-	width: 56px;
+	width: 80px;
 	position: relative;
 	flex-grow: 1;
 	min-width: 56px;
