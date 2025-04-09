@@ -116,6 +116,8 @@ $(document).ready(function () {
 
 		formData.append("chsm", chsm);
 
+		formData.append("data", JSON.stringify(data));
+
 		$.ajax({
 			url: `${window.apiUrl}${window.apicheckList}`,
 
