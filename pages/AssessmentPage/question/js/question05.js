@@ -42,9 +42,11 @@ $(document).ready(function () {
 
 		if (userType === "1") {
 			window.location.href = `../../AssessmentPage/question/Index06.html?workOrderID=${testparams.workOrderID}`;
+			return;
 		}
 
-		if (step == "01") {
+		if (step === "01") {
+			// Step 1 資料處理
 			let newData = [{ value: [] }];
 			if ($("input[name='lv']:checked").val() == 4) {
 				let payload = [];
@@ -55,23 +57,28 @@ $(document).ready(function () {
 			} else {
 				newData[0].value.push(Number($("input[name='lv']:checked").val()));
 			}
-			// 只更新本地 oldData，不立即提交到後端
+
+			// 更新本地 oldData
 			oldData.item[paramBigStep].item[Number(step) - 1].item = newData;
 			oldData.item[paramBigStep].item[Number(step) - 1].if_complete = true;
 
-			// 不調用 update()，直接切換到 step2
-			$(".title span span").html(`0${Number(step) + 1}`);
-			$(`.step0${Number(step)}`).css("display", "none");
-			$(`.step0${Number(step) + 1}`).css("display", "block");
-			step = `0${Number(step) + 1}`;
-			const url = new URL(window.location.href);
-			url.searchParams.set("step", Number(step));
-			window.history.replaceState(null, "", url);
+			// 調用 update()，明確傳入 "next" 表示下一頁
+			update("next").then(() => {
+				// 切換到 step2
+				step = "02";
+				$(".title span span").html(step);
+				$(`.step01`).css("display", "none");
+				$(`.step02`).css("display", "block");
 
-			// 在切換到 step2 後重新獲取資料
-			getCheckListRecord();
-		} else if (step == "02") {
-			// 處理 step2 的資料
+				const url = new URL(window.location.href);
+				url.searchParams.set("step", Number(step));
+				window.history.replaceState(null, "", url);
+
+				// 獲取 step2 的預設資料並顯示
+				getCheckListRecord();
+			});
+		} else if (step === "02") {
+			// Step 2 資料處理
 			const date = new Date();
 			const formattedDate = formatDate(date);
 
@@ -91,7 +98,6 @@ $(document).ready(function () {
 					.get();
 
 				const obj = {};
-
 				if (i === 0) {
 					obj["target"] = { 0: targetValue2 };
 				} else {
@@ -160,8 +166,8 @@ $(document).ready(function () {
 			}
 			oldData.item[paramBigStep].item[Number(step) - 1].if_complete = true;
 
-			// 調用 update() 儲存資料後再跳轉
-			update();
+			// 調用 update()，明確傳入 "next" 表示下一頁
+			update("next");
 		}
 	});
 	$(".prev").on("click", function () {
@@ -546,88 +552,150 @@ $(document).ready(function () {
 	getCheckListRecord();
 
 	//存檔API
+	// const update = (type) => {
+	// 	let formData = new FormData();
+
+	// 	let session_id = sessionStorage.getItem("sessionId");
+
+	// 	let action = "updateCheckListRecord";
+
+	// 	let chsm = "upStrongCheckListApi"; // api文件相關
+
+	// 	chsm = $.md5(session_id + action + chsm);
+
+	// 	formData.append("session_id", session_id);
+
+	// 	formData.append("action", action);
+
+	// 	formData.append("chsm", chsm);
+
+	// 	formData.append("data", JSON.stringify(oldData));
+
+	// 	formData.append(
+	// 		"data",
+	// 		JSON.stringify({
+	// 			...oldData,
+	// 			workOrderId: testparams.workOrderID,
+	// 		})
+	// 	);
+
+	// 	// console.log("SendData:" + JSON.stringify(oldData));
+
+	// 	$.ajax({
+	// 		url: `${window.apiUrl}${window.apicheckList}`,
+
+	// 		type: "POST",
+
+	// 		data: formData,
+
+	// 		processData: false,
+
+	// 		contentType: false,
+
+	// 		success: function (res) {
+	// 			console.log(res, "updateCheckListRecord");
+
+	// 			if (res.returnCode) {
+	// 				if (type != "prev") {
+	// 					if (step != "02") {
+	// 						$(".title span span").html(`0${Number(step) + 1}`);
+
+	// 						$(`.step0${Number(step)}`).css("display", "none");
+
+	// 						$(`.step0${Number(step) + 1}`).css("display", "block");
+
+	// 						step = `0${Number(step) + 1}`;
+
+	// 						const url = new URL(window.location.href);
+
+	// 						url.searchParams.set("step", Number(step));
+
+	// 						window.history.replaceState(null, "", url);
+	// 					} else {
+	// 						window.location.href = `../../AssessmentPage/question/Index06.html?workOrderID=${testparams.workOrderID}`;
+	// 					}
+	// 				} else {
+	// 					if (step != "01") {
+	// 						$(".title span span").html(`0${Number(step) - 1}`);
+
+	// 						$(`.step0${Number(step)}`).css("display", "none");
+
+	// 						$(`.step0${Number(step) - 1}`).css("display", "block");
+
+	// 						step = `0${Number(step) - 1}`;
+	// 					} else {
+	// 						window.location.href = `../../AssessmentPage/question/Index05.html?workOrderID=${testparams.workOrderID}`;
+	// 					}
+	// 				}
+	// 			}
+	// 		},
+
+	// 		error: function (e) {
+	// 			alert(e);
+	// 		},
+	// 	});
+	// };
 	const update = (type) => {
-		let formData = new FormData();
+		return new Promise((resolve, reject) => {
+			let formData = new FormData();
+			let session_id = sessionStorage.getItem("sessionId");
+			let action = "updateCheckListRecord";
+			let chsm = "upStrongCheckListApi"; // api文件相關
+			chsm = $.md5(session_id + action + chsm);
 
-		let session_id = sessionStorage.getItem("sessionId");
+			formData.append("session_id", session_id);
+			formData.append("action", action);
+			formData.append("chsm", chsm);
+			formData.append("data", JSON.stringify(oldData));
+			formData.append(
+				"data",
+				JSON.stringify({
+					...oldData,
+					workOrderId: testparams.workOrderID,
+				})
+			);
 
-		let action = "updateCheckListRecord";
-
-		let chsm = "upStrongCheckListApi"; // api文件相關
-
-		chsm = $.md5(session_id + action + chsm);
-
-		formData.append("session_id", session_id);
-
-		formData.append("action", action);
-
-		formData.append("chsm", chsm);
-
-		formData.append("data", JSON.stringify(oldData));
-
-		formData.append(
-			"data",
-			JSON.stringify({
-				...oldData,
-				workOrderId: testparams.workOrderID,
-			})
-		);
-
-		// console.log("SendData:" + JSON.stringify(oldData));
-
-		$.ajax({
-			url: `${window.apiUrl}${window.apicheckList}`,
-
-			type: "POST",
-
-			data: formData,
-
-			processData: false,
-
-			contentType: false,
-
-			success: function (res) {
-				console.log(res, "updateCheckListRecord");
-
-				if (res.returnCode) {
-					if (type != "prev") {
-						if (step != "02") {
-							$(".title span span").html(`0${Number(step) + 1}`);
-
-							$(`.step0${Number(step)}`).css("display", "none");
-
-							$(`.step0${Number(step) + 1}`).css("display", "block");
-
-							step = `0${Number(step) + 1}`;
-
-							const url = new URL(window.location.href);
-
-							url.searchParams.set("step", Number(step));
-
-							window.history.replaceState(null, "", url);
+			$.ajax({
+				url: `${window.apiUrl}${window.apicheckList}`,
+				type: "POST",
+				data: formData,
+				processData: false,
+				contentType: false,
+				success: function (res) {
+					console.log(res, "updateCheckListRecord");
+					if (res.returnCode) {
+						if (type !== "prev") {
+							if (step !== "02") {
+								$(".title span span").html(`0${Number(step) + 1}`);
+								$(`.step0${Number(step)}`).css("display", "none");
+								$(`.step0${Number(step) + 1}`).css("display", "block");
+								step = `0${Number(step) + 1}`;
+								const url = new URL(window.location.href);
+								url.searchParams.set("step", Number(step));
+								window.history.replaceState(null, "", url);
+							} else {
+								window.location.href = `../../AssessmentPage/question/Index06.html?workOrderID=${testparams.workOrderID}`;
+							}
 						} else {
-							// return;
-							window.location.href = `../../AssessmentPage/question/Index06.html?workOrderID=${testparams.workOrderID}`;
+							if (step !== "01") {
+								$(".title span span").html(`0${Number(step) - 1}`);
+								$(`.step0${Number(step)}`).css("display", "none");
+								$(`.step0${Number(step) - 1}`).css("display", "block");
+								step = `0${Number(step) - 1}`;
+							} else {
+								window.location.href = `../../AssessmentPage/question/Index05.html?workOrderID=${testparams.workOrderID}`;
+							}
 						}
+						resolve(res); // 成功時解析 Promise
 					} else {
-						if (step != "01") {
-							$(".title span span").html(`0${Number(step) - 1}`);
-
-							$(`.step0${Number(step)}`).css("display", "none");
-
-							$(`.step0${Number(step) - 1}`).css("display", "block");
-
-							step = `0${Number(step) - 1}`;
-						} else {
-							window.location.href = `../../AssessmentPage/question/Index05.html?workOrderID=${testparams.workOrderID}`;
-						}
+						reject(new Error("Update failed with returnCode false"));
 					}
-				}
-			},
-
-			error: function (e) {
-				alert(e);
-			},
+				},
+				error: function (e) {
+					alert(e);
+					reject(e); // 失敗時拒絕 Promise
+				},
+			});
 		});
 	};
 

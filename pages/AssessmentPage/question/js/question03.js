@@ -108,10 +108,12 @@ $(document).ready(function () {
 				handleResponse(res);
 				if (res.returnCode) {
 					oldData = res.returnData;
+					console.log(oldData);
+
 					let data01 = res.returnData.item[paramBigStep].item[0];
 					let data02 = res.returnData.item[paramBigStep].item[1];
 					let data03 = res.returnData.item[paramBigStep].item[2];
-					let data04 = res.returnData.item[paramBigStep].item[3];
+					let data04 = oldData.item[paramBigStep]?.item?.[3] || { value: [] };
 					let data07 = res.returnData.item[1].item[6];
 					let data08 = res.returnData.item[1].item[7];
 
@@ -253,8 +255,17 @@ $(document).ready(function () {
 
 					$(".back .total-box .num").html(backTotalScore);
 
-					//補充說明
-					$("#step03boxText").val(data04.item[0].value[0]);
+					// 補充說明
+					let supplementaryText = "";
+
+					// 安全地獲取資料
+					if (data04?.item?.[0]?.value?.[0]) {
+						supplementaryText = data04.item[0].value[0];
+					}
+
+					$("#step03boxText").val(supplementaryText);
+					console.log(supplementaryText);
+					// console.log(data04.item[0].value[0]);
 				}
 			},
 		});
@@ -290,6 +301,21 @@ $(document).ready(function () {
 			success: function (res) {
 				handleResponse(res);
 				console.log(res);
+
+				// 確保 oldData 結構完整
+				oldData = oldData || { item: [] };
+				oldData.item = oldData.item || [];
+
+				// 確保 paramBigStep 存在
+				oldData.item[paramBigStep] = oldData.item[paramBigStep] || { item: [] };
+
+				// 確保有足夠的 item
+				while (oldData.item[paramBigStep].item.length < 4) {
+					oldData.item[paramBigStep].item.push({
+						item: [],
+						if_complete: false,
+					});
+				}
 
 				if (res.returnCode) {
 					if (type != "prev") {
@@ -518,8 +544,17 @@ $(document).ready(function () {
 			let textValue = document.getElementById("step03boxText").value;
 			let newData = [{ value: [textValue] }];
 
+			oldData = oldData ?? { item: [] };
+			oldData.item[paramBigStep] = oldData.item[paramBigStep] ?? { item: [] };
+			oldData.item[paramBigStep].item[3] = oldData.item[paramBigStep].item[3] ?? {
+				item: [],
+				if_complete: false,
+			};
+
+			// 設置值
 			oldData.item[paramBigStep].item[3].item = newData;
 			oldData.item[paramBigStep].item[3].if_complete = true;
+
 			update();
 		}
 	});

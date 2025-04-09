@@ -28,50 +28,51 @@ $(document).ready(function () {
 	$(".next").on("click", function () {
 		if (step == "01") {
 			let newData = { value: {} };
-
 			let mainValue = $("input[name='lv']:checked").val();
 
 			if (mainValue === "0" || mainValue === "4") {
-				newData.value[mainValue] = "1";
+				newData.value[mainValue] = "1"; // 分級一和五
 			} else {
 				let payload = [];
-
 				$(`.lv${mainValue}-sub-list-content:checked`).each((index, subValue) => {
 					payload.push($(subValue).val());
 				});
-
-				newData.value[mainValue] = payload;
+				newData.value[mainValue] = payload; // 分級二、三、四
 			}
 
-			console.log(newData);
+			// console.log("生成的新資料:", JSON.stringify(newData));
 
 			oldData.item[paramBigStep].item[Number(step) - 1].item[1] = newData;
-
 			oldData.item[paramBigStep].item[Number(step) - 1].item[2].value[5] = $("[name='cognition']:checked").val();
-
 			oldData.item[paramBigStep].item[Number(step) - 1].item[2].value[6] = $("[name='vision']:checked").val();
-
 			oldData.item[paramBigStep].item[Number(step) - 1].if_complete = true;
 
 			update();
 		} else if (step == "02") {
 			let newData = [];
 
+			// 初始化 newData 結構
 			for (let i = 0; i < $(`[data-index]`).length; i++) {
 				newData.push({ value: [] });
 			}
 
+			// 收集資料，使用正確的 data-index
 			$(`[data-index]`).each((idx, e) => {
-				$(`[data-index=${idx + 1}] select`).each((idxx, ee) => {
-					newData[idx].value.push(Number($(ee).val()));
+				let currentIndex = $(e).attr("data-index"); // 直接獲取 data-index
+				console.log(`處理 data-index=${currentIndex}`);
+				$(`[data-index="${currentIndex}"] select`).each((idxx, ee) => {
+					let selectedValue = Number($(ee).val());
+					// console.log(`select[${idxx}] 的值: ${selectedValue}`);
+					newData[idx].value.push(selectedValue);
 				});
 			});
 
-			oldData.item[paramBigStep].item[Number(step) - 1].item = newData;
+			console.log("step2 生成的資料:", JSON.stringify(newData));
 
+			oldData.item[paramBigStep].item[Number(step) - 1].item = newData;
 			oldData.item[paramBigStep].item[Number(step) - 1].if_complete = true;
 
-			update();
+			update(); // 確保調用 update
 		}
 	});
 
@@ -145,7 +146,7 @@ $(document).ready(function () {
 
 	const getList = () => {
 		let formData = new FormData();
-		console.log("getList started");
+		// console.log("getList started");
 
 		let session_id = sessionStorage.getItem("sessionId");
 
@@ -177,7 +178,7 @@ $(document).ready(function () {
 			contentType: false,
 
 			success: function (res) {
-				console.log("getList response received:", res); // 確認回應
+				// console.log("getList response received:", res);
 
 				let data02 = res.returnData.item[5].item[1];
 
@@ -260,6 +261,8 @@ $(document).ready(function () {
 
 				// getCheckListRecord();
 
+				// console.log("生成的 step2 DOM:", $(".step02 .list-box").html());
+
 				$(".step02 .list-box .list").on("click", function () {
 					$(this).toggleClass("active");
 				});
@@ -306,12 +309,14 @@ $(document).ready(function () {
 			contentType: false,
 
 			success: function (res) {
+				handleResponse(res);
 				if (res.returnCode) {
 					oldData = res.returnData;
+					console.log(oldData);
 
 					let data01 = res.returnData.item[paramBigStep].item[0];
 					let data02 = res.returnData.item[paramBigStep].item[1];
-
+					// console.log("完整的 data01 結構:", JSON.stringify(data01, null, 2));
 					// console.log("data01.item[2].value:", data01.item[2].value);
 					// console.log(data01.item[1].value);
 
@@ -319,20 +324,37 @@ $(document).ready(function () {
 
 					$(".user-detail .id").html(data01.item[0].value[1]);
 
-					let responseRadioIndex = Object.keys(data01.item[1].value);
+					//區塊二資料
 
-					let radioValues = data01.item[1].value[responseRadioIndex];
+					let valueData = data01?.item?.[1]?.value;
 
-					$(`#lv${responseRadioIndex}`).attr("checked", true);
-
-					if (typeof radioValues === "object") {
-						$.each(radioValues, (level, checkedItem) => {
-							$(`#lv${responseRadioIndex}_${checkedItem}`).attr("checked", true);
-						});
+					if (valueData === undefined) {
+						console.log("valueData 是 undefined，請檢查 data01 結構");
+						return;
 					}
 
+					// 根據資料格式處理
+					const [key, val] = Object.entries(valueData)[0] || [];
+					if (key && val) {
+						if (key === "0" || key === "4") {
+							// 分級一和五的處理
+							if (val === "1") {
+								$(`#lv${key}`).prop("checked", true);
+							}
+						} else {
+							// 分級二、三、四的處理
+							$(`#lv${key}`).prop("checked", true);
+							if (Array.isArray(val)) {
+								val.forEach((subVal) => {
+									$(`.lv${key}-sub-list-content[value="${subVal}"]`).prop("checked", true);
+								});
+							}
+						}
+					}
+					//區塊三資料
+
 					$(data01.item[2].value).each((idx, e) => {
-						console.log(e);
+						// console.log(e);
 
 						$(".other-box .text").each((idxx, ee) => {
 							if (idx == idxx) {
@@ -341,23 +363,24 @@ $(document).ready(function () {
 						});
 					});
 
-					// console.log(data01.item[2].value[5]);
-
 					$(`#cognition${data01.item[2].value[5]}`).attr("checked", true);
 
 					$(`#vision${data01.item[2].value[6]}`).attr("checked", true);
 
-					$("[data-index] select").each((idx, e) => {
-						$(data02.item).each((idxx, ee) => {
-							$(ee.value).each((idxxx, eee) => {
-								if ($(`[data-index=${idxx + 1}] select`)[idxxx]) {
-									if (idxx == idxx) {
-										$($(`[data-index=${idxx + 1}] select`)[idxxx]).val(eee);
+					// step2 資料回顯
+					if (data02?.item) {
+						$(data02.item).each((idx, item) => {
+							if (item.value && Array.isArray(item.value)) {
+								// console.log(`處理 data-index=${idx}, 值: ${JSON.stringify(item.value)}`);
+								$(`[data-index="${idx}"] select`).each((idxx, select) => {
+									if (idxx < item.value.length) {
+										$(select).val(item.value[idxx]);
+										// console.log(`設置 data-index=${idx} 的第 ${idxx} 個 select 值為 ${item.value[idxx]}`);
 									}
-								}
-							});
+								});
+							}
 						});
-					});
+					}
 				}
 			},
 		});
@@ -406,7 +429,7 @@ $(document).ready(function () {
 			})
 		);
 
-		// console.log("傳過去的資料:" + JSON.stringify(oldData));
+		console.log("傳過去的資料:" + JSON.stringify(oldData));
 
 		$.ajax({
 			url: `${window.apiUrl}${window.apicheckList}`,
