@@ -37,96 +37,6 @@ $(document).ready(function () {
 	});
 });
 
-// // 統一的點擊事件處理器
-// document.addEventListener("click", function (e) {
-// 	const button = e.target.closest(".btn-icon");
-// 	if (!button) return;
-
-// 	const containerClasses = [".textarea-box", ".addpic-box", ".ytlink-box"];
-// 	let currentSection = null;
-
-// 	for (const className of containerClasses) {
-// 		currentSection = button.closest(className);
-// 		if (currentSection) break;
-// 	}
-
-// 	if (!currentSection) {
-// 		console.error("找不到任何匹配的容器元素");
-// 		return;
-// 	}
-
-// 	const isAddButton = button.querySelector(".bi-plus-circle-fill");
-// 	const isTrashButton = button.querySelector(".bi-trash");
-
-// 	// 計算同類型的區塊數量
-// 	const sectionType = [...containerClasses].find((cls) => currentSection.matches(cls));
-// 	const allSections = document.querySelectorAll(sectionType);
-// 	const sectionCount = allSections.length;
-
-// 	// 控制垃圾桶按鈕的 pointer-events
-// 	const trashButton = currentSection.querySelector(".btn-icon .bi-trash")?.parentElement;
-// 	if (trashButton) {
-// 		trashButton.style.pointerEvents = sectionCount === 1 ? "none" : "auto";
-// 		// 可選：添加視覺提示
-// 		trashButton.style.opacity = sectionCount === 1 ? "0.5" : "1";
-// 	}
-
-// 	if (isAddButton) {
-// 		addNewSection(currentSection);
-// 		isAddButton.style.display = "none";
-// 	}
-
-// 	if (isTrashButton && sectionCount > 1) {
-// 		// 只在有多於一個區塊時執行刪除
-// 		const prevSection = currentSection.previousElementSibling;
-// 		currentSection.remove();
-// 		if (prevSection) {
-// 			const prevAddBtn = prevSection.querySelector(".bi-plus-circle-fill");
-// 			if (prevAddBtn) prevAddBtn.style.display = "block";
-// 		}
-// 	}
-// });
-
-// // 新增區塊函數
-// function addNewSection(currentSection) {
-// 	const newSection = currentSection.cloneNode(true);
-
-// 	// 重置 textarea 內容
-// 	if (newSection.classList.contains("textarea-box")) {
-// 		newSection.querySelector("textarea").value = "";
-// 	} else if (newSection.classList.contains("addpic-box")) {
-// 		newSection.querySelector("textarea").value = "";
-// 		newSection.querySelector(".char-counter").textContent = "0/100";
-
-// 		// 重置圖片預覽區域
-// 		const addpicIcon = newSection.querySelector(".addpic-icon");
-// 		const previewImage = addpicIcon.querySelector(".preview-image");
-// 		if (previewImage) {
-// 			previewImage.remove();
-// 		}
-// 		addpicIcon.querySelector(".bi-plus").style.display = "block";
-
-// 		// 重置檔案輸入
-// 		const fileInput = addpicIcon.querySelector("#imageUpload");
-// 		if (fileInput) {
-// 			fileInput.value = ""; // 清除已選檔案
-// 		}
-// 	} else if (newSection.classList.contains("ytlink-box")) {
-// 		newSection.querySelector(".ytlink-input").value = "";
-// 	}
-
-// 	const addButton = newSection.querySelector(".bi-plus-circle-fill");
-// 	addButton.style.display = "block";
-
-// 	currentSection.after(newSection);
-
-// 	const inputElement = newSection.querySelector("textarea") || newSection.querySelector(".ytlink-input");
-// 	if (inputElement) inputElement.focus();
-
-// 	// 重新綁定新區塊的圖片上傳事件
-// 	bindImageUpload(newSection, "imageUpload");
-// }
-
 // 📌 可重用的區塊類型
 const containerClasses = [".textarea-box", ".addpic-box", ".ytlink-box"];
 
@@ -280,6 +190,7 @@ function bindImageUpload(container, inputId) {
 		const file = e.target.files[0];
 		if (file) {
 			const reader = new FileReader();
+
 			reader.onload = function (event) {
 				const addpicIcon = e.target.closest(".addpic-icon");
 				const existingImg = addpicIcon.querySelector(".preview-image");
@@ -301,7 +212,7 @@ function bindImageUpload(container, inputId) {
 				collectedData.push({
 					content: "",
 					description: description,
-					url: event.target.result,
+					url: "",
 					action: "set",
 				});
 			};
@@ -351,7 +262,7 @@ function collectAllData() {
 				isMatch: true,
 				content: "",
 				description: description || "",
-				url: previewImage ? previewImage.src : "",
+				url: "",
 				checkListId: "",
 				checkItemName: "",
 				matchType: "2",
@@ -411,8 +322,6 @@ function sendSingleData(dataItem, workOrderId) {
 	// 如果有圖片檔案，添加到FormData
 	if (dataItem.recommendPhoto instanceof File) {
 		formData.append("recommendPhoto", dataItem.recommendPhoto);
-
-		// 移除資料中的檔案對象（因為已經單獨添加）
 		let dataWithoutFile = { ...dataItem };
 		delete dataWithoutFile.recommendPhoto;
 		formData.append("data", JSON.stringify(dataWithoutFile));
@@ -442,7 +351,14 @@ function sendSingleData(dataItem, workOrderId) {
 document.querySelector(".next-button").addEventListener("click", function () {
 	const dataToSend = collectAllData();
 
-	// 使用Promise.all確保所有請求完成
+	// 檢查是否有任何資料被收集到
+	if (dataToSend.length === 0) {
+		// 如果沒有資料，直接跳轉
+		window.location.href = `../AssessmentRecommendation/index.html?workOrderID=${params.workOrderID}`;
+		return; // 結束函數執行
+	}
+
+	// 如果有資料，執行原本的傳送邏輯
 	const allRequests = dataToSend.map((dataItem) => {
 		return new Promise((resolve) => {
 			sendSingleData(dataItem, params.workOrderID);
