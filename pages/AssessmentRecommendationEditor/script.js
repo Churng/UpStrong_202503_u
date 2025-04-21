@@ -145,7 +145,7 @@ $(document).ready(function () {
 
 			// 如果沒有變更，直接跳轉
 			if (changedItems.length === 0) {
-				// window.location.href = `../AssessmentRecommendationEditorCustom/index.html?workOrderID=${params.workOrderID}`;
+				window.location.href = `../AssessmentRecommendationEditorCustom/index.html?workOrderID=${params.workOrderID}`;
 				return;
 			}
 
@@ -153,7 +153,7 @@ $(document).ready(function () {
 			processRequestsSequentially(changedItems)
 				.then(() => {
 					console.log("所有請求處理完成");
-					// window.location.href = `../AssessmentRecommendationEditorCustom/index.html?workOrderID=${params.workOrderID}`;
+					window.location.href = `../AssessmentRecommendationEditorCustom/index.html?workOrderID=${params.workOrderID}`;
 				})
 				.catch((error) => {
 					console.error("更新失敗:", error);
