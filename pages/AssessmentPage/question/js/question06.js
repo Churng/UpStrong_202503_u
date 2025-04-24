@@ -381,6 +381,27 @@ $(document).ready(function () {
 							}
 						});
 					}
+
+					// 02 使用中/建議添購數量顯示
+					const listElements = document.querySelectorAll(".list");
+
+					data02.item.forEach((obj, index) => {
+						const currentList = listElements[index];
+						if (!currentList) return;
+
+						let count1 = 0;
+						let count2 = 0;
+						obj.value.forEach((val) => {
+							if (val === 1) count1++;
+							if (val === 2) count2++;
+						});
+
+						const rightBoxSpans = currentList.querySelectorAll(".right-box span");
+						if (rightBoxSpans.length >= 2) {
+							rightBoxSpans[0].textContent = count1;
+							rightBoxSpans[1].textContent = count2;
+						}
+					});
 				}
 			},
 		});
