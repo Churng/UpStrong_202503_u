@@ -108,6 +108,6 @@ $(document).ready(function () {
 
 	//進入編輯頁面
 	document.querySelector(".btn.coach-edit").addEventListener("click", function () {
-		window.location.href = `../AssessmentRecommendationEditor/index.html?workOrderID=${params.workOrderID}`;
+		window.location.href = `../AssessmentRecommendationEditorCustom/index.html?workOrderID=${params.workOrderID}`;
 	});
 });

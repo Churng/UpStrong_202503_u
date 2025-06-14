@@ -72,7 +72,7 @@ $(document).ready(function () {
 			oldData.item[paramBigStep].item[Number(step) - 1].item = newData;
 			oldData.item[paramBigStep].item[Number(step) - 1].if_complete = true;
 
-			update(); // 確保調用 update
+			update();
 		}
 	});
 
@@ -142,6 +142,33 @@ $(document).ready(function () {
 
 			$(`[name="lv4_02"]`).prop("checked", false);
 		});
+	};
+
+	// 定義設置 select 背景顏色的函數
+	const setSelectBackground = (selectElement) => {
+		const value = $(selectElement).val(); // 獲取 <select> 的選中值
+		switch (value) {
+			case "1":
+				$(selectElement).css({
+					"background-color": "#0DA9DA",
+					color: "white",
+				});
+				break;
+			case "2":
+				$(selectElement).css("background-color", "#59BD40");
+
+				$(selectElement).css({
+					"background-color": "#59BD40",
+					color: "white",
+				});
+				break;
+			default:
+				$(selectElement).css({
+					"background-color": "transparent",
+					color: "#654f00",
+				});
+				break;
+		}
 	};
 
 	const getList = () => {
@@ -270,6 +297,16 @@ $(document).ready(function () {
 				$(".step02 .list-box .btm-box").on("click", function (e) {
 					e.stopPropagation();
 				});
+
+				// 初始化所有 select 的背景色
+				$(".step02 .list-box select").each(function () {
+					setSelectBackground(this);
+				});
+
+				// 為 select 添加 change 事件監聽器
+				$(".step02 .list-box select").on("change", function () {
+					setSelectBackground(this);
+				});
 			},
 		});
 	};
@@ -316,6 +353,9 @@ $(document).ready(function () {
 
 					let data01 = res.returnData.item[paramBigStep].item[0];
 					let data02 = res.returnData.item[paramBigStep].item[1];
+					// console.log(data02.item);
+					// console.log("data02.item.length:", data02.item.length);
+
 					// console.log("完整的 data01 結構:", JSON.stringify(data01, null, 2));
 					// console.log("data01.item[2].value:", data01.item[2].value);
 					// console.log(data01.item[1].value);
@@ -367,11 +407,24 @@ $(document).ready(function () {
 
 					$(`#vision${data01.item[2].value[6]}`).attr("checked", true);
 
+					// 資料回顯並設置背景色
+					if (data02?.item) {
+						$(data02.item).each((idx, item) => {
+							if (item.value && Array.isArray(item.value)) {
+								$(`[data-index="${idx}"] select`).each((idxx, select) => {
+									if (idxx < item.value.length) {
+										$(select).val(item.value[idxx]);
+										setSelectBackground(select);
+									}
+								});
+							}
+						});
+					}
+
 					// step2 資料回顯
 					if (data02?.item) {
 						$(data02.item).each((idx, item) => {
 							if (item.value && Array.isArray(item.value)) {
-								// console.log(`處理 data-index=${idx}, 值: ${JSON.stringify(item.value)}`);
 								$(`[data-index="${idx}"] select`).each((idxx, select) => {
 									if (idxx < item.value.length) {
 										$(select).val(item.value[idxx]);
@@ -382,13 +435,15 @@ $(document).ready(function () {
 						});
 					}
 
-					// 02 使用中/建議添購數量顯示
+					// 先抓到所有的 .list 元素，會有多筆
 					const listElements = document.querySelectorAll(".list");
 
 					data02.item.forEach((obj, index) => {
+						// 先檢查該筆 .list 是否存在（避免多或少不對齊）
 						const currentList = listElements[index];
 						if (!currentList) return;
 
+						// 統計該 item 裡 value 陣列中 1 和 2 的數量
 						let count1 = 0;
 						let count2 = 0;
 						obj.value.forEach((val) => {
@@ -396,6 +451,7 @@ $(document).ready(function () {
 							if (val === 2) count2++;
 						});
 
+						// 找到該 .list 裡的 .right-box，並更新裡面兩個 span 的文字
 						const rightBoxSpans = currentList.querySelectorAll(".right-box span");
 						if (rightBoxSpans.length >= 2) {
 							rightBoxSpans[0].textContent = count1;

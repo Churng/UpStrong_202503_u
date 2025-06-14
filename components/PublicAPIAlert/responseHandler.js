@@ -1,7 +1,6 @@
 // responseHandler.js
 
 function handleResponse(res) {
-	// alert("載入中");
 	//系統異常
 	if (res.returnCode === "002") {
 		new CustomAlert({ content: res.returnMessage });

@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html>
+<!--  This source code is exported from pxCode, you can get more document from https://www.pxcode.io  -->
+
+<head>
+
+  <meta charset="utf-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <title>服務簽到</title>
+
+  <link href="../../css/RobotoFont.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/bootstrap-5.3.3.css">
+  <link rel="stylesheet" href="../../../components/CustomAlert/style.css">
+
+  <script src="../../../js/bootstrap-5.3.3.js"></script>
+  <script src="../../../js/jquery-3.6.0.min.js"></script>
+
+
+  <!-- Font Awesome圖示庫 -->
+
+  <link rel="stylesheet" href="../../css/all.min.css">
+
+
+
+  <!-- Please DO NOT remove this line, all link and script tags will be merged to here -->
+
+  <link rel="stylesheet" type="text/css" href="../../components/Header/style.css" />
+
+  <link rel="stylesheet" type="text/css" href="../../components/Footer/style.css" />
+
+  <link rel="stylesheet" type="text/css" href="../../components/CustomAlert/style.css" />
+
+  <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+
+  <link rel="stylesheet" type="text/css" href="../../css/fonts.css" />
+
+  <script src="../../js/moment.min.js"></script>
+
+  <link rel="stylesheet" href="../../css/fullcalendar.min.css" />
+
+  <link rel="stylesheet" type="text/css" href="./style.css" />
+
+  <script>
+
+    // 確保載入時，使用時間戳。
+
+    let version = Date.now();
+
+    document.write('<script type="text/javascript" src="../../js/jquery.md5.js?ver=' + version + '"></scr' + 'ipt>');
+
+    document.write('<script type="text/javascript" src="../../js/jquery.cookie.js?ver=' + version + '"></scr' + 'ipt>');
+
+    document.write('<script type="text/javascript" src="../../components/Header/script.js?ver=' + version + '"></scr' + 'ipt>');
+
+    document.write('<script type="text/javascript" src="../../components/CustomAlert/script.js?ver=' + version + '"></scr' + 'ipt>');
+
+    document.write('<script type="text/javascript" src="../../js/fullcalendar.min.js?ver=' + version + '"></scr' + 'ipt>');
+
+
+
+  </script>
+
+
+
+  <script>
+
+    $(function () {
+
+      // 為確保Header/index.html始終在Header/script.js之前載入，並禁用快取。每次都載新的js，避免偶爾的順序出錯
+
+      // 此外因為需要監聽，所以把主要監聽功能寫在這，確保在Header.html載入之後才執行。避免引入外部js檔案時，偶爾造成的載入順序錯誤問題。
+
+      $.get("../../components/Header/index.html", function (data) {
+
+        $('#header').html(data);
+
+      }).fail(function () {
+
+      });
+
+
+
+      $.get("../../components/Footer/index.html", function (data) {
+
+        $('#footer').html(data);
+
+      }).fail(function () {
+
+      });
+
+
+
+    });
+
+  </script>
+
+</head>
+
+
+
+<body style="background: #ffff">
+
+  <div id="header"></div>
+
+  <div class="main-box" style="background: #F3F3F3;">
+    <div class="banner">
+      <img src="../../assets/workOrderListPage-detail/banner_0.png" alt="">
+    </div>
+    <div class="content">
+
+      <div class="title-box d-flex justify-content-between align-items-center">
+        <span class="title text-start fw-bold">服務簽到</span>
+        <div class="d-flex"><span class="dot mx-1">*</span><span>必填</span></div>
+
+      </div>
+
+      <div class="container" id="service-checkin-container">
+        <div class="row">
+          <div class="col-12 p-0">
+            <div class="card border-0 shadow-sm p-3 mb-2 bg-body rounded">
+              <div class="card-body">
+                <p class="card-title SC-title mb-3">建議安全範圍</p>
+                <p class="card-text fw-bold">安靜時：60 - 100bpm</p>
+                <p class="card-text fw-bold">訓練中：50 - 70% 最大心率</p>
+                <span class="dot mx-1">*</span>
+
+                <div class="mb-3 fw-bold">
+                  <label for="input-hr-rest" class="form-label">安靜時</label>
+                  <div class="d-flex align-items-center">
+                    <input type="number" class="form-control form-control-sm me-2 w-75" id="input-hr-rest"
+                      aria-describedby="SC_input-hr-rest">
+                    <span>bpm</span>
+                  </div>
+                </div>
+
+
+                <div class="mb-3 fw-bold">
+                  <label for="input-hr-exercise" class="form-label">訓練中</label>
+                  <div class="d-flex align-items-center">
+                    <input type="number" class="form-control  form-control-sm me-2 w-75" id="input-hr-exercise"
+                      aria-describedby="SC_input-hr-exercise">
+                    <span>% 最大心率</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-12 p-0">
+            <div class="card border-0 shadow-sm p-3 mb-2 bg-body rounded">
+              <div class="card-body">
+                <div class="d-flex">
+                  <div class="w-25">
+                    <p class="card-text fw-bold SC-title mb-2">指標</p>
+                    <p class="card-text fw-bold  mb-2">血壓(BP)</p>
+                  </div>
+                  <div class="">
+                    <p class="card-text fw-bold SC-title mb-2 ">建議安全範圍</p>
+                    <div class="">
+                      <p class="card-text fw-bold">安靜時：< 140/90 mmHg</p>
+                          <p class="card-text fw-bold">訓練中：< 160/100 mmHg</p>
+                    </div>
+                  </div>
+                </div>
+
+                <span class="dot mx-1">*</span>
+
+                <div class="mb-3 fw-bold">
+                  <label for="input-bp-rest" class="form-label">安靜時</label>
+                  <div class="d-flex align-items-center">
+                    <input type="number" class="form-control form-control-sm me-2 w-75" id="input-bp-rest"
+                      aria-describedby="SC_input-bp-rest">
+                    <span>mmHg</span>
+                  </div>
+                </div>
+
+
+                <div class="mb-3 fw-bold">
+                  <label for="question2" class="form-label">訓練中</label>
+                  <div class="d-flex align-items-center">
+                    <input type="input-bp-exercise" class="form-control  form-control-sm me-2 w-75"
+                      id="input-bp-exercise" aria-describedby="SC_input-bp-exercise">
+                    <span>mmHg</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-12 p-0">
+            <div class="card border-0 shadow-sm p-3 mb-2 bg-body rounded">
+              <div class="card-body">
+                <div class="d-flex">
+                  <div class="w-25">
+                    <p class="card-text fw-bold SC-title mb-2">指標</p>
+                    <p class="card-text fw-bold  mb-2">血氧濃度(SpO2)</p>
+                  </div>
+                  <div class="">
+                    <p class="card-text fw-bold SC-title mb-2 ">建議安全範圍</p>
+                    <div class="">
+                      <p class="card-text fw-bold">> 92%</p>
+                      <p class="card-text fw-bold">(一般建議訓練維持 >94%)</p>
+                    </div>
+                  </div>
+                </div>
+
+                <span class="dot mx-1">*</span>
+
+                <div class="mb-3 fw-bold">
+                  <div class="d-flex align-items-center">
+                    <input type="number" class="form-control form-control-sm me-2 w-75" id="input-spo2"
+                      aria-describedby="SC_input-spo2">
+                    <span> %</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 p-0">
+            <div class="card border-0 shadow-sm p-3 mb-2 bg-body rounded">
+              <div class="card-body">
+                <div class="d-flex">
+                  <div class="w-25">
+                    <p class="card-text fw-bold SC-title mb-2">指標</p>
+                    <p class="card-text fw-bold  mb-2">呼吸頻率(RR)</p>
+                  </div>
+                  <div class="">
+                    <p class="card-text fw-bold SC-title mb-2 ">建議安全範圍</p>
+                    <div class="">
+                      <p class="card-text fw-bold">12-20 次/分鐘</p>
+                    </div>
+                  </div>
+                </div>
+
+                <span class="dot mx-1">*</span>
+
+                <div class="mb-3 fw-bold">
+                  <div class="d-flex align-items-center">
+                    <input type="number" class="form-control form-control-sm me-2 w-75" id="input-rr"
+                      aria-describedby="SC_input-rr">
+                    <span>次/分鐘</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 p-0">
+            <div class="card border-0 shadow-sm p-3 mb-2 bg-body rounded">
+              <div class="card-body">
+                <div class="d-flex">
+                  <div class="w-25">
+                    <p class="card-text fw-bold SC-title mb-2">指標</p>
+                    <p class="card-text fw-bold  mb-2">體溫</p>
+                  </div>
+                  <div class="">
+                    <p class="card-text fw-bold SC-title mb-2 ">建議安全範圍</p>
+                    <div class="">
+                      <p class="card-text fw-bold">正常為35.5 - 37.5°C</p>
+                    </div>
+                  </div>
+                </div>
+
+                <span class="dot mx-1">*</span>
+
+                <div class="mb-3 fw-bold">
+                  <div class="d-flex align-items-center">
+                    <input type="number" class="form-control form-control-sm me-2 w-75" id="input-temp"
+                      aria-describedby="SC_input-temp">
+                    <span>°C</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="subtitle-box mt-4">
+        <p class="title text-start fw-bold">每月填寫一次</p>
+      </div>
+
+      <div class="container" id="monthly-checkin-container">
+        <div class="row">
+          <div class="col-12 p-0">
+            <div class="card border-0 shadow-sm p-3 mb-2 bg-body rounded">
+              <div class="card-body">
+                <div class="d-flex">
+                  <div class="w-50 d-flex">
+                    <p class="card-text fw-bold SC-title mb-2 me-3">指標</p>
+                    <p class="card-text fw-bold  mb-2">進食</p>
+                  </div>
+                  <div class="d-flex">
+                    <p class="card-text fw-bold SC-title mb-2 me-4">上次分數</p>
+                    <p class="card-text fw-bold" id="SC-EatingLastScore"></p>
+                  </div>
+                </div>
+
+                <span class="dot mx-1">*</span>
+
+                <div class="mb-3 fw-bold">
+                  <div class="d-flex align-items-center">
+                    <input type="number" class="form-control form-control-sm me-2 w-75" id="SC-EatingCurrentScore"
+                      aria-describedby="SC_EatingCurrentScore">
+                    <span>(本次分數)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 p-0">
+            <div class="card border-0 shadow-sm p-3 mb-2 bg-body rounded">
+              <div class="card-body">
+                <div class="d-flex">
+                  <div class="w-50 d-flex">
+                    <p class="card-text fw-bold SC-title mb-2 me-3">指標</p>
+                    <p class="card-text fw-bold  mb-2">穿衣</p>
+                  </div>
+                  <div class="d-flex">
+                    <p class="card-text fw-bold SC-title mb-2 me-4">上次分數</p>
+                    <p class="card-text fw-bold" id="SC-DressingLastScore"></p>
+                  </div>
+                </div>
+
+                <span class="dot mx-1">*</span>
+
+                <div class="mb-3 fw-bold">
+                  <div class="d-flex align-items-center">
+                    <input type="number" class="form-control form-control-sm me-2 w-75" id="SC-DressingCurrentScore"
+                      aria-describedby="SC_DressingCurrentScore">
+                    <span>(本次分數)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 p-0">
+            <div class="card border-0 shadow-sm p-3 mb-2 bg-body rounded">
+              <div class="card-body">
+                <div class="d-flex">
+                  <div class="w-50 d-flex">
+                    <p class="card-text fw-bold SC-title mb-2 me-3">指標</p>
+                    <p class="card-text fw-bold  mb-2">穿褲/襪/鞋</p>
+                  </div>
+                  <div class="d-flex">
+                    <p class="card-text fw-bold SC-title mb-2 me-3">上次分數</p>
+                    <p class="card-text fw-bold" id="SC-PantsDressingLastScore"></p>
+                  </div>
+                </div>
+
+                <span class="dot mx-1">*</span>
+
+                <div class="mb-3 fw-bold">
+                  <div class="d-flex align-items-center">
+                    <input type="number" class="form-control form-control-sm me-2 w-75"
+                      id="SC-PantsDressingCurrentScore" aria-describedby="SC_PantsDressingCurrentScore">
+                    <span>(本次分數)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 p-0">
+            <div class="card border-0 shadow-sm p-3 mb-2 bg-body rounded">
+              <div class="card-body">
+                <div class="d-flex">
+                  <div class="w-50 d-flex">
+                    <p class="card-text fw-bold SC-title mb-2 me-3">指標</p>
+                    <p class="card-text fw-bold  mb-2">床邊坐起</p>
+                  </div>
+                  <div class="d-flex">
+                    <p class="card-text fw-bold SC-title mb-2 me-3">上次分數</p>
+                    <p class="card-text fw-bold" id="SC-BedsideSittingLastScore"></p>
+                  </div>
+                </div>
+
+                <span class="dot mx-1">*</span>
+
+                <div class="mb-3 fw-bold">
+                  <div class="d-flex align-items-center">
+                    <input type="number" class="form-control form-control-sm me-2 w-75"
+                      id="SC-BedsideSittingCurrentScore" aria-describedby="SC_BedsideSittingCurrentScore">
+                    <span>(本次分數)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 p-0">
+            <div class="card border-0 shadow-sm p-3 mb-2 bg-body rounded">
+              <div class="card-body">
+                <div class="d-flex">
+                  <div class="w-50 d-flex">
+                    <p class="card-text fw-bold SC-title mb-2 me-3">指標</p>
+                    <p class="card-text fw-bold  mb-2">站起</p>
+                  </div>
+                  <div class="d-flex">
+                    <p class="card-text fw-bold SC-title mb-2 me-3">上次分數</p>
+                    <p class="card-text fw-bold" id="SC-StandingLastScore"></p>
+                  </div>
+                </div>
+
+                <span class="dot mx-1">*</span>
+
+                <div class="mb-3 fw-bold">
+                  <div class="d-flex align-items-center">
+                    <input type="number" class="form-control form-control-sm me-2 w-75" id="SC-StandingCurrentScore"
+                      aria-describedby="SC_StandingCurrentScore">
+                    <span>(本次分數)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 p-0">
+            <div class="card border-0 shadow-sm p-3 mb-2 bg-body rounded">
+              <div class="card-body">
+                <div class="d-flex">
+                  <div class="w-50 d-flex">
+                    <p class="card-text fw-bold SC-title mb-2 me-3">指標</p>
+                    <p class="card-text fw-bold  mb-2">床椅移位</p>
+                  </div>
+                  <div class="d-flex">
+                    <p class="card-text fw-bold SC-title mb-2 me-3">上次分數</p>
+                    <p class="card-text fw-bold" id="SC-BedWheelchairTransferLastScore"></p>
+                  </div>
+                </div>
+
+                <span class="dot mx-1">*</span>
+
+                <div class="mb-3 fw-bold">
+                  <div class="d-flex align-items-center">
+                    <input type="number" class="form-control form-control-sm me-2 w-75"
+                      id="SC-BedWheelchairTransferCurrentScore" aria-describedby="SC_BedWheelchairTransferCurrentScore">
+                    <span>(本次分數)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 p-0">
+            <div class="card border-0 shadow-sm p-3 mb-2 bg-body rounded">
+              <div class="card-body">
+                <div class="d-flex">
+                  <div class="w-50 d-flex">
+                    <p class="card-text fw-bold SC-title mb-2 me-3">指標</p>
+                    <p class="card-text fw-bold  mb-2">輪椅坐入</p>
+                  </div>
+                  <div class="d-flex">
+                    <p class="card-text fw-bold SC-title mb-2 me-3">上次分數</p>
+                    <p class="card-text fw-bold" id="SC-WheelchairEntryLastScore"></p>
+                  </div>
+                </div>
+
+                <span class="dot mx-1">*</span>
+
+                <div class="mb-3 fw-bold">
+                  <div class="d-flex align-items-center">
+                    <input type="number" class="form-control form-control-sm me-2 w-75"
+                      id="SC-WheelchairEntryCurrentScore" aria-describedby="SC_WheelchairEntryCurrentScore">
+                    <span>(本次分數)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 p-0">
+            <div class="card border-0 shadow-sm p-3 mb-2 bg-body rounded">
+              <div class="card-body">
+                <div class="d-flex">
+                  <div class="w-50 d-flex">
+                    <p class="card-text fw-bold SC-title mb-2 me-3">指標</p>
+                    <div class="checkbox-box d-flex flex-column">
+                      <div>
+                        <input type="checkbox" id="SC-UsePowerWheelchair">
+                        <label for="SC-UsePowerWheelchair">駕電動輪椅</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" id="SC-UseManualWheelchair">
+                        <label for="SC-UseManualWheelchair">自推輪椅</label>
+                      </div>
+                    </div>
+
+
+                  </div>
+
+                  <div class="d-flex  flex-column justify-content-between">
+                    <div class="d-flex">
+                      <p class="card-text fw-bold SC-title mb-2 me-3">上次分數</p>
+                      <p class="card-text fw-bold" id="SC-UsePowerWheelchairLastScore"></p>
+                    </div>
+
+                    <div class="d-flex">
+                      <p class="card-text fw-bold SC-title mb-2 me-3">上次分數</p>
+                      <p class="card-text fw-bold" id="SC-UseManualWheelchairLastScore"></p>
+                    </div>
+                  </div>
+
+
+
+                </div>
+
+                <span class="dot mx-1">*</span>
+
+                <div class="mb-3 fw-bold">
+                  <div class="d-flex align-items-center">
+                    <input type="number" class="form-control form-control-sm me-2 w-75"
+                      id="SC-UsePowerWheelchairCurrentScore" aria-describedby="SC_UsePowerWheelchairCurrentScore"
+                      placeholder="駕電動輪椅">
+                    <span>(本次分數)</span>
+                  </div>
+
+                </div>
+                <div class="mb-3 fw-bold">
+                  <div class="d-flex align-items-center">
+                    <input type="number" class="form-control form-control-sm me-2 w-75"
+                      id="SC-UseManualWheelchairCurrentScore" aria-describedby="SC_UseManualWheelchairCurrentScore"
+                      placeholder="自推輪椅">
+                    <span>(本次分數)</span>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 p-0">
+            <div class="card border-0 shadow-sm p-3 mb-2 bg-body rounded">
+              <div class="card-body">
+                <div class="d-flex">
+                  <div class="w-50 d-flex">
+                    <p class="card-text fw-bold SC-title mb-2 me-3">指標</p>
+                    <p class="card-text fw-bold  mb-2">步行(輔具：<span></span>) </p>
+                  </div>
+                  <div class="d-flex">
+                    <p class="card-text fw-bold SC-title mb-2 me-3">上次分數</p>
+                    <p class="card-text fw-bold" id="SC-WalkingLastScore"></p>
+                  </div>
+                </div>
+
+                <span class="dot mx-1">*</span>
+
+                <div class="mb-3 fw-bold">
+                  <div class="d-flex align-items-center">
+                    <input type="number" class="form-control form-control-sm me-2 w-75" id="SC-WalkingCurrentScore"
+                      aria-describedby="SC_WalkingCurrentScore">
+                    <span>(本次分數)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 p-0">
+            <div class="card border-0 shadow-sm p-3 mb-2 bg-body rounded">
+              <div class="card-body">
+                <div class="d-flex">
+                  <div class="w-50 d-flex">
+                    <p class="card-text fw-bold SC-title mb-2 me-3">指標</p>
+                    <p class="card-text fw-bold  mb-2">如廁(都尿布為1)</p>
+                  </div>
+                  <div class="d-flex">
+                    <p class="card-text fw-bold SC-title mb-2 me-3">上次分數</p>
+                    <p class="card-text fw-bold" id="SC-ToiletingLastScore"></p>
+                  </div>
+                </div>
+
+                <span class="dot mx-1">*</span>
+
+                <div class="mb-3 fw-bold">
+                  <div class="d-flex align-items-center">
+                    <input type="number" class="form-control form-control-sm me-2 w-75" id="SC-ToiletingCurrentScore"
+                      aria-describedby="SC_ToiletingCurrentScore">
+                    <span>(本次分數)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 p-0">
+            <div class="card border-0 shadow-sm p-3 mb-2 bg-body rounded">
+              <div class="card-body">
+                <div class="d-flex">
+                  <div class="w-50 d-flex">
+                    <p class="card-text fw-bold SC-title mb-2 me-3">指標</p>
+                    <p class="card-text fw-bold  mb-2">沐浴</p>
+                  </div>
+                  <div class="d-flex">
+                    <p class="card-text fw-bold SC-title mb-2 me-3">上次分數</p>
+                    <p class="card-text fw-bold" id="SC-BathingLastScore"></p>
+                  </div>
+                </div>
+
+                <span class="dot mx-1">*</span>
+
+                <div class="mb-3 fw-bold">
+                  <div class="d-flex align-items-center">
+                    <input type="number" class="form-control form-control-sm me-2 w-75" id="SC-BathingCurrentScore"
+                      aria-describedby="SC_BathingCurrentScore">
+                    <span>(本次分數)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 p-0">
+            <div class="card border-0 shadow-sm p-3 mb-2 bg-body rounded">
+              <div class="card-body">
+                <div class="d-flex">
+                  <div class="w-50 d-flex">
+                    <p class="card-text fw-bold SC-title mb-2 me-3">指標</p>
+                    <p class="card-text fw-bold  mb-2">爬樓梯</p>
+                  </div>
+                  <div class="d-flex">
+                    <p class="card-text fw-bold SC-title mb-2 me-3">上次分數</p>
+                    <p class="card-text fw-bold" id="SC-StairClimbingLastScore"></p>
+                  </div>
+                </div>
+
+                <span class="dot mx-1">*</span>
+
+                <div class="mb-3 fw-bold">
+                  <div class="d-flex align-items-center">
+                    <input type="number" class="form-control form-control-sm me-2 w-75"
+                      id="SC-StairClimbingCurrentScore" aria-describedby="SC_StairClimbingCurrentScore">
+                    <span>(本次分數)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="box02">
+        <div class="record-box">
+          <div class="type-box">
+
+            <span class="" id="submit" style="display: none;">送出</span>
+            <span class="prev-Btn" id="prevBtn" style="display: none;">上一頁</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="footer"></div>
+
+</body>
+
+<script type="text/javascript" src="../../js/webConfig.js"></script>
+<script src="../../components/PublicAPIAlert/responseHandler.js"></script>
+<script src="../../components/PublicAPIAlert/restrictForm.js"></script>
+<script type="text/javascript" src="./style.js"></script>
+
+
+
+</html>

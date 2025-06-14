@@ -45,7 +45,7 @@ body {
 }
 
 .header-box .title span span {
-	color: #fb7c2d;
+	color: #1eabb8;
 }
 
 .header-box .home-box {
@@ -248,7 +248,7 @@ body {
 
 /* input[type="radio"]:checked::after {
 
-    border: 1px solid #FB7C2D;
+    border: 1px solid #1eabb8;
 
 }
 
@@ -256,7 +256,7 @@ body {
 
 input[type="radio"]:checked~label{
 
-    border:2px solid #FB7C2D;
+    border:2px solid #1eabb8;
 
 }
 
@@ -284,7 +284,7 @@ input[type="radio"]:checked~label::after{
 
     top: -2px;
 
-    background-color: #FB7C2D;
+    background-color: #1eabb8;
 
     font-size: 12px;
 
@@ -315,7 +315,7 @@ input[type="radio"]:checked~label::after{
 }
 
 .custom-radio input[type="checkbox"]:checked + label {
-	border: 1px solid #fb7c2d;
+	border: 1px solid #1eabb8;
 }
 
 .custom-radio input[type="checkbox"]:checked + label::before {
@@ -333,11 +333,11 @@ input[type="radio"]:checked~label::after{
 
 	border-radius: 50%;
 
-	background: #fb7c2d;
+	background: #1eabb8;
 }
 
 .custom-radio input[type="checkbox"]:checked + label::after {
-	border: 1px solid #fb7c2d;
+	border: 1px solid #1eabb8;
 }
 
 .next-button {
@@ -367,7 +367,7 @@ input[type="radio"]:checked~label::after{
 
 	border-radius: 6px;
 
-	background: #fb7c2d;
+	background: #1eabb8;
 
 	cursor: pointer;
 }
@@ -422,7 +422,7 @@ input[type="radio"]:checked~label::after{
 }
 
 .text-plus {
-	color: #e91e63;
+	color: #1eabb8;
 }
 
 /* test */
@@ -449,7 +449,7 @@ input[type="radio"]:checked~label::after{
 
 .icon-card-title {
 	width: 100%;
-	background-color: #fb7c2d; /* 橘色背景 */
+	background-color: #1eabb8; /* 橘色背景 */
 	color: white;
 	font-size: 16px;
 	font-weight: bold;
@@ -464,7 +464,7 @@ input[type="radio"]:checked~label::after{
 }
 
 .icon-arrow {
-	background-color: #fb7c2d; /* 跟標題相同的背景顏色 */
+	background-color: #1eabb8; /* 跟標題相同的背景顏色 */
 	padding: 9px 12px;
 	display: flex;
 	justify-content: center;

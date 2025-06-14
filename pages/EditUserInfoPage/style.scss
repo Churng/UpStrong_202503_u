@@ -4,7 +4,7 @@ $color_type_0: rgb(126, 126, 126);
 $color_type_1: rgb(169, 169, 169);
 $color_type_2: rgb(209, 0, 0);
 $color_type_3: rgb(22, 84, 185);
-$color_type_4: rgb(235, 92, 32);
+$color_type_4: #1eabb8;
 $color_type_5: rgb(243, 243, 243);
 $color_type_6: rgb(255, 255, 255);
 $color_type_7: rgb(34, 34, 34);
@@ -982,7 +982,7 @@ $font_type_10: 400 16px/1.31 "Noto Sans TC", Helvetica, Arial, serif;
 }
 
 input:focus {
-  border-color: solid 1px #eb5c20; 
+  border-color: solid 1px #1eabb8; 
 }
 
 /* 個案註冊頁 問題2.發票選擇類型一開始設定在二聯式，不應該存在三聯式的INPUT(抬頭統編等) */

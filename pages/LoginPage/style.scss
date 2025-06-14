@@ -2,7 +2,7 @@
 
 $color_type_0: rgb(126, 126, 126);
 $color_type_1: rgb(22, 84, 185);
-$color_type_2: rgb(235, 92, 32);
+$color_type_2: #1eabb8;
 $color_type_3: rgb(243, 243, 243);
 $color_type_4: rgb(255, 255, 255);
 $color_type_5: rgb(41, 41, 41);
@@ -248,7 +248,7 @@ $font_type_3: 400 14px/1.35 "Noto Sans TC", Helvetica, Arial, serif;
 .content_box1 {
   @include flex-column;
   border-radius: $border_radius_type_1;
-  outline: 1px solid rgb(235, 92, 32);
+  outline: 1px solid #1eabb8;
   outline-offset: -1px;
   position: relative;
   margin: 24px 0px 0px 3px;
@@ -340,7 +340,7 @@ $font_type_3: 400 14px/1.35 "Noto Sans TC", Helvetica, Arial, serif;
 }
 
 input:focus {
-  border-color: solid 1px #eb5c20;
+  border-color: solid 1px #1eabb8;
 }
 
 .togglePassword {

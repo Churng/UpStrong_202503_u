@@ -276,7 +276,6 @@ $(document).ready(function () {
 		}
 
 		// 特殊情況處理
-		// 使用github repo 路徑，289 - 293，/UpStrong_202503_u/
 		if (listIdx === 2 && listUrl === 2) {
 			window.location.href = `./question/question_a0${listUrl + 1}.html?workOrderID=${
 				params.workOrderID
@@ -286,11 +285,11 @@ $(document).ready(function () {
 				params.workOrderID
 			}&step=4-02&bigstep=${listUrl}`;
 		} else if (listIdx === 7 && listUrl === 1) {
-			window.location.href = `/UpStrong_202503_u/pages/AssessmentPage/question/question_a03.html?workOrderID=${params.workOrderID}&step=1&bigstep=2`;
+			window.location.href = `/pages/AssessmentPage/question/question_a03.html?workOrderID=${params.workOrderID}&step=1&bigstep=2`;
 		} else if (listIdx === 8 && listUrl === 1) {
-			window.location.href = `/UpStrong_202503_u/pages/AssessmentPage/question/question_a03.html?workOrderID=${params.workOrderID}&step=2&bigstep=2`;
+			window.location.href = `/pages/AssessmentPage/question/question_a03.html?workOrderID=${params.workOrderID}&step=2&bigstep=2`;
 		} else if (listIdx === 1 && listUrl === 2) {
-			window.location.href = `/UpStrong_202503_u/pages/AssessmentPage/question/question_a03.html?workOrderID=${params.workOrderID}&step=3&bigstep=2`;
+			window.location.href = `/pages/AssessmentPage/question/question_a03.html?workOrderID=${params.workOrderID}&step=3&bigstep=2`;
 		} else if (listIdx === 2 && listUrl === 2) {
 			window.location.href = `/pages/AssessmentPage/question/question_a03.html?workOrderID=${params.workOrderID}&step=4&bigstep=2`;
 		} else {

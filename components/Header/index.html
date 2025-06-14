@@ -14,53 +14,70 @@
       <div class="spacer1"></div>
       <div class="cell2">
         <div class="header__flexRow1">
-          <div class="cell tabbar_item">
-            <h5 class="header__highlights"><a class="text-decoration-none text-body"
-                href="https://www.強生寓所.com/%E9%97%9C%E6%96%BC%E5%AF%93%E6%89%80" target="_blank"
-                rel="noopener noreferrer">關於寓所</a></h5>
-          </div>
-          <div class="spacer"></div>
-          <div class="cell tabbar_item">
-            <h5 class="header__highlights1"><a class="text-decoration-none text-body" href="https://www.強生寓所.com/blog"
-                target="_blank" rel="noopener noreferrer">最新消息</a></h5>
-          </div>
+          <!-- 教練選單 -->
+          <div class="cellbox" id="coachMenu" style="display:none;">
+            <div class="cell tabbar_item ">
+              <h5 class="header__highlights1"><a class="text-decoration-none tabbar_text"
+                  href="../EditUserInfoPage/index.html" rel="noopener noreferrer">
+                  <img src="../../assets/headerIcon/profile_icon.svg" class="header_icon me-2">基本資料</a></h5>
+            </div>
 
-          <div class="spacer"></div>
-          <div class="cell tabbar_item">
-            <h5 class="header__highlights1"><a class="text-decoration-none text-body"
-                href="https://www.強生寓所.com/basic-01" target="_blank" rel="noopener noreferrer">英雄見證</a></h5>
-          </div>
+            <div class="spacer1"></div>
+            <div class="cell tabbar_item ">
+              <h5 class="header__highlights1"><a class="text-decoration-none tabbar_text"
+                  href="../WorkOrderListPage/index.html" rel="noopener noreferrer"><img
+                    src="../../assets/headerIcon/order_icon.svg" class="header_icon me-2">教練工單</a></h5>
+            </div>
 
 
-          <div class="spacer1"></div>
-          <div class="cell tabbar_item">
-            <h5 class="header__highlights2"><a class="text-decoration-none text-body"
-                href="https://www.強生寓所.com/%E7%85%A7%E7%89%87%E9%9B%86" target="_blank"
-                rel="noopener noreferrer">照片集</a></h5>
           </div>
-          <div class="spacer1"></div>
-          <div class="cell tabbar_item">
-            <h5 class="header__highlights3"><a class="text-decoration-none text-body" href="https://www.強生寓所.com/q-a"
-                target="_blank" rel="noopener noreferrer">FAQ</a></h5>
+
+          <!-- 個案選單 -->
+          <div class="cellbox" id="caseMenu" style="display:none;">
+            <div class="cell tabbar_item ">
+              <h5 class="header__highlights1"><a class="text-decoration-none tabbar_text"
+                  href="../EditUserInfoPage/index.html" rel="noopener noreferrer"><img
+                    src="../../assets/headerIcon/profile_icon.svg" class="header_icon me-2">基本資料</a></h5>
+            </div>
+
+            <div class="spacer1"></div>
+            <div class="cell tabbar_item ">
+              <h5 class="header__highlights1"><a class="text-decoration-none tabbar_text"
+                  href="../QuotationPage/index.html" rel="noopener noreferrer"><img
+                    src="../../assets/headerIcon/Serviceratingform_icon.svg" class="header_icon me-2">報價單</a></h5>
+            </div>
+            <div class="spacer1"></div>
+            <div class="cell tabbar_item ">
+              <h5 class="header__highlights1"><a class="text-decoration-none tabbar_text"
+                  href="../OrderListPage/index.html" rel="noopener noreferrer"><img
+                    src="../../assets/headerIcon/order_icon.svg" class="header_icon me-2">訂單</a></h5>
+            </div>
+            <div class="spacer1"></div>
+            <div class="cell tabbar_item ">
+              <h5 class="header__highlights1"><a class="text-decoration-none tabbar_text"
+                  href="../TrainListPage/index.html" rel="noopener noreferrer"><img
+                    src="../../assets/headerIcon/train_icon.svg" class="header_icon me-2">我的訓練</a></h5>
+            </div>
+
+            <div class="spacer1"></div>
+            <div class="cell tabbar_item ">
+              <h5 class="header__highlights1"><a class="text-decoration-none tabbar_text" href="../HomePage/index.html"
+                  rel="noopener noreferrer"><img src="../../assets/headerIcon/Serviceratingform_icon.svg"
+                    class="header_icon me-2">服務評分表</a></h5>
+            </div>
           </div>
-          <div class="spacer1"></div>
-          <div class="cell tabbar_item">
-            <h5 class="header__highlights4"><a class="text-decoration-none text-body "
-                href="https://www.強生寓所.com/%E9%9A%B1%E7%A7%81%E6%AC%8A%E6%94%BF%E7%AD%96" target="_blank"
-                rel="noopener noreferrer">隱私權政策</a></h5>
-          </div>
-          <div class="spacer1"></div>
-          <div class="cell tabbar_item">
-            <h5 class="header__highlights4"><a class="text-decoration-none text-body"
-                href="https://www.強生寓所.com/contact-8" target="_blank" rel="noopener noreferrer">聯絡我們</a></h5>
-          </div>
+
         </div>
       </div>
 
       <div class="cell3" style="position: absolute; right: 30px;">
         <div class="header__flexRow2">
-          <div class="cell1">
+          <div class="cell1" id="profileButton">
             <img src="../../assets/profile.png" alt="alt text" id="controlShowPanel" class="header__image1" />
+          </div>
+
+          <div class="cell1" id="profileMenu" style="display:none;">
+            <div class="header__menuItem" onclick="logout()">登出</div>
           </div>
         </div>
       </div>
@@ -73,51 +90,70 @@
 
 
 
-<div id="mySidenav" class="mySidenav partial-code mySidenavRoot">
+<div class="mySidenav partial-code mySidenavRoot" id="coachMenuSidenav" style="display: none;">
+  <!-- 教練 -->
   <div class="mySidenavFlexCol">
     <div class="mySidenavContent_box">
-      <div class="mySidenavText"><a class="text-decoration-none text-body"
-          href="https://www.強生寓所.com/%E9%97%9C%E6%96%BC%E5%AF%93%E6%89%80" target="_blank"
-          rel="noopener noreferrer">關於寓所</a></div>
+      <div class="mySidenavText"><a class="text-decoration-none " href="../EditUserInfoPage/index.html"
+          rel="noopener noreferrer"><img src="../../assets/headerIcon/profile_icon.svg"
+            class="header_icon me-2">基本資料</a></div>
     </div>
     <div class="mySidenavContent_box">
-      <div class="mySidenavText"><a class="text-decoration-none text-body" href="https://www.強生寓所.com/blog"
-          target="_blank" rel="noopener noreferrer">最新消息</a></div>
+      <div class="mySidenavText"><a class="text-decoration-none" href="../WorkOrderListPage/index.html"
+          rel="noopener noreferrer"><img src="../../assets/headerIcon/order_icon.svg" class="header_icon me-2">教練工單</a>
+      </div>
     </div>
-    <div class="mySidenavContent_box">
-      <div class="mySidenavText"><a class="text-decoration-none text-body" href="https://www.強生寓所.com/basic-01"
-          target="_blank" rel="noopener noreferrer">英雄見證</a></div>
+
+    <div class="mySidenavContent_box_logout">
+      <div class="mySidenavText_logout" onclick="logout()">登出</div>
     </div>
+  </div>
+</div>
+<div class="mySidenav partial-code mySidenavRoot" id="caseMenuSidenav" style="display: none;">
+  <!-- 個案 -->
+  <div class="mySidenavFlexCol">
     <div class="mySidenavContent_box">
-      <div class="mySidenavText"><a class="text-decoration-none text-body"
-          href="https://www.強生寓所.com/%E7%85%A7%E7%89%87%E9%9B%86" target="_blank" rel="noopener noreferrer">照片集</a>
+      <div class="mySidenavText"><a class="text-decoration-none " href="../EditUserInfoPage/index.html"
+          rel="noopener noreferrer"><img src="../../assets/headerIcon/profile_icon.svg"
+            class="header_icon me-2">基本資料</a>
       </div>
     </div>
     <div class="mySidenavContent_box">
-      <div class="mySidenavText"><a class="text-decoration-none text-body" href="https://www.強生寓所.com/q-a"
-          target="_blank" rel="noopener noreferrer">FAQ</a></div>
+      <div class="mySidenavText"><a class="text-decoration-none" href="../QuotationPage/index.html"
+          rel="noopener noreferrer"><img src="../../assets/headerIcon/Serviceratingform_icon.svg"
+            class="header_icon me-2">報價單</a>
+      </div>
     </div>
     <div class="mySidenavContent_box">
-      <div class="mySidenavText"><a class="text-decoration-none text-body "
-          href="https://www.強生寓所.com/%E9%9A%B1%E7%A7%81%E6%AC%8A%E6%94%BF%E7%AD%96" target="_blank"
-          rel="noopener noreferrer">隱私權政策</a></div>
+      <div class="mySidenavText"><a class="text-decoration-none" href="../OrderListPage/index.html"
+          rel="noopener noreferrer"><img src="../../assets/headerIcon/order_icon.svg" class="header_icon me-2">訂單</a>
+      </div>
     </div>
     <div class="mySidenavContent_box">
-      <div class="mySidenavText"><a class="text-decoration-none text-body" href="https://www.強生寓所.com/contact-8"
-          target="_blank" rel="noopener noreferrer">聯絡我們</a></div>
+      <div class="mySidenavText"><a class="text-decoration-none" href="../TrainListPage/index.html"
+          rel="noopener noreferrer"><img src="../../assets/headerIcon/train_icon.svg" class="header_icon me-2">我的訓練</a>
+      </div>
     </div>
+    <div class="mySidenavContent_box">
+      <div class="mySidenavText"><a class="text-decoration-none" href="../HomePage/index.html"
+          rel="noopener noreferrer"><img src="../../assets/headerIcon/Serviceratingform_icon.svg"
+            class="header_icon me-2">服務評分表</a>
+      </div>
+    </div>
+
+    <div class="mySidenavContent_box_logout">
+      <div class="mySidenavText_logout" onclick="logout()">登出</div>
+    </div>
+
   </div>
 </div>
 
 
 
 
-
-
-
 <!-- for尚未登入 -->
 <div class="rightPanelRoot" id="noneLoginPopup">
-  <p class="specialParagraph">您的課程即將到期，請聯繫業務人員討論課程，此為測試文字顯示效果，之後可自行修改成任意文字。</p><!-- 這行可依據實際情況拿掉或放上，如果有文字需求則可使用 -->
+  <p class=" specialParagraph">您的課程即將到期，請聯繫業務人員討論課程，此為測試文字顯示效果，之後可自行修改成任意文字。</p><!-- 這行可依據實際情況拿掉或放上，如果有文字需求則可使用 -->
 
   <div class="rightPanelPointer">
     <hr size="1" class="line" /><!-- 這條線可依據情況拿掉或放上，如果上方有文字則可使用 -->
@@ -133,7 +169,7 @@
 </div>
 
 <!-- for登入後個案 -->
-<div class="rightPanelRoot" id="userPopup">
+<!-- <div class="rightPanelRoot" id="userPopup">
   <p class="specialParagraph">您的課程即將到期，請聯繫業務人員討論課程。</p>
   <div class="rightPanelPointer">
     <hr size="1" class="line" />
@@ -151,10 +187,10 @@
       <div class="rightPanelText Pointer" id="logout-btn" onclick="logout()">登出</div>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- for登入後教練 -->
-<div class="rightPanelRoot" id="couchPopup">
+<!-- <div class="rightPanelRoot" id="couchPopup">
   <div class="rightPanelPointer">
     <div class="rightPanelText Pointer" onclick="location.href='../EditUserInfoPage/index.html'">基本資料</div>
     <hr size="1" class="line" />
@@ -168,4 +204,4 @@
     <hr size="1" class="line" />
     <div class="rightPanelText Pointer" id="logout-btn" onclick="logout()">登出</div>
   </div>
-</div>
+</div> -->

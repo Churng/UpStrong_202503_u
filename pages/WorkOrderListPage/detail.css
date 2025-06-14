@@ -24,6 +24,125 @@
 	}
 }
 
+.printerbutton {
+	position: relative;
+	display: inline-block;
+	width: 600px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: flex-end;
+	padding: 30px 0;
+	overflow: visible;
+	font-weight: 600;
+}
+
+.printerbutton-toggle {
+	position: relative;
+	padding: 5px 40px 5px 20px;
+	background-color: white;
+	color: #333;
+	font-size: 16px;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	cursor: pointer;
+	width: 145px;
+}
+
+/* ▼ 小三角形 */
+.printerbutton-toggle::after {
+	content: "";
+	position: absolute;
+	right: 15px;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 0;
+	height: 0;
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 10px solid #333; /* 初始三角形顏色 */
+}
+
+/* 開啟狀態的樣式 */
+.printerbutton-toggle.active {
+	background-color: #1eabb8;
+	color: white;
+}
+
+/* 三角形也變白 */
+.printerbutton-toggle.active::after {
+	border-top-color: white;
+}
+
+.printerbutton-menu {
+	position: absolute;
+	top: 75%;
+	right: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 5px; /* 每個 li 之間的間距 */
+	opacity: 0;
+	pointer-events: none;
+	transform: translateY(10px);
+	transition: all 0.3s ease;
+	background: transparent; /* 去掉整塊背景 */
+	padding: 0;
+	margin: 0;
+	z-index: 9999;
+}
+
+.printerbutton-menu li {
+	background: white;
+	border-radius: 8px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	padding: 10px 20px;
+	transition: all 0.3s ease;
+	list-style: none;
+	cursor: pointer;
+	width: 145px;
+	text-align: center;
+	font-size: 14px;
+	border: 1px solid #1eabb8;
+	color: #1eabb8;
+	font-weight: 600;
+}
+
+.printerbutton-menu li:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+.printerbutton-menu li:last-child {
+	border-bottom: none;
+}
+
+.printerbutton.open .printerbutton-menu {
+	opacity: 1;
+	pointer-events: auto;
+	transform: translateY(0);
+}
+
+.printerbutton.open .printerbutton-menu li {
+	transform: translateY(0);
+	opacity: 1;
+}
+
+.printerbutton.open .printerbutton-menu li:nth-child(1) {
+	transition-delay: 0.05s;
+}
+.printerbutton.open .printerbutton-menu li:nth-child(2) {
+	transition-delay: 0.1s;
+}
+.printerbutton.open .printerbutton-menu li:nth-child(3) {
+	transition-delay: 0.15s;
+}
+.printerbutton.open .printerbutton-menu li:nth-child(4) {
+	transition-delay: 0.2s;
+}
+
+.printerbutton-menu li:last-child {
+	border-bottom: 1px solid #1eabb8; /* 最後一個才補回底線 */
+}
+
 .banner {
 	width: 600px;
 	margin: 0 auto;
@@ -121,7 +240,7 @@ h2 {
 }
 
 .box01 .type.type03::after {
-	background-color: #70be20;
+	background-color: #1eabb8;
 }
 
 .box01 .type.type04::after {
@@ -147,7 +266,7 @@ h2 {
 
 	font-size: 24px;
 
-	color: #eb5c20;
+	color: #1eabb8;
 }
 
 .box01 .detail .button-box {
@@ -167,13 +286,13 @@ h2 {
 
 	height: 25px;
 
-	color: #67bae7;
+	color: #1eabb8;
 
 	font-size: 14px;
 
 	border-radius: 4px;
 
-	border: solid 1px #67bae7;
+	border: solid 1px #1eabb8;
 
 	background-color: #fff;
 
@@ -322,13 +441,13 @@ h2 {
 
 	border-radius: 4px;
 
-	border: solid 1px #67bae7;
+	border: solid 1px #1eabb8;
 
 	background-color: #fff;
 
 	cursor: pointer;
 
-	color: #1493d8;
+	color: #1eabb8;
 }
 
 .box02 .record-box .type-box span::after {

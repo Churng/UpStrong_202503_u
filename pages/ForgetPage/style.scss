@@ -2,7 +2,7 @@
 
 $color_type_0: rgb(0, 0, 0);
 $color_type_1: rgb(126, 126, 126);
-$color_type_2: rgb(235, 92, 32);
+$color_type_2: #1eabb8;
 $color_type_3: rgb(243, 243, 243);
 $color_type_4: rgb(255, 255, 255);
 $color_type_5: rgb(41, 41, 41);
@@ -293,5 +293,5 @@ $font_type_5: 14px/1.35 "Noto Sans TC", Helvetica, Arial, serif;
 }
 
 input:focus {
-  border-color: solid 1px #eb5c20; 
+  border-color: solid 1px #1eabb8; 
 }

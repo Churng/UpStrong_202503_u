@@ -11,6 +11,7 @@ function restrictFormByIdentity(userType) {
 	// 定義需要禁用的元素選擇器
 	const disableSelectors = [
 		'input[type="text"]',
+		'input[type="number"]',
 		'input[type="radio"]',
 		'input[type="checkbox"]',
 		"textarea",
@@ -51,7 +52,7 @@ function restrictFormByIdentity(userType) {
 					else {
 						el.readOnly = true;
 						el.disabled = true;
-						el.style.backgroundColor = "#f0f0f0";
+						el.style.backgroundColor = "transparent";
 						el.style.cursor = "not-allowed";
 					}
 				});

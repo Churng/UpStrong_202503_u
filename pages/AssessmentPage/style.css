@@ -23,18 +23,76 @@ body {
 	margin: auto;
 }
 
+.linkbox {
+	background-color: white;
+	height: 70px;
+	padding: 0 30px; /* 左右留點空間避免緊貼邊緣 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.linkbox > .block {
+	max-width: 1200px;
+	width: 100%;
+	display: flex;
+	gap: 20px;
+	/* 拿掉 margin: 0 auto;，就不會置中了 */
+}
+
+@media (max-width: 383px) {
+	.linkbox {
+		height: 120px;
+	}
+
+	.linkbox > .block {
+		flex-direction: column;
+		gap: 10px; /* 垂直間距 */
+	}
+
+	.userInfoPage {
+		width: 100%; /* 滿寬 */
+	}
+}
+
 .userInfoPage {
-	margin-top: 20px;
+	display: flex;
+	align-items: center;
 }
 .userInfo-link {
-	color: #656c78;
+	color: #1eabb8;
 	font-weight: bolder;
 	margin-left: 10px;
 	padding: 5px 10px;
-	background-color: #fb8d48;
+	border-radius: 5px;
+	border: 1px solid #1eabb8;
 }
 .userInfo-link:hover {
 	color: white;
+	background-color: #1eabb8;
+}
+
+.getInfoPage {
+	color: #1eabb8;
+	font-weight: bolder;
+	margin-left: 10px;
+	padding: 5px 10px;
+	border-radius: 5px;
+	border: 1px solid #1eabb8;
+}
+
+.getInfoPage > a {
+	color: #1eabb8;
+}
+
+.getInfoPage > a:hover {
+	color: white;
+	background-color: #1eabb8;
+}
+
+.getInfoPage:hover {
+	color: white;
+	background-color: #1eabb8;
 }
 
 .header-box {
@@ -106,7 +164,7 @@ body {
 
 	align-items: center;
 
-	padding: 12px 0;
+	padding: 12px 0 20px;
 }
 
 .title-box .icon-box {
@@ -116,21 +174,23 @@ body {
 
 	align-items: center;
 
-	width: 40px;
+	width: 60px;
 
-	height: 40px;
+	height: 60px;
 
-	border-radius: 10px;
+	border-radius: 50%;
 
-	background: #fb7c2d;
+	background: #1eabb8;
+
+	position: absolute;
 }
 
 .title-box .title {
-	color: #656c78;
+	color: #1eabb8;
 
 	font-weight: bolder;
 
-	margin-left: 10px;
+	margin-left: 80px;
 }
 
 .title-box .percent {

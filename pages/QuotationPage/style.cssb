@@ -131,7 +131,7 @@ h2 svg {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: #70BE20;
+    background: #1eabb8;
 }
 
 .fullcalender-box .right-box .detail-box.training .tag::after {
@@ -293,7 +293,7 @@ h2 svg {
     width: 120px;
     height: 38px;
     border-radius: 4px;
-    background: #EB5C20;
+    background: #1eabb8;
     color: #fff;
     font-weight: 500;
 }
@@ -305,8 +305,8 @@ h2 svg {
 
 .button-box button+button {
     background: #fff;
-    color: #EB5C20;
-    border: 1px solid #EB5C20;
+    color: #1eabb8;
+    border: 1px solid #1eabb8;
 }
 
 .pc_none {
@@ -381,7 +381,7 @@ h2 svg {
 }
 
 .fc-icon {
-    color: #EB5C20;
+    color: #1eabb8;
 }
 
 .fc .fc-today-button {
@@ -435,7 +435,7 @@ h2 svg {
     color: #fff;
     width: 22px;
     height: 22px;
-    background: #EB5C20;
+    background: #1eabb8;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -493,7 +493,7 @@ h2 svg {
     display: block;
     width: 2px;
     height: 100%;
-    background: #70BE20;
+    background: #1eabb8;
 }
 
 .fullcalender-box .fc-event.vacation {
@@ -736,8 +736,8 @@ h2 svg {
     }
 
     .fullcalender-box .fc-event.evaluate {
-        background: #70BE20;
-        color: #70BE20
+        background: #1eabb8;
+        color: #1eabb8
     }
 
     .fullcalender-box .fc-event.vacation {

@@ -1,0 +1,182 @@
+* {
+	font-family: "Open Sans", sans-serif;
+}
+
+.main-box {
+	max-width: 980px !important;
+	min-height: calc(100vh - 90px);
+
+	background: #fff !important;
+
+	margin: auto;
+}
+
+.content {
+	width: 500px;
+	margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+	.content {
+		width: 100%;
+		margin: auto;
+		padding: 0 15px;
+	}
+}
+
+.banner {
+	width: 600px;
+	margin: 0 auto;
+}
+.banner img {
+	width: 100%;
+}
+
+@media (max-width: 768px) {
+	.banner {
+		width: 100%;
+		margin: 0 auto;
+	}
+
+	.banner img {
+		width: 100%;
+	}
+}
+
+h2 {
+	display: flex;
+
+	align-items: center;
+
+	gap: 13px;
+
+	font-size: 24px;
+
+	color: #292929;
+
+	padding: 0 0 25px;
+
+	background: #f3f3f3;
+}
+
+.title-box {
+	text-align: center;
+
+	padding: 40px 0 30px;
+}
+
+.title-box .title {
+	display: block;
+
+	font-size: 30px;
+
+	color: #292929;
+}
+
+.title-box .text {
+	display: block;
+
+	font-size: 24px;
+
+	color: #7e7e7e;
+
+	margin-top: 8px;
+}
+
+.b-title {
+	color: #1eabb8;
+	font-weight: bold;
+}
+
+.box02 {
+	padding: 0px 0 60px;
+}
+
+.box02 .record-box .title {
+	display: block;
+
+	color: #292929;
+
+	font-weight: bold;
+
+	margin-bottom: 33px;
+}
+
+.box02 .record-box .type-box {
+	display: flex;
+
+	align-items: center;
+
+	gap: 12px;
+}
+
+.box02 .record-box .type-box span {
+	position: relative;
+
+	min-width: 114px;
+
+	height: 38px;
+
+	padding: 7px 0 0 38px;
+
+	border-radius: 4px;
+
+	border: solid 1px #1eabb8;
+
+	background-color: #fff;
+
+	cursor: pointer;
+
+	color: #1eabb8;
+}
+
+.box02 .record-box .type-box span.active,
+.box02 .record-box .type-box span:hover {
+	background-color: #1eabb8;
+	color: white;
+}
+
+textarea:focus {
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+@media (max-width: 500px) {
+	.mb_none {
+		display: none !important;
+	}
+
+	.pc_none {
+		display: block;
+	}
+
+	.main-box {
+		position: relative;
+
+		width: 100% !important;
+
+		min-width: auto !important;
+
+		padding: 0;
+	}
+
+	.box02 {
+		padding-bottom: 40px;
+	}
+
+	.box02 .record-box .title {
+		margin-bottom: 24px;
+	}
+
+	.box02 .record-box .type-box {
+		flex-wrap: wrap;
+
+		padding: 0px 15px;
+
+		justify-content: space-around;
+	}
+}
+
+#prevBtn {
+	padding: 7px 0 0 30px;
+}

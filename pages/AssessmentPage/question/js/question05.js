@@ -121,35 +121,35 @@ $(document).ready(function () {
 					}
 				});
 
-				if (!obj[formattedDate]) obj[formattedDate] = {};
-				obj[formattedDate]["0"] = targetValue || 0;
+				// if (!obj[formattedDate]) obj[formattedDate] = {};
+				// obj[formattedDate]["0"] = targetValue || 0;
 
-				if (savedData.hasOwnProperty(i.toString())) {
-					obj[formattedDate]["1"] = savedData[i.toString()];
-				} else {
-					obj[formattedDate]["1"] = "";
-				}
+				// if (savedData.hasOwnProperty(i.toString())) {
+				// 	obj[formattedDate]["1"] = savedData[i.toString()];
+				// } else {
+				// 	obj[formattedDate]["1"] = "";
+				// }
 
-				if (i === 0) {
-					if (!obj[formattedDate]) obj[formattedDate] = {};
-					obj[formattedDate]["0"] = targetValue2;
-				} else {
-					if (targetValue !== 0) {
-						if (!obj[formattedDate]) obj[formattedDate] = {};
-						obj[formattedDate]["0"] = targetValue;
-					}
-				}
+				// if (i === 0) {
+				// 	if (!obj[formattedDate]) obj[formattedDate] = {};
+				// 	obj[formattedDate]["0"] = targetValue2;
+				// } else {
+				// 	if (targetValue !== 0) {
+				// 		if (!obj[formattedDate]) obj[formattedDate] = {};
+				// 		obj[formattedDate]["0"] = targetValue;
+				// 	}
+				// }
 
-				if (i === 7) {
-					$(`input[data-list-id=7]`).each((inx, e) => {
-						if ($(e).is(":checked")) {
-							obj["option"] = Number($(e).val());
-						}
-					});
-				}
-				if (i === 8) {
-					obj["description"] = $(`input[data-list-id=8]`).val();
-				}
+				// if (i === 7) {
+				// 	$(`input[data-list-id=7]`).each((inx, e) => {
+				// 		if ($(e).is(":checked")) {
+				// 			obj["option"] = Number($(e).val());
+				// 		}
+				// 	});
+				// }
+				// if (i === 8) {
+				// 	obj["description"] = $(`input[data-list-id=8]`).val();
+				// }
 
 				newData[i] = obj;
 				result[i] = obj;
@@ -192,68 +192,6 @@ $(document).ready(function () {
 
 			update("prev");
 		} else if (step == "02") {
-			// let newData = [
-
-			//   { value: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}] },
-
-			// ];
-
-			// $(".table-box.date-box .past-box").each((idx, e) => {
-
-			//   $('[data-past="0"] .past-box').each((idxx, ee) => {
-
-			//     newData[0].value[0][$(e).text()] = $(ee).text().replace(/\s/g, "");
-
-			//   });
-
-			// });
-
-			// newData[0].value[0]["target"] = $(".lv-box .target-box").text();
-
-			// $(".table-box.date-box .past-box").each((idx, e) => {
-
-			//   $(`[data-pastscore=${idx}]`).each((idxx, ee) => {
-
-			//     newData[0].value[idxx + 1][$(e).text()] = Number($(ee).text());
-
-			//   });
-
-			//   for (let i = 0; i < 12; i++) {
-
-			//     if (i > $(".table-box.date-box .past-box").length)
-
-			//       newData[0].value[i][$(e).text()] = 0;
-
-			//   }
-
-			// });
-
-			// for (let i = 0; i < 12; i++) {
-
-			//   if (i > $(".table-box.date-box .past-box").length)
-
-			//     newData[0].value[i]["target"] = 0;
-
-			// }
-
-			// $(`[data-target] .select-box`).each((idx, e) => {
-
-			//   if ($(e).text() != 0) {
-
-			//     if (newData[0].value[idx + 1]) {
-
-			//       newData[0].value[idx + 1]["target"] = Number($(e).text());
-
-			//     }
-
-			//   }
-
-			// });
-
-			// oldData.item[paramBigStep].item[Number(step) - 1].item = newData;
-
-			// oldData.item[paramBigStep].item[Number(step) - 1].if_complete = true;
-
 			update("prev");
 		}
 	});
@@ -552,89 +490,6 @@ $(document).ready(function () {
 	getCheckListRecord();
 
 	//存檔API
-	// const update = (type) => {
-	// 	let formData = new FormData();
-
-	// 	let session_id = sessionStorage.getItem("sessionId");
-
-	// 	let action = "updateCheckListRecord";
-
-	// 	let chsm = "upStrongCheckListApi"; // api文件相關
-
-	// 	chsm = $.md5(session_id + action + chsm);
-
-	// 	formData.append("session_id", session_id);
-
-	// 	formData.append("action", action);
-
-	// 	formData.append("chsm", chsm);
-
-	// 	formData.append("data", JSON.stringify(oldData));
-
-	// 	formData.append(
-	// 		"data",
-	// 		JSON.stringify({
-	// 			...oldData,
-	// 			workOrderId: testparams.workOrderID,
-	// 		})
-	// 	);
-
-	// 	// console.log("SendData:" + JSON.stringify(oldData));
-
-	// 	$.ajax({
-	// 		url: `${window.apiUrl}${window.apicheckList}`,
-
-	// 		type: "POST",
-
-	// 		data: formData,
-
-	// 		processData: false,
-
-	// 		contentType: false,
-
-	// 		success: function (res) {
-	// 			console.log(res, "updateCheckListRecord");
-
-	// 			if (res.returnCode) {
-	// 				if (type != "prev") {
-	// 					if (step != "02") {
-	// 						$(".title span span").html(`0${Number(step) + 1}`);
-
-	// 						$(`.step0${Number(step)}`).css("display", "none");
-
-	// 						$(`.step0${Number(step) + 1}`).css("display", "block");
-
-	// 						step = `0${Number(step) + 1}`;
-
-	// 						const url = new URL(window.location.href);
-
-	// 						url.searchParams.set("step", Number(step));
-
-	// 						window.history.replaceState(null, "", url);
-	// 					} else {
-	// 						window.location.href = `../../AssessmentPage/question/Index06.html?workOrderID=${testparams.workOrderID}`;
-	// 					}
-	// 				} else {
-	// 					if (step != "01") {
-	// 						$(".title span span").html(`0${Number(step) - 1}`);
-
-	// 						$(`.step0${Number(step)}`).css("display", "none");
-
-	// 						$(`.step0${Number(step) - 1}`).css("display", "block");
-
-	// 						step = `0${Number(step) - 1}`;
-	// 					} else {
-	// 						window.location.href = `../../AssessmentPage/question/Index05.html?workOrderID=${testparams.workOrderID}`;
-	// 					}
-	// 				}
-	// 			}
-	// 		},
-
-	// 		error: function (e) {
-	// 			alert(e);
-	// 		},
-	// 	});
-	// };
 	const update = (type) => {
 		return new Promise((resolve, reject) => {
 			let formData = new FormData();

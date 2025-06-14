@@ -578,9 +578,9 @@ button.btn-main,
 	background-color: #3084bd;
 	color: #fff;
 }
-button.btn-main:hover,
+button.#1eabb8,
 button.btn-main:focus,
-.btn-main:hover,
+.#1eabb8,
 .btn-main:focus {
 	color: #fff;
 	background-color: #2871a2;
@@ -1780,7 +1780,7 @@ ul.list-info li {
 
 	border-radius: 6px;
 
-	background: #fb7c2d;
+	background: #1eabb8;
 
 	cursor: pointer;
 }
@@ -1831,8 +1831,8 @@ ul.list-info li {
 
 /* 勾選狀態的樣式 */
 .checkbox-box input[type="checkbox"]:checked + label:first-of-type::before {
-	background-color: #fb7c2d;
-	border-color: #fb7c2d;
+	background-color: #1eabb8;
+	border-color: #1eabb8;
 }
 
 /* 打勾符號 */

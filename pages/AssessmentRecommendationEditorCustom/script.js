@@ -1,6 +1,8 @@
 // 全域變數
 let collectedData = [];
 let imageFiles = []; // 在全域範圍初始化 imageFiles
+let checkboxInitialStates = {}; // checkbox 初始狀態儲存
+let recommendData = null;
 
 const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
@@ -16,6 +18,131 @@ function convertToEmbed(url) {
 
 // 頁面載入時初始化
 $(document).ready(function () {
+	//原有資料
+	var oldData = null;
+
+	//取得套用清單
+	let formData = new FormData();
+	let session_id = sessionStorage.getItem("sessionId");
+	let action = "getDefaultRecommendMatchDataListById";
+	let chsm = "upStrongRecommendApi";
+	chsm = $.md5(session_id + action + chsm);
+
+	const urlSearchParams = new URLSearchParams(window.location.search);
+	const params = Object.fromEntries(urlSearchParams.entries());
+	let data = { workOrderId: params.workOrderID };
+
+	formData.append("action", action);
+	formData.append("session_id", session_id);
+	formData.append("chsm", chsm);
+	formData.append("data", JSON.stringify(data));
+
+	// 發送 API 請求
+	$.ajax({
+		url: `${window.apiUrl}${window.apirecommend}`,
+		type: "POST",
+		data: formData,
+		processData: false,
+		contentType: false,
+		success: function (res) {
+			console.log(res);
+			handleResponse(res);
+
+			if (res.returnCode == "1" && res.returnData) {
+				// 定義三個容器
+				let textContainer = $("#recommendation-container1");
+				let imageContainer = $("#recommendation-container2");
+				let youtubeContainer = $("#recommendation-container3");
+
+				// 檢查容器是否存在
+				if (!textContainer.length || !imageContainer.length || !youtubeContainer.length) {
+					console.error(
+						"一個或多個容器不存在，請檢查 HTML 是否包含 #recommendation-container1, #recommendation-container2, #recommendation-container3"
+					);
+					return;
+				}
+
+				recommendData = res.returnData;
+				$("#title").append(res.returnData.title);
+
+				recommendData.forEach((item) => {
+					let contentHTML = "";
+					let targetContainer = null;
+
+					if (item.matchTypeName === "文字") {
+						// 純文字
+						contentHTML = `
+							<div class="recommendation-item style01 mb-5 shadow-sm">
+								<div class="card-body d-flex align-items-start checkbox-box">
+									<input type="checkbox" class="isMatch-checkbox" id="${item.id}" 
+										name="${item.id}" value="${item.checkListId}" 
+										data-id="${item.id}" ${item.isMatch ? "checked" : ""}>
+									<label for="${item.id}"></label>
+									<div class="card-box">
+										<p class="card-text">${item.content}</p>
+									</div>
+								</div>
+							</div>
+						`;
+						targetContainer = textContainer;
+					} else if (item.matchTypeName === "圖片") {
+						// 圖片
+						contentHTML = `
+							<div class="recommendation-item mb-5 shadow-sm">
+								<div class="card-body d-flex align-items-start checkbox-box">
+									<input type="checkbox" class="isMatch-checkbox" id="${item.id}" 
+										name="${item.id}" value="${item.checkListId}" 
+										data-id="${item.id}" ${item.isMatch ? "checked" : ""}>
+									<label for="${item.id}"></label>
+									<div class="card-box">
+										<img src="${item.url}" alt="${item.description}" class="img-fluid mb-3" style="width: 300px;">
+										<p class="card-text">${item.description}</p>
+									</div>
+								</div>
+							</div>
+						`;
+						targetContainer = imageContainer;
+					} else if (item.matchTypeName === "youtube") {
+						// 嵌入 YouTube 影片
+						var URL = convertToEmbed(item.url);
+						contentHTML = `
+							<div class="recommendation-item mb-5 shadow-sm">
+								<div class="card-body d-flex align-items-start checkbox-box">
+									<input type="checkbox" class="isMatch-checkbox" id="${item.id}" 
+										name="${item.id}" value="${item.checkListId}" 
+										data-id="${item.id}" ${item.isMatch ? "checked" : ""}>
+									<label for="${item.id}"></label>
+									<div class="card-box">
+										<iframe class="mb-3 w-100" height="315" src="${URL}" 
+											title="YouTube video" frameborder="0" allowfullscreen style="width: 300px;"></iframe>
+										<p class="card-text">${item.description}</p>
+									</div>
+								</div>
+							</div>
+						`;
+						targetContainer = youtubeContainer;
+					}
+
+					// 將內容追加到對應容器
+					if (targetContainer && contentHTML) {
+						targetContainer.append(contentHTML);
+					} else {
+						console.warn(`無效的 matchTypeName 或容器未定義: ${item.matchTypeName}`);
+					}
+
+					// 儲存初始 checkbox 狀態
+					checkboxInitialStates[item.id] = item.isMatch;
+				});
+			} else {
+				console.error("API 回應異常:", res.message);
+			}
+		},
+		error: function (xhr, status, error) {
+			console.error("API 呼叫失敗:", error);
+		},
+	});
+
+	//
 	const textarea = document.getElementById("limitedTextarea");
 	const charCounter = document.querySelector(".char-counter");
 
@@ -223,25 +350,305 @@ function bindImageUpload(container, inputId) {
 // 初始綁定圖片上傳
 bindImageUpload(document.querySelector(".addpic-box"), "imageUpload");
 
-// 收集資料
-function collectAllData() {
-	collectedData = [];
-	imageFiles = [];
+// // 收集資料
+// function collectAllData() {
+// 	collectedData = [];
+// 	imageFiles = [];
 
-	// 收集文字區塊資料
+// 	// 收集文字區塊資料
+// 	document.querySelectorAll(".textarea-box").forEach((box, index) => {
+// 		const content = box.querySelector(".recommendation-textarea").value;
+// 		if (content) {
+// 			collectedData.push({
+// 				id: "",
+// 				isMatch: true,
+// 				content: content,
+// 				description: "",
+// 				url: "",
+// 				checkListId: "",
+// 				checkItemName: "",
+// 				matchType: "1",
+// 				recommendOrder: index + 1, // 根據順序設定值
+// 				matchCondition: "",
+// 				action: "set",
+// 				workOrderId: params.workOrderID,
+// 			});
+// 		}
+// 	});
+
+// 	// 收集圖片區塊資料
+// 	document.querySelectorAll(".addpic-box").forEach((box, index) => {
+// 		const description = box.querySelector(".addpic-textarea").value;
+// 		const fileInput = box.querySelector("#imageUpload");
+// 		const previewImage = box.querySelector(".preview-image");
+// 		const imageFile = fileInput.files[0];
+
+// 		if (imageFile || description) {
+// 			collectedData.push({
+// 				id: "",
+// 				isMatch: true,
+// 				content: "",
+// 				description: description || "",
+// 				url: "",
+// 				checkListId: "",
+// 				checkItemName: "",
+// 				matchType: "2",
+// 				recommendOrder: index + 1, // 根據順序設定值
+// 				matchCondition: "",
+// 				action: "set",
+// 				workOrderId: params.workOrderID,
+// 				recommendPhoto: imageFile || null,
+// 			});
+
+// 			if (imageFile) {
+// 				imageFiles.push({
+// 					file: imageFile,
+// 					description: description || "",
+// 				});
+// 			}
+// 		}
+// 	});
+
+// 	// 收集YouTube區塊資料
+// 	document.querySelectorAll(".ytlink-box").forEach((box, index) => {
+// 		const url = box.querySelector(".ytlink-input").value;
+// 		const videodescription = box.querySelector(".yttext-input").value;
+// 		if (url) {
+// 			collectedData.push({
+// 				id: "",
+// 				isMatch: true,
+// 				content: "",
+// 				description: videodescription,
+// 				url: convertToEmbed(url),
+// 				checkListId: "",
+// 				checkItemName: "",
+// 				matchType: "3",
+// 				recommendOrder: index + 1, // 根據順序設定值
+// 				matchCondition: "",
+// 				action: "set",
+// 				workOrderId: params.workOrderID,
+// 			});
+// 		}
+// 	});
+
+// 	return collectedData;
+// }
+// // // 單筆資料傳送函數（含圖片上傳）
+// function sendSingleData(dataItem, workOrderId) {
+// 	let formData = new FormData();
+// 	formData.append("session_id", sessionStorage.getItem("sessionId"));
+// 	formData.append("action", "setRecommendMatchDataById");
+// 	formData.append(
+// 		"chsm",
+// 		$.md5(sessionStorage.getItem("sessionId") + "setRecommendMatchDataById" + "upStrongRecommendApi")
+// 	);
+
+// 	// 基本資料
+// 	formData.append("action", action);
+// 	formData.append("session_id", session_id);
+// 	formData.append("chsm", chsm);
+
+// 	// 如果有圖片檔案，添加到FormData
+// 	if (dataItem.recommendPhoto instanceof File) {
+// 		formData.append("recommendPhoto", dataItem.recommendPhoto);
+// 		let dataWithoutFile = { ...dataItem };
+// 		delete dataWithoutFile.recommendPhoto;
+// 		formData.append("data", JSON.stringify(dataWithoutFile));
+// 	} else {
+// 		formData.append("data", JSON.stringify(dataItem));
+// 	}
+
+// 	$.ajax({
+// 		url: `${window.apiUrl}${window.apirecommend}`,
+// 		type: "POST",
+// 		data: formData,
+// 		processData: false, // 必要！防止jQuery處理FormData
+// 		contentType: false, // 必要！讓瀏覽器自動設置Content-Type
+// 		success: function (res) {
+// 			console.log(res);
+// 			successResponse(res);
+// 			window.location.href = `../AssessmentRecommendation/index.html?workOrderID=${params.workOrderID}`;
+// 		},
+// 		error: function (xhr, status, error) {
+// 			console.error("API呼叫失敗:", error);
+// 			alert("圖片上傳失敗，請稍後再試");
+// 		},
+// 	});
+// }
+
+// // Next按鈕點擊處理
+// document.querySelector(".next-button").addEventListener("click", function () {
+// 	const dataToSend = collectAllData();
+
+// 	// 檢查是否有任何資料被收集到
+// 	if (dataToSend.length === 0) {
+// 		// 如果沒有資料，直接跳轉
+// 		window.location.href = `../AssessmentRecommendation/index.html?workOrderID=${params.workOrderID}`;
+// 		return; // 結束函數執行
+// 	}
+
+// 	// 如果有資料，執行原本的傳送邏輯
+// 	const allRequests = dataToSend.map((dataItem) => {
+// 		return new Promise((resolve) => {
+// 			sendSingleData(dataItem, params.workOrderID);
+// 			resolve();
+// 		});
+// 	});
+
+// 	Promise.all(allRequests)
+// 		.then(() => {})
+// 		.catch((error) => {
+// 			console.error("資料傳送錯誤:", error);
+// 		});
+// });
+
+$(".next")
+	.off("click")
+	.on("click", function (e) {
+		e.preventDefault();
+
+		// 處理 checkbox 勾選狀態變更資料
+		const $checkboxes = $(".isMatch-checkbox");
+		let changedItems = [];
+
+		$checkboxes.each(function () {
+			const $checkbox = $(this);
+			const checkboxId = $checkbox.data("id").toString();
+			const isNowChecked = $checkbox.is(":checked");
+			const wasInitiallyChecked = checkboxInitialStates[checkboxId];
+
+			if (isNowChecked !== wasInitiallyChecked) {
+				changedItems.push({
+					checkbox: $checkbox,
+					recommendId: checkboxId,
+					isNowChecked: isNowChecked,
+				});
+				checkboxInitialStates[checkboxId] = isNowChecked;
+			}
+		});
+
+		// 處理新增的圖文／影片資料
+		const formDataList = collectAllData();
+
+		// 如果兩邊都沒資料變更，直接跳轉
+		if (changedItems.length === 0 && formDataList.length === 0) {
+			window.location.href = `../AssessmentRecommendation/index.html?workOrderID=${params.workOrderID}`;
+			return;
+		}
+
+		// 依序處理 checkbox 勾選變更的 API
+		processRequestsSequentially(changedItems)
+			.then(() => {
+				// 再依序處理其他圖文/影片資料
+				return Promise.all(
+					formDataList.map((dataItem) => {
+						return sendSingleData(dataItem, params.workOrderID);
+					})
+				);
+			})
+			.then(() => {
+				console.log("所有資料傳送完成");
+
+				window.location.href = `../AssessmentRecommendation/index.html?workOrderID=${params.workOrderID}`;
+			})
+			.catch((error) => {
+				console.error("處理過程中發生錯誤:", error);
+				alert("部分資料更新失敗，請稍後再試");
+			});
+	});
+
+// 處理 checkbox API 的流程
+function processRequestsSequentially(items) {
+	return items.reduce((promise, item) => {
+		return promise.then(() => {
+			const originalItem = recommendData.find((data) => data.id.toString() === item.recommendId);
+			if (!originalItem) return Promise.resolve();
+
+			const requestData = {
+				workOrderId: params.workOrderID,
+				action: item.isNowChecked ? "set" : "delete",
+			};
+
+			if (item.isNowChecked) {
+				let checkListIds = "";
+				if (Array.isArray(originalItem.checkListId)) {
+					checkListIds = originalItem.checkListId.join("&");
+				} else if (originalItem.checkListId) {
+					checkListIds = originalItem.checkListId.toString();
+				}
+
+				Object.assign(requestData, {
+					isMatch: true,
+					content: originalItem.content || "",
+					url: originalItem.url || "",
+					description: originalItem.description || "",
+					checkListId: checkListIds,
+					checkItemName: originalItem.checkItemName || "",
+					matchType: originalItem.matchType || "",
+					recommendOrder: originalItem.recommendOrder !== undefined ? originalItem.recommendOrder : 0,
+					matchCondition: originalItem.matchCondition || "",
+					sourceRecommendId: originalItem.sourceRecommendId || "",
+				});
+			} else {
+				Object.assign(requestData, {
+					recommendId: item.recommendId,
+				});
+			}
+
+			return sendRecommendationRequest(requestData);
+		});
+	}, Promise.resolve());
+}
+
+// API 請求 for checkbox 處理
+function sendRecommendationRequest(data) {
+	return new Promise((resolve, reject) => {
+		let formData = new FormData();
+		formData.append("session_id", sessionStorage.getItem("sessionId"));
+		formData.append("action", "setRecommendMatchDataById");
+		formData.append(
+			"chsm",
+			$.md5(sessionStorage.getItem("sessionId") + "setRecommendMatchDataById" + "upStrongRecommendApi")
+		);
+		formData.append("data", JSON.stringify(data));
+
+		$.ajax({
+			url: `${window.apiUrl}${window.apirecommend}`,
+			type: "POST",
+			data: formData,
+			processData: false,
+			contentType: false,
+			success: function (res) {
+				if (res.returnCode === "1") {
+					resolve();
+				} else {
+					reject(res.message);
+				}
+			},
+			error: function (error) {
+				reject(error);
+			},
+		});
+	});
+}
+
+// 收集文字、圖片、YouTube資料
+function collectAllData() {
+	let collectedData = [];
+
 	document.querySelectorAll(".textarea-box").forEach((box, index) => {
 		const content = box.querySelector(".recommendation-textarea").value;
 		if (content) {
 			collectedData.push({
 				id: "",
 				isMatch: true,
-				content: content,
+				content,
 				description: "",
 				url: "",
 				checkListId: "",
 				checkItemName: "",
 				matchType: "1",
-				recommendOrder: index + 1, // 根據順序設定值
+				recommendOrder: index + 1,
 				matchCondition: "",
 				action: "set",
 				workOrderId: params.workOrderID,
@@ -249,15 +656,13 @@ function collectAllData() {
 		}
 	});
 
-	// 收集圖片區塊資料
 	document.querySelectorAll(".addpic-box").forEach((box, index) => {
 		const description = box.querySelector(".addpic-textarea").value;
 		const fileInput = box.querySelector("#imageUpload");
-		const previewImage = box.querySelector(".preview-image");
 		const imageFile = fileInput.files[0];
 
 		if (imageFile || description) {
-			collectedData.push({
+			let item = {
 				id: "",
 				isMatch: true,
 				content: "",
@@ -266,23 +671,17 @@ function collectAllData() {
 				checkListId: "",
 				checkItemName: "",
 				matchType: "2",
-				recommendOrder: index + 1, // 根據順序設定值
+				recommendOrder: index + 1,
 				matchCondition: "",
 				action: "set",
 				workOrderId: params.workOrderID,
-				recommendPhoto: imageFile || null,
-			});
+			};
+			if (imageFile) item.recommendPhoto = imageFile;
 
-			if (imageFile) {
-				imageFiles.push({
-					file: imageFile,
-					description: description || "",
-				});
-			}
+			collectedData.push(item);
 		}
 	});
 
-	// 收集YouTube區塊資料
 	document.querySelectorAll(".ytlink-box").forEach((box, index) => {
 		const url = box.querySelector(".ytlink-input").value;
 		const videodescription = box.querySelector(".yttext-input").value;
@@ -296,7 +695,7 @@ function collectAllData() {
 				checkListId: "",
 				checkItemName: "",
 				matchType: "3",
-				recommendOrder: index + 1, // 根據順序設定值
+				recommendOrder: index + 1,
 				matchCondition: "",
 				action: "set",
 				workOrderId: params.workOrderID,
@@ -306,69 +705,47 @@ function collectAllData() {
 
 	return collectedData;
 }
-// // 單筆資料傳送函數（含圖片上傳）
+
+// 單筆資料上傳，含圖片處理
 function sendSingleData(dataItem, workOrderId) {
-	let formData = new FormData();
-	let session_id = sessionStorage.getItem("sessionId");
-	let action = "setRecommendMatchDataById";
-	let chsm = "upStrongRecommendApi";
-	chsm = $.md5(session_id + action + chsm);
+	return new Promise((resolve, reject) => {
+		let formData = new FormData();
+		const session_id = sessionStorage.getItem("sessionId");
+		const action = "setRecommendMatchDataById";
+		const chsm = $.md5(session_id + action + "upStrongRecommendApi");
 
-	// 基本資料
-	formData.append("action", action);
-	formData.append("session_id", session_id);
-	formData.append("chsm", chsm);
+		formData.append("session_id", session_id);
+		formData.append("action", action);
+		formData.append("chsm", chsm);
 
-	// 如果有圖片檔案，添加到FormData
-	if (dataItem.recommendPhoto instanceof File) {
-		formData.append("recommendPhoto", dataItem.recommendPhoto);
-		let dataWithoutFile = { ...dataItem };
-		delete dataWithoutFile.recommendPhoto;
-		formData.append("data", JSON.stringify(dataWithoutFile));
-	} else {
-		formData.append("data", JSON.stringify(dataItem));
-	}
+		if (dataItem.recommendPhoto instanceof File) {
+			formData.append("recommendPhoto", dataItem.recommendPhoto);
+			let dataWithoutFile = { ...dataItem };
+			delete dataWithoutFile.recommendPhoto;
+			formData.append("data", JSON.stringify(dataWithoutFile));
+			console.log("圖片檔案：", dataItem.recommendPhoto);
+		} else {
+			formData.append("data", JSON.stringify(dataItem));
+		}
 
-	$.ajax({
-		url: `${window.apiUrl}${window.apirecommend}`,
-		type: "POST",
-		data: formData,
-		processData: false, // 必要！防止jQuery處理FormData
-		contentType: false, // 必要！讓瀏覽器自動設置Content-Type
-		success: function (res) {
-			console.log(res);
-			successResponse(res);
-			window.location.href = `../AssessmentRecommendation/index.html?workOrderID=${params.workOrderID}`;
-		},
-		error: function (xhr, status, error) {
-			console.error("API呼叫失敗:", error);
-			alert("圖片上傳失敗，請稍後再試");
-		},
+		$.ajax({
+			url: `${window.apiUrl}${window.apirecommend}`,
+			type: "POST",
+			data: formData,
+			processData: false,
+			contentType: false,
+			success: function (res) {
+				console.log(res);
+				if (res.returnCode === "1") {
+					resolve(res); // ✅ 成功 resolve
+				} else {
+					reject(new Error("API 回傳錯誤訊息：" + res.msg));
+				}
+			},
+			error: function (xhr, status, error) {
+				console.error("API呼叫失敗:", error);
+				reject(error); // ✅ 失敗 reject
+			},
+		});
 	});
 }
-
-// Next按鈕點擊處理
-document.querySelector(".next-button").addEventListener("click", function () {
-	const dataToSend = collectAllData();
-
-	// 檢查是否有任何資料被收集到
-	if (dataToSend.length === 0) {
-		// 如果沒有資料，直接跳轉
-		window.location.href = `../AssessmentRecommendation/index.html?workOrderID=${params.workOrderID}`;
-		return; // 結束函數執行
-	}
-
-	// 如果有資料，執行原本的傳送邏輯
-	const allRequests = dataToSend.map((dataItem) => {
-		return new Promise((resolve) => {
-			sendSingleData(dataItem, params.workOrderID);
-			resolve();
-		});
-	});
-
-	Promise.all(allRequests)
-		.then(() => {})
-		.catch((error) => {
-			console.error("資料傳送錯誤:", error);
-		});
-});
