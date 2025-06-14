@@ -10,57 +10,48 @@
 
   <title>服務紀錄</title>
 
-  <link href="../../css/RobotoFont.css" rel="stylesheet">
+  <!-- 字體 -->
+  <link rel="stylesheet" href="../../css/RobotoFont.css">
+  <link rel="stylesheet" href="../../css/fonts.css">
+
+  <!-- Bootstrap -->
   <link rel="stylesheet" href="../../css/bootstrap-5.3.3.css">
-  <link rel="stylesheet" href="../../../components/CustomAlert/style.css">
+  <script src="../../js/bootstrap-5.3.3.js"></script>
 
-  <script src="../../../js/bootstrap-5.3.3.js"></script>
-  <script src="../../../js/jquery-3.6.0.min.js"></script>
+  <!-- jQuery -->
+  <script src="../../js/jquery-3.6.0.min.js"></script>
 
-
-  <!-- Font Awesome圖示庫 -->
-
+  <!-- Font Awesome 圖示庫 -->
   <link rel="stylesheet" href="../../css/all.min.css">
 
+  <!-- 共用樣式 -->
+  <link rel="stylesheet" href="../../css/common.css">
 
+  <!-- 元件樣式 -->
+  <link rel="stylesheet" href="../../components/Header/style.css">
+  <link rel="stylesheet" href="../../components/Footer/style.css">
+  <link rel="stylesheet" href="../../components/CustomAlert/style.css">
 
+  <!-- 日曆與時間函式 -->
+  <script src="../../js/moment.min.js"></script>
+  <link rel="stylesheet" href="../../css/fullcalendar.min.css">
+
+  <!-- 當前頁面樣式 -->
+  <link rel="stylesheet" href="./style.css">
+
+  <!-- 請勿移除：合併標籤位置 -->
   <!-- Please DO NOT remove this line, all link and script tags will be merged to here -->
 
-  <link rel="stylesheet" type="text/css" href="../../components/Header/style.css" />
-
-  <link rel="stylesheet" type="text/css" href="../../components/Footer/style.css" />
-
-  <link rel="stylesheet" type="text/css" href="../../components/CustomAlert/style.css" />
-
-  <link rel="stylesheet" type="text/css" href="../../css/common.css" />
-
-  <link rel="stylesheet" type="text/css" href="../../css/fonts.css" />
-
-  <script src="../../js/moment.min.js"></script>
-
-  <link rel="stylesheet" href="../../css/fullcalendar.min.css" />
-
-  <link rel="stylesheet" type="text/css" href="./style.css" />
-
+  <!-- 動態載入腳本（加上時間戳避免 cache） -->
   <script>
-
-    // 確保載入時，使用時間戳。
-
     let version = Date.now();
-
-    document.write('<script type="text/javascript" src="../../js/jquery.md5.js?ver=' + version + '"></scr' + 'ipt>');
-
-    document.write('<script type="text/javascript" src="../../js/jquery.cookie.js?ver=' + version + '"></scr' + 'ipt>');
-
-    document.write('<script type="text/javascript" src="../../components/Header/script.js?ver=' + version + '"></scr' + 'ipt>');
-
-    document.write('<script type="text/javascript" src="../../components/CustomAlert/script.js?ver=' + version + '"></scr' + 'ipt>');
-
-    document.write('<script type="text/javascript" src="../../js/fullcalendar.min.js?ver=' + version + '"></scr' + 'ipt>');
-
-
-
+    document.write('<script src="../../js/jquery.md5.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script src="../../js/jquery.cookie.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script src="../../components/Header/script.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script src="../../components/CustomAlert/script.js?ver=' + version + '"></scr' + 'ipt>');
+    document.write('<script src="../../js/fullcalendar.min.js?ver=' + version + '"></scr' + 'ipt>');
   </script>
+
 
 
 
