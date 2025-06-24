@@ -158,7 +158,7 @@ $(document).ready(function () {
 
           <div class="type-box">
 
-            <span class="ServiceCheckInlink${data.PhotoSign == true ? " active" : ""}">照片簽到</span>
+            <span class="ServiceCheckInlink${data.PhotoSign == true ? " active" : ""}">服務簽到</span>
 
             <span class="ServiceRecordlink">服務紀錄</span>
 
