@@ -499,51 +499,40 @@
 
 .header__flexRow2 {
 	display: flex;
-	align-items: center; /* 垂直居中 */
-	justify-content: center; /* 水平居中（如果需要） */
-	width: fit-content; /* 根据内容调整宽度 */
-	flex-grow: 0; /* 不占据额外空间 */
-	min-width: 0; /* 防止溢出 */
-	/* margin: 14px 0px 15px; */
+	align-items: center;
+	justify-content: center;
+	width: fit-content;
+	flex-grow: 0;
+	min-width: 0;
 }
 
-/* .header__flexRow2 {
-  display: flex;
-  align-items: center;
-  width: -moz-fit-content;
-  width: fit-content;
-  position: relative;
-  flex-grow: 1;
-  min-width: 0px;
-  /* margin: 14px 0px 15px; 
-*/
-
-/* @media (min-width: 1400px) and (max-width: 1919px) {
-  .header__flexRow2 {
-    justify-content: flex-start;
-    align-items: center;
-    -moz-column-gap: 0px;
-    column-gap: 0px;
-  }
+/* 預設：桌機尺寸，logo 靠左 */
+.header__flexRow > .cell1 {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	flex: 0 1 122px;
+	margin: 0;
 }
 
-@media (max-width: 767px) {
-  .header__flexRow2 {
-    justify-content: flex-end;
-    align-items: center;
-    -moz-column-gap: 0px;
-    column-gap: 0px;
-    margin: 20px;
-  }
-}
+/* RWD：當螢幕寬度 ≤ 991px 時 logo 置中 */
+@media (max-width: 991px) {
+	.header__flexRow {
+		position: relative;
+	}
 
-.header__flexRow2>.cell {
-  display: none;
-  flex-direction: column;
-  position: relative;
-  flex: 0 0 32px;
-  min-width: 32px;
-} */
+	.header__flexRow > .cell1 {
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		z-index: 1;
+		margin: 20px 0; /* 上下加點空間，不會貼到邊 */
+	}
+
+	.header__image {
+		max-width: 80px;
+	}
+}
 
 .header__highlights11 {
 	display: flex;
