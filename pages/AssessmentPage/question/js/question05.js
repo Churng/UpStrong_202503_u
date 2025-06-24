@@ -38,12 +38,12 @@ $(document).ready(function () {
 	}
 
 	$(".next").on("click", function () {
-		const userType = sessionStorage.getItem("userType");
+		// const userType = sessionStorage.getItem("userType");
 
-		if (userType === "1") {
-			window.location.href = `../../AssessmentPage/question/Index06.html?workOrderID=${testparams.workOrderID}`;
-			return;
-		}
+		// if (userType === "1") {
+		// 	window.location.href = `../../AssessmentPage/question/Index06.html?workOrderID=${testparams.workOrderID}`;
+		// 	return;
+		// }
 
 		if (step === "01") {
 			// Step 1 資料處理
@@ -501,7 +501,6 @@ $(document).ready(function () {
 			formData.append("session_id", session_id);
 			formData.append("action", action);
 			formData.append("chsm", chsm);
-			formData.append("data", JSON.stringify(oldData));
 			formData.append(
 				"data",
 				JSON.stringify({
