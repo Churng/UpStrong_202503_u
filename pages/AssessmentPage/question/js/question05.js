@@ -140,16 +140,16 @@ $(document).ready(function () {
 				// 	}
 				// }
 
-				// if (i === 7) {
-				// 	$(`input[data-list-id=7]`).each((inx, e) => {
-				// 		if ($(e).is(":checked")) {
-				// 			obj["option"] = Number($(e).val());
-				// 		}
-				// 	});
-				// }
-				// if (i === 8) {
-				// 	obj["description"] = $(`input[data-list-id=8]`).val();
-				// }
+				if (i === 7) {
+					$(`input[data-list-id=7]`).each((inx, e) => {
+						if ($(e).is(":checked")) {
+							obj["option"] = Number($(e).val());
+						}
+					});
+				}
+				if (i === 8) {
+					obj["description"] = $(`input[data-list-id=8]`).val();
+				}
 
 				newData[i] = obj;
 				result[i] = obj;
