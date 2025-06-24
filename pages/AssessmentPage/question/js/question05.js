@@ -528,7 +528,7 @@ $(document).ready(function () {
 								url.searchParams.set("step", Number(step));
 								window.history.replaceState(null, "", url);
 							} else {
-								// window.location.href = `../../AssessmentPage/question/Index06.html?workOrderID=${testparams.workOrderID}`;
+								window.location.href = `../../AssessmentPage/question/Index06.html?workOrderID=${testparams.workOrderID}`;
 							}
 						} else {
 							if (step !== "01") {
