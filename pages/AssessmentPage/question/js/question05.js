@@ -27,6 +27,8 @@ $(document).ready(function () {
 
 	let targetScore = 0;
 
+	let isRightBoxInitialized = false;
+
 	function formatDate(date) {
 		const year = date.getFullYear();
 
@@ -121,25 +123,35 @@ $(document).ready(function () {
 					}
 				});
 
-				// if (!obj[formattedDate]) obj[formattedDate] = {};
-				// obj[formattedDate]["0"] = targetValue || 0;
+				if (!obj[formattedDate]) obj[formattedDate] = {};
+				obj[formattedDate]["0"] = targetValue || 0;
 
-				// if (savedData.hasOwnProperty(i.toString())) {
-				// 	obj[formattedDate]["1"] = savedData[i.toString()];
-				// } else {
-				// 	obj[formattedDate]["1"] = "";
-				// }
+				if (savedData.hasOwnProperty(i.toString())) {
+					obj[formattedDate]["1"] = savedData[i.toString()];
+				} else {
+					obj[formattedDate]["1"] = "";
+				}
 
-				// if (i === 0) {
-				// 	if (!obj[formattedDate]) obj[formattedDate] = {};
-				// 	obj[formattedDate]["0"] = targetValue2;
-				// } else {
-				// 	if (targetValue !== 0) {
-				// 		if (!obj[formattedDate]) obj[formattedDate] = {};
-				// 		obj[formattedDate]["0"] = targetValue;
-				// 	}
-				// }
+				if (i === 0) {
+					if (!obj[formattedDate]) obj[formattedDate] = {};
+					obj[formattedDate]["0"] = targetValue2;
+				} else {
+					if (targetValue !== 0) {
+						if (!obj[formattedDate]) obj[formattedDate] = {};
+						obj[formattedDate]["0"] = targetValue;
+					}
+				}
 
+				if (i === 7) {
+					$(`input[data-list-id=7]`).each((inx, e) => {
+						if ($(e).is(":checked")) {
+							obj["option"] = Number($(e).val());
+						}
+					});
+				}
+				if (i === 8) {
+					obj["description"] = $(`input[data-list-id=8]`).val();
+				}
 				if (i === 7) {
 					$(`input[data-list-id=7]`).each((inx, e) => {
 						if ($(e).is(":checked")) {
@@ -449,10 +461,17 @@ $(document).ready(function () {
 					targetScore = 0; // 重置為 0，避免累加舊值
 
 					//總分非數字篩選掉
-
 					$("[data-target] .target-box").each((idx, e) => {
-						if (idx != 0) {
-							targetScore = targetScore + Number($(e).text());
+						if (idx !== 0) {
+							const text = $(e).text().trim();
+
+							//只抓最前面的純數字，不含括號內的內容
+							const match = text.match(/^\d+(\.\d+)?/);
+							const num = match ? parseFloat(match[0]) : NaN;
+
+							if (!isNaN(num)) {
+								targetScore += num;
+							}
 						}
 					});
 
@@ -460,15 +479,17 @@ $(document).ready(function () {
 						for (let i = 0; i < Object.keys(data02).length - 1; i++) {
 							$(`[data-pastscore=${i + 1}]`).each((idxx, ee) => {
 								if (i == idx) {
-									// 取得兩個元素的文字，並將它們去掉非數字部分
 									const value1 = $(e).text().trim();
 									const value2 = $(ee).text().trim();
 
-									// 使用正則表達式提取數字部分
-									const num1 = parseFloat(value1.replace(/[^0-9.-]+/g, "")); // 提取數字部分
-									const num2 = parseFloat(value2.replace(/[^0-9.-]+/g, "")); // 提取數字部分
+									// 只抓開頭的數字，排除括號與補充
+									const match1 = value1.match(/^\d+(\.\d+)?/);
+									const match2 = value2.match(/^\d+(\.\d+)?/);
 
-									// 如果提取的數字有效，進行加法運算
+									const num1 = match1 ? parseFloat(match1[0]) : 0;
+									const num2 = match2 ? parseFloat(match2[0]) : 0;
+
+									// ✅ 進行加總
 									if (!isNaN(num1) && !isNaN(num2)) {
 										$(e).text(num1 + num2);
 									}
@@ -528,7 +549,9 @@ $(document).ready(function () {
 								url.searchParams.set("step", Number(step));
 								window.history.replaceState(null, "", url);
 							} else {
-								window.location.href = `../../AssessmentPage/question/Index06.html?workOrderID=${testparams.workOrderID}`;
+								console.log(res);
+
+								// window.location.href = `../../AssessmentPage/question/Index06.html?workOrderID=${testparams.workOrderID}`;
 							}
 						} else {
 							if (step !== "01") {
