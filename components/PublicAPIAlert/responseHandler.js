@@ -22,3 +22,8 @@ function successResponse(res) {
 		new CustomAlert({ content: "儲存成功" });
 	}
 }
+
+// 請填寫完整欄位
+function alertfillInputResponse(res) {
+	new CustomAlert({ content: "⚠️ 請完整填寫所有必要欄位後再送出！" });
+}

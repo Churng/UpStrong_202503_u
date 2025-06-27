@@ -155,6 +155,7 @@ $(document).ready(function () {
 					$("#SC-StairClimbingCurrentScore").val(item.StairClimbingCurrentScore);
 
 					//月度評估確認是要true的話，則禁用所有輸入框？
+					window.monthlyEvaluationRequired = item.MonthlyEvaluationRequired === true;
 					if (item.MonthlyEvaluationRequired === false) {
 						const container = document.getElementById("monthly-checkin-container");
 						if (container) {
@@ -177,8 +178,103 @@ $(document).ready(function () {
 
 	getOrderData();
 
+	function validateRequiredFields() {
+		if (window.monthlyEvaluationRequired !== true) return true;
+
+		const requiredFields = [
+			"#SC-EatingCurrentScore",
+			"#SC-DressingCurrentScore",
+			"#SC-PantsDressingCurrentScore",
+			"#SC-BedsideSittingCurrentScore",
+			"#SC-StandingCurrentScore",
+			"#SC-BedWheelchairTransferCurrentScore",
+			"#SC-WheelchairEntryCurrentScore",
+			"#SC-WalkingCurrentScore",
+			"#SC-ToiletingCurrentScore",
+			"#SC-BathingCurrentScore",
+			"#SC-StairClimbingCurrentScore",
+		];
+
+		let allFilled = true;
+		let firstErrorEl = null;
+
+		// 先檢查一般必填欄位
+		requiredFields.forEach((selector) => {
+			const el = document.querySelector(selector);
+			if (!el) return;
+			if (!el.value.trim()) {
+				el.classList.add("is-invalid");
+				if (!firstErrorEl) firstErrorEl = el;
+				allFilled = false;
+			} else {
+				el.classList.remove("is-invalid");
+			}
+		});
+
+		// 特殊處理輪椅選擇與對應分數
+		const pwCheckbox = document.querySelector("#SC-UsePowerWheelchair");
+		const mwCheckbox = document.querySelector("#SC-UseManualWheelchair");
+		const pwScore = document.querySelector("#SC-UsePowerWheelchairCurrentScore");
+		const mwScore = document.querySelector("#SC-UseManualWheelchairCurrentScore");
+
+		// 至少勾一個
+		if (!pwCheckbox.checked && !mwCheckbox.checked) {
+			pwCheckbox.classList.add("is-invalid");
+			mwCheckbox.classList.add("is-invalid");
+			if (!firstErrorEl) firstErrorEl = pwCheckbox;
+			allFilled = false;
+		} else {
+			pwCheckbox.classList.remove("is-invalid");
+			mwCheckbox.classList.remove("is-invalid");
+
+			// 勾選 power wheelchair 要填 power wheelchair score
+			if (pwCheckbox.checked) {
+				if (!pwScore.value.trim()) {
+					pwScore.classList.add("is-invalid");
+					if (!firstErrorEl) firstErrorEl = pwScore;
+					allFilled = false;
+				} else {
+					pwScore.classList.remove("is-invalid");
+				}
+				// 不須填 manual wheelchair score
+				mwScore.classList.remove("is-invalid");
+			}
+
+			// 勾選 manual wheelchair 要填 manual wheelchair score
+			if (mwCheckbox.checked) {
+				if (!mwScore.value.trim()) {
+					mwScore.classList.add("is-invalid");
+					if (!firstErrorEl) firstErrorEl = mwScore;
+					allFilled = false;
+				} else {
+					mwScore.classList.remove("is-invalid");
+				}
+				// 不須填 power wheelchair score
+				pwScore.classList.remove("is-invalid");
+			}
+		}
+
+		if (!allFilled && firstErrorEl) {
+			let scrollTarget = firstErrorEl;
+			if (firstErrorEl.type === "checkbox") {
+				scrollTarget = firstErrorEl.closest(".form-check") || firstErrorEl.parentElement || firstErrorEl;
+			}
+			scrollTarget.scrollIntoView({ behavior: "smooth", block: "center" });
+
+			if (firstErrorEl.type !== "checkbox") {
+				firstErrorEl.focus();
+			}
+
+			alertfillInputResponse();
+		}
+
+		return allFilled;
+	}
+
 	//送出
 	$("#submit").on("click", function () {
+		if (!validateRequiredFields()) return;
+
 		let formData = new FormData();
 
 		let session_id = sessionStorage.getItem("sessionId");
