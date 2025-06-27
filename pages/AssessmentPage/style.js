@@ -392,7 +392,7 @@ $(document).ready(function () {
 		// 確保 `params` 存在
 		//github更改路徑
 		if (params && params.workOrderID) {
-			window.location.href = `/UpStrong_202503_u/pages/AssessmentPage/question/index.html?workOrderID=${params.workOrderID}`;
+			window.location.href = `/UpStrong_202503_u/pages/AssessmentPage/question/Index.html?workOrderID=${params.workOrderID}`;
 		} else {
 			console.warn("缺少 workOrderID，無法跳轉");
 		}
