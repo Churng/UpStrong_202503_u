@@ -40,13 +40,6 @@ $(document).ready(function () {
 	}
 
 	$(".next").on("click", function () {
-		// const userType = sessionStorage.getItem("userType");
-
-		// if (userType === "1") {
-		// 	window.location.href = `../../AssessmentPage/question/Index06.html?workOrderID=${testparams.workOrderID}`;
-		// 	return;
-		// }
-
 		if (step === "01") {
 			// Step 1 資料處理
 			let newData = [{ value: [] }];
@@ -81,77 +74,37 @@ $(document).ready(function () {
 			});
 		} else if (step === "02") {
 			// Step 2 資料處理
-			const date = new Date();
-			const formattedDate = formatDate(date);
 
 			let newData = {};
 			let result = {};
-			const dateBoxValues = $(".date-box .past-box")
-				.map((_, el) => $(el).text().trim())
-				.get();
 
 			const lengthOfList = 12;
 
 			for (let i = 0; i < lengthOfList; i++) {
-				const targetValue = Number($(`.table-box[data-target=${i}] .select-box`).text().trim());
-				const targetValue2 = $(`input[data-list-id=0]`).val();
-				const pastValues = $(`.table-box[data-past=${i}] .past-box`)
-					.map((_, el) => $(el).text().trim())
-					.get();
+				// 先取得舊資料，保留補充內容
+				const oldValue = oldData.item[paramBigStep].item[Number(step) - 1].item[0].value[i] || {};
+				const oldTarget = oldValue.target || {};
 
 				const obj = {};
-				if (i === 0) {
-					obj["target"] = { 0: targetValue2 };
-				} else {
-					obj["target"] = { 0: targetValue || 0 };
-				}
-
-				dateBoxValues.forEach((date, idx) => {
-					if (pastValues[idx] !== 0) {
-						if (i === 0) {
-							if (!obj[date]) obj[date] = {};
-							obj[date]["0"] = pastValues[idx];
-						} else {
-							if (!obj[date]) obj[date] = {};
-							obj[date]["0"] = Number(pastValues[idx]) || 0;
-							if (date === formattedDate && savedData.hasOwnProperty(i.toString())) {
-								obj[date]["1"] = savedData[i.toString()];
-							} else {
-								obj[date]["1"] = "";
-							}
-						}
-					}
-				});
-
-				if (!obj[formattedDate]) obj[formattedDate] = {};
-				obj[formattedDate]["0"] = targetValue || 0;
-
-				if (savedData.hasOwnProperty(i.toString())) {
-					obj[formattedDate]["1"] = savedData[i.toString()];
-				} else {
-					obj[formattedDate]["1"] = "";
-				}
+				obj["target"] = {};
 
 				if (i === 0) {
-					if (!obj[formattedDate]) obj[formattedDate] = {};
-					obj[formattedDate]["0"] = targetValue2;
+					obj["target"]["0"] = $(`input[data-list-id=0]`).val();
+					// 補充內容可能沒有，直接保留舊值或空字串
+					obj["target"]["1"] = oldTarget["1"] || "";
 				} else {
-					if (targetValue !== 0) {
-						if (!obj[formattedDate]) obj[formattedDate] = {};
-						obj[formattedDate]["0"] = targetValue;
+					const targetValue = Number($(`.table-box[data-target=${i}] .select-box`).text().trim());
+
+					obj["target"]["0"] = targetValue;
+
+					// 只在 savedData 有修改時更新，否則保留舊值
+					if (savedData.hasOwnProperty(i.toString())) {
+						obj["target"]["1"] = savedData[i.toString()];
+					} else {
+						obj["target"]["1"] = oldTarget["1"] || "";
 					}
 				}
 
-				if (i === 7) {
-					$(`input[data-list-id=7]`).each((inx, e) => {
-						if ($(e).is(":checked")) {
-							obj["option"] = Number($(e).val());
-						}
-					});
-				}
-				if (i === 8) {
-					obj["description"] = $(`input[data-list-id=8]`).val();
-				}
 				if (i === 7) {
 					$(`input[data-list-id=7]`).each((inx, e) => {
 						if ($(e).is(":checked")) {
@@ -177,6 +130,8 @@ $(document).ready(function () {
 				oldData.item[paramBigStep].item[Number(step) - 1].item[0].value = result;
 			}
 			oldData.item[paramBigStep].item[Number(step) - 1].if_complete = true;
+
+			console.log(result);
 
 			// 調用 update()，明確傳入 "next" 表示下一頁
 			update("next");
@@ -234,6 +189,10 @@ $(document).ready(function () {
 		const textarea = $(".popup-box textarea");
 		textarea.attr("id", `popupTextArea_${target}`);
 		textarea.val(savedData[target] || "");
+
+		const data = oldData.item[paramBigStep].item[1].item[0].value[target];
+		const supplement = data && data.target && data.target["1"] ? data.target["1"] : "";
+		textarea.val(supplement);
 	}
 
 	function closePopupBox() {
@@ -348,17 +307,6 @@ $(document).ready(function () {
 
 					let data02 = res.returnData.item[paramBigStep].item[1].item[0].value; //粗大動作功能分級 02/02
 
-					// 檢查今天是否已經有資料
-					const today = formatDate(new Date());
-					const hasTodayData = Object.values(data02).some((item) => Object.keys(item).some((key) => key === today));
-
-					// 如果今天已經有資料，設置 input 為 readonly
-					if (hasTodayData) {
-						$('input[data-list-id="0"]').prop("readonly", true);
-					}
-
-					// console.log(data02);
-
 					if (typeof data01.item[0].value[0] !== "object") {
 						$(`#lv${data01.item[0].value[0]}`).attr("checked", true);
 					} else {
@@ -391,9 +339,6 @@ $(document).ready(function () {
 					// console.log(transformedData);
 
 					$(transformedData).each((idx, e) => {
-						// console.log("test:", e);
-						// console.log(e.isSpecial);
-
 						// 單獨處理 id=7 和 id=8 的資料
 						if (e.date == "option") {
 							// console.log(e.id == "option");
@@ -407,9 +352,14 @@ $(document).ready(function () {
 						if (e.date == "target") {
 							// 目標值
 							if (e.id == 0) {
-								$(".left-box .lv-box .target-box").text(e.value);
+								$(".left-box .lv-box .target-box").text(e.value[0]);
+								const $input = $(".left-box .target-box");
+								if (!$input.val()) {
+									$input.val(e.value[0]);
+								}
+								$input.prop("readonly", true);
 							} else {
-								$(`[data-target=${e.id}] .select-box`).text(e.value);
+								$(`[data-target=${e.id}] .select-box`).text(e.value[0]); // ✅ 只顯示分數
 							}
 						} else if (e.date != "target") {
 							// 處理其他 id 的資料
