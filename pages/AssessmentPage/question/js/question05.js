@@ -514,7 +514,7 @@ $(document).ready(function () {
 							} else {
 								console.log(res);
 
-								// window.location.href = `../../AssessmentPage/question/Index06.html?workOrderID=${testparams.workOrderID}`;
+								window.location.href = `../../AssessmentPage/question/Index06.html?workOrderID=${testparams.workOrderID}`;
 							}
 						} else {
 							if (step !== "01") {
