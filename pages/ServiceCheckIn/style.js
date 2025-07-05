@@ -217,6 +217,37 @@ $(document).ready(function () {
 		const pwScore = document.querySelector("#SC-UsePowerWheelchairCurrentScore");
 		const mwScore = document.querySelector("#SC-UseManualWheelchairCurrentScore");
 
+		// 控制分數欄位 enable/disable 與清空邏輯
+		function updateWheelchairScores() {
+			if (pwCheckbox.checked) {
+				pwScore.disabled = false;
+				mwScore.disabled = true;
+				mwScore.value = ""; // 清空 manual wheelchair 分數
+				mwScore.classList.remove("is-invalid");
+			} else if (mwCheckbox.checked) {
+				mwScore.disabled = false;
+				pwScore.disabled = true;
+				pwScore.value = ""; // 清空 power wheelchair 分數
+				pwScore.classList.remove("is-invalid");
+			} else {
+				// 兩個都沒選
+				pwScore.disabled = false;
+				mwScore.disabled = false;
+			}
+		}
+
+		// 呼叫一次初始化狀態
+		updateWheelchairScores();
+
+		// 綁定勾選事件，切換時同步執行
+		pwCheckbox.addEventListener("change", () => {
+			updateWheelchairScores();
+		});
+		mwCheckbox.addEventListener("change", () => {
+			updateWheelchairScores();
+		});
+
+		// 驗證部分保持原本邏輯
 		// 至少勾一個
 		if (!pwCheckbox.checked && !mwCheckbox.checked) {
 			pwCheckbox.classList.add("is-invalid");
@@ -227,7 +258,6 @@ $(document).ready(function () {
 			pwCheckbox.classList.remove("is-invalid");
 			mwCheckbox.classList.remove("is-invalid");
 
-			// 勾選 power wheelchair 要填 power wheelchair score
 			if (pwCheckbox.checked) {
 				if (!pwScore.value.trim()) {
 					pwScore.classList.add("is-invalid");
@@ -236,11 +266,9 @@ $(document).ready(function () {
 				} else {
 					pwScore.classList.remove("is-invalid");
 				}
-				// 不須填 manual wheelchair score
 				mwScore.classList.remove("is-invalid");
 			}
 
-			// 勾選 manual wheelchair 要填 manual wheelchair score
 			if (mwCheckbox.checked) {
 				if (!mwScore.value.trim()) {
 					mwScore.classList.add("is-invalid");
@@ -249,7 +277,6 @@ $(document).ready(function () {
 				} else {
 					mwScore.classList.remove("is-invalid");
 				}
-				// 不須填 power wheelchair score
 				pwScore.classList.remove("is-invalid");
 			}
 		}
