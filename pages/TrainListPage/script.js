@@ -91,6 +91,7 @@ $(document).ready(function () {
                     processData: false,
                     contentType: false,
                     success: function (res) {
+                        handleResponse(res);
                         getWorkDetail()
                         $('.fc-day').each(function (idx, e) {
                             $(this).append(
@@ -257,6 +258,7 @@ $(document).ready(function () {
             processData: false,
             contentType: false,
             success: function (res) {
+                handleResponse(res);
                 workOrderData = res.returnData.trainingData
                 changePage(1)
                 getWorkDetail()
