@@ -10,7 +10,8 @@ function handleResponse(res) {
 	//重新登入
 	if (res.returnCode === "003") {
 		new CustomAlert({ content: res.returnMessage });
-
+		sessionStorage.removeItem("sessionId");
+		sessionStorage.removeItem("userType");
 		window.location.assign("/UpStrong_202503_u/pages/LoginPage/index.html"); // 從根目錄開始
 	}
 }
