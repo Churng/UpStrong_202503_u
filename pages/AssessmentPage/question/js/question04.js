@@ -151,6 +151,7 @@ $(document).ready(function () {
 
 			success: function (res) {
 				if (res.returnCode) {
+					handleResponse(res);
 					oldData = res.returnData;
 
 					let data01 = res.returnData.item[3];

@@ -304,8 +304,8 @@ $(document).ready(function () {
 			success: function (res) {
 				console.log(res);
 
-				handleResponse(res);
 				if (res.returnCode) {
+					handleResponse(res);
 					//教練名稱
 					if (res.assessmentor) {
 						$(".coach-name span:first").text(res.assessmentor);

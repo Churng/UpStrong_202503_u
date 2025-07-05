@@ -133,6 +133,7 @@ $(document).ready(function () {
 				console.log(res);
 
 				if (res.returnCode) {
+					handleResponse(res);
 					oldData = res.returnData;
 					console.log(res.assessmentDate);
 

@@ -346,8 +346,8 @@ $(document).ready(function () {
 			contentType: false,
 
 			success: function (res) {
-				handleResponse(res);
 				if (res.returnCode) {
+					handleResponse(res);
 					oldData = res.returnData;
 					console.log(oldData);
 
