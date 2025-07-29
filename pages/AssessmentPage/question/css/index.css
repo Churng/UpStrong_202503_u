@@ -6,7 +6,7 @@
 body {
 	margin: 0;
 	padding: 0;
-	background: #1eabb8;
+	background: #fff;
 }
 
 .header-box {
@@ -26,7 +26,7 @@ body {
 	position: absolute;
 	left: 50%;
 	transform: translate(-50%, 0);
-	color: #656c78;
+	color: #1eabb8;
 	font-weight: bolder;
 }
 
@@ -58,14 +58,14 @@ body {
 	align-items: center;
 	width: 60px;
 	height: 60px;
-	background: #654f00;
-	border-radius: 15px;
+	background: #1eabb8;
+	border-radius: 50px;
 }
 
 .content-box .title {
 	font-size: 40px;
 	font-weight: bolder;
-	color: #656c78;
+	color: #1eabb8;
 	margin: 24px 0 80px;
 }
 
@@ -78,8 +78,8 @@ body {
 	font-size: 30px;
 	color: #fff;
 	border-radius: 50%;
-	background: #654f00;
-	box-shadow: 0px 8px 20px 0px rgba(101, 79, 0, 0.5);
+	background: #1eabb8;
+
 	cursor: pointer;
 }
 
