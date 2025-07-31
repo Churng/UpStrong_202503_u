@@ -318,6 +318,8 @@ $(document).ready(function () {
 
 					let data02 = res.returnData.item[paramBigStep].item[1].item[0].value; //粗大動作功能分級 02/02
 
+					console.log(data02);
+
 					if (typeof data01.item[0].value[0] !== "object") {
 						$(`#lv${data01.item[0].value[0]}`).attr("checked", true);
 					} else {
@@ -364,7 +366,7 @@ $(document).ready(function () {
 							// 目標值
 							if (e.id == 0) {
 								$(".left-box .lv-box .target-box").text(e.value[0]);
-
+								$(".left-box .target-box").val(e.value[0]);
 								// 目標值有需要readonly的話可以取消註解
 								// const $input = $(".left-box .target-box");
 								// if (!$input.val()) {
