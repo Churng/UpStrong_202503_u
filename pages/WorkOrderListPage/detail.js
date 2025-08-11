@@ -304,14 +304,11 @@ $(document).ready(function () {
 			success: function (res) {
 				console.log("後端回傳", res);
 				console.log("typeof res", typeof res);
+				console.log(res.returnData.pdfUrl);
 
-				if (typeof res === "string" && res.startsWith("%PDF")) {
+				if (typeof res === "object" && res.returnCode === "1" && res.returnData && res.returnData.pdfUrl) {
 					try {
-						// 直接將字串轉為 Blob
-						const blob = new Blob([res], { type: "application/pdf" });
-						const url = URL.createObjectURL(blob);
-
-						window.open(url, "_blank");
+						window.open(res.returnData.pdfUrl, "_blank");
 					} catch (e) {
 						console.error("處理 PDF 失敗", e);
 						alert("列印服務紀錄失敗，可能是 PDF 格式錯誤。");
@@ -350,13 +347,9 @@ $(document).ready(function () {
 				console.log("後端回傳", res);
 				console.log("typeof res", typeof res);
 
-				if (typeof res === "string" && res.startsWith("%PDF")) {
+				if (typeof res === "object" && res.returnCode === "1" && res.returnData && res.returnData.pdfUrl) {
 					try {
-						// 直接將字串轉為 Blob
-						const blob = new Blob([res], { type: "application/pdf" });
-						const url = URL.createObjectURL(blob);
-
-						window.open(url, "_blank");
+						window.open(res.returnData.pdfUrl, "_blank");
 					} catch (e) {
 						console.error("處理 PDF 失敗", e);
 						alert("列印服務紀錄失敗，可能是 PDF 格式錯誤。");
@@ -395,13 +388,9 @@ $(document).ready(function () {
 				console.log("後端回傳", res);
 				console.log("typeof res", typeof res);
 
-				if (typeof res === "string" && res.startsWith("%PDF")) {
+				if (typeof res === "object" && res.returnCode === "1" && res.returnData && res.returnData.pdfUrl) {
 					try {
-						// 直接將字串轉為 Blob
-						const blob = new Blob([res], { type: "application/pdf" });
-						const url = URL.createObjectURL(blob);
-
-						window.open(url, "_blank");
+						window.open(res.returnData.pdfUrl, "_blank");
 					} catch (e) {
 						console.error("處理 PDF 失敗", e);
 						alert("列印服務紀錄失敗，可能是 PDF 格式錯誤。");
@@ -440,13 +429,9 @@ $(document).ready(function () {
 				console.log("後端回傳", res);
 				console.log("typeof res", typeof res);
 
-				if (typeof res === "string" && res.startsWith("%PDF")) {
+				if (typeof res === "object" && res.returnCode === "1" && res.returnData && res.returnData.pdfUrl) {
 					try {
-						// 直接將字串轉為 Blob
-						const blob = new Blob([res], { type: "application/pdf" });
-						const url = URL.createObjectURL(blob);
-
-						window.open(url, "_blank");
+						window.open(res.returnData.pdfUrl, "_blank");
 					} catch (e) {
 						console.error("處理 PDF 失敗", e);
 						alert("列印服務紀錄失敗，可能是 PDF 格式錯誤。");
