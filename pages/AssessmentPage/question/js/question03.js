@@ -110,7 +110,6 @@ $(document).ready(function () {
 				if (res.returnCode) {
 					handleResponse(res);
 					oldData = res.returnData;
-					console.log(oldData);
 
 					let data01 = res.returnData.item[paramBigStep].item[0];
 					let data02 = res.returnData.item[paramBigStep].item[1];
@@ -195,7 +194,7 @@ $(document).ready(function () {
 					// Front data
 					let frontData = [];
 
-					console.log(frontData);
+					// console.log(frontData, "正面原始資料");
 
 					for (let i = 0; i < Object.keys(data02.item[0].value[0]).length; i++) {
 						const id = Object.keys(data02.item[0].value[0])[i];
@@ -218,7 +217,7 @@ $(document).ready(function () {
 
 								$(e).addClass("used");
 								$(e).css("fill", painColor[ee.score]);
-								$(e).attr("data-sroce", ee.score);
+								$(e).attr("data-score", ee.score);
 								frontTotalScore = frontTotalScore + ee.score;
 							}
 						});
@@ -228,6 +227,9 @@ $(document).ready(function () {
 
 					// Back data
 					let backData = [];
+
+					// console.log(backData, "反面原始資料");
+
 					for (let i = 0; i < Object.keys(data03.item[0].value[0]).length; i++) {
 						const id = Object.keys(data03.item[0].value[0])[i];
 						const score = Object.values(data03.item[0].value[0])[i];
@@ -249,7 +251,7 @@ $(document).ready(function () {
 
 								$(e).addClass("used");
 								$(e).css("fill", painColor[ee.score]);
-								$(e).attr("data-sroce", ee.score);
+								$(e).attr("data-score", ee.score);
 								backTotalScore = backTotalScore + ee.score;
 							}
 						});
@@ -266,7 +268,7 @@ $(document).ready(function () {
 					}
 
 					$("#step03boxText").val(supplementaryText);
-					console.log(supplementaryText);
+					// console.log(supplementaryText);
 					// console.log(data04.item[0].value[0]);
 				}
 			},
@@ -302,7 +304,6 @@ $(document).ready(function () {
 			contentType: false,
 			success: function (res) {
 				handleResponse(res);
-				console.log(res);
 
 				// 確保 oldData 結構完整
 				oldData = oldData || { item: [] };
@@ -516,17 +517,17 @@ $(document).ready(function () {
 
 			$(".front path").each((idx, e) => {
 				if ($(e).attr("class") && $(e).attr("class").includes("used")) {
-					const score = Number($(e).attr("data-sroce"));
+					const score = Number($(e).attr("data-score"));
 					if (score === 0) return;
 					payload[$(e).attr("id")] = score;
 				}
 			});
 
 			newData[0].value.push(payload);
-			console.log(payload);
+			// console.log(payload);
 
-			oldData.item[paramBigStep].item[2].item = newData;
-			oldData.item[paramBigStep].item[2].if_complete = true;
+			oldData.item[paramBigStep].item[1].item = newData;
+			oldData.item[paramBigStep].item[1].if_complete = true;
 			update();
 		} else if (step == "04-02") {
 			let newData = [{ value: [] }];
@@ -534,11 +535,12 @@ $(document).ready(function () {
 
 			$(".back path").each((idx, e) => {
 				if ($(e).attr("class") && $(e).attr("class").includes("used")) {
-					payload[$(e).attr("id")] = Number($(e).attr("data-sroce"));
+					payload[$(e).attr("id")] = Number($(e).attr("data-score"));
 				}
 			});
 
 			newData[0].value.push(payload);
+			// console.log("Back payload:", payload);
 			oldData.item[paramBigStep].item[2].item = newData;
 			oldData.item[paramBigStep].item[2].if_complete = true;
 			update();
@@ -605,7 +607,7 @@ $(document).ready(function () {
 
 			$(".front path").each((idx, e) => {
 				if ($(e).attr("class") && $(e).attr("class").includes("used")) {
-					const score = Number($(e).attr("data-sroce"));
+					const score = Number($(e).attr("data-score"));
 					if (score === 0) return;
 					payload[$(e).attr("id")] = score;
 				}
@@ -621,7 +623,7 @@ $(document).ready(function () {
 
 			$(".back path").each((idx, e) => {
 				if ($(e).attr("class") && $(e).attr("class").includes("used")) {
-					payload[$(e).attr("id")] = Number($(e).attr("data-sroce"));
+					payload[$(e).attr("id")] = Number($(e).attr("data-score"));
 				}
 			});
 
@@ -638,7 +640,7 @@ $(document).ready(function () {
 	$(".left-box path").on("click", function () {
 		// 先檢查所有SVG內的path元素，更新分數為0的部位
 		$("#SVG path").each(function () {
-			let initialScore = $(this).attr("data-sroce") || $(this).attr("data-initial-score") || 0;
+			let initialScore = $(this).attr("data-score") || $(this).attr("data-initial-score") || 0;
 			initialScore = parseInt(initialScore);
 
 			// 當分數為0時，移除used並設為白色
@@ -651,9 +653,9 @@ $(document).ready(function () {
 			if ($(this).attr("id")) {
 				selectId = $(this).attr("id");
 
-				let initialScore = $(this).attr("data-sroce") || $(this).attr("data-initial-score") || 0;
+				let initialScore = $(this).attr("data-score") || $(this).attr("data-initial-score") || 0;
 				initialScore = parseInt(initialScore);
-				console.log(initialScore);
+				// console.log(initialScore);
 
 				silder(initialScore);
 				selectNum = initialScore;
@@ -693,14 +695,14 @@ $(document).ready(function () {
 			if (selectNum == 0) {
 				$(selectData).css("fill", "#fff"); // score = 0 時設為白色
 				$(selectData).removeClass("used"); // 移除 used
-				$(selectData).attr("data-sroce", 0); // 更新 data-sroce 為 0
+				$(selectData).attr("data-score", 0); // 更新 data-score 為 0
 			} else {
 				$(selectData).css("fill", painColor[selectNum]); // 有分數時設為疼痛顏色
 				$(selectData).addClass("used"); // 添加 used
-				$(selectData).attr("data-sroce", selectNum); // 更新 data-sroce
+				$(selectData).attr("data-score", selectNum); // 更新 data-score
 			}
 
-			console.log("Confirmed - selectNum:", selectNum, "selectId:", selectId);
+			// console.log("Confirmed - selectNum:", selectNum, "selectId:", selectId);
 
 			// 如果是正面部位 (id <= 22)
 			if (selectId <= 22) {
