@@ -651,6 +651,13 @@ $(document).ready(function () {
 
 		if (step != 3) {
 			if ($(this).attr("id")) {
+				// --- 切換時恢復上一個部位的顏色 ---
+				if (selectData && selectData !== this) {
+					let prevScore = $(selectData).attr("data-score") || $(selectData).attr("data-initial-score") || 0;
+					prevScore = parseInt(prevScore);
+					$(selectData).css("fill", painColor[prevScore]);
+				}
+
 				selectId = $(this).attr("id");
 
 				let initialScore = $(this).attr("data-score") || $(this).attr("data-initial-score") || 0;
@@ -670,13 +677,13 @@ $(document).ready(function () {
 				if ($(this).attr("class").includes("used")) {
 					if (selectData && $(selectData).attr("class").includes("used")) {
 						//選擇其他區域恢復顏色
-						$(selectData).css("fill", oldPainColor);
+						// $(selectData).css("fill", oldPainColor);
 					}
 					oldPainColor = $(this).css("fill"); //記錄選過的顏色
 				} else if (!$(this).attr("class").includes("used")) {
 					if (selectData && $(selectData).attr("class").includes("used")) {
 						//選擇其他區域恢復顏色
-						$(selectData).css("fill", oldPainColor);
+						// $(selectData).css("fill", oldPainColor);
 					}
 				}
 
