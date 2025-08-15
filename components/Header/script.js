@@ -1,15 +1,24 @@
 // 2023/05/12 避免在外部引入此js的時候，使用(document).readyc或$(window).on('load'，會有偶爾js載入順序不完全的問題發生。
 // 2023/09/05 改寫$(document).on('click', '#controlShowPanel', function() {方法，讓其對動態產生，或未來產生的元件做綁定。
-document.addEventListener("DOMContentLoaded", () => {
+function ready(fn) {
+	if (document.readyState !== "loading") {
+		debugLog("DOM 已就绪");
+		fn();
+	} else {
+		debugLog("DOM 未就绪");
+		document.addEventListener("DOMContentLoaded", fn);
+	}
+}
+
+// 使用 ready 包裹初始化
+ready(() => {
 	new (class Header {
 		constructor() {
 			$(document).on("click", "#controlShowPanel", function () {
 				openControler();
 			});
-			setTimeout(initUserType, 100);
+			initUserType();
 		}
-
-		initUserType() {}
 	})();
 });
 
@@ -30,8 +39,15 @@ function initUserType() {
 	const profileMenu = document.getElementById("profileMenu");
 	const profileButton = document.getElementById("profileButton");
 
-	// console.log("userType:" + userType);
-	// console.log("coachMenu:", coachMenu, "caseMenu:", caseMenu);
+	// debugLog("DOM 元素状态 - coachMenu: " + (coachMenu ? "存在" : "不存在"));
+	// debugLog("DOM 元素状态 - caseMenu: " + (caseMenu ? "存在" : "不存在"));
+	// debugLog("DOM 元素状态 - controlShowPanel: " + (controlShowPanel ? "存在" : "不存在"));
+
+	if (!coachMenu || !caseMenu) {
+		setTimeout(initUserType, 100);
+		return;
+	}
+
 	if (!userType) {
 		// console.warn("未能取得 userType");
 		// 可以選擇顯示預設選單或隱藏所有
