@@ -75,6 +75,7 @@ $(document).ready(function () {
 	                    </div>
 
 	                    `);
+				console.log(e);
 
 				$(e.question).each((idxx, ee) => {
 					$(`[data-idx="${idx}`).append(`
@@ -160,10 +161,21 @@ $(document).ready(function () {
 
 					$.each(data01.item[0].item, (section, sectionValue) => {
 						$.each(sectionValue.value, (subIndex, questionValue) => {
-							$(`input[value=${questionValue}][data-section-id=${section}][data-sub-id=${subIndex}]`).attr(
-								"checked",
-								true
-							);
+							// 如果是陣列（多個值）
+							if (Array.isArray(questionValue)) {
+								questionValue.forEach((val) => {
+									$(`input[value="${val}"][data-section-id="${section}"][data-sub-id="${subIndex}"]`).attr(
+										"checked",
+										true
+									);
+								});
+							} else {
+								// 如果是單一值
+								$(`input[value="${questionValue}"][data-section-id="${section}"][data-sub-id="${subIndex}"]`).attr(
+									"checked",
+									true
+								);
+							}
 						});
 					});
 				}
