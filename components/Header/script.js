@@ -188,6 +188,6 @@ $(document).on("click", function (event) {
 	}
 });
 
-function debugLog(msg) {
-	console.log(`🛠️ [DEBUG]: ${msg}`);
-}
+// function debugLog(msg) {
+// 	console.log(`🛠️ [DEBUG]: ${msg}`);
+// }
