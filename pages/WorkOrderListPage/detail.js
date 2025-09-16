@@ -74,7 +74,7 @@ $(document).ready(function () {
 
       <div class="title-box">
 
-        <span class="title text-start fw-bold">開案評估</span>
+        <span class="title text-start fw-bold">${data.ServiceTypeName}</span>
 
         <div class="text-start my-3">
           <span class=" type ${
@@ -158,15 +158,15 @@ $(document).ready(function () {
 
           <div class="type-box">
 
-            <span class="ServiceCheckInlink${data.PhotoSign == true ? " active" : ""}">服務簽到</span>
+            <span class="ServiceCheckInlink${data.SignComplete == true ? " active" : ""}">服務簽到</span>
 
-            <span class="ServiceRecordlink">服務紀錄</span>
+            <span class="ServiceRecordlink ${data.RecordComplete == true ? " active" : ""}">服務紀錄</span>
 
             <span class="AssessmentPagelink ${data.AssessmentScale == true ? " active" : ""}">評估量表</span>
 
 
             <span class="AssessmentRecommendation ${
-							data.AssessmentRecommendation == true ? " active" : ""
+							data.TrainingRecommendation == true ? " active" : ""
 						}">訓練指引</span>
 
 

@@ -10,48 +10,57 @@
 
   <title>服務紀錄</title>
 
-  <!-- 字體 -->
-  <link rel="stylesheet" href="../../css/RobotoFont.css">
-  <link rel="stylesheet" href="../../css/fonts.css">
-
-  <!-- Bootstrap -->
+  <link href="../../css/RobotoFont.css" rel="stylesheet">
   <link rel="stylesheet" href="../../css/bootstrap-5.3.3.css">
-  <script src="../../js/bootstrap-5.3.3.js"></script>
-
-  <!-- jQuery -->
-  <script src="../../js/jquery-3.6.0.min.js"></script>
-
-  <!-- Font Awesome 圖示庫 -->
-  <link rel="stylesheet" href="../../css/all.min.css">
-
-  <!-- 共用樣式 -->
-  <link rel="stylesheet" href="../../css/common.css">
-
-  <!-- 元件樣式 -->
-  <link rel="stylesheet" href="../../components/Header/style.css">
-  <link rel="stylesheet" href="../../components/Footer/style.css">
   <link rel="stylesheet" href="../../components/CustomAlert/style.css">
 
-  <!-- 日曆與時間函式 -->
-  <script src="../../js/moment.min.js"></script>
-  <link rel="stylesheet" href="../../css/fullcalendar.min.css">
+  <script src="../../js/bootstrap-5.3.3.js"></script>
+  <script src="../../js/jquery-3.6.0.min.js"></script>
 
-  <!-- 當前頁面樣式 -->
-  <link rel="stylesheet" href="./style.css">
 
-  <!-- 請勿移除：合併標籤位置 -->
+  <!-- Font Awesome圖示庫 -->
+
+  <link rel="stylesheet" href="../../css/all.min.css">
+
+
+
   <!-- Please DO NOT remove this line, all link and script tags will be merged to here -->
 
-  <!-- 動態載入腳本（加上時間戳避免 cache） -->
-  <script>
-    let version = Date.now();
-    document.write('<script src="../../js/jquery.md5.js?ver=' + version + '"></scr' + 'ipt>');
-    document.write('<script src="../../js/jquery.cookie.js?ver=' + version + '"></scr' + 'ipt>');
-    document.write('<script src="../../components/Header/script.js?ver=' + version + '"></scr' + 'ipt>');
-    document.write('<script src="../../components/CustomAlert/script.js?ver=' + version + '"></scr' + 'ipt>');
-    document.write('<script src="../../js/fullcalendar.min.js?ver=' + version + '"></scr' + 'ipt>');
-  </script>
+  <link rel="stylesheet" type="text/css" href="../../components/Header/style.css" />
 
+  <link rel="stylesheet" type="text/css" href="../../components/Footer/style.css" />
+
+  <link rel="stylesheet" type="text/css" href="../../components/CustomAlert/style.css" />
+
+  <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+
+  <link rel="stylesheet" type="text/css" href="../../css/fonts.css" />
+
+  <script src="../../js/moment.min.js"></script>
+
+  <link rel="stylesheet" href="../../css/fullcalendar.min.css" />
+
+  <link rel="stylesheet" type="text/css" href="./style.css" />
+
+  <script>
+
+    // 確保載入時，使用時間戳。
+
+    let version = Date.now();
+
+    document.write('<script type="text/javascript" src="../../js/jquery.md5.js?ver=' + version + '"></scr' + 'ipt>');
+
+    document.write('<script type="text/javascript" src="../../js/jquery.cookie.js?ver=' + version + '"></scr' + 'ipt>');
+
+    document.write('<script type="text/javascript" src="../../components/Header/script.js?ver=' + version + '"></scr' + 'ipt>');
+
+    document.write('<script type="text/javascript" src="../../components/CustomAlert/script.js?ver=' + version + '"></scr' + 'ipt>');
+
+    document.write('<script type="text/javascript" src="../../js/fullcalendar.min.js?ver=' + version + '"></scr' + 'ipt>');
+
+
+
+  </script>
 
 
 
@@ -113,8 +122,7 @@
               <p class="mb-2 b-title">今日活動摘要</p>
               <div class="form-floating">
                 <textarea class="form-control" placeholder="Leave a comment here" id="SR-ActivitySummary"
-                  style="height: 100px"></textarea>
-                <label for="SR-ActivitySummary"></label>
+                  style="height: 100px" aria-label="SR-ActivitySummary"></textarea>
               </div>
             </div>
           </div>
@@ -123,8 +131,7 @@
               <p class="mb-2 b-title">有無不適情形</p>
               <div class="form-floating">
                 <textarea class="form-control" placeholder="Leave a comment here" id="SR-DiscomfortReported"
-                  style="height: 100px"></textarea>
-                <label for="SR-DiscomfortReported"></label>
+                  style="height: 100px" aria-label="SR-DiscomfortReported"></textarea>
               </div>
             </div>
           </div>
@@ -133,8 +140,7 @@
               <p class="mb-2 b-title">建議下次調整</p>
               <div class="form-floating">
                 <textarea class="form-control" placeholder="Leave a comment here" id="SR-AdjustmentSuggestion"
-                  style="height: 100px"></textarea>
-                <label for="SR-AdjustmentSuggestion"></label>
+                  style="height: 100px" aria-label="SR-AdjustmentSuggestion"></textarea>
               </div>
             </div>
           </div>
@@ -143,8 +149,7 @@
               <p class="mb-2 b-title">聯絡簿</p>
               <div class="form-floating">
                 <textarea class="form-control" placeholder="Leave a comment here" id="SR-CommunicationNotes"
-                  style="height: 100px"></textarea>
-                <label for="SR-CommunicationNotes"></label>
+                  style="height: 100px" aria-label="SR-CommunicationNotes"></textarea>
               </div>
             </div>
           </div>

@@ -76,7 +76,7 @@ $(document).ready(function () {
 			// Step 2 資料處理
 			let newData = {};
 			let result = {};
-			const lengthOfList = 12;
+			const lengthOfList = 13;
 
 			// 從 oldData 中取得現有資料作為基礎
 			let currentData = {};
@@ -96,7 +96,8 @@ $(document).ready(function () {
 				// 更新 target 值
 				const targetValue = Number($(`.table-box[data-target=${i}] .select-box`).text().trim());
 				const targetValue2 = $(`input[data-list-id=0]`).val(); // 目標值
-
+				console.log(targetValue);
+				console.log(targetValue2);
 				if (i === 0) {
 					obj["target"] = { 0: targetValue2 };
 				} else {
@@ -352,9 +353,10 @@ $(document).ready(function () {
 					// console.log(transformedData);
 
 					$(transformedData).each((idx, e) => {
+						//console.log("option");
 						// 單獨處理 id=7 和 id=8 的資料
 						if (e.date == "option") {
-							// console.log(e.id == "option");
+							console.log(e.id == "option");
 							if (e.id == 7) {
 								$(`#radio0${e.value}`).attr("checked", true);
 							}
@@ -363,8 +365,10 @@ $(document).ready(function () {
 						}
 
 						if (e.date == "target") {
+							// console.log(e.value[0]);
 							// 目標值
 							if (e.id == 0) {
+								// console.log(e.value[0]);
 								$(".left-box .lv-box .target-box").text(e.value[0]);
 								$(".left-box .target-box").val(e.value[0]);
 								// 目標值有需要readonly的話可以取消註解
@@ -379,6 +383,7 @@ $(document).ready(function () {
 						} else if (e.date != "target") {
 							// 處理其他 id 的資料
 							if (e.id == 0) {
+								// console.log(e.value[0]);
 								//項目日期
 								$(".right-box .date-box").append(`
 									<span class="past-box">${e.date}</span>
@@ -388,7 +393,7 @@ $(document).ready(function () {
 									<span class="past-box">${e.value[0]}</span>
 								`);
 								//功能分級
-								$(`[data-list-id=0]`).val(e.value[0]);
+								//$(`[data-list-id=0]`).val(e.value[0]);
 							} else {
 								if (e.date !== "option" && e.date !== "description") {
 									$(`[data-past=${e.id}]`).append(`

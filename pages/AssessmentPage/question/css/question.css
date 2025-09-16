@@ -237,7 +237,7 @@ input:not(:placeholder-shown) {
 
 	position: absolute;
 
-	left: 17px;
+	left: 16px;
 
 	display: flex;
 
@@ -438,7 +438,7 @@ input:not(:placeholder-shown) {
 
 	position: absolute;
 
-	left: 17px;
+	left: 16px;
 
 	display: flex;
 
@@ -640,6 +640,17 @@ input:not(:placeholder-shown) {
 	background: #1eabb8;
 
 	border: 1px solid #1eabb8;
+}
+
+.moodicon {
+	width: 40px;
+	height: 41px;
+}
+@media (max-width: 768px) {
+	.moodicon {
+		width: 25px;
+		height: 25px;
+	}
 }
 
 .step04 .detail-box,
@@ -1113,7 +1124,7 @@ input:not(:placeholder-shown) {
 	}
 
 	.step07 .emoji-radio-box label {
-		width: 100%;
+		width: 60px;
 
 		height: 60px;
 
