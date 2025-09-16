@@ -578,9 +578,8 @@ button.btn-main,
 	background-color: #3084bd;
 	color: #fff;
 }
-button.#1eabb8,
+button,
 button.btn-main:focus,
-.#1eabb8,
 .btn-main:focus {
 	color: #fff;
 	background-color: #2871a2;

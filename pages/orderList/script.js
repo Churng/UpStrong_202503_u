@@ -112,7 +112,7 @@ $(document).ready(function () {
 
         console.log($(this).data('starttime'));
 
-        $(location).attr('href', `./upStrongAdmin/upStrongWeb/pages/OrderListPage/index.html?starttime=${$(this).data('starttime')}`);
+        $(location).attr('href', `./upStrongAdminDemo/upStrongWeb/pages/OrderListPage/index.html?starttime=${$(this).data('starttime')}`);
 
 
 
