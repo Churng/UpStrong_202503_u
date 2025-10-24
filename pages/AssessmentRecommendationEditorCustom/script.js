@@ -7,6 +7,17 @@ let recommendData = null;
 const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
 
+//文字匡自動符合內容大小
+function autoResizeTextarea(element) {
+	element.css("height", "auto");
+	element.css("height", element.prop("scrollHeight") + "px");
+}
+
+// 綁定所有現有的和未來新增的 .edit-textarea
+$(document).on("input", ".edit-textarea", function () {
+	autoResizeTextarea($(this));
+});
+
 // 檢查是否為 YouTube 分享網址並轉為嵌入格式
 function convertToEmbed(url) {
 	if (url.includes("youtu.be")) {
@@ -77,7 +88,7 @@ $(document).ready(function () {
                                     <label for="${item.id}"></label>
                                     <div class="card-box">
                                         <div class="text-content">
-                                            <p class="card-text">${item.content}</p>
+                                            <p class="card-text">${item.content.replace(/\n/g, "<br>")}</p>
                                             <textarea class="edit-textarea form-control d-none" rows="3">${
 																							item.content
 																						}</textarea>
@@ -392,12 +403,17 @@ $(document).ready(function () {
 		const $editBtn = $editBottom.find(".edit-btn");
 		const $editActions = $editBottom.find(".edit-actions");
 
+		const displayHtml = $p.html();
+		const editText = displayHtml.replace(/<br\s*\/?>/gi, "\n");
+		$textarea.val(editText);
+
 		$p.addClass("d-none");
 		$textarea.removeClass("d-none").focus();
 		$editBtn.addClass("d-none");
 		$editActions.removeClass("d-none");
 
-		$textarea.data("original-content", $textarea.val());
+		autoResizeTextarea($textarea);
+		$textarea.data("original-content", editText);
 	});
 
 	$(document).on("click", ".save-btn", function () {
@@ -410,8 +426,10 @@ $(document).ready(function () {
 		const $editActions = $editBottom.find(".edit-actions");
 		const itemId = $item.data("id");
 		const newContent = $textarea.val();
+		const newTextContent = $textarea.val();
 
 		// 更新前端顯示
+		const newHtmlContent = newTextContent.replace(/\n/g, "<br>");
 		$p.text(newContent).removeClass("d-none");
 		$textarea.addClass("d-none");
 		$editBtn.removeClass("d-none");
@@ -419,6 +437,7 @@ $(document).ready(function () {
 		$textarea.data("current-content", newContent);
 
 		// 儲存原始內容以便取消時恢復
+		$textarea.data("current-content", newTextContent);
 		$textarea.data("original-content", newContent);
 	});
 

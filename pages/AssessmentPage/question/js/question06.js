@@ -537,7 +537,7 @@ $(document).ready(function () {
 
 							window.history.replaceState(null, "", url);
 						} else {
-							window.location.href = `../../AssessmentPage/index.html?workOrderID=${testparams.workOrderID}`;
+							window.location.href = `../../WorkOrderListPage/detail.html?orderid=${testparams.workOrderID}`;
 						}
 					} else {
 						if (step != "01") {

@@ -17,6 +17,10 @@ ready(() => {
 			$(document).on("click", "#controlShowPanel", function () {
 				openControler();
 			});
+
+			$(document).on("click", ".header__image", function () {
+				window.location.href = "../HomePage/index.html";
+			});
 			initUserType();
 		}
 	})();

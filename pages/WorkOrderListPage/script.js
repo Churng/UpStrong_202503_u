@@ -839,4 +839,68 @@ $(document).ready(function () {
 	//     $(location).attr('href', `../WorkOrderListPage/detail.html?orderid=${$(this).data('orderid')}`);
 
 	// });
+
+	// 下載當月值班表
+	$("#downloadMonthPDF").click(function () {
+		let selectedDate = $(".date-box").val().trim();
+
+		if (!selectedDate) {
+			alert("請先選擇日期喔 🗓️");
+			return;
+		}
+
+		// 支援格式：YYYY-MM-DD 或 YYYY/MM/DD
+		let dateParts = selectedDate.includes("-") ? selectedDate.split("-") : selectedDate.split("/");
+
+		if (dateParts.length < 2) {
+			alert("日期格式不正確，請重新選擇！");
+			return;
+		}
+
+		let year = dateParts[0];
+		let month = dateParts[1].padStart(2, "0");
+
+		getMonthlyPDF(year, month);
+	});
+
+	function getMonthlyPDF(workOrderYear, workOrderMonth) {
+		let session_id = sessionStorage.getItem("sessionId");
+		let action = "getRoster";
+		let chsm = "upStrongWorkOrderApi";
+		chsm = $.md5(session_id + action + chsm);
+
+		let formData = new FormData();
+		let data = { workOrderYear, workOrderMonth };
+
+		formData.append("session_id", session_id);
+		formData.append("action", action);
+		formData.append("chsm", chsm);
+		formData.append("data", JSON.stringify(data));
+
+		$.ajax({
+			url: `${window.apiUrl}${window.apiworkOrder}`,
+			type: "POST",
+			data: formData,
+			processData: false,
+			contentType: false,
+			success: function (res) {
+				if (res.returnCode === "1" && res.returnData?.fileUrl) {
+					let fileUrl = res.returnData.fileUrl;
+
+					const a = document.createElement("a");
+					a.href = fileUrl;
+					a.download = "";
+					document.body.appendChild(a);
+					a.click();
+					document.body.removeChild(a);
+				} else {
+					alert("目前沒有可下載的排班表 😢");
+				}
+			},
+			error: function (err) {
+				console.error(err);
+				alert("下載失敗，請稍後再試 🥲");
+			},
+		});
+	}
 });

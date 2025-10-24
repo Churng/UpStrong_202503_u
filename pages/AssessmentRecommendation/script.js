@@ -61,7 +61,7 @@ $(document).ready(function () {
 						contentHTML = `
                             <div class="recommendation-item  mb-5 shadow-sm">
                                 <div class="card-body">
-                                    <h5 class="card-title">${item.content}</h5>
+                                    <h5 class="card-title">${item.content.replace(/\n/g, "<br>")}</h5>
                                     <p class="card-text">${item.url}</p>
                                     <p class="card-text">${item.description}</p>
                                 </div>

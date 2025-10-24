@@ -530,13 +530,27 @@ $(document).ready(function () {
 
 				contentType: false,
 
-				success: function (res) {},
+				success: function (res) {
+					if (res.returnCode == "1") {
+						new CustomAlert({ content: "送出成功" });
+						window.location.href = `../HomePage/index.html`;
+					} else {
+						new CustomAlert({ content: res.returnMessage });
+						window.history.back();
+					}
+				},
 
 				error: function () {
 					$("#error").text("An error occurred. Please try again later.");
 				},
 			});
 		}
+	});
+
+	//取消
+	$(".cancel").click(function () {
+		new CustomAlert({ content: "返回上一頁" });
+		window.history.back();
 	});
 
 	//匯款日曆
