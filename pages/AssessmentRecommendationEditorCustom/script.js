@@ -86,7 +86,7 @@ $(document).ready(function () {
                                         name="${item.id}" value="${item.checkListId}" 
                                         data-id="${item.id}" ${item.isMatch ? "checked" : ""}>
                                     <label for="${item.id}"></label>
-                                    <div class="card-box">
+                                    <div class="card-box w-100">
                                         <div class="text-content">
                                             <p class="card-text">${item.content.replace(/\n/g, "<br>")}</p>
                                             <textarea class="edit-textarea form-control d-none" rows="3">${
@@ -425,20 +425,17 @@ $(document).ready(function () {
 		const $editBtn = $editBottom.find(".edit-btn");
 		const $editActions = $editBottom.find(".edit-actions");
 		const itemId = $item.data("id");
-		const newContent = $textarea.val();
 		const newTextContent = $textarea.val();
 
-		// 更新前端顯示
 		const newHtmlContent = newTextContent.replace(/\n/g, "<br>");
-		$p.text(newContent).removeClass("d-none");
+		$p.html(newHtmlContent).removeClass("d-none");
+
 		$textarea.addClass("d-none");
 		$editBtn.removeClass("d-none");
 		$editActions.addClass("d-none");
-		$textarea.data("current-content", newContent);
 
-		// 儲存原始內容以便取消時恢復
 		$textarea.data("current-content", newTextContent);
-		$textarea.data("original-content", newContent);
+		$textarea.data("original-content", newTextContent);
 	});
 
 	$(document).on("click", ".cancel-btn", function () {
