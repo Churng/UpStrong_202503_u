@@ -9,7 +9,7 @@
 }
 
 .content {
-	width: 600px;
+	width: 700px;
 	margin: 0 auto;
 }
 
@@ -22,8 +22,12 @@
 }
 
 .banner {
-	width: 600px;
+	width: 700px;
 	margin: 0 auto;
+}
+
+.banner img {
+	width: 100%;
 }
 
 @media (max-width: 768px) {
