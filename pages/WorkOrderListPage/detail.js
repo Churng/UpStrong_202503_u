@@ -159,17 +159,15 @@ $(document).ready(function () {
 
           <div class="type-box">
 
-            <span class="ServiceCheckInlink${data.SignComplete == true ? " active" : ""}">服務簽到</span>
 
-            <span class="ServiceRecordlink ${data.RecordComplete == true ? " active" : ""}">服務紀錄</span>
+            <span class="ServiceCheckInlink${data.ServiceSign == true ? " active" : ""}">服務簽到</span>
+
+            <span class="ServiceRecordlink ${data.ServiceRecord == true ? " active" : ""}">服務紀錄</span>
 
             <span class="AssessmentPagelink ${data.AssessmentScale == true ? " active" : ""}">評估量表</span>
 
 
-            <span class="AssessmentRecommendation ${
-							data.TrainingRecommendation == true ? " active" : ""
-						}">訓練指引</span>
-
+            <span class="AssessmentRecommendation ${data.TrainingGuide == true ? " active" : ""}">訓練指引</span>
 
           </div>
 
