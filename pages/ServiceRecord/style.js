@@ -100,7 +100,8 @@ $(document).ready(function () {
 	getOrderData();
 
 	//送出
-	$("#submit").on("click", function () {
+	$("#submit").on("click", function (e) {
+		e.preventDefault();
 		let formData = new FormData();
 
 		let session_id = sessionStorage.getItem("sessionId");
@@ -143,7 +144,9 @@ $(document).ready(function () {
 				handleResponse(res);
 				if (res.returnCode == "1" && res.returnData) {
 					successResponse(res);
-					window.history.back();
+					setTimeout(() => {
+						window.history.back();
+					}, 2000);
 				}
 			},
 

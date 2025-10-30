@@ -299,7 +299,8 @@ $(document).ready(function () {
 	}
 
 	//送出
-	$("#submit").on("click", function () {
+	$("#submit").on("click", function (e) {
+		e.preventDefault();
 		if (!validateRequiredFields()) return;
 
 		let formData = new FormData();
@@ -365,7 +366,10 @@ $(document).ready(function () {
 				handleResponse(res);
 				if (res.returnCode == "1" && res.returnData) {
 					successResponse(res);
-					window.history.back();
+
+					setTimeout(() => {
+						window.history.back();
+					}, 2000);
 				}
 			},
 
