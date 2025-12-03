@@ -105,6 +105,44 @@
 
       </div>
 
+      <div class="container">
+        <div class="row">
+          <div class="col-12 p-0">
+            <div class="card border-0 shadow-sm p-3 mb-2 bg-body rounded">
+              <div class="card-body">
+                <p class="card-title SC-title mb-3">是否請假</p>
+
+                <div class="checkbox-box d-flex flex-column">
+                  <div>
+                    <input type="checkbox" id="SC-IfTakeTimeOff-no">
+                    <label for="SC-IfTakeTimeOff-no">否</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" id="SC-IfTakeTimeOff-yes">
+                    <label for="SC-IfTakeTimeOff-yes">是，</label>
+
+                    <select class="form-select form-select-sm me-2 w-75" id="SC_TakeTimeOffType"
+                      aria-describedby="SC_TakeTimeOffType">
+                      <option value="" disabled selected>請選擇</option>
+                      <option value="1">上午請假</option>
+                      <option value="2">下午請假</option>
+                      <option value="3">全日請假</option>
+                    </select>
+                  </div>
+
+
+                </div>
+
+
+              </div>
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="container" id="service-checkin-container">
         <div class="row">
           <div class="col-12 p-0">

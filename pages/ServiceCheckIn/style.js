@@ -85,6 +85,32 @@ $(document).ready(function () {
 					let data = res.returnData;
 					let item = data.workOrderSignInDetailData;
 
+					//請假
+
+					$("#SC-IfTakeTimeOff-yes").prop("checked", item.isTakeTimeOff);
+					$("#SC-IfTakeTimeOff-no").prop("checked", !item.isTakeTimeOff);
+
+					$("#SC_TakeTimeOffType")
+						.val(item.isTakeTimeOff ? item.TakeTimeOffType : "")
+						.prop("disabled", !item.isTakeTimeOff);
+
+					//互斥邏輯
+					$("#SC-IfTakeTimeOff-yes").on("change", function () {
+						if (this.checked) {
+							$("#SC-IfTakeTimeOff-no").prop("checked", false);
+							$("#SC_TakeTimeOffType").prop("disabled", false);
+						} else {
+							$("#SC_TakeTimeOffType").prop("disabled", true).val("");
+						}
+					});
+
+					$("#SC-IfTakeTimeOff-no").on("change", function () {
+						if (this.checked) {
+							$("#SC-IfTakeTimeOff-yes").prop("checked", false);
+							$("#SC_TakeTimeOffType").prop("disabled", true).val("");
+						}
+					});
+
 					// Box-1
 					$("#input-hr-rest").val(item.PulseAtRest);
 					$("#input-hr-exercise").val(item.PulseTrainingPercentMaxHr);
@@ -315,6 +341,8 @@ $(document).ready(function () {
 
 		let data = {
 			workOrderId: params.workOrderID,
+			IfTakeTimeOff: $("#SC-IfTakeTimeOff-yes").prop("checked"),
+			TakeTimeOffType: $("#SC-IfTakeTimeOff-yes").prop("checked") ? $("#SC_TakeTimeOffType").val() : null,
 			PulseAtRest: $("#input-hr-rest").val(),
 			PulseTrainingPercentMaxHr: $("#input-hr-exercise").val(),
 			BpAtRest: $("#input-bp-rest").val(),
