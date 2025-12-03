@@ -87,12 +87,12 @@ $(document).ready(function () {
 
 					//請假
 
-					$("#SC-IfTakeTimeOff-yes").prop("checked", item.isTakeTimeOff);
-					$("#SC-IfTakeTimeOff-no").prop("checked", !item.isTakeTimeOff);
+					$("#SC-IfTakeTimeOff-yes").prop("checked", item.IfTakeTimeOff);
+					$("#SC-IfTakeTimeOff-no").prop("checked", !item.IfTakeTimeOff);
 
 					$("#SC_TakeTimeOffType")
-						.val(item.isTakeTimeOff ? item.TakeTimeOffType : "")
-						.prop("disabled", !item.isTakeTimeOff);
+						.val(item.IfTakeTimeOff ? item.TakeTimeOffType : "")
+						.prop("disabled", !item.IfTakeTimeOff);
 
 					//互斥邏輯
 					$("#SC-IfTakeTimeOff-yes").on("change", function () {
